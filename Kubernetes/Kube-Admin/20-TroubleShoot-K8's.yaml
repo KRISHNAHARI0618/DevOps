@@ -1,0 +1,99 @@
+Trouble shooting Techniques:
+
+1: Application Failures
+2: Control Plane Failures
+3: Node Failures(Worker-Nodes)
+4: Network Trouble shoot(CoreDNS & Kube-Proxy)
+5: Plugins used: WeaveNet/Calico
+
+Application Failure :
+
+If we are able to access the application
+
+we need to go in a hierarchy
+
+1: Check if the url is accessible using curl <nodeport>
+2: Check the container is accessible
+3: Check the service related to pod either selctors are mentioned correctly od not
+4: Check the pod and its events using
+  check the pod itself is running or not
+  kubectl describe <pod-name>
+5: Check the logs usings kubectl get logs -f --previous
+6: Check the db related service configuration
+7: Check the DB Pod using describe and Watch logs
+
+Control Plane Failure:
+if the control plane components deployed as services
+
+1: Check the Status of nodes
+2: Check the status as pods
+3: Check the services of each component
+  service kube-apiserver status
+  service kubelet status
+  service control-manager status
+api-server
+kubelet
+scheduler
+etcd
+check the kube-let service
+
+To see api-server logs we could see using
+sudo journalctl -u kube-apiserver
+
+
+if the nodes are deployed as pods and control plane is deployed as kube-adm
+
+1: Check the status of pods using
+  kubectl get pods -n kube-system
+
+Worker Node Failure:
+
+1: Check the status of nodes: kubectl get nodes
+
+2: Describe the nodes whether it is alive or not:
+kubectl describe node worker-1
+- it will give the node status as true/false
+- if it is false there might be below issues
+1: Out of memory : Not Having sufficient memory
+2: Memory Pressure : Memory Consumption is very high
+3: Disk Pressure : Disk is in Pressure
+4: PID Pressure : There are lots of processes are running and there is not enough room to run another service
+5: Ready : Node is healthy and ready with true status
+
+If it is False Status:
+
+1: Check the Processors running using: ps -ef
+2: Check the Running process & Memory : top
+3: Check the Disk usage : du command
+4: Check the disk free using: df
+5: Check the kubelet service:
+
+check the kubelet status:
+sudo systemctl service kubelet status
+
+check the logs of kubelet: sudo journalctl -u kubelet
+
+
+Network Trouble shooting:
+Plugins Required to Trouble shoot the K8s
+
+1: Weave Net
+2: Calico
+
+
+DNS in K8s:
+
+Kubernetes resources for coreDNS are:
+
+  a service account named coredns,
+  cluster-roles named coredns and kube-dns
+  clusterrolebindings named coredns and kube-dns,
+  a deployment named coredns,
+  a configmap named coredns and a
+  service named kube-dns.
+
+
+
+
+
+

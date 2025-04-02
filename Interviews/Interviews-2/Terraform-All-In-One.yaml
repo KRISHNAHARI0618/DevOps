@@ -1,0 +1,898 @@
+Interviews/Kubernetes-All-in-one.yamlWhat is IaC: Infrastructure as code
+
+What is Terraform:
+0: Terraform is an infrastructure as a code tool that lets you to build,change and version cloud and on-prem safely and effectively
+1: Infra structure as a code automation tool
+2: Open Source designed by Hashi-Corp written in go language
+3: It allows user to create infra with code
+4: It has a Command Line Tool and Terraform Cloud to store the modules privately
+
+---
+What are advantages of Terraform:
+0: As it is A Code we can write,deploy amd  destroy
+1: Version Control
+2: Consistent InfraStructure (Dev,QA,Prod,UAT,pre-PROD)
+3: We can DO CRUD Operations
+4: Inventory Management
+5: Cost Optimization
+6: Dependency Management
+7: Modules (Don't Repeat Yourself)
+8: Terraform Is Declarative Scripting
+---
+Variables and Outputs:
+
+1: | Variables
+- Servers as Parameters for a Terraform Modukes/code.
+- So Users can customize behavior without editing the the source code
+2: | Outputs
+- Return Values for a terraform module
+3: | Local Values
+- Convience feature for assigning a short name to an expression
+- it is especially useful when you have complec expressions or repeated values
+
+---
+Terragrunt Tutoroial:
+- Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules, remote state, and locking
+-
+---
+Expressions:
+1: Version Constraints:
+- we can use the operators to control the version like below
+- version = ">=1.2.0, <2.0.0"
+- there are other operators as well in terraform
+- =,!=,>,<,>=,<= etc..
+2: Dynamic Blocks:
+- When you want to create a nested blocks we use dynamic blocks
+
+---
+Functions:
+1: File Function: used to copy the file from local to resources while creating the resource
+2: Split Function : Split funtion is used to split the string based on the delimiters
+3: Element Function : Used to retrieve a single element from the list or tuple
+- element(list or tuple,index)
+4: Slice Function: Slice is used to select the part of list
+5: Length Function: Length will get the size of the list
+6: LookUp Function: Value of a key in a map
+7: Url encode Function: applies URL encoding to a given string
+8: length (create based on availability zones)
+9: slice (create based on slice)
+10: merge (variables)
+11: min
+12: max
+13: base64encode
+14: base64decode
+15: concatenation: two or more list combines into a single task
+16: contains:
+
+Hashi-Corp Configuration Language:
+1: Variables:
+  - Types of Variables
+  - String
+  - bool
+  - number
+  - Map
+  - List
+2: Loops
+3: Locals
+4: Data Types
+5: Functions
+6: Modules
+7: Expressions
+
+---
+Why Terraform:
+1: Terraform works on the principle of api as code
+2: Interacts with Low Level Code
+3: Supports multiple Cloud Providers/Hybrid Cloud
+4: Written in Go language
+5: HCL language/Json
+---
+What are essential aspects of terraform:
+1: A console to validate the functions
+2: Interpolation is supported through a configuration language
+3: A Module count maintains track of how many resources are installed on the infrastructures
+---
+What are modules in terraform:
+1: Logical Grouping of terraform resources
+2: one module can run multiple environment/teams
+3: One Module for multiple Teams
+4: Commonly repeated things should be allocated in single file
+---
+What is state file in terraform:
+1: Keeps Track of resources are managing
+2: Terraform makes copy of which resources we have created
+---
+What is Terraform D:
+  Terraform D is a windows plugin that works with almost all in-service systems. By Default Terraform init looks for plugins in the following directory
+
+What is the purpose of Null Resources:
+  A standard resource library is implemented by null resources but no further action is done
+
+Most Common CLI Commands:
+
+1: Terraform init
+2: Terraform plan
+3: Terraform apply
+4: Terraform Destroy
+5: Terraform destroy --target="Resource-Name"
+6: Terraform refresh
+7: Terraform output
+8: Terraform Graph
+
+What is terraform backend:
+1: Where ever we are storing our terraform state file is called backend
+---
+What is terraform remote backend:
+1: To remove conflicts between your team and you we will store this state file in Remote backend
+2: And we store that in some where in Cloud and enables locking it
+3: so that if one user is creating resources using that remote backend statefile he will get error like some has locked the file or creating the infra
+---
+How do you handle secrets in terraform:
+1: Using Environment variables
+2: Using Hashi-Corp Vault
+3: Store ssm parameters store
+4: Use sensitive keyword = true in terraform
+5: Store the state file in remote backend and enforce it with the strict iam policies
+6: Secure remote backend
+
+What is resource graph in terraform:
+  terraform graph is a dependency graph
+  it is actually a dependency plan
+
+What is Terraform state Locking:
+when you don't want to run multiple people at a time
+Using DynamoDB Locking
+
+What is Taint Terraform Resource :
+1: A particular resources is degraded or damaged needs to restart then in next apply this will get execute
+
+What is Terraform state rollback:
+Roll back into terraform state
+
+How will you upgrade plugins in terraform:
+using # terraform init -upgrade
+
+How will you make an object of one module available for the other module at a high level:
+1: Module 1(Providing Outputs) which create a Resources and gives an output Parent
+
+2: Module 2(Consuming Outputs) which takes that output to create a resources
+
+What are the components that make up terraform architecture:
+1: Sub-Graphs
+2: Evaluation of Expressions
+3: Evaluation of vertex
+4: Walk The Graph
+
+Define Resources Graph:
+A resource graph is used to depict the resources.it allows you to simultaneously alter and produce various resources
+
+Provide a Few examples of where we can use sentinel policies:
+1: Make a Unambiguous ownership of resources a must
+2: Limit the roles that cloud provider can play
+3: Examine the terraform cloud operations audit trail
+4: Only particular resources ,services or data sources are prohibited
+
+Degrees of Sentinel Policing:
+1: Advisory
+2: Soft Mandatory
+3: Hard Mandatory
+
+What is terragrunt:
+Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple
+Terraform modules, remote state, and locking.
+
+1: Managing numerous aws accounts
+2: Managing infra on multiple modules
+3: Using terragrunt we use dry principle
+
+What is State File Locking:
+
+How do you deploy Infra using Terraform:
+1: Create
+
+Problems with terraform:
+1: Terraform communicates to a lot of apis but terraform itself does not have an API
+
+2: Terraform State
+a: Monolithic
+b: Needs Locking
+c: Cannot Modify the piece of infra
+
+How to pass environment variables in Terraform:
+
+Using the Export TF_VAR_example_var="custom_value"
+export
+
+When you mention terraform variable as sensitive will it show in terraform apply command:
+it will hide the sensitive data even when you apply
+
+How to list the created resources in terraform:
+terraform state list
+
+Count the resources using length function:
+output "number of resources" {
+  value = length(aws_instance.example)
+}
+
+When two files attempt to define the same object terraform returns an error
+
+Terraform Questions:
+
+What is Meant by Null Resources:
+1: A null resource is a special resource type allows you to define a resource block with no direct counter part in the underlying infrastructure
+2: it is often used when you need to perform some arbitrary action or execute a provisioner without creating any tangible infrastructure resource
+
+Use Cases:
+1: When you want to execute the local exec
+2: when you want to call external apis
+3: Running custom logic during the terraform lifecycle
+
+What is Terraform Validate command:
+1: Validate command used to check the validations of resources
+2: Terraform validate commands is used to validate the configuration files in a project are syntactically valid and internally consistent
+
+How to Create a Resources Using a Loop:
+1: Count
+count = 2
+2: For Each
+for each argument must be map or set of strings
+it will not take Tuple as a type of Argument
+
+Method 1:
+count = 2
+var.name[count.index]
+Method 2:
+variables file
+variable "sub" {
+  type = set(string)
+  default = ["10.1.0.0/24","10.2.0.0/24"]
+}
+
+for_each = var.sub
+sub = each.value
+
+How to Create a Resources Conditionally:
+using the condition like ternary operator
+count = var.env == "dev/qa" ? 1 : 0
+
+variable == "value" ? 1 : 0
+
+What are Data Sources:
+
+Data sources allow you to fetch and reference data from external sources or existing infrastructure
+
+data "aws_ami" "latest_amazon_linux" {
+  most_recent = true
+
+  owners = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+
+data "vault_generic_secrets" "data_base_secrets" {
+  path = "secret/data/database"
+}
+
+resource "aws_db_instance" "example" {
+  username = data.vault.generic_secrets.data_base_secrets.credentials.data["username"]
+  password = data.vault_generic_secrets.data_base_secrets.credentials["password"]
+}
+
+variable "example_password" {
+  type = string
+  description = "A Sensitive Variable"
+  sensitive = true
+}
+
+locals "aws_instance" {
+  value =
+}
+
+What are local Variable: These are type of Variable where we cannot
+
+How to Delete particular resources in terraform:
+1: terraform destroy -target=resource.name
+
+What resources can be Set variables in with VPC,AutoScaling, LoadBalancer:
+AWS VPC : CIDR as Variable
+AutoScaling: desired_capacity as Variable
+LoadBalancer: LoadBalancer name as variable
+
+How to provide variable at cli:
+When declaring variables at tf vars don't pass any default value then it will ask user to enter
+
+Terraform Modules:
+Used for Bigger project for consistency
+module_name/
+  ├── main.tf
+  ├── variables.tf
+  ├── outputs.tf
+  └── README.md (optional)
+
+1: Reusability
+2: Abstraction
+3: Maintainability
+4: Versioning
+5: Collaboration
+
+Organization Standards to use terraform:
+
+1: Directory Structure : Root Directory
+/my_terraform_project
+  ├── main.tf
+  ├── variables.tf
+  ├── outputs.tf # Shows Values required in terminal
+  ├── terraform.tfvars #Variable values for each environment.
+  ├── provider.tf
+  ├── modules/
+  ├── environments/
+  └── README.md
+2: Use of Modules
+3: Variables, inputs, Locals
+4: Outputs and Documentation
+5: State Management remote backend
+6: Naming Conventions : projectname_resource
+7: Providers and Authentication
+8: Code Review and Collaboration
+9: Continuous integration and Continuous Deployment
+10: Security Considerations
+11: Logging and Monitoring
+
+VPC ,EC2,Cloud Trail,IAM
+1: IAM Will Create
+2: VPC
+3: EC2
+4: Cloud Trail
+
+Import Command:
+
+import {
+  to = aws_iot_thing.bar
+  id = "foo"
+}
+terraform plan -generate-config-out=generated.tf
+
+Drawbacks of terraform:
+1: Error Handling
+2: Json and HCL
+
+Terraform Version: 1.5
+Hashicorp AWS Version: 5.8.0
+
+Now Terraform Version: 1.7 or 1.8
+Now HashiCorp Version: 5.34.0
+
+# How to Manage Secrets in Terraform:
+
+1: Use sensitive keyword in variables section
+2: Use AWS SSM Parameters --> Data sources
+3: Use Hashi-Corp Vault --> using data sources
+4: Environment Variables --> /tmp/password.txt
+5: Pass Variables in .tfvars
+
+Using Data Sources We Can leverage the automation for Secrets Management
+
+1: Using Variables files
+
+variable "database_password" {
+  type        = string
+  sensitive   = true
+  description = "Password for the database"
+}
+2: AWS Systems Manager Parameters Store or Secrets Manager:
+
+retrieve sensitive information such as passwords, API keys, or other credentials
+
+data "aws_ssm_parameter" "database_password" {
+  name = "/myapp/database_password"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Database Password: ${data.aws_ssm_parameter.database_password.value}" > /tmp/password.txt
+              EOF
+}
+
+3: External Secrets Management: Hashi-Corp Vault
+
+provider "vault" {
+  address = "https://vault.example.com:8200"
+  token   = "your_vault_token"
+}
+
+data "vault_generic_secret" "database_credentials" {
+  path = "secret/myapp/database"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Database Username: ${data.vault_generic_secret.database_credentials.data["username"]}" > /tmp/username.txt
+              echo "Database Password: ${data.vault_generic_secret.database_credentials.data["password"]}" > /tmp/password.txt
+              EOF
+}
+
+4: Using Environment Variables:
+
+variable "database_password" {
+  type = string
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+
+  user_data = <<-EOF
+              #!/bin/bash
+              echo "Database Password: $DATABASE_PASSWORD" > /tmp/password.txt
+              EOF
+}
+
+You have a Parent Module and Child Module :
+Using terraform workspaces
+Terraform is platform agnostic
+1: terraform workspace new dev
+2: terraform workspace select dev
+3: Modules
+4: terraform apply -var-file=dev.tfvars
+
+Scenarios:
+End To End Terraform Flow
+1: First Write Tf files
+2: Terraform init
+3: Terraform validate
+4: Terraform plan
+5: Terraform fmt --> Write Canonical Form mostly used in Import
+
+One Particular Resource needs to be recreated :
+1: Using terraform taint we can create a particular resource in next apply command
+
+Terraform tain is command used to represent that particular resource is degraded or upgraded or damaged need to be replaced in next apply
+
+1: Terraform state list
+2: terraform taint "resources_name"
+3: terraform apply
+
+terraform taint and untaint
+
+terraform taint is deprecated instead we use
+
+terraform apply --replace=<resource-name>
+
+# One Particular resource needs to be deleted:
+
+terraform destroy -target=aws_instance.my_instance
+
+# Explain the various types of meta-arguments:
+
+Meta arguments:
+changes the default behaviors of terraform configuration
+
+1: depends_on[list of resources]
+2: count
+3: for_each
+4: provider
+
+provider "aws" {
+  alias  = "europe"
+  region = "europe-west1"
+}
+resource "aws" "name" {
+  provider = aws.europe
+}
+
+5: lifecycle -- > create_before_destroy
+lifecycle {
+    create_before_destroy = true
+    ignore_changes = [tags["Name"],]
+    prevent_destroy =
+    replace_triggered_by = [aws_ecs_service.svc.id]
+  }
+
+# Who Created terraform.tfstate.backup file
+terraform destroy command will create the backup file
+it is because that to restore the infra to the same state
+
+# Force Unlock --> Manually delete lock on terraform file
+terraform apply --force-unlock
+
+# Terraform Refresh
+1: When ever there is a mismatch in terraform statefile we run this command
+
+# Interview Session - 1:
+
+Components used in creating the terraform:
+1: VPC
+2: Subnets
+3: s3
+4: IAM
+5: Kubernetes
+6: VMs
+
+How to do changes in the already created configuration :
+
+Using " Terraform import " command we can do changes which are already created.
+
+State file is get and stored:
+Locally or Remote Backend
+
+If we loose state file:  There is no way to get back so we need to lock and save it in Storage
+
+Terraform Validate: used to validate the syntax
+Terraform fmt
+
+Types of Modules in terraform:
+
+1: Root Module: Main Module to be called with all configurations
+2: Child Module: called with in the root module and get created based on the structure
+3: Module Sources: Modules can be sourced from various locations.
+
+Remote Backend: Used for Locking and storing
+
+How to pass variable over run time:
+variable.tf
+variable "aws" {
+  type = string
+}
+
+How to Manage Modules in Multiple Environments:
+using terraform workspace
+
+Traditional IT Infra:
+1: Slow Deployment
+2: Expensive
+3: Limited Automation
+4: Human Error
+5: Wasted Resources
+6: Inconsistency
+
+Terraform Providers:
+Terraform Provider is a Plugin that lets terraform managers an external api
+when we run terraform init plugin required for the provider are automatically downloaded and saved locally
+
+Resource Block :
+Describe one or more infrastructure objects
+
+Hashi-Corp Maintained: No need Required Providers section
+
+Non Hashi-Corp Maintained: Need to provide required_providers Section
+
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.22.12"
+    }
+  }
+}
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resource "aws_instance" "resource_name" {
+  ami = "ami_id"
+  instance_type="t2.micro"
+}
+
+How to debug and troubleshoot the terraform:
+1: terraform init and terraform debug
+2: terraform init
+3: terraform validate
+4: terraform fmt
+5: terraform plan -debug (enable debug output gives detailed info about the terraform doing)
+6: terraform state (terraform show)
+7: increase verbosity using trace command
+TF_LOG=TRACE terraform plan
+8: to check the function issues we use terraform console
+9: terraform init -upgrade
+
+Terraform fmt:
+document some commonly accepted formatting guidelines for terraform code these conventions can e enforced automatically with terraform fmt
+
+Configuration Syntax in terraform:
+1: Arguments key value pairs
+2: Blocks are used to mention resources
+3: identifiers = terraform specific constructs like resources,input variables,etc .. are all identifiers
+4: Comments
+
+Terraform Cloud:
+1: Manages StateFiles in Terraform Cloud
+2: Store Variables
+Write some Code for Providers:
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "5.22.0"
+    }
+  }
+}
+provider "aws" {
+  alias = "us-east"
+  region = "us-east-1"
+}
+
+resource "aws_instance" "Jenkins" {
+  ami = "ami_id"
+  instance_type = "t2.micro"
+  security_groups =
+  key_pair =
+}
+
+Locals: # Locals
+locals {
+  environment_name = "production"
+}
+Data-Sources: # Data Sources
+data "aws_ami" "latest_amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+variables: # Variables
+variable "region" {
+  type    = string
+  default = "us-west-2"
+}
+
+variable "instance_types" {
+  type    = list(string)
+  default = ["t2.micro", "t2.small", "t2.medium"]
+}
+life-cycle: # Resources
+resource "aws_instance" "ec2_instances" {
+  count         = length(var.instance_types)
+  instance_type = var.instance_types[count.index]
+  ami           = data.aws_ami.latest_amazon_linux.id
+  tags          = local.tags
+
+# Life Cycle
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy       = false
+  }
+}
+for:
+# For Loop Example
+resource "aws_s3_bucket" "example_buckets" {
+  count         = 3
+  bucket        = "example-bucket-${count.index}"
+  acl           = "private"
+  force_destroy = true
+}
+
+for-each:
+# For Each Loop Example
+variable "vpc_cidrs" {
+  type    = map(string)
+  default = {
+    "us-west-1" = "10.0.0.0/16"
+    "us-east-1" = "10.1.0.0/16"
+    "eu-west-1" = "10.2.0.0/16"
+  }
+}
+resource "aws_vpc" "vpcs" {
+  for_each = var.vpc_cidrs
+
+  cidr_block = each.value
+  tags       = {
+    Name = "VPC-${each.key}"
+  }
+}
+dynamic block: # Dynamic Block Example
+variable "additional_tags" {
+  type = map(string)
+  default = {
+    app = "web"
+    env = "prod"
+  }
+}
+
+# resource "aws_instance" "dynamic_tags" {
+#   count = 2
+#   ami   = data.aws_ami.latest_amazon_linux.id
+#   tags = merge(
+#     local.tags,
+#     {
+#       Name = "instance-${count.index + 1}"
+#     },
+#     var.additional_tags
+#   )
+#   }
+
+Condition :
+# Condition Example
+resource "aws_security_group" "example_sg" {
+  name        = "example_sg"
+  description = "Example Security Group"
+
+  ingress {
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = var.region == "us-west-2" ? ["0.0.0.0/0"] : []
+  }
+}
+
+Resource:
+# Data Sources
+data "aws_ami" "latest_amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
+}
+
+# Resources LifeCycle
+
+resource "aws_instance" "ec2_instances" {
+  count         = length(var.instance_types)
+  instance_type = var.instance_types[count.index]
+  ami           = data.aws_ami.latest_amazon_linux.id
+  tags          = local.tags
+
+  lifecycle {
+    create_before_destroy = true
+    prevent_destroy       = false
+    ignore_changes = ["tags", "metadata"]
+    ignore_changes_on_replace = ["volume_size"]
+  }
+}
+
+Depends on :
+1: Reduced Parallelism
+2: Hard-Coding Dependencies
+3: Increased Complexity
+
+resource "aws_instance" "example" {
+  ami           = "ami-12345678"
+  instance_type = "t2.micro"
+  # other resource configurations
+  depends_on = [aws_s3_bucket.example_bucket]
+}
+
+resource "aws_s3_bucket" "example_bucket" {
+  bucket = "example-bucket"
+  acl    = "private"
+  # other resource configurations
+}
+
+
+Terraform Provisioners:
+1: Local Exec Provisioners: commands will execute locally on the machine where terraform is executed
+resource ""
+
+resources "ec2_instances" "example" {
+  ami = "ami"
+  instance_type = "t2.micro"
+  provisioner "local-exec" {
+    command = "echo 'provisioned only oif count is even"
+    when = var.count%2 == 0
+  }
+}
+2: Remote Exec: Commands will be run at a remote machines
+resources "ec2_instances" "example"{
+  ami = "ami"
+  instance_type = "t2.micro"
+provisioner "remote-exec" {
+  inline = [
+    "sudo apt-get update"
+    "sudo apt-get install -y nginx"
+  ]
+ }
+}
+
+3: File Provisioner:
+resource "ec2_instance" "example" {
+  ami = "ami"
+  instance_type = "t2.micro"
+  provisioner "file" {
+    src = "local/path"
+    destination = "remote path"
+  }
+}
+
+Assertion in Terraform:
+variables {
+  bucket_prefix = "test"
+}
+run "valid_string_concat" {
+  command = plan
+  assert {
+    condition = aws_s3_bucket.bucket.bucket == "test-bucket"
+    error_message = "S3 bucket"
+  }
+}
+
+Different Types of Build in Functions:
+1: String Functions
+2: Numeric Functions
+3: Collection Functions
+4: Encoding Functions
+5: File System Functions
+6: Data and Time Functions
+7: Hash and Crypto Functions
+8: Ip Network Functions
+9: Type Conversion Functions
+
+Diff Between For_each and Dynamic block:
+both are used to create a multiple instance of a nested block
+for_each will work with all kind of data types
+list,sets,maps,objects
+Dynamic Block will work for list and sets
+for each is easy when compared to Dynamic Block
+
+provider "aws" {
+  region = "us-east-1"
+}
+
+resources "ec_instance" "first" {
+  ami = "ami"
+  instance_type = "t2.micro"
+
+  dynamic "setting" {
+    for_each = var.sq_ingress_rules
+    content {
+      namespace = setting.value['description']
+      name = setting.value['name']
+      value = setting.value['value']
+    }
+  }
+}
+
+locals {
+  coordinates = (10,20,30)
+  y_coordinates = element(local.coordinates,1)
+}
+
+---
+
+What are private Modules:
+1: we declare the configuration files in the one repository push it in the github
+2: in another folder we calll them to create a resources with the provider block
+
+Types of Modules:
+1: Root module
+2: Child Module
+3: Published Modules
+4: Using Modules
+5: Developing Modules
+
+Folder Structure or Module:
+1: Licence
+2: ReadMe.md
+3: main.tf
+4: variables.tf
+5: outputs.tf
+
+Naming Convention for Terraform Cloud:
+1: terraform-provider-cloud
+
+Terraform State Commands:
+1: terraform state list
+2: terraform state pull
+3: terraform state push
+4: terraform state refresh
+5: terraform state replace-provider old-provider new-provider
+
+
+
+

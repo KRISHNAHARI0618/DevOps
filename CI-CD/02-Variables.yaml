@@ -1,0 +1,32 @@
+There are 2 type of variables:
+
+1: Environment Variables
+2: Current Build Variables
+3: Global Variable Reference
+
+Variables are called by using Environement Block
+
+pipeline {
+  agent any 
+  environment {
+      max_size = 10
+      min_size = 1
+  }
+  stages {
+     stage ('build') {
+        steps {
+           echo "min_size = ${min_size}
+           echo "max_size = ${max_size}
+        }
+     }
+     stage('Test') {
+         steps {
+            echo "minsize = ${min_size}
+            echo "max_size = ${max_size}
+          }
+      }
+   }
+
+
+
+

@@ -1,0 +1,515 @@
+What is GitOps:
+Infrastructure as Code,Configuration as Code
+Automating all work with Continuous Integration and Continuous Delivery
+Application Delivery and Infra Delivery
+
+Promotes Transparency
+Collaboration
+Reduces the chances of errors
+
+Why GitOps:
+- Versioned EveryThing
+- Collaboration by Code Reviews
+- Continuos Integration
+- Continuos Delivery
+- Improved Security (Permission)
+- Rollbacks
+
+Key Features/Principles Of GitOps/ArgoCD:
+- Declarative and Versioned
+- Multi-Cluster Support
+- Automated Sync and RollOuts
+- Pluggable Deployment Strategies
+- Extensibility
+- Security
+- Continuously Reconciled
+
+Advantages of GitOps:
+- Security
+- Versioning
+- Auto Upgrades
+- Auto Healing of any unwanted changes
+- Continuous Reconciliation
+
+Some GitOps Tools:
+- ArgoCD
+- FluxCD
+- JenkinsX
+- Spinnaker
+
+What is ArgoCD :
+
+- ArgoCD is an Open Source Automation tool used for continuous deployment management which used as git as single source of truth
+- which follows the git ops methodology
+- git ops tool
+
+ArgoCD: Sync with Kubernetes and Git
+
+Advantages/Benefits of ArgoCD:
+- Streamlined Deployments
+- Enhanced Collaboration
+- Improved Security
+- Faster Incident Response
+- Scalability
+- Reliability
+
+ArgoCD Best Practices:
+- Git as single source of truth for Configuration and deployment
+- Use Version Control System
+- Use Kubernetes Namespaces to organize and manage the services and deployments
+- Uses RBAC to Control Access to the Resources in the cluster
+- Use Helm Charts Or Kustomize to manage the Deployment of Complex Applications
+
+Branching Strategies:
+
+- Trunk Based Development
+  - All Development Is done on one branch short lived feature branches are there to develop and merged within a time after development of code
+
+- Git Flow
+  - Separate For Main Branch and Feature Branches
+  - feature branched are merged into one main branch
+
+- GitHub Flow
+  - All work happened on one branch and feature branched are used for pull Request
+
+GitOps Model:
+
+- Pull Model :
+  - Controller Pull the Configuration from Git to the argo server
+  - pulls the code and pushes to infra
+
+- Push Model :
+  - Push Model Pushes the received code to the Deploy the infrastructure
+  - CD System is Developed
+  - Push The Code to infra
+
+What is ArgoCD:
+- ArgoCD is a GitOps Continuous Delivery Tool
+
+CI Tool: Modern Approach
+- Checkout The Code
+- Build The Code
+- Unit Test
+- Build Docker Image
+- Publish into Registry
+- Update k8s Image Tag in Repository
+- ArgoCD will Sync with Git Repo and If there are any changed it will auto deploy the application.
+
+Why GitOps-ArgoCD:
+- State Visibility
+  -- Last Sync Status
+  -- Health Status
+  -- Current Status
+  -- Real Time Updates
+- Git is the Source of Truth
+- Dev's and DevOps will Just Commit The Code in Git Only
+- Keep Your Cluster in Sync with Git
+- Easy RollBack
+- More Security
+- Disaster Recovery Solution
+
+ArgoCd Best Practices:
+- Use Separate repositories for Manifests and application code
+- Immutable Manifests
+- Comment Replicas when your application needs to use horizontal pod auto scalar
+- Plan for secrets
+  - don't store plain secrets in git
+  - within git
+    -- sealed secrets
+    -- Sops
+  External Secrets
+    - HashiCorp Vault
+    - External secret Operator
+- plan for argo cd instances 1- Non-Prod Instances 2 Prod Instances
+- use app of apps and application set
+
+Core Concepts:
+
+Application:
+- Source: Git Code and Dependencies -- K8s Manifests
+- Destination: where to deploy in which k8s cluster
+
+Application Supported Tools:
+- Helm Charts
+- Kustomize
+- Directory of Yaml Files
+- Json-net
+
+Project:
+- Logical Grouping of Applications
+- Useful when argoCD is used by multiple teams
+- Allows only Specified Tool
+
+Desired State and Actual State:
+- Desired State: What state You expect
+- Actual State : what state it has now
+
+Sync:
+- Desired State = Described in git
+- Actual State = State present in the Cluster deployed
+- Process of making Desired = Actual State
+
+Refresh and Compare:
+- Compare the latest code in git with live state. Figure out what is different
+- ArgoCD Automatically refreshes every 3 minutes
+
+ArgoCD Components: 3 Core Components
+
+ArgoCD Server:
+- It runs as a Kubernetes Deployment and acts as a the control plane for managing the continuous delivery workflow
+- sync with actual and desired state
+
+ArgoCD API Server : ( API + Web Server) used for WEB UI/CLI/Rest
+- it is a gRPC or Rest Server
+- Used RBAC From Kubernetes for authorization
+- Application Management (Create, Update, Delete)
+- Application Operations (Sync, RollBack)
+- Repos and Cluster Management
+- Authentication
+
+Repo Server :
+- Cloning git repo and get k8s manifests
+- Interacts with Git to get the Latest Updates
+- Caches all the manifest files
+
+Application Controller :
+- Get Manifests from the Repo servers and Compare the desired state and actual state
+- watch and Deploy the applications based on the state
+- for every 3 minutes the argo-cd will check the status of both k8s and git.
+- Invoking user define hooks for lifecycle events
+
+DEX : Identity service to interact with other external identity providers like OIDC, SSO, GitHub
+- OIDC One Identity Device Connectivity
+- Single Sign On
+- GitHub
+
+Redis : Used For Caching
+
+Application set Controller:
+- It automates the generation of ArgoCD Applications
+
+ArgoCD Application: Deploying the application in Cluster using ArgoCD
+
+Deployment in k8s Cluster - 3 Ways
+- Using Declarative Yaml Files
+
+Provision: The action of providing or supplying something for use
+
+Installation Options:
+
+ArgoCd Deployment Manifest File:
+
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+  namespace: argocd
+spec:
+  destination:
+    namespace: guestbook
+    server: "k8s cluster"
+project: default
+source:
+  path: guestbook
+  repoURL: "Url repo"
+  targetRevision: HEAD
+
+- using  CLI
+- Using WebUI/API
+
+Installing Helm Charts application using ArgoCD:
+
+Managing Secrets in GitOps: HashiCorp Vaults
+- Secrets Management
+- Importance of Management
+
+ArgoCD-Deployment Strategies:
+
+Ingress Controllers:
+- Nginx
+- HAProxy
+- Traffick
+- Linkerd
+- GKE
+
+1: Blue-Green
+2: Canary
+3: A/B
+4: Ramped
+5: Recreate
+
+Canary Deployment: Split the traffic
+
+- Version A is Serving
+- Deploy Second Version
+- Create a New Canary Ingress With traffic splitting enabled
+- Wait enough time to confirm that version b is stable and not throwing any unexpected errors
+- after everything is looking and working fine in version b move all traffic to
+- delete the canary ingress a
+- point the main application ingress to send traffic to version B
+- ShutDown version A
+
+Rollout Model:
+- Replace each pod with new Version of Pod when we deploy the application
+
+Blue-Green Deployment:
+- Two different clusters in two different regions
+- if we deploy an application one in one side and application two will be deployed in another location
+- If we deploy an application one in one region the second region is getting ready to deploy the version 2 of the service
+
+Why Projects is needed in ArgoCD:
+
+- Logical isolation between the applications we can use
+- Logical Grouping of applications
+
+Access Restrictions:
+- Useful when ArgoCD is Used by multiple teams
+- allow only specific sources trusted git repos
+- allow apps to be deployed into specific clusters and namespaces
+- allow specific resources to be deployed
+
+Project Roles:
+- Create a Policy to grant access to users to a project applications
+
+Default Project:
+
+Creating Projects :
+- Using declarative approach
+- CLI
+- WebUI
+
+Connecting ArgoCD With Private Repositories:
+- Private Repositories needs to be registered in ArgoCD with proper authentication before using it in applications
+- HTTPS: Using username and password or access token
+- SSH: using SSH private key
+- GitHub app Credentials
+- Via Cloud
+
+Connecting Private Helm Repos: as Connecting private git repositories we can get access to private helm repositories also
+- We can register helm with argo-cd using username and password and tls cert/key
+
+Credentials Template:
+
+- credential templates are used to connect to multiple private repos without having to repeat credentials for each repository
+
+These Credentials Template is stored like Secrets in K8s
+
+Sync Policies and Options:
+
+Automated Syncing
+- It will sync with resources automatically
+
+Automated Pruning: Pruning can be enabled to delete resources automatically as part of automated sync policy
+
+Sync Options:
+
+Prune: Delete the resources if they are no longer declared in the repository
+
+NoPrune:
+we can use no prune at application level and resource level
+by using sync options we can define prune status
+
+at resource level we use annotations to define the NoPrune status
+
+syncPolicy:
+  syncOptions:
+    annotations:
+      argocd.argoproj.io/sync-options: Prune=false
+
+Selective Sync: Out-of-Sync Option
+we use selective sync at resource level using annotations
+
+Prune Last: waves
+Replace Resources:
+No Resource Deletion:
+failOnSharedResource: it will fail if any resource in this application is found in other application
+
+Tracking Strategies: using cli or declarative approach
+
+for Git Revision:
+
+targetRevision: branch and Tags for git
+
+For Helm Charts Revision:
+
+targetRevision: Chart and Version
+
+Diffing Customization:
+
+ignoring the differences between desired state and actual state
+
+using jsonPointer
+using jqpathmodifier
+using specific manager
+
+Sync Phases and Waves:
+
+There several type of hooks used in argocd to deploy the applications
+
+Hooks:
+
+Success Hooks policy:
+
+PreSync : Trigger to deploy the db related manifests
+Sync : Trigger to deploy the main manifest files
+PostSync: Trigger after all the main manifest files are deployed and status as healthy
+Skip: argo-cd will skip the syncing the manifests
+SyncFail: Executes when the sync operation fails
+
+Delete Hooks Policy:
+
+hookSucceeded: the hook resource will get deleted after the hook succeeded
+HookFailed: the hook resource is deleted after the hook failed
+Before Hook Creation: any existing hook resource is deleted before new one is created
+
+Sync Waves:
+
+Waves are just numbers that can be used while syncing the manifest files
+
+By default these syncing will happen from lower to higher
+
+Defining K8S Cluster: as A Secrets
+
+- ArgoCD Can deploy the applications resources into local cluster and remote cluster
+
+- By Default ArgoCD Has the permission to deploy into the local cluster where its running
+
+- We can add remote k8 clusters information including credentials k8s secrets.
+
+- we can add cluster contexts as a kube-config
+
+"argocd cluster add context"
+
+
+each secret must have label of :
+
+argocd.argoproj.io/secret-type: cluster
+
+clusters must have the below data:
+name:
+server:
+Config
+namespace:
+
+using declaratively and Cli we can define remote clusters
+
+there are many ways to authenticate to remote clusters:
+Basic authentication: username and password
+Bearer Token Authentication:
+Iam Authentication:
+External Provider Command to supply client credentials:
+
+CI-CD Pipeline: GitHub Actions
+name:
+on:
+  push:
+    branches: [ 'main' ]
+env:
+  aws_region: my_aws_region
+  ECR_repository: my_ecr_repository
+  ECS_service: my_ecs_service
+permissions:
+  contents: read
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    needs:
+    environment: production
+
+    steps:
+    - name: checkout
+      uses: actions/checkout@v3
+      with:
+        aws-access-key-id:
+        aws-secret-access-key:
+        aws-region:
+      needs
+
+Structuring the Git Repos:
+
+We Can divide the branches based on the test stage and production environments
+
+one branch but multiple values.yaml files in helm charts
+values-test.yaml
+values-stage.yaml
+values-prod.yaml
+
+2: Multiple Branches for Multiple Environments
+
+test Branch
+stage Branch
+Prod Branch (uses tags or commit codes as it is more important)
+
+ArgoCD Server is For Multiple Clusters:
+
+By Adding Multiple Clusters to deploy applications in multiple clusters
+all clusters in argocd are stored as secrets
+
+Application Sets:
+
+Projects:
+Destination
+Source
+Cluster
+Roles
+Windows
+Source Repository
+Scoped Repository
+Cluster Resources list
+Cluster Resources Allow list
+Cluster resources deny list
+Namespace allow list
+namespace deny list
+gpg signature keys
+Resource monitoring
+
+Repositories:
+Private repositories
+Via SSH
+VIA Github
+Via Any Cloud
+Via HTTPS Username and Password
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

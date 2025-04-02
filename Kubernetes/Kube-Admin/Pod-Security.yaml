@@ -1,0 +1,17 @@
+Pod Security Policies:
+
+kubectl apply -f deployment.yaml
+
+Kubernetes API Call:
+API-Server will send a api call to authenticate and authorize the user.
+
+Kube-Config: will verify the user by verifying who the user and what access the user has
+
+How Admission Controllers will work
+Built in Admission Controllers
+PodSecurityPolicy for What
+Pod Security Standards
+Enable Disable PodSecurityPolicy
+Sample PSP
+PSP Implementation
+PSP Demo with ClusterRole, ClusterRoleBinding & ServiceAccount.

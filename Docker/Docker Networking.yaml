@@ -1,0 +1,54 @@
+Networking --> Communication between two hosts/devices over wired /wireless
+Docker:
+- Docker is Platform where it implements the Containerization
+- Docker Networking is Communication between two docker containers
+Docker Network:
+There are two types of communication
+    1) Container 1
+    2) Container 2
+
+How Containers will communicate with Host Systems:
+- Docker will create one network called Virtual etho 0 that is docker0 ---> that will connect with the Host eth0 and makes the communication this is called bridge networking
+- Virtual ethernet == Docker0.
+
+There are three Types of Networking in Docker Containers:
+- Bridge Networking
+- Host Networking
+- OverLay Networking (Docker Swarm)
+
+Host(eth0) --> Docker0 --> veth0 --> Docker(eth0)
+
+Host Networking:
+- Connecting all containers with host ip/eth0 networking.
+- Securing Is more important in docker but host networking will not provide high security
+
+Custom Bridge networking:
+- Create Custom Virtual ETH0 To connect with host eth0 to implement complete isolation between two containers located in same docker engine and host
+
+- Virtual Bridge == Bridge Networking
+
+Network Commands:
+Can do CRUD Operations:
+docker network create secure-network
+docker network ls
+docker network inspect
+docker network bridge
+docker run -d --name finance --network=secure-network nginx:latest
+Why you need networking on Docker :
+- Docker networking enables a user to link a Docker container to as many networks as he/she requires.
+- Docker Networks are used to provide complete isolation for Docker containers.
+
+Which Network Model is docker is following and give me some advantages :
+- Container network  model it is following
+- The implementation of CNM specification by docker is called lib network
+How types of blocks involved in docker lib network:
+- Networks : Software implementation of switch ,used for grouping and isolate the collection of endpoints
+- Endpoints : Virtual Network Interfaces , used for Making the connections
+- Sandboxes : Isolated Network Stack (Routing, Switching etc..)
+
+Disadvantages of Docker networking:
+    we cannot able to create name for ip address for our server in docker Networking
+Docker network commands:
+    docker network create
+    docker run -d --name mongodb --network=roboshop mongodb:v1
+    docker run -d --name mongodb --network=<networkname> <image-id>

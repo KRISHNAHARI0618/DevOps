@@ -1,0 +1,30 @@
+Nexus Pipeline:
+1: Checkout & Install Dependencies
+2: Unit Test
+3: Scanning
+4: Integration Testing
+5: Build jar files,Other zip Files etc..
+6: Publish the artifact or Upload to Nexus
+7: Deploy to DEV
+8: Functional Testing
+9: End of the CI Pipeline
+
+Git: is Repository used to store Code
+Does not store .zip, .jar files etc..
+versioning is available
+
+Nexus: is the Repository used to store Zip, Jar file
+Android Version Does store Code.
+To Store Artifacts with Versioning
+
+GroupID : Project Name
+ArtifactoryID : Organization name
+Version : Version 1.0.2
+
+
+
+
+
+
+
+

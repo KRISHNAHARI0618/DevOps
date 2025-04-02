@@ -1,0 +1,34 @@
+Job: When you want to run a task only once without repeating the pod we use job as a Object
+
+Job.Spec.yaml:
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: example-job
+spec:
+  backoffLimit: 3 # This means That Pod Will run 3 times if fails to execute
+  activeDeadlineSeconds: 50 # How much time the job should run
+  completion: 3 # How many times pods should run
+  parallelism: 2 # how many pods should run parallel to complete the Job
+  template:
+    spec:
+      containers:
+      - name: example-container
+        image: alpine
+        command: ['sh','-c','echo 'started' && ]
+      restartPolicy: Never
+
+CronJob: when you want to run a pod at a regular intervals of time at weekly or monthly etc..
+
+CronJob.yaml:
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: mongo-db-dump
+spec:
+  schedule: '* * * * *'
+  jobTemplate:
+    spec:
+      template:
+
+

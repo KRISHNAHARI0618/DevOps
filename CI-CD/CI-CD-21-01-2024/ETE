@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Checkout source code from GitHub
+                git 'https://github.com/your-username/your-repo.git'
+
+                // Build project using Maven
+                sh 'mvn clean install'
+
+                // Run unit tests
+                sh 'mvn test'
+
+                // Perform static code analysis (SonarQube)
+                // (Assuming SonarQube server is running and configured)
+                withSonarQubeEnv('SonarQubeServer') {
+                    sh 'mvn sonar:sonar'
+                }
+
+                // Archive the artifacts
+                archiveArtifacts 'target/*.jar'
+            }
+        }
+
+        stage('Deploy to Staging') {
+            when {
+                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
+            }
+            steps {
+                // Deploy to staging environment (e.g., Tomcat server)
+                // Additional steps like database migrations, integration tests, etc.
+            }
+        }
+
+        stage('Deploy to Production') {
+            when {
+                expression { currentBuild.resultIsBetterOrEqualTo('SUCCESS') }
+            }
+            steps {
+                // Deploy to production environment
+                // Additional steps like database migrations, smoke tests, etc.
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline succeeded! Trigger further actions if needed.'
+        }
+        failure {
+            echo 'Pipeline failed. Notify relevant parties and take corrective actions.'
+        }
+    }
+}

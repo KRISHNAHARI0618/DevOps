@@ -1,0 +1,9 @@
+Storage in Kubernetes:
+
+1: EmptyDir (Ephemeral)
+2: HostPath (Ephemeral)
+
+3: Static Provisioning (External)
+4: Dynamic Provisioning (External)
+
+

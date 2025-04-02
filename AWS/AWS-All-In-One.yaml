@@ -1,0 +1,43 @@
+SES:	Simple Email Services
+SNS:	Simple Notification Service
+Amazon PinPoint: 	Like Notification Service with Extended Capabilities
+
+In SNS and SES You manage each message's audience
+In amazon PinPoint You create a message template delivery schedules,highly targeted segments and full campaigns
+
+All Three Services :
+1: Scales Billions of messages per day
+2: 2-Way Marketing Communication
+3: Supports Emails,SMS,Push,Voice and In-app Messaging
+4: Possibility to receive replies
+
+SSM or Systems Manager -- SSM Session Manager:
+1: Connect to you Instances without SSH keys or Bastion Host
+2: Sessions are secured using AWS Key Management Service Key
+3: You can Log Session Commands and details in an Amazon S3 Bucket or Cloud Watch Logs
+4: Configure Sessions on the sessions manager
+| How many Ways we acn connect to EC@ Instances:
+1: Using SSH we can Connect
+2: Using Sessions Manager we can connect
+3: Using EC2 Instance Connect we Can connect directly
+4: EC2 Serial Console
+
+AWS Batch: Used To run batch Jobs
+1: To Run the Job at specified interval of time
+2: AWS Batch will dynamically launch EC2 Instances or Spot Instances
+3: Batch Jobs are define as Docker Images and run on ECS
+
+| Lambda Vs Batch:
+Lambda:
+1: Time Limit
+2: Limited Run times
+3: Limited Temporary Disk Space
+4: Serverless
+
+Batch:
+1: No Time Limit
+2: Any run time as log as its packed as a Docker Image
+3: Rely on EBs/Instances store for disk Space
+4: Rely On EC2
+
+

@@ -1,0 +1,86 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_REGISTRY = "your-docker-registry-url"
+        DOCKER_CREDENTIALS_ID = "your-docker-credentials-id" // Jenkins credentials ID for Docker registry
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout your source code
+                checkout scm
+            }
+        }
+
+        stage('Build and Push Docker Image') {
+            steps {
+                script {
+                    // Docker login
+                    withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+                        def dockerLoginCmd = "docker login -u ${DOCKER_USERNAME} -p ${DOCKER_PASSWORD} ${DOCKER_REGISTRY}"
+                        sh dockerLoginCmd
+                    }
+
+                    // Build and push Docker image
+                    sh "docker build -t ${DOCKER_REGISTRY}/your-image-name:latest ."
+                    sh "docker push ${DOCKER_REGISTRY}/your-image-name:latest"
+                }
+            }
+        }
+    }
+}
+
+
+pipeline {
+    agent any
+    tools {
+      jdk 'jdk11'
+      maven 'maven3'
+    }
+    environment {
+        SCANNER_HOME= tool 'sonar-scanner'
+    }
+
+    stages {
+        stage('Git Check Out') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/jaiswaladi246/Ekart.git'
+            }
+        }
+    stage('maven compiling') {
+        steps {
+          sh "mvn clean compile"
+        }
+    }
+    stage('SonarQube Scanning') {
+        steps {
+          sh '''
+          $SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://localhost:9000/ -Dsonar.login=squ_1dd41ce62598a9f8ee3701d99bffe0a64056d4a6 -Dsonar.projectName=shopping-cart -Dsonar.java.binaries=. -Dsonar.projectKey=shopping-cart
+          '''
+        }
+    }
+    // stage('owasp scanning') {
+    //     steps {
+    //       echo "Owasp Scanning Done"
+    //     }
+    // }
+    // stage('Build Application') {
+    //     steps {
+    //       sh "mvn clean install"
+    //     }
+    // }
+    stage('Build & Push Docer Image') {
+        steps {
+          script{withDockerRegistry(credentialsId: '88c376a4-3da9-4f55-bb36-632414856afb') {
+            sh "docker build -t hari9397/cart:latest -f docker/Dockerfile ."
+            sh "docker push hari9397/cart:latest "
+          }
+
+      }
+      }
+    }
+  }
+}
+

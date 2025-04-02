@@ -1,0 +1,354 @@
+topics_discussed:
+  - Docker Introduction: Session 51
+
+what_is_container:
+  - "A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing"
+  - "It is a Run Time Environment for the application irrespective of OS"
+  - Portable and Self-Describing.
+  - "Container is a executing environment with configurable isolation and resource limitations"
+  - Containers are light weight in nature
+
+resource_limitations:
+  - Namespaces
+  - Resource Limitations
+  - Mounts etc ..
+
+why_containers_are_needed:
+  - "First Thing Run at Any environment"
+  - "Encapsulate the Application code and its all dependencies"
+  - Self-describing and portable
+  - "It can run without any extra dependencies"
+
+what_is_container_image:
+  - "Image: Contains Application Code , Dependencies, Os where the application should Run"
+  - "It is a collection of read only layers.These layers are loosely coupled"
+  - "Image is Static"
+
+difference_between_vms_and_containers:
+  vm:
+    - "VM is Hardware Virtualization"
+    - "VM should contain full operating system with individual machine"
+    - "VM is high secure"
+    - "VM is Multiple Machines each with its own guest OS"
+  containers:
+    - "Light weight in nature"
+    - "Minimal OS is required"
+    - Portable
+    - "Isolation of VMs"
+    - "Multiple Instances of Single Application"
+
+describe_process_of_containerization_of_application:
+  - Write a Dockerfile
+  - "Build the image with that file"
+  - "Push the image to repository"
+  - "Run the image to create a container"
+
+docker_run_exec_it: "<container-name> bash"
+
+where_pulled_image_are_stored:
+  - "/var/lib/docker/"
+
+docker_image_sha:
+  - "Full SHA256 code where we can get the image using HashCode"
+  - "it is also called Docker Dangling Image"
+  - "docker history <image-name>."
+
+architecture_of_docker_images:
+  - "docker manifest inspect <image-name>"
+
+tagging_an_image:
+  - "docker tag"
+
+how_to_check_instructions_to_build_image:
+  - "docker image history <image-name>"
+
+why_containers_are_relatively_small:
+  - "Images dont contain kernel. They share and access the one used by the host on which they are running"
+
+virtualization: "Logical isolation of one physical systems into multiple systems"
+
+image_vs_container_state:
+  image:
+    - "Static and immutable"
+  container:
+    - "Dynamic it can be runnable and mutable"
+
+docker_commands_lifecycle:
+  - "docker pull"
+  - "docker create"
+  - "docker start"
+
+docker_run_combined: "pull + Create + Start"
+
+docker_port_forwarding: null
+
+docker_from: null
+
+docker_run_instruction:
+  - "Run instruction will run at the time of image creation"
+  - "It is used to install all packages required to build an image and run the container"
+
+docker_cmd_instruction:
+  - "it is to run the container, it will run at image creation."
+  - "the instruction is used to RUN the container with given Instructions"
+  - "Can be over ridden"
+
+docker_entrypoint_instruction:
+  - "This will fixed run time environment to the container"
+  - "cannot be overridden"
+
+labels_instruction:
+  session: 52
+  details:
+    label: "Giving key value pairs to the docker file"
+    purpose: "labels are the key-value pairs that represents the tags for images not for the containers"
+    filtering_images:
+      - "images can be filtered based on the labels like"
+      - "docker build -t <image-name> ."
+      - "docker images --filter labels=key=value"
+    inspect_image: "docker inspect <image-id> --> This can inspect all the details about the images"
+
+standard_io:
+  standard_input: "this is the file handle that your process reads to get information from you."
+  standard_output: "your process writes conventional output to this file handle."
+  standard_error: "your process writes diagnostic output to this file handle."
+
+expose_instruction:
+  description: |
+    we can instruct the container builder to set the port for the conatiner based on the expose instruction
+    EXPOSE 80/tcp
+    expose will not adding any functionalities this is just instruction for conatiner builder
+
+env_instruction:
+  description: "Environment Variables"
+  configuration_source: "Configuration is supplied Through Environment Variables"
+  usage: "we can add environment variables to the container"
+  comparison_to_labels: "it is as same as Labels but env will be used in container but lables will used for filtering"
+
+docker_copy_instruction:
+  description: "Copy The content from local to Image/conatiner"
+  syntax: "COPY /source/file/path  /destination/path"
+
+docker_add_instruction:
+  description: "This command will copy the content from local to image/container"
+  features:
+    - "This also copy the content from internet"
+    - "This also copy the content by unzipping automatically"
+  syntax:
+    local_to_container: "ADD /source/file/path  /destination/path"
+    url_to_container: "ADD http://source.file/url  /destination/path"
+
+docker_cmd_syntax: "CMD [\"executable\",\"param1\",\"param2\"]"
+
+docker_save_command:
+  description: "standard output"
+  usage: "Save one or more images to a tar archive (streamed to STDOUT by default)"
+
+docker_load_command:
+  description: "Load an image from a tar archive"
+
+docker_can_be_used_in_production: true
+
+docker_stats_command:
+  description: "docker statistics used to To monitor cpu and memory the docker in production"
+
+docker_events_command:
+  description: "is used to monitor the eveents take place in the docker daemon"
+
+docker_compose:
+  description: "docker compose will always run in the dependency order"
+  dependency_keywords:
+    - depends_on
+    - links
+    - volumes_from
+
+docker_cycle_management:
+  - stop
+  - pause
+  - run
+
+docker_session: 53
+
+docker_user_instruction:
+  description: |
+    With user instruction we can give the minimal previlages to the root access
+    After Creating the user, every instruction after user will be done in that user only.
+
+docker_workdirectory_instruction:
+  description: |
+    Instead of cd command in normal linux we used workdir instruction to set the workdirectory where we should save the file
+    By default after workdirectory instruction every thing will run on that workdir.
+
+docker_arg_commands:
+  description: |
+    It will supply the variables at the build time but not supply at container run time
+    to supply arguments at run time we need to use it like
+    env var1=arg1
+    Arg can be used as a first instruction to supply the os version to from Instruction
+  syntax: "docker build -t <name-of image> --build-arg version=9 ."
+
+arg_vs_env:
+  arg:
+    description: "will work in only build time of image"
+  env:
+    description: "will work on both at build time as well as RUN time"
+  examples:
+    - "ARG name"
+    - "ARG COURSE"
+    - "ENV variable1 =${name: -hair }"
+    - "ENV variable2 = ${COURSE: - ped }"
+  build_command: "docker build -t arg:v1 . --build-arg name=simple --build-arg course=devops"
+
+docker_onbuild_instruction:
+  description: |
+    On Build will work/execute/create at container run time not at image build time
+    We need to have file in our workspace while using the On build Instruction
+
+docker_is_easy_portable:
+  ami_comparison:
+    size: "Heavy Size"
+    os: "Full Operating System"
+    mutability: "Mutable"
+    mobility: "Immovable"
+  docker_compose_commands:
+    - "docker-compose up -d"
+    - "docker-compose down -d"
+
+docker_session_55:
+
+volumes_introduction:
+  - "Data will be removed once the container is removed hence we need to store data somewhere there docker volumes will come into existence"
+  - "Docker is Ephemeral In nature"
+  - "Databases --> RDBMS,NoSQL,Redis,MQ,MySQL"
+
+docker_volumes_types:
+  - "Docker Named Volumes"
+  - "Docker UnNamed Volumes"
+
+volumes_cli_syntax: "-v <host-path>:<container-path>"
+
+temporary_volumes_location: "/var/lib/docker/overlay2 --> temporary volumes"
+
+resource_considerations:
+  - CPU
+  - Memory
+  - Storage
+  - RAM
+
+volume_types_detailed:
+  bind_mounts: null
+  volumes: null
+
+unnamed_volumes_bind_mounting:
+  description: |
+    Create a Directory and map it with the docker containers to store data
+    We have to manage the directory
+  syntax: "docker run -d -v <host_path>:<container_path> <image_name> /bin/bash"
+
+named_volumes:
+  description: |
+    - Using Docker CLI we can Manage the volume and attach to Containers
+    - Mount Th volume to containers
+    - Docker Containers in same commands
+    - Volume mounts and Docker -v will do same
+  management: "Docker Should manage these volumes"
+  control: "Everything is managed by docker commands"
+  syntax: "docker run -d -v <volume_name>:/data <image_name> /bin/bash"
+
+volume_inspection_commands:
+  - "docker inspect <container-id> --."
+  - "docker volume inspect <container-id>"
+  - "docker volumes ls --> list down all the volumes"
+
+stateful_applications_examples:
+  - Mongodb
+  - MySQL
+  - Reddis
+  - RabbitMQ
+
+stateful_run_command:
+  syntax: "docker run -p <host-port>:<container-port> -v <host volume path>:<conatiner-volume-path> --name <container name>"
+
+docker_compose_volume_example:
+  volumes:
+    - source: rabbitmq
+      target: /var/lib/rabbitmq
+      type: volume
+
+docker_best_practices:
+  - "Creating Named Volumes is Best Practices"
+  - "Create Networking is best Practices"
+  - "Use Official Images"
+  - "Try To reduce the memory using multistage building etc.."
+  - "By Using Office Alpine images memory will be reduces to almost 100 perecnt"
+  - "MultiStage Builds Mention"
+  - "Use Distroless Images"
+  - "Use Docker Security Scanning"
+
+docker_session_56:
+
+docker_architecture:
+  docker_cli: "Where we write Docker Commands"
+  docker_daemon: "Where all The containers are managed using daemon"
+  docker_hub: "Where Docker Images are build and pushed for public use"
+
+docker_layers:
+  immutability: "Once we create the image we cannot change image"
+  static_nature: "docker image is immutable and static in nature"
+  layer_definition: "Each Instruction in the Docker file is Called the Docker layer."
+  instruction_impact: "Each instruction will create one image and one mini container will create."
+  docker_engine_role: "There is one component will be there to run and build everything that is docker engine"
+  mini_container_lifecycle: |
+    One layer will create one image and one container on top of each container the next instructions will be run when the instruction moves to next then previous mini container created by Docker Engine will be destroyed.
+
+docker_locations:
+  docker_data_location: "/var/lib/docker/ : All information related to docker will be stored here"
+  containerd_location: "/opt/containerd/ : Is the place where container daemon is located"
+  docker_service_location: "/lib/.systemd/docker.service : is the place docker service is located"
+
+docker_push_command:
+  syntax: "url/username/image-name:version"
+  example:
+    tagging: "docker tag web:v1 docker-hub.io/hari9397/web-component:v1"
+    pushing: "\"docker push docker-hub.io/hari9397/web-component:v1\""
+
+docker_commit_command:
+  description: |
+    creates a new images to a running containers changes
+    if you have changed something in the running container then docker commit will add new changes and creates new images out of it
+
+docker_history_command:
+  description: "it will show the docker image histroy how many time the image got changed"
+  syntax: "docker history <image-name>"
+
+docker_digest:
+  description: |
+    Digest is content addressable identifier where it can filter the images based on the content even if it has the same name and tags
+
+docker_manifest_inspect_command:
+  description: |
+    client calls the image name
+    it will go the client then checks in the local if exits it will pull else it will go to the registry from ther eit will pulled
+    each manifest parsed layers will get ids
+    from that ids it will get pulled
+  syntax: "docker manifest inspect <image-name>"
+
+registry_configurations_location: "/etc/containers/registries.conf"
+
+docker_disadvantages:
+  - "What will Happen if Docker Server is Down"
+  - "What happens if you suddenly get more traffic"
+  - "How to balance the load if you have multiple containers"
+  - "Self Healing --> what happens when the correct resources are not reached"
+  - "what about Secrets and Configs --> SSM Parameters are Stored"
+
+container_orchestration:
+  orchestration_analogy: |
+    Orchestra Means --> Where one Person can manages the different persons to get the work done
+    One Person Giving the Instructions to another persons
+  need_for_orchestration: "When containers are running we need to manage those containers"
+  docker_run_vs_image:
+    docker_run: "Creating Container Out Of Image"
+    image: "Physical File Static,Immutable, Builder File"
+
+kubernetes_vs_docker_swarm: "Kubernetes: For Better Networking,Storage Solutions and Security instead of Docker Swarm."

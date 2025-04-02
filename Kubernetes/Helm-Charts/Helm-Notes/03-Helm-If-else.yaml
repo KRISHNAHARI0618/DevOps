@@ -1,0 +1,47 @@
+{{- if eq .Values.name (or .Values.Name "peddireddy")}}
+
+if else:
+{{- if }}
+statement 1
+{{- else if}}
+statement 2
+{{- end }}
+
+
+if else with or:
+{{- if or (eq .Values.Name "peddireddy") (eq .Values.myapp "peddireddy")}}
+statement 1
+{{- else if or ()}}
+statement 2
+{{- end }}
+
+
+if else with not:
+{{- if not (eq .Values.name "peddireddy")}}
+name: "Peddireddy"
+{{- else }}
+name: "Hari Vardhan reddy"
+{{- end}}
+
+
+Variables:
+{{- $name := .Values.name}}
+name: {{ $name }}
+
+With Function:
+{{- with .Values.names }}
+{{- toYaml . | indent 4}}
+{{- end }}
+
+Range:
+{{- range .Chart.name }}
+{{.name}}
+{{- end }}
+
+Range with local Variables:
+
+{{- range $key, $value .Variable.chart }}
+{{$key | nindent 8}}: {{ $value}}
+{{- end}}
+
+

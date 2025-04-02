@@ -1,0 +1,33 @@
+Service mesh With istio:
+What should you know :
+Kubernetes Concepts and Command line Interface
+
+Modern Web development:
+- Distribute Applications into Multiple Components = MicroServices
+- Manage Upgrades and Features Releases
+- Releases are Blue-Green,Canary, Black-Red
+- Manage Better Security
+- Trace Communications between Services
+- Improve Allocations Robustness
+- Select best Development Paradigm
+
+What is Istio:
+- Open Source Service Mesh Platform
+- That enhances the Capability of your Containerized Applications By simplifying microservices communication and Providing so many benefits
+1: Advanced Traffic = Where we Can define Routing Rules and Do A/B Testing
+2: Boost Security By adding Encryption in Different Layers
+3: Reliability making sure that your application is responsive even though there are issues
+
+
+Ingress :
+Ingress Controller is a Service Where the communication between all the microservices can be accessible to the external world with high security and less cost
+- When we need to access an application we need to Create Service over Cloud Like load Balancer to create multiple load balancers it will take more cost hence we can create one ingress controllers and configure it to the Deployments
+
+We need to Deploy an application:
+- Deployment.yaml file to install ingress
+- Service to use this Ingress and Expose that to external world
+- Config map To pass the configurations to Pod spec
+- Service account to create Secure access with authentications and authorization
+
+Ingress Resources: Rules to Direct the traffic to domain
+

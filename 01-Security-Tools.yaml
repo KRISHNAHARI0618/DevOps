@@ -1,0 +1,27 @@
+security_tools:
+  - name: KICKS
+    description: Infra Code security tool
+  - name: Dockle
+    description: Docker Best Practices
+  - name: Prowler
+    description: Cloud Security
+  - name: Trivy
+    description: File System /Docker Image /More
+  - name: OWASP Dependency Check
+    description: Dependency Check
+
+code_analysis_tools:
+  - name: SonarQube
+    description: Static Code Analysis
+  - name: OWASP Dependency plugin
+    description: Java Code Security Tool
+  - name: Trivy
+    description: Docker Image Checker
+
+owasp_dependency_check_usage:
+  command: ./bin/dependency-check.sh --out /root/directory/ --scan <file-to-scan>
+  jenkins_integration:
+    additionalArguments: "--scan target/"
+    odcInstallation: "DP-check"
+    dependencyCheckPublisher:
+      pattern: "**/dependency-check-report.xml"

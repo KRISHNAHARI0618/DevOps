@@ -1,0 +1,13 @@
+Kube-Let service:
+kube let service request the api-server to create service then api server updates the info
+scheduler send the information to api-server which node is best suitable
+then api-server send request to the kubelet
+then kubelet send request to container runtime engine to pull the image and run the image and create the container
+
+Register Node
+Create PODs
+Monitor Nodes and Pods
+
+location: /etc/kubernetes/manifests/kubelet.service
+ps -aux | grep kubelet.service
+

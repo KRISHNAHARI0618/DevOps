@@ -1,0 +1,62 @@
+Lambda_Function:
+  Purpose: >
+    Solving the problem of identifying EBS Volume Snapshots that are not used by any Volume or EC2 Instances.
+  Usages:
+    - CloudWatch
+    - Lambda Function
+    - Boto3 Module In Python
+    - Send SMS to user Created (SNS)
+    - IAM Roles for describing instances
+
+Cost_Optimization:
+  Description: >
+    Serverless architecture provides cost optimization benefits.
+  Considerations:
+    - Security: Very important in public cloud environments
+    - Compliance: Ensuring the security and compliance of the application.
+
+Cloud_Watch:
+  Fundamentals:
+    - Metrics
+    - Alerts
+    - Custom Metrics
+  Demo:
+    - Default Metrics
+    - Custom Metrics
+
+Snapshots:
+  Definition: >
+    EBS Snapshots are a point-in-time copy of your data, used for disaster recovery, migration, and backup compliance.
+---
+Cloud_Watch:
+  Description: >
+    CloudWatch acts as a monitoring and management service for AWS resources, providing reliability, availability, and performance insights.
+  Key Features:
+    - Metrics and Alarms
+    - Dashboards
+    - Logs
+    - Events
+    - Insights
+    - Synthetics
+    - Container Insights
+
+Docker:
+  Purpose: Containerization platform for developing, shipping, and running applications.
+
+Kubernetes:
+  Purpose: Open-source container orchestration platform for automating deployment, scaling, and management of containerized applications.
+
+Terraform:
+  Purpose: Infrastructure as Code (IaC) tool for building, changing, and versioning infrastructure efficiently.
+
+Monitoring:
+  Purpose: Monitoring tools are essential for tracking the health, performance, and availability of systems and applications.
+
+AWS:
+  Description: Amazon Web Services (AWS) provides on-demand cloud computing platforms and APIs to individuals, companies, and governments.
+
+Ansible:
+  Purpose: Configuration management, application deployment, and task automation tool.
+
+CI/CD:
+  Purpose: Continuous Integration (CI) and Continuous Deployment (CD) practices automate software delivery processes for faster and more reliable releases.

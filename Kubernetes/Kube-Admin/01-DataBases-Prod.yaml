@@ -1,0 +1,68 @@
+Data Bases Used in My Project:
+
+Relational Databases:
+  Applications:
+    MySQL , Oracle SQL
+
+NoSQL Databases:
+  Document Stores: MongoDB
+  Key-Value Pairs : Redis,Amazon DynamoDB
+  Column-Family Stores:
+
+Time-Series:
+Applications : Prometheus , Elastic LogSearch Kibana
+
+Object Storage: S3
+Search Engine: Elastic Search
+
+
+1: MySql :
+An Open Source Relational DataBases Management system that is widely used for web applications
+2: Oracle SQL:
+
+2: MongoDB:
+
+3: Redis
+4: RabbitMQ
+
+
+
+MySQL:
+Default Port: 3306
+
+Oracle Database:
+Default Port: 1521
+
+MongoDB:
+Default Port: 27017
+
+Redis:
+Default Port: 6379
+
+RabbitMQ:
+Default Port: 5672
+
+Prometheus:
+Default Port: 9090
+
+Alert Manager:
+Default Port: 9093
+
+Node Exporter:
+Default Port: 9100
+
+Elastic Search:
+Default Port: 9200/9100
+
+Grafana:
+Default Port: 3000
+
+Communications Models:
+
+1: Publish and Subscribe
+2: Message Queue
+3: Request-Response
+4: Client-Server
+5: Remote Procedure call
+6: 
+

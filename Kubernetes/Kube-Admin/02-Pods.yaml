@@ -1,0 +1,256 @@
+Pods Yaml Structure:
+- Docker Images --> Kubernests Cluster
+- single instance of an object
+- pod is a single object of an application
+- smallest deployable unit
+- multi container support
+- main conatiner and helper containers
+- shares same network amd storage
+-
+Kubectl Command:
+- kubctl run nginx
+- kubectl get pods
+
+Yaml Files for Pods:
+- Yaml Files as inputs
+- apiVersion
+- kind
+- metadata
+- spec
+
+# ##########
+
+Demo-Pod Yaml:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+spec:
+  conatiners:
+  - name: nginx-container
+    image: nginx
+
+
+-----------------------------------------------------------
+
+Kubernetes Controllers or Sets :
+
+1: Replications Controllers or Sets
+
+- Replications makes the kubernetes clusters to create multiple instamces of same pods in different nodes and also in same nodes
+- Provide High Availability
+- It also helps to automatically creates new conatiner sif one crashes
+- Provides High Load Balancing & Scaling
+- Multiple Pods ato creates to share the load
+- Deploy in Several Nodes also
+- selector is main difference between replication set and replication controller
+
+Labels and Selectors:
+- Labels are used to filter the multiple pods with same name and types with differnet labels
+- Those lables should connect with selectors willl makes filters easy
+
+kubectl scale --replicas=6 -f <filename>
+kubectl scale --replicas=6 <filename> <pod-name>
+kubectl create -f <filename>
+kubectl get rs
+kubectl delete
+kubectl scale
+kubectl replace
+
+Replication.yaml
+----------------
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: myapp-rc
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      type: front-end
+  template:
+    metadata:
+      name: myapp-pod
+      labels:
+        app: myapp
+        type: front-end
+    spec:
+      containers:
+      - name: nginx-image
+        image: nginx
+-----------------------------------------------------------
+
+Deployments : Advanced Version of Replicasets
+- automatically configure the updates based on the updates on any configurations aor specifications in yaml files
+- Formatting output with kubectl
+  - kubectl -o wide
+  - kubectl -o yaml
+  - kubectl -o json
+  - kubectl -o name
+Imperative Commands:
+--dry-run
+--dry-run=client
+-o yaml
+
+Provisioner@123
+
+-------------------------------------------------------------
+Services:
+- Enable Communication Between inside and outside of a cluster
+- Enable Services to each pod
+- Connect applications together with another
+- This will create groups
+- Service is like an object
+- Listen to pod and creates a communication between them
+- a man ouside from the cluster should need to connect with cluster without ssh to that thats where service come into picture and gives the service to each pod in the node and that makes node-port service
+- by default it will get the cluster ip where it will create the one point of communication beteen each ppods
+- to expose that to external world we need service
+- we have node port service
+-  where we can access the application with help of nodes
+- Node-Port ranges: 30000-36567
+- Services Types:
+  - ClusterIP
+  - NodePort
+  - LoadBalancer
+  - Ingresss
+
+NodePort:
+- A Port on the node Mapping to the Port on the Pod
+- This two ports can communicate each other and send the information and retrieves it
+- A Port on the Pod is TargetPort
+- A Port on the Service Map is The node port
+- NodePort is only be in an valid range
+- That Range is : 30000 - 32767
+
+ # Service-Definition File:
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: node-port-service
+spec:
+  type: NodePort
+  ports:
+  - targetPort: 80
+    port: 80
+    nodePort: 30008
+  selector:
+    app: myapp
+    type: fornt-end
+
+
+# Pod Definition File:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: service-pod
+  labels:
+    app: myapp
+    tier: front-end
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+
+Kubernetes Service: CLusterIP
+- Get Service Created inside the cluster
+
+# ClusterIP Service
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: cluster-service
+spec:
+  type: ClusterIP
+  ports:
+  - targetPort: 80
+    port: 80
+  selector:
+    app: myapp
+    tier: front-end
+
+# Pod Definition yaml file:
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-define
+  labels:
+    app: nginx
+    tier: front-end
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+
+Service : LoadBalancer
+- Balances The Load Based on the Traffic
+
+# Service-LoadBalancing:
+apiVersion: v1
+kind: Service
+metadata:
+  name: load-balancer
+spec:
+  type: LoadBalancer
+  selector:
+    app: myapp
+    tier: front-end
+  ports:
+  - targetPort: 80
+    port: 80
+    NodePort: 30045
+
+# Pod Spec
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-spec
+  labels:
+    app: myapp
+    tier: front-end
+spec:
+  containers:
+  - name: nginx-pod
+    image: nginx
+
+#Deployment Set
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-set
+  labels:
+    app: myapp
+    tier: front-end
+    name: deployementlabels
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: myapp
+      tier: fornt-end
+      name: nginx-pod-lables
+  template:
+    metadata:
+      name: deployment-pod
+      labels:
+        app: myapp
+        tier: front-end
+        name: deploymentlabels
+    spec:
+      containers:
+      - name: nginx-conatiner
+        image: nginx
+        ports:
+        - containerPort: 80
+
+Containerize the application:

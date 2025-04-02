@@ -1,0 +1,30 @@
+SNS In AWS:
+  Simle Notification Services
+SNS Can be used :
+  EC2
+  Cloud Watch
+  AutoScaling
+  Elastic Block Storage
+  Elastic Bean Stalk
+Ec2 : Status Check
+AutoScaling: Whenever the capacity increasesmorethan specifiede number
+  AWS Auto Scaling monitors your applications and automatically adjusts capacity to maintain steady, predictable performance at the lowest possible cost.
+Cloud Watch:
+Two Points are important:
+  Topic -- Group
+  Subscription - User
+Types of Services with SNS Available:
+  SMS
+  Email
+  HTTPS
+  Lambda Service
+  Etc...
+Publish or Subscribe Messaging Platform
+
+SNS is :
+  Highly scalable
+  Durable
+  Secureable
+Many to many
+High throughput
+Bulk Messages etc..

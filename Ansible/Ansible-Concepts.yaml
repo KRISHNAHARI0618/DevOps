@@ -1,0 +1,737 @@
+% Disadvantages of shell scripting:
+
+Shell scripting is Homogenous
+Shell Scripting is Imperative
+shell scripting by default does not contain validations
+Slow execution speed.
+Not suited for large and complex tasks.
+Design flaws within the language syntax.
+Provides minimal data structure, unlike other scripting languages.
+Prone to costly errors.
+
+% Ansible Introduction: What is Ansible:
+
+Provisioning
+Configuration management
+Continuous Delivery
+Application Deployment
+Security Compliance
+
+Inventory File:
+managing the remote servers and controls their desired state.
+
+Ansible is an open source IT automation tool.
+
+Ansible automates the Server provisioning , configuration management, app deployment with secure way, orchestration and many other manual IT processes
+
+Ansible automation used to install software, automate daily tasks,provisioning,security ,patch systems automate repetitive tasks etc..
+
+Eliminate repetition and simplify workflows
+
+Manage and maintain system configuration
+
+Continuously deploy complex software
+
+Perform zero-downtime rolling updates
+
+Ansible uses ssh based mechanism to configure the servers and log in to the servers
+
+Ansible is built with python language
+
+Ansible Configuration Files:
+default location of ansible config file :
+/etc/ansible/ansible.cfg
+
+This File Contains
+1: defaults
+2: inventory section
+3: privilege escalation
+4: ssh_connection
+5: persistent_connection
+6: colors
+7: Paramiko Connection
+
+Defaults:
+1: Inventory = /etc/ansible/hosts
+2: log_path = /var/log/ansible.log
+3: library = /usr/share/my_modules/
+4: roles_path = /etc/ansible/roles
+5: action_plugins = /usr/share/ansible/plugins/actions
+6: gathering = implicit/explicit
+7: timeout = 10
+8: forks = 5 (at a time how many servers can configure)
+
+Can we over Ride Default config file:
+Yes can over ride  /opt/web-playbooks
+Folder : /opt/web-playbooks
+
+$ ANSIBLE_CONFIG=/opt/ansible-web.cfg ansible-playbook playbook.yaml
+
+% Set Environment Variable for Config file
+
+export is used to set the environment variable
+export ansible_gathering=explicit
+ansible-playbook playbook.yaml
+
+1: To see List of Ansible Configs : ansible-config list
+2: To See Config file which one is current file : ansible-config view
+3: to view current settings : ansible-config dump
+
+Order of Config file Used:
+1: From Environment Variable (Through CLI) = /opt/ansible.cfg
+2: From Playbook/Folder level Config File = /opt/web-playbooks/ansible.cfg
+3: From users home directory ( .ansible.cfg )
+4: From Default Configuration file = /etc/ansible/ansible.cfg
+
+XML:
+<Servers>
+  <server>
+      <name> Server </name>
+      <Owner> Owner1 </Owner>
+      <Created> 12234312 </Created>
+      <status> active </status>
+    </server>
+</Servers>
+
+Json :
+{
+  "Servers" : [
+    {
+      "name" : "Server1",
+      "owner": "John",
+      "created": 12232
+      "status": "Active"
+    }
+  ]
+}
+
+% Yaml:
+Key-value Pairs:
+fruit: apple
+
+How will you copy files recursively onto a target host:
+- synchronize:
+  src: /first/absolute/path
+  dest: /second/absolute/path
+  delegate_to: "{{ inventory_hostname }}"
+
+How do you access shell environment variables:
+local_home:"{{lookup('env','HOME')}}"
+
+Ansible Inventory:
+One or Multiple Systems at a time
+Linux-SSH
+Powershell Remoting for Windows
+Agent-less
+
+How to create:
+state: touch
+
+Inventory Format : INI,Yaml,Json
+Additional Parameters:
+ansible_connection
+ansible_ssh
+ansible_pass
+ansible_user
+
+ports login: ansible_port
+
+How to setup jump host to access servers having no direct access:
+write an inventory file
+ansible_ssh_common_args: '-o ProxyCommand'="ssh -W %h:%p -q user@gateway.example.com"
+Ansible plugins:
+plugins are special kinds of modules that run on the main control machine for logging and monitoring purposes
+
+Grouping and Parent-Child Relationships:
+Based on Role
+Based on Location
+Based on the type
+Based on the Machine
+Based on Environment
+
+Ansible Variables:
+Stores information that varies with each host
+
+Ansible Role:
+
+Directory Structure:
+role-->common-->tasks
+                Handlers
+                Templates
+                Files
+                Vars
+                Defaults
+                Metadata
+                Library
+
+1: Templates
+2: Defaults
+3: Files
+4: Handlers
+5: Tasks
+6: Metadata
+7: Variables
+
+tasks/main.yml : the main list of tasks that the role executes.
+
+handlers/main.yml : handlers, which may be used within or outside this role.
+
+library/my_module.py : modules, which may be used within this role (see Embedding modules and plugins in roles for more information).
+
+defaults/main.yml : default variables for the role (see Using Variables for more information). These variables have the lowest priority of any variables available and can be easily overridden by any other variable, including inventory variables.
+
+vars/main.yml : other variables for the role (see Using Variables for more information).
+
+files/main.yml : files that the role deploys.
+
+templates/main.yml : templates that the role deploys.
+
+meta/main.yml : metadata for the role, including role dependencies and optional Galaxy metadata such as platforms supported.
+
+### What is difference between push mechanisham and pull machanism ?
+
+# A Basic ansible environment has 3 components:
+control node:
+Where ansible located and contorls the remote servers
+
+Manager node:
+
+Inventory file: List Of Managed Nodes Nentioned in one file and used for automation is called the inventory file
+
+
+### What Programming language is used to build Ansible? :::> Python Programming Language
+
+###How ansible connects to another servers ? :::>
+1) Ansible uses SSH In background and makes the configurations between two  or more servers
+
+###Will Ansible used agents to connect and install software in nodes ::>
+no Ansible does not use agents to run the scripts or to install the software.
+
+# Inventory file Follows one way to represent the servers or group the servers
+
+geography based ::> in,us,uk,automate
+environment based ::> DEV,QA,PROD
+component based ::> web,app,db
+serevr based ::>database,web,backend etcc...
+
+### What kind of language is Ansible ? 1) Ansible is a Declarative Language
+
+### What is declarative language ?
+Declarative Language is easy syantax and does not follow particular sequence to install the softwares
+As ansible build with python  by default it supports easy syantax and structure
+
+### What are the adavantages of Ansible over Shell Scripting?
+1) No need to log in to run the scripts ::> ansible will connect and run automatically in the nodes
+2) No need to write the sequence steps ::> ansible can write the conditions anywhere it will get that
+3) shell has more complicated syntax ::> ansible has simple syntax
+in shell we need to explicitly mention the validations ::> ansible by default will come up with validations
+4) Shell script is homogeneous (Different commands for different os) ::> ansible will change commands based on OS
+
+### Does ansible supports windows and linux ?
+
+Yes Ansible supports Both linux and windows
+Linux is used protocol is used SSH Authentication uses
+Windows is used protocol connect with winRM
+
+
+### What is diff between puppet and ansible ?
+Pull and push Mechanism
+Master slave and AgentLess
+XML Format and YAML Scripting Format
+Complex Structure and Simple Structure
+No Inventory Files and Has inventroy files where store all server details
+
+### Does it depends on different cloud platforms
+ansible does not depends on cloud platforms
+the cloud platform should allow to configure with shh
+and it should be public cloud and shh for linux and winRMfor windows
+::::::::::::::::::::::::::::::::::::
+
+## What is ansible playbooks ?
+
+$playbooks
+keep all the modules and collections in a yaml file and run that file
+
+
+A Playbook is file where we mention different commands/collections/modules which needs to be executed when we run that file by using command called
+$ansible:playbook :i inventory file <palybookfile>
+
+### Playbook is in YAML Format
+
+### what is ansible adhoc commands?
+
+Adhoc is for emergency purpose
+We use adhoc commands we use have emergency congiguration changes
+
+when we need to execute some 2:3 commands we used to run through command line tool is called ansible adhoc commands
+
+syntax:
+ansible :i inventoryfile hostnames :m "modulename" :a "arguments"
+
+### what is ansible roles?
+
+Ansible roles is simple structure to create a ansible:playbook in a more efficient way
+it makes a structure of playbook in more efficient way
+when we are writing any complex playbook we need to use ansible roles
+
+roles will create bunch of files like below each has own definitions:
+
+templates : The main objective of using templates is to facilitate and automate the management of configuration files for different targets and requirements
+README.md
+defaults
+handlers : These are used to run when notified
+meta: Meta tasks are a special kind of task which can influence Ansible internal execution or state.
+tasks
+tests
+vars
+
+syntax:
+
+ansible:galaxy role init <file name to create>
+
+git hub repository::> ansible roles examples
+https://github.com/ansible/ansible:examples
+
+Serial : executing the tasks one after another hosts
+Forks: Executing the Taks one at a time in one host and moving to another
+throttle : Ansible also supports throttle This keyword limits the number of workers up to the maximum set via the forks setting or serial. This can be useful in restricting tasks that may be CPU-intensive or interact with a rate-limiting API
+
+Procedure of ansible:
+
+Before ansible: ::> chef and puppet (Pull Mechanism)
+
+it follows pull mechanism ::> it means there should be one chef server and connected with another server/host in that one agent will be there to run the scripts
+
+first write the scripts and sent to chef server and agent in the node will fetch every 30 min if there are any code changes if there any changes it will run script
+
+After ansible: Ansible Server :  (Push Mechanism)
+
+
+No Agent(AgentLess) in host or nodes ::> uses SSH mechanism to connect
+whenever there is changes in script we can push the changes to host/node
+
+
+Ansible
+
+How to connect to node server with ansible server
+
+ansible :i <nodeipaddress>, all :e <nodeusername> :e <nodepassword> :m ping
+
+ansible :i 172.31.83.56, all :e ansible:user=centos :e ansible:password=DevOps321 :m ping
+
+In shell we call yum install as : Commands
+in ansible we call yum install : as modules
+
+
+Ansible Modules:
+
+Modules are the commands or methods in ansible to download or execute commands
+
+The units of code Ansible executes. Each module has a particular use, from administering users on a specific type of database to managing VLAN interfaces on a specific type of network device. You can invoke a single module with a task, or invoke several different modules in a playbook. For an idea of how many modules Ansible includes, take a look at the list of all modules
+
+Ansible is more readable
+ansible is more declarative
+
+Yellow color : Symbol is change
+Green color : already it is changed or present
+
+ansible :i inventory all :m "name=nginx state=installed"
+
+
+### Ansible playbook concepts:
+
+Coding Has Two types :
+1) Programming
+2) Scripting
+
+## Concepts
+1) Variables
+2) Data Types
+3) conditions
+4) loops
+5) functions
+6) Modules
+
+Variables:
+- string
+- number
+- boolean
+- list
+- maps/Dictionary
+
+$Ansible Variables:
+0: CLI & Role Defaults
+1: Group Level Vars/File Level Vars
+2: Host Level Vars
+3: Play Level Vars
+4: Extra level Vars (cli)
+
+Variable Scope:
+Global,Play-Level,Inventory Level, tasks level etc..
+
+Global Variable:
+ansible-playbook playbook.yaml --extra-vars "ntp_server=10.2.1.0"
+
+Magic Variables:
+- when we need to use host from another grouped hosts we need to use this magic variable called hostvars
+- groups
+- group_names
+- inventory_hostname
+
+InventoryFile:
+[web_servers]
+ansible_host=10.20.35.45
+dns_server=10.256.32.45
+
+[db_servers]
+ansible_hosts=10.25.63.45
+
+[api_servers]
+ansible_hosts=10.62.52.12
+
+To Access the db_servers from another hosts we use this magic variables
+
+{{ hostvars['dns_server'].ansible_host }}
+
+
+Variables:
+- name: variable-into
+  hosts: localhost
+  become: Yes
+  vars:
+    name: zlib
+  tasks:
+  - shell: cat /etc/hosts file
+    register: output
+  - debug:
+      msg: "my name is {{ name }} "
+      var: output
+
+
+1) Play Level Variables: Play Variables Inside the playbook we mention
+	vars:
+	  course: DevOps321
+	  name: Hari
+	  year: 2023
+	debug:
+	  msg: "{{course}},{{name}},{{year}}"
+
+
+2) Variables from Files:
+
+declare all variables in file like below:
+varsfile.yaml
+	name: Hari
+	section: DevOps321
+	year: 2023
+
+vars_file:
+   varsfile.yaml
+tasks:
+  debug:
+    msg: "I am Learning {{name}},I am new to section {{section}}"
+
+3) Variables from prompt:
+
+- name: Prompt Variables
+  hosts: localhost
+  vars_prompt:
+  - name: USERNAME
+    PROMPT: Give Me User name
+	private: false
+  vars_prompt:
+  - name: PASSWORD
+    PROMPT: Give Me User name
+	private: false
+
+4) Variables if the folder exits:
+---
+- name: isntalling some services
+  hosts: all
+  vars:
+    mario_file: /tmp/maria
+    packages_list:
+        - zlib
+        - vim
+  tasks:
+   - name: check for the file
+     stat:
+        path: "{{mario_file}}"
+     register: mario_out
+   - name: installing packages
+     become: Yes
+     pacakges:
+        name: "{{ items }}"
+        state: present
+     with_items: "{{ packages_list }} "
+     when: mario_out.stat.exits
+
+6) Ensure all file exits:
+  - name: Ensure all files exits
+    assert:
+        that:
+        - item.stat.exists
+    loop: "{{ items_list }} "
+
+7) not Controllers:
+- name: not on particular hosts
+  hosts: all :!Controllers
+
+Flow of Variables used:
+
+Command Line
+role Defaults
+Inventory file
+playbook Vars
+hostfacts
+tasks Vars
+
+Ansible Facts:
+- gathering facts is by default will collect all information about the facts like security,deployment,updates etc...
+
+Playbook:
+A Set Of Instructions to be executed on the configured hosts in inventory file
+
+Playbook ==> Play ==> Task ==>Execute shell command ==> run a script ==> Install Package
+
+Modules: a different actions run by tasks is called modules ==> yum, debug, script, file, service, systemd, apt, Copy, command, shell ...
+
+Verify Playbooks in Ansible:
+- Check Mode
+- diff mode
+
+Ansible Lint:
+- Ansible lint is a Command line tools for checking the ansible playbooks, roles, structures and Variables files
+- Linting will check the ansible code against best practices and style conventions
+
+Ansible Conditionals:
+- Different Machine has different packages/module but s single playbook should work for multiple packages
+
+register is the output for the ansible playbook
+
+when: ansible_os_family == "Debian" and ansible_distribution_version == "16.04"
+
+Ansible Facts:
+Ansible Facts are the system specific variables that can be used in Playbooks
+
+$Ansible Loops:
+
+# Iterate over the list of items
+# Item is used to call the list items in loops
+# it is special type to call the items from list
+
+Loop To Create User:
+
+name: Create Users
+hosts: localhost
+tasks:
+- user: name='{{ item }}' state=present
+  loop:
+    - joe
+    - george
+    - ravi
+    - mani
+    - kiran
+    - emaan
+
+name: Create Users with dictionary
+hosts: localhost
+loop:
+  - name: joe
+    uid: 1010
+  - name: hari
+    uid: 1020
+  - name: jindhal
+    uid: 1030
+  - name: kiran
+    uid: 1040
+tasks:
+- users: name='{{ item.name }}' uid='{{ item.uid }}'
+
+loop:
+  - { 'name': joe, 'uid': 1010 }
+  - { 'name': shw, 'uid': 1020 }
+  - { 'name': koe, 'uid': 1030 }
+
+debug:
+  msg: "{{item}}"
+
+loop:
+  - nginx
+  - postfix
+  - mailx
+  - cyrus:sasl:plain
+
+Advanced Loops: # a list of hashes
+
+loop:
+  - {name: 'nginx',  state: 'absent'}
+  - {name: 'postfix', state: 'present'}
+
+# We Call them as a item.state or item.name
+
+yum:
+  - name: "{{item.name}}"
+  - state: "{{item.state}}"
+
+Conditional Statement:
+when: register.out.exists
+
+Ansible Modules:
+
+- Modules are the functions used in ansible to perform a specific tasks to configure the systems
+Modules are divided into multiple Functions
+- Command Modules : cmd, shell, script
+- System Modules : User,Group, Hostname, Lvog, Lvol
+- Cloud Modules : Amazon, GCP, Azure
+- Window Modules: win_cmd, win_ping, win_
+- Data Base Modules: mongodb, mysql,
+- Files Modules: copy,stat,template,archive,tar
+
+Intro to Ansible Plugins:
+1: Plugins made Extensibility and Customization of ansible built-in methods
+
+2: Plugins are the Extended Functionalities for ansible other than Built in plugins and modules
+
+3: Some of the Plugins are Dynamic Inventory Plugin, Module Plugin, Lookup Plugin, Filter Plugins, Connection Plugins, Inventory Plugins, Callback Plugins
+
+Modules & Plugins Index:
+1: Index Provide the Module documentation
+2: cisco.ios guidelines
+3: Version Compatibility
+4: Community Contributions
+5: Reduces Human Error
+6: Improves Efficiency
+
+Ansible Handlers:
+
+1: Ansible Handlers are the events which will be triggered when there is particular action or events has to be occurred
+2: Handlers Handles the actions on particular tasks by notifying the playbook
+
+% Playbook.yaml:
+
+- name: Deploy Application
+  hosts: application_servers
+  tasks:
+    - name: Copy Application Code
+      copy:
+        src: app_code/
+        dest: /opt/application/
+      notify: Restart Application Service
+  handlers:
+    - name: Restart Application Service
+      service:
+        name: application_service
+        state: restarted
+
+Ansible Roles: Organize, Re-Use, Shareable
+
+1: Packaging the re usable code where other users in the organization can be extensively use this and Make the deploy or configure very fast
+2: Making the playbooks very efficient and Structured way is called the Roles
+3: All Tasks Go to Tasks-Folder
+4: All Vars will go to Vars-Folder
+5: All Defaults will go to Defaults Folder
+6: all handlers will go handlers Folder
+
+Creating Role:
+
+ansible-galaxy init will create a Role automatically
+ansible-galaxy list = list down all the roles present
+ansible-config dump | grep ROLE
+ansible-galaxy install <role-name> -p ./roles
+
+Ansible Collections:
+ansible-galaxy collection install
+
+Package and distribute modules, roles,plugins etc..
+self contained unit
+community and vendor
+
+Expanded Functionality
+Modularity and Re Usability
+Simplified Distribution and Management
+
+Ansible Template: Jinja2 Template
+
+Template is a File where one format is used to deploy or configure multiple users or machines or hosts
+
+Using Filters:
+
+1: String Manipulation
+
+{{ my_name | upper }}
+{{ first_name | default("james") }}{{ my_name }}
+
+2: List & Set
+
+{{ [1,2,3] | min,max,unique,union([1,2,3]),join}}
+
+3: Loops
+{% for number in [0,1,2,3,4,5,6] %}
+{{ number }}
+{% endfor %}
+
+4: Conditional
+
+{% for number in [1,2,3,4,5,6,7,8,9] %}
+   {% if number == 2 %}
+      {{ number }}
+   {% endif %}
+{% endfor %}
+
+
+Ansible Interview Questions:
+
+What is ansible Best practices:
+
+1: Give inventory nodes human-meaningful names rather than IPs or DNS hostnames.
+2: Group hosts for easier inventory selection and less conditional tasks -- the more the better
+3: Use dynamic sources where possible. Either as a single source of truth - or let Ansible unify multiple sources.
+
+What 'blocks' are used for in Ansible?:
+ Blocks create logical groups of tasks. Blocks also offer ways to handle task errors, similar to exception handling in many programming languages.
+
+1. What is Configuration Management:
+
+Ans :  Configuration management is a process for maintaining computer systems, servers, applications, network devices, and other IT components in a desired state. It’s a way to help ensure that a system performs as expected, even after many changes are made over time.
+
+2. How does Ansible work?
+
+Ans :  Ansible works by connecting to nodes (clients, servers, or whatever you are configuring) on a network, and then sending a small program called an Ansible module to that node. Ansible executes these modules over SSH and removes them when finished.
+
+3. What are the features of Ansible?
+ or  do you think ansible is better than other configuartion management tools ? if yes why ?
+Ans :
+	1) Agent Less
+	2) ssh authentication
+4. Explain Infrastructure as Code?
+5. What is Ansible Galaxy?
+6. Explain Ansible modules in detail?
+7. What is a YAML file and how do we use it in Ansible?
+8. What are Ansible tasks?
+9. How to use YAML files in high programming languages such as JAVA, Python, etc?
+10. How to setup a jump host to access servers having no direct access?
+11. How to automate the password input in playbook using encrypted files?
+12. What are callback plugins in Ansible?
+13. What is Ansible Inventory and its types?
+14. What is Ansible Vault?
+15. How can looping be done over a list of hosts in a group, inside of a template?
+16. What is the ad:hoc command in Ansible?
+17. Install Nginx using Ansible playbook?
+18. How do I access a variable name programmatically?
+19. What is the difference between Ansible and Puppet?
+20. What is Ansible Tower and what are its features?
+21. Explain how you will copy files recursively onto a target host?
+22. What is the best way to make Content Reusable/ Redistributable?
+23. What are handlers?
+24. How to generate encrypted passwords for a user module?
+25. How does dot notation and array notation of variables are different?
+26. How does Ansible synchronize module works?
+27. How does the Ansible firewalld module work?
+28. How is the Ansible set_fact module different from vars, vars_file, or include_var?
+29. When is it unsafe to bulk:set task arguments from a variable?
+30. Explain Ansible register.
+31. What is the difference between `include_task` and `import_task`?
+32. How do you test your Ansible based projects?
+33. What is Molecule? How does it works?
+34. You run Ansible tests and you get "idempotence test failed". What does it mean? Why idempotence is important?

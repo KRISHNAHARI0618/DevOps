@@ -1,0 +1,30 @@
+#  GitHub Actions:
+Introductions of GitHub-Actions:
+- The Components of GitHub Actions
+1: Events :
+- EveryThing in GitHub is Events
+- Pull Requests
+- Push Requests
+- Issues:
+  - Created
+  - Closed
+  - Open
+  - Re-Open
+- WorkFlow:
+- Each WorkFlow has Jobs
+- Each Job is a Runner
+- each Runner has Run Steps
+- Each Steps has Different shell commands
+- There are two Types of Runners
+- GitHub Hosted Runners -- Hosted By GitHub
+- Self-Hosted Runners -- Hosted By user
+
+Events:
+- WorkFlow
+  - job1 ----------------------
+    - step1                    | --> Steps will run sequence
+    - steps2                   | --> Jobs will Run parallel
+    - steps3                   |
+  - job2 ----------------------
+
+

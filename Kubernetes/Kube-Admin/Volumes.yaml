@@ -1,0 +1,123 @@
+Volumes Kubernetes:
+
+four type of volumes:
+
+1: emptyDir
+2: Hostpath
+3: Static Provisioning
+4: Dynamic Provisioning
+
+emptyDir: Ephemeral and Inside Pod
+
+**** File beat in Side car containers for K8s read a Blogs
+
+File Beat Side car Container:
+- Shipping The logs from Main Container to Elastic Search
+
+Process:
+1: First Create Config map Related to
+2: Create a Pod Specification
+3: Create a Volume for giving mounting to config map
+4: Mount That to the Pod
+
+
+Second Volume: HostPath
+
+Host Path: Is to ship the Server Logs to elastic search
+Daemon Set: Atleast one pod should in each and every worker node
+Fluent-d: A shipper from has a access to server logs and ship the logs to hostPath
+
+Restrict the hostpath to specific directory
+
+
+Static Provisioning: Like Hard Disk
+
+EBS Elastic Block Storage Fixed for one region
+
+1: Create one ebs volume
+2: Give access to EKS Cluster
+3: EKS will Store data in EBS
+4: Even Pods get deleted Data will be stored
+
+To Access Storage in Kubernetes We have some Objects called PV,PVC
+
+PV: Persistent Volume
+This is Representation of Underlying Storage
+
+PVC: Persistent Volume Claim
+1: We Will Create EBS Disk
+2: We will Create equivalent Object PV and Represent EBS Disk
+
+Install EBS Drivers:  EKS & EBS CSI Driver
+yaml Files: Pv,PVC,Storage Class,Pod Spec,Config Mao,Secrets etc..
+
+Process of Creating Volume In K8s:
+1: Create EBS Volume in Cloud
+2: Install CSI Drivers
+3: Create a Persistent Volume (using of Memory from EBS Volume)
+4: Create Persistent Volume Claim (Using of that Memory From PV)
+5: Give EC2 & EBS Full Access to Worker nodes To Take Volume
+6: Create Volume out of PVC and Mount it to Pod/Container
+7: Deploy an Application will create Logs
+
+Dynamic Provisioning:
+
+Important : Storage Class
+Storage class will create automatic EBS/EFS and Attach PV to it
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: ebs-sc
+provisioner: ebs.csi.aws.com
+VolumeBindingMode: WaitForFirstConsumer
+parameters:
+  csi.storage.k8s.io/fstype: xfs
+  type: io1
+  iopsPerGB: "50"
+  encrypted: "true"
+allowedTopologies:
+- matchLabelExpressions:
+  - key: topology.ebs.csi.aws.com/zone
+    values:
+    - us-east-2c
+
+1: Install CSI Drivers
+2: Create Storage Class
+3: Create PVC
+4: Create Deployment
+
+EFS File System:
+
+EFS and EBS:
+EFS is Located Anywhere ec2 can access this
+EBS is Located with in the region where ec2 is located
+
+EFS can Automatically scale Up-to 49.5 TB
+EBS Cant Scale Automatically
+
+EFS is a network storage and Dynamic
+EBS is Block Storage and Fixed
+
+EFS Static Provisioning:
+1: Install CSI Drivers Create EFS File System.
+2: Edit the security group of efs system to access any resource
+3: Give access to ac2 to access efs
+4: Create PV,PVC and Mount to POD
+
+EFS Dynamic provisioning:
+
+1: Install CSI DRivers
+2: Create Storage Class
+3: Create PVC For that storage Class
+4: Create a Deployment
+
+
+Stateful Application:
+It is for Db Applications,
+it Keeps the network identity same
+Ordered Deployment One pod will create at a time
+Persistent Volumes Fixed Volumes
+Headless services
+
+Headless service:

@@ -1,0 +1,14 @@
+- name: Just Checking the messages is printing for not
+  hosts: centos2
+  become: yes
+  vars:
+    name: "peddireddy"
+  tasks:
+  - name: Just print the message on screen
+    debug:
+      msg: "Printing The message of command"
+  - name: Create a Folder in node1
+    shell: echo "Peddireddy Hari Vardhan Reddy" > /home/centos/hello.txt
+  - name: Functions and Filter in ansible
+    debug:
+      msg: "{{name | upper}}"

@@ -1,0 +1,13 @@
+OCI: Open Container Images
+An OCI Registry is like a Special storage place for containers that follow specific rules created by the open container initiative
+Place Where our Docker Container Images stored:
+Docker HUB
+Amazon ECR
+Google Artifact Registry
+
+Helm Supports the above OCI registry for storing Helm Charts
+
+Helm Push <helm-package> oci://registry-1.docker.io/<docker-namespace>
+
+helm pull oci://registry-1.docker.io/<docker-namespace>
+

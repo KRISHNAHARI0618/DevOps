@@ -1,0 +1,70 @@
+File and Directory Operations
+
+os.getcwd()-->   Returns the current working directory.
+os.chdir(path)-->   Changes the current working directory.
+os.listdir(path)-->   Lists all files and directories in the given directory.
+os.mkdir(path, mode=0o777)-->   Creates a new directory.
+os.makedirs(path, mode=0o777, exist_ok=False)-->   Creates directories recursively.
+os.rmdir(path)-->   Removes an empty directory.
+os.removedirs(path)-->   Removes directories recursively.
+os.rename(src, dst)-->   Renames a file or directory.
+os.replace(src, dst)-->   Renames a file or directory (overwrites if exists).
+os.remove(path)-->   Deletes a file.
+os.unlink(path)-->   Deletes a file (same as os.remove()).
+os.scandir(path)-->   Returns an iterator of os.DirEntry objects for the directory.
+os.fspath(path)-->   Returns the file system path representation of the object.
+
+File Information and Permissions
+
+os.stat(path)-->   Returns file statistics (size, permissions, etc.).
+os.access(path, mode)-->   Checks file permissions (e.g., os.R_OK, os.W_OK).
+os.chmod(path, mode)-->   Changes file permissions.
+os.chown(path, uid, gid)-->   Changes file owner and group.
+os.utime(path, times=None, ns=None)-->   Updates file timestamps.
+
+Process Management
+
+os.getpid()-->   Returns the current process ID.
+os.getppid()-->   Returns the parent process ID.
+os.fork()-->   Creates a new child process (Unix only).
+os.execv(path, args)-->   Replaces the current process with a new one.
+os.execvp(file, args)-->   Executes a program (searching in PATH).
+os.wait()-->   Waits for a child process to terminate.
+os.waitpid(pid, options)-->   Waits for a specific child process.
+os.kill(pid, signal)-->   Sends a signal to a process.
+os._exit(status)-->   Exits a process immediately.
+
+Environment Variables
+
+os.environ-->   Dictionary of environment variables.
+os.getenv(varname, default=None)-->   Gets an environment variable.
+os.putenv(varname, value)-->   Sets an environment variable (not recommended).
+os.unsetenv(varname)-->   Removes an environment variable.
+
+Path Manipulation
+
+os.path.abspath(path)-->   Returns the absolute path.
+os.path.basename(path)-->   Returns the last component of the path.
+os.path.dirname(path)-->   Returns the directory name.
+os.path.exists(path)-->   Checks if a path exists.
+os.path.isfile(path)-->   Checks if the path is a file.
+os.path.isdir(path)-->   Checks if the path is a directory.
+os.path.join(path1, path2, ...)-->   Joins multiple path components.
+os.path.split(path)-->   Splits a path into (head, tail).
+os.path.splitext(path)-->   Splits a filename and extension.
+
+User and System Information
+
+os.getlogin()-->   Returns the name of the logged-in user.
+os.getuid()-->   Returns the user ID (Unix only).
+os.getgid()-->   Returns the group ID (Unix only).
+os.geteuid()-->   Returns the effective user ID (Unix only).
+os.getegid()-->   Returns the effective group ID (Unix only).
+os.getloadavg()-->   Returns the system load average (Unix only).
+os.cpu_count()-->   Returns the number of CPU cores.
+
+System and OS Interaction
+
+os.name--> Returns the OS name ('posix', 'nt').
+os.uname()-->   Returns system information (Unix only).
+os.system(command)-->   Executes a shell command.

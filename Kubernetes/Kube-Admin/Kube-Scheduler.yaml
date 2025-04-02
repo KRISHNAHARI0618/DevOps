@@ -1,0 +1,15 @@
+Kube-Scheduler:
+it is responsible for which pod should go to which node it doesn't actually creates the pod in nodes
+
+1: Filter the nodes
+2: Rank Nodes Priority Function
+
+Resource Requirements and Limits
+Taints and Tolerations
+Node Selectors
+Node Affinity
+Node Anti-Affinity
+
+Location: /etc/kubernetes/kube-scheduler
+pa -aus | grep kube-scheduler
+

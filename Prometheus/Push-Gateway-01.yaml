@@ -1,0 +1,24 @@
+Push Gateway:
+
+Small Batch Jobs/Cron Jobs
+Typically run small jobs and exit so prometheus can't scraped these metrics
+
+Push gateway is a metrics cache for service-level batch jobs used to handles the exposition of metrics that have been pushed from short lived jobs such as cron jobs or batch jobs
+
+honor_labels: true
+
+crontab -e :
+
+*/h */s * * * /bin/bash/file to run
+
+* --> minute
+* --> hour of the day
+* --> day of month
+* --> month
+* --> day of week
+
+Every minute: * * * * *
+Every Night at 12 am : 0 0 * * *
+Every month 15 th at 12 am: 0 0 15 * *
+Every day-of-month 1 in every month: 0 0 1 */6 *
+

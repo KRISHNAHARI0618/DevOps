@@ -1,0 +1,24 @@
+Infrastructure as Code (IaC): Develop and manage infrastructure using tools like Terraform, CloudFormation, or Ansible to ensure scalability, reliability, and consistency.
+
+Continuous Integration/Continuous Deployment (CI/CD): Implement and improve CI/CD pipelines using Jenkins, GitLab CI/CD, or similar tools to automate software delivery processes and reduce time to market.
+
+Cloud Services Management: Proficient in working with cloud platforms like AWS, Azure, or GCP, leveraging their services to design, deploy, and maintain robust and scalable applications.
+
+Containerization & Orchestration: Expertise in container technologies such as Docker and container orchestration tools like Kubernetes for managing containerized applications at scale.
+
+Monitoring & Logging: Implement monitoring solutions (e.g., Prometheus, ELK Stack) for performance analysis, log aggregation, and proactive issue identification in complex systems.
+
+Security & Compliance: Ensure system security by implementing best practices, conducting regular audits, and adhering to compliance standards like GDPR, HIPAA, or SOC 2.
+
+Collaboration & Communication: Collaborate with development and operations teams to streamline processes, troubleshoot issues, and improve overall system reliability.
+
+Scripting & Automation: Proficient in scripting languages (e.g., Python, Bash) to automate repetitive tasks and enhance operational efficiency.
+
+Version Control Systems: Experience with Git or other version control systems for code management, branching strategies, and collaborative development.
+
+Problem-solving & Troubleshooting: Strong analytical skills to identify, debug, and resolve complex technical issues across various layers of infrastructure and applications.
+
+
+sonar.host.url=http://3.85.28.184:9000
+sonar.login=51559169f86b8372824bbbaf25125aa04c0d2128
+3.85.28.184

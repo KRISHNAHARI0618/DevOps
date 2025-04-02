@@ -1,0 +1,65 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: myapp-common-pv
+  namespace: myapp
+  labels:
+    app.kubernetes.io/name: myapp-common-pv
+    app.kubernetes.io/component: common-pv
+    app.kubernetes.io/part-of: myapp
+spec:
+  capacity:
+    storage: 30Gi
+  accessModes:
+  - ReadWriteMany
+  nfs:
+    path: /myapp_nfs_share
+    server: <omitted for security purposes>
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: myapp-common-pvc
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: ""
+  volumeName: myapp-common-pv
+  resources:
+    requests:
+      storage: 30Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+    project: roboshop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+      project: roboshop
+      environment: developement
+  template:
+    metadata:
+      name: nginx-deployment
+      labels:
+        app: nginx
+        project: roboshop
+        environment: developement
+    spec:
+      volumes:
+      - name: nginx-efs-static
+        persistentVolumeClaim:
+          claimName: efs-static-pvc
+      containers: 
+      - name: nginx-container
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: nginx-efs-static

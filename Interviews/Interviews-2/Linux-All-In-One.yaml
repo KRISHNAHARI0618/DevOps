@@ -1,0 +1,36 @@
+Log Management:
+
+1: To check the system logs: cat /var/log/syslog
+2: To Check the Kernel logs: cat /var/log/kern.log
+3: To Check the Auth Logs : cat /var/log/auth.log
+4: To Check the application Logs:
+      cat /var/log/nginx/error.log
+      # Example for Nginx web server
+5: Log Rotation: Logs can increase over time
+hence log rotation/delete the old logs can save time and disk.
+1: Log Rotating: logrotate -f /etc/logrotate.conf
+
+Searching and Filtering Logs: Grep, AWk, CUT
+Monitoring Logs: Tail, journalctl
+Clearing Logs: Truncate,Remove
+Log Analysis: AWk,SED,grep,log-watch
+
+Crontab -e :
+crontab -e :
+
+*/h */s * * * /bin/bash/file to run
+
+* --> minute
+* --> hour of the day
+* --> day of month
+* --> month
+* --> day of week
+
+Every minute: * * * * *
+Every Night at 12 am : 0 0 * * *
+Every month 15 th at 12 am: 0 0 15 * *
+Every day-of-month 1 in every 6 months: 0 0 1 */6 *
+
+0 0 * * * bin/find /var/www/example.com/wp-content/targetdir -name "*.txt" -type f -mtime +7 -exec rm -rf {} \;
+
+

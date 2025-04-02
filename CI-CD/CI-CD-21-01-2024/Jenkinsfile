@@ -1,0 +1,26 @@
+pipeline{
+  agent any
+
+  environment{
+    registry='hari9397/pythonapp2'
+  }
+
+  stages{
+    stage('Checkout Stage'){
+      steps{
+        checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://bitbucket.org/ananthkannan/mypythonrepo/']])
+      }
+    }
+
+    stage ('Pushing The image to Docker Hub'){
+      steps{
+        script{
+          withDockerRegistry(credentialsId: 'docker_id') {
+            sh "docker build -t ${registry} ."
+            sh "docker push ${registry}"
+            }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+API Groups:
+1: Versions
+2: api
+
+Core Group and Names Group
+
+Core Groups Consists of:
+1: /api
+2: /v1
+3: namespaces
+4: pods
+5: replicaset
+6: endpoints
+7: pv,pvc,secrets,services etc . &
+
+Names API Groups:
+
+/apps -->/v1 --> Replicastes, deployments, statefulsets
+/extensions
+/networking.k8s.io --> Networkpolicies
+/storage.k8s.io
+/authentication.k8s.io
+/certificates.k8s.io
+
+operations:
+list.view.delete.update.watch.create
+
+kubectl proxy will launch the proxy server
+- kube proxy not equal to kubectl proxy
+
+Authorizations: Mechanisms
+
+Node authorization
+ABAC Authorization
+RBAC Authorization
+WebHook Authorization
+
+Node Authorization:
+kubelet is responsible to read and Write Resources from api-server to Node
+
+Read :
+- Services
+- End Points
+- Nodes
+- Pods
+Write:
+- Node Status
+- Pod Status
+- Events
+
+
+ABAC: Attribute Based access Control list
+
+Create A policy With a set of policy in JsonFormat passing it to the cluster
+
+RBAC: Role Based Access Controls
+- Can View PODs
+- Can Create Pods
+- Can Delete Pods
+
+Role Bases Access Control:
+There are Three steps involved in RBAC
+1: Create A Role
+2: Create Role Binding
+3: Create a Resource and assign it .
+
+Can View Pods
+Can Create Pods
+Can Delete Pods
+Can Create Config
+
+to see whether i have access to create access role:
+
+kubectl auth can-i create deployments
+kubectl auth can-i create pods --as dev-user --namespace test
+kubectl auth can i create pods --as dev-user
+
+Cluster Roles:
+There are Three steps involved in RBAC
+1: Cluster Role
+2: Cluster Role Binding
+3: Assign it to the Cluster
+
+Cluster-Role.yaml:
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: cluster-Administrator
+rules:
+- apiResources: [" "]
+  resources: ["nodes"]
+  verbs: ["list","get","create","delete"]
+
+Cluster-Role-Binding.yaml:
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: Cluster-Role-Binding
+subjects:
+- kind: User
+  name: cluster-admin
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: cluster-Administrator
+  apiGroup: rbac.authorization.k8s.io/v1
+  
+
+
+

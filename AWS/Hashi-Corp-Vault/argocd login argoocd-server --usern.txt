@@ -1,0 +1,1 @@
+argocd login argoocd-server --username admin --password 949383@Hk#

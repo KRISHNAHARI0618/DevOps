@@ -1,0 +1,229 @@
+Interview Questions:
+--------------------
+1: How to Connect GCP With AWS :
+- Using Broader Gateway and Highly Available VPN
+2:
+
+Q1: Kubectl does not work, what's the problem and how to solve :
+- Troubleshooting teh kubectl
+- 1: Check the kubectl version : kubectl version
+- 2: Check kubeconfig : kubectl config view
+- 3: Check kubeconfig file is present in {{"" $HOME/.kube" }} directory
+- 4: config file: ~/.kube/config
+- 5: Check the file is present in kubernetes control plane : /etc/kubernetes/admin.conf
+- 6: Check teh $KUBECONFIG environment variable
+- 7: Check the VPN is active and stable
+- 8: Check The authentication and authorization
+- 9: Verify The config contexts
+- 10: TLS problems may occur due to Kuberenets api sever by default allows only HTTPS Request
+ verify teh expiry of certificates:
+ openssl x509 -noout -dates -in $(kubectl config view --minify --output 'jsonpath={.cluster[0].cluster.certificate-authority}')
+
+Q2: Explain how different elb route traffic, focus on nlb vs alb:
+Link: https://www.site24x7.com/learn/clb-vs-alb-vs-nlb.html
+Elastic Load Balancer:
+- Elastic Load Balancer (ELB) is an AWS service that enables you to distribute load between AWS resources, that is, between EC2 instances. ELB is an AWS-managed service and is thus highly available.
+Types of Load Balancers:
+-  Application Load Balancer
+-  Network Load Balancer
+
+Q3: Docker swarm, if a worker node fails, what will you do:
+
+Q4: Beanstalk does not create a load balancer, explain why:
+- The load balancer is an integral part of the way that Elastic Beanstalk works in "load-balancing environment" configurations.
+
+Q5: Explain packages in lamba and how env variables work:
+- Environment Variables is a pair of strings that is stored in a functions version-specific configuration
+- Lambda runtime makes environment variables available to your code and sets additional environemt variables that contain information about the function and invocation request
+Packages in Lambda:
+- packages are the code combiend in many types and can run in lambda funcytion to deploy the application
+
+Q6: What are the responsibility of devops engg:
+
+
+Q7: Elb services of aws and the differences: Explain in details:
+- Application load balancer
+- Network load balancer
+- Gateway load balancer
+
+Q8: Databases for aws and method to maintain maximum availability
+
+Q9: Code for checking strings do not have a certain pattern
+
+Q10: Docker swarm and how it differs from k8s
+
+Q11: What to do if something fails in aws
+
+Q12: Supporting rest api services, basics of web sockets
+
+Q13: What is a service and task in ecs
+
+Q14: Architecture of aws, define all components
+
+Q15: Code for separating userid and domain in email
+
+Q16: Kubernetes with aws: Explain implementation
+
+Q17: Github basic command and their usecases
+
+Q18: Explain monitoring services in aws
+
+Q19: Adding additional security in ecs
+
+Q20: Explain networking architecture of aws
+
+Q21: Lambda packages ani api implementation
+
+Q22: Eks vs ecs vs beanstalk
+
+Q23: Explain route53 in aws
+
+Q24: Pipelines and gitrunner
+
+-----------------------------------------------
+1: how communication happens between two pods in different namespaces:
+-  Directly Accesing Using IP Address
+- Using Services y mentiong <service-name>:<service-namespace>
+- use fully qualified domain name in the pod 2
+- telnet or ssh
+
+Q3: What  is git version control system :
+- recent version is 2:43:0
+- earlier version is 2:34:0
+
+Q4: What is build tool used in your org:
+- Maven for java
+- PyBuiler For Python
+- Express:js for JavaScript
+
+Q5: what is devops, phases of devops:
+- DevOps is a process of making the application deployed very fast in a secure way
+- It is a Combination of Cultural  Philosophies ,Practices and tools to increase an organizatons ability to deliver the applications and services at high velocity
+- Evolving and Improving [roducts at faster pace than the organizations using traditional software developmennt and inframanagemnt process
+- This Speed Enables Organizations to better serve their customers and compete more effectively in the market
+
+Q7: Explain CICD flow of your company:
+
+12: What is k8s and what is used
+- Kubernetes - Cluster for maintaining the containers
+
+14: tell the concept of oops and array with an example
+-  OOPs: Object Oriented Prigramming Language
+    - Abstraction
+    - Polymorphissim
+    - Inheritance
+    - Encapsulation
+- Arrays: Storing the Same kind of data type into a single unit
+
+15: What is Service account :
+- A service account is a non-human privileged account that an operating system uses to run applications, automated services, virtual machine instances, and various background processes
+
+16: Kubernetes administration
+
+19: Asked me to write few codes: One with keyword arguments and others are generic basic codes: I wrote in python:
+
+- **Types of Arguments in Python :
+  - Formal Arguments : passing variable in function
+  - Actual Arguments : Passing values over the function
+    - Position
+    - Keyword
+    - Default
+    - Variable Length: *represents multiple values and stores as tuple
+- **kwargs: Keyworded Argument Passing Multiple data over single arguments
+- **keywords
+
+22: Just the concept-based questions
+
+23: About Jenkins backend they asked
+
+24: Jenkins docker Github
+
+25: Maven gradle they asked
+
+---------------------------------------------------------
+1: if you want to connect multiple vpc ,we have 2 or 3 vpc, you have to connect ec2 to each vpc: so how you can achieve that :
+VPC Peering
+AWS Transit Gateway
+Transit VPC solution
+AWS PrivateLink
+VPC sharing
+Private NAT Gateway
+
+2:From where the changes reflect, when new user created: major changes: from which file password has been stored:
+- when creating  user command used # useradd
+- password will be store in --> /etc/passwd
+- password has been stored in --> /etc/shadow
+- /etc/group
+- /etc/gshadow
+- /home/USER
+- /var/spool/mail/USER
+
+Q3: your container running service is up but you are facing an issue , how to troubleshoot them:
+
+- Check the logs : docker logs <conatiner name>
+  docker exec -it <container-name> -- bash
+- restart the docker
+- clean mapped volume data of cached memory
+
+Q4: explain pipeline whatever you can write in code how will you deploy the code : tell me just steps:
+
+Q5: from where you can download 3rd party libraries which you created during deployment:
+
+Q6: how to work DNS in Linux : what is the record of DNS:
+Domain Name System
+Ip address given to access the website/application using with url is called the Record
+
+Q7: what is meaning of transit gateway: why we can use transit gateway:
+- It is a Connector between Virtual Private Cloud and On-Premises Networks Through a Central HUB
+- To Connect VPC To VPC or On-Premises etc::
+
+Q8: for tomcat security and harden, what precaution you can taken :
+- Don't Run Tomcat as the Root User: :::
+- Remove Default Samples and Test Applications: :::
+- Set Your Tomcat Permissions Carefully: :::
+- Disable Support for TRACE Requests: :::
+- Disable SSLv3 Protocols: :::
+- Log Your Network Traffic: :::
+- Be Careful With the Tomcat Manager App: :::
+- Use Realms to Control Resource Access:
+
+Q9: how to troubleshoot when ec2 has not access to me:
+- Check The security Groups
+- Check the User has acess or not
+-
+10: what is the meaning of declarative pipeline:
+
+11: how can you check services in listen mode:
+- netstat -anpe | grep "1234" | grep "LISTEN"
+
+12: how can you check listen ports:
+
+
+13: tell me filter command in Linux:
+
+14: what are you run in ansible:
+
+15: what is your expected CTC:
+
+16: how to set password policy:
+
+17: what is auto scaling:
+
+18: what is ssh offloading:
+
+19: difference between yum and rpm:
+
+20: what is NAT gateway:
+
+21: DevOps tools versions:
+
+--------------------------------------------------------
+1: AWS VPC,SubNets,LoadBalancer,AutoScale:
+- AWS VPC - Virtual Private Cloud
+- Suybnets - Network Inside the Netwok
+- LoadBalancers : The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones: This increases the availability of your application:
+- AutoScale : Functionality in cloud where services like servers capacities or virtual machines will go up and down based on the traffic and utilization we received for that particular application
+
+2: Docker Ansible Pipeline:
+3: How many clusters are using in your organization:
+-

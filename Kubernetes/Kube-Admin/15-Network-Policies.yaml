@@ -1,0 +1,49 @@
+Network Policy :
+By default pod can communicate each other inside the cluster so we can control communication between them using the Network Policies
+
+we can mention policyTypes:
+- ingress
+- egress
+Network Policy is one type of object in k8s
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: db-policy
+spec:
+  podSelector:
+    matchLabels:
+      role: db
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          name: api-pod
+    ports:
+    - protocol: TCP
+      port: 3306
+
+we can add ingress my filtering  using:
+
+- podlevelSelectors
+- namespace selector
+- ipBlock Selectors
+
+
+Solutions that support networking Policies :
+kube-router
+Calico
+Romana
+Weave-net
+
+
+we will use tools like kubectx and kubens for contexts and namespaces
+
+contexts = kubectx
+namespace = kubens
+
+
+
+

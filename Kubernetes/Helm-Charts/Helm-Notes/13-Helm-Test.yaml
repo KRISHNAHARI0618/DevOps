@@ -1,0 +1,15 @@
+Helm Tests:
+annotations:
+    "helm.sh/hook" : test
+Helm test feature enables automated testing of kubernetes applications deployed using helm charts
+these test ensure that the deployed applications is functioning as expected
+they provide confidence in the applications health and functionality
+
+Helm Resource Policy:
+
+- some times there are resources that not be uninstalled when helm runs a helm uninstall command
+- we can add an annotation to a resource to prevent it form being uninstalled
+
+# To Test Helm Resource Policy
+annotations:
+    "helm.sh/resource-policy" : keep

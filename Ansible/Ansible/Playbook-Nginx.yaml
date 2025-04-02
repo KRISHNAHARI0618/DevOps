@@ -1,0 +1,33 @@
+---
+- name: Installing and Restart nginx
+  hosts: localhost
+  # become: true
+  vars:
+    name: hariVardhan
+    course: DevOps
+    village: Chiyyapadu
+    district: kadapa
+  tasks:
+  # - name: Installing nginx
+  #   apt:
+  #     name: nginx
+  #     state: present
+  # - name: start the service
+  #   service:
+  #     name: nginx
+  #     state: started
+  - name: checking the variables
+    debug:
+      msg: "{{name}} {{course}} {{village}} {{district}}"
+# - name: Installing http server
+#   hosts: localhost
+#   become: yes
+#   tasks:
+#   - name: installing httpd server
+#     yum:
+#       name: httpd
+#       state: installed
+#   - name: starting the service
+#     service:
+#       name: httpd
+#       state: started

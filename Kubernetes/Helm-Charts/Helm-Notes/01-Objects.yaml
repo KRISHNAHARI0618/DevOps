@@ -1,0 +1,32 @@
+Helm Build-In Objects: Period/dot/.
+
+. (dot)  in Notes.txt file represents Root Objects
+
+1: Root Objects dor or period (.)
+Top Level Helm Object
+
+Objects:
+.Release
+.Value
+.Chart
+.Capabilities
+.Template
+.File
+
+1: when we use dot inside the range or with blocks we call them as current context
+2: When we use this any where outside it will used as root object\
+
+
+Files will be used as :
+
+Files.Get
+Files.GetBytes
+Files.Glob
+Files.Lines
+Files.AsSecrets
+Files.AsConfig
+
+
+
+
+

@@ -1,0 +1,16 @@
+Alert: Giving notification to some one or some thing when the bad time
+
+Prometheus Allows you to define some conditions/logics in the form of promQL Expressions that continuously get evaluated and when those conditions are met they become alerts
+
+48
+68
+15
+38
+19
+14
+28
+14
+10
+12
+9
+31

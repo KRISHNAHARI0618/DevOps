@@ -1,0 +1,31 @@
+AWS-S3 Bucket:
+    It Solves the Very Common Problem Called Storage
+    Simple Storage Service
+    99.99999999
+S3 Characteristics:
+  Scalable
+  Highly Available
+  Secure
+  Cost Effective
+Storage Service Provided by AWS
+
+Where can you store in these S3?
+S3 Can Store anything images,Files,Logs etc..
+Devops Engineers store --> Logs,Files,
+S3 Is the second service it was Implemented.
+
+When you put any data in s3 we can accesible any region.
+S3 Can be accesible globally --> HTTPS Protocol
+
+Everything in S3 Is an object
+
+Durability and Availability
+
+Durability : The quality of being able to last a long time without becoming damaged, the durability of the materials used.
+
+A system that is durable is able to perform its responsibilities over time, even when unexpected events may occur
+
+Nine 9's Durability.
+Availability:
+Availability is the percentage of time that a workload is available for use.
+

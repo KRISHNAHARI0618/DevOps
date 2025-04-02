@@ -1,0 +1,193 @@
+What is Shell Script:
+Shell Scripting is a way to automate tasks and execute commands in a unix or unix-like operating system using shell interpreter
+The shell is a command line interface that allows users to interact with the operating system by typing the commands
+
+1: Shebang :
+#! /bin/bash or #! /bin/dash or #! /bin/sh
+
+2: Variables:
+
+Name="Josh"
+echo "$Name"
+
+3: Command line variables:
+name1=$1
+name2=$2
+echo "$name1 and $name2"
+
+4: Reading the variables:
+echo "Enter Your name"
+read username
+echo "My name is $username"
+
+Securing the variables:
+echo "Enter Password which will not display"
+read -s Username
+echo "$Username"
+
+5: Conditionals:
+
+if [ "$age" -ge 18 ]; then
+    echo "You are an adult."
+else
+    echo "You are a minor."
+fi
+
+6: For Loop:
+
+for i in {1..5};
+do
+    echo "Iteration $i"
+done
+
+While Loop:
+#!/bin/bash
+counter=1
+while [ $counter -le 5 ]
+do
+    echo "Count: $counter"
+    ((counter++))
+done
+
+7: Functions:
+greet(){
+  echo "hello ,$1 !"
+}
+
+greet "Alice"
+
+8: Command Substitution:
+current_date=$(date +%Y-%m-%d)
+
+9: File Operations:
+echo "Hello, World!" > output.txt
+content=$(cat input.txt)
+
+10: Exit Status: $?
+
+ls /nonexistent-directory
+if [ $? -ne 0 ];
+then
+    echo "Directory not found."
+fi
+
+11: Comments: #
+12: Error Handling:
+set -e to exit
+set +e To disable it
+
+Redirection in Shell:
+Standard Output : > is used
+Standard Input: < is used
+1> : Represents Standard output success.log
+2> : Represents Standard Output Error.log
+>> : Appending the File
+&>>: Both Success and ErrorLogs will get appended
+
+
+
+* :  represents One or More Occurrences
+grep ,awk, sed also used to pattern matching
+
+^ : represents Matches The start of the line
+$ : Represents Text matches at the end of the line
+. : Represents the Single Characters
+
+Extended Regular Expressions:
++ : represents oen or more occurrences
+? : Represents the Zero or one occurrences
+() : Represents the Grouping
+| : Represents the Alteration
+\ : Escape The characters
+
+Pattern Matching in Shell Script:
+You can use the [[ ... ]] construct in bash for pattern matching within a shell script.
+
+string="Hello World"
+if [[ $string =~ ^Hello ]];
+then
+    echo "String starts with Hello"
+fi
+
+Sed (Stream Editor) :
+echo "apple banana" | sed 's/apple/banana'
+
+awk Command:
+awk is a versatile tool for text processing and can also use regular expressions.
+
+Example using awk with regular expressions:
+echo "apple 10" | awk '$1 ~ /app/ {print $2}'
+
+Log Management:
+1: To check the system logs: cat /var/log/syslog
+2: To Check the Kernel logs: cat /var/log/kern.log
+3: To Check the Auth Logs : cat /var/log/auth.log
+4: To Check the application Logs:
+cat /var/log/nginx/error.log
+# Example for Nginx web server
+5: Log Rotation: Logs can increase over time
+hence log rotation/delete the old logs can save time and disk.
+1: Log Rotating: logrotate -f /etc/logrotate.conf
+
+Searching and Filtering Logs: Grep, AWk, CUT
+Monitoring Logs: Tail, journalctl
+Clearing Logs: Truncate,Remove
+Log Analysis: AWk,SED,grep,log-watch
+
+Crontab -e :
+crontab -e :
+
+*/h */s * * * /bin/bash/file to run
+
+* --> minute
+* --> hour of the day
+* --> day of month
+* --> month
+* --> day of week
+
+Every minute: * * * * *
+Every Night at 12 am : 0 0 * * *
+Every month 15 th at 12 am: 0 0 15 * *
+Every day-of-month 1 in every 6 months: 0 0 1 */6 *
+
+0 0 * * * bin/find /var/www/example.com/wp-content/targetdir -name "*.txt" -type f -mtime +7 -exec rm -rf {} \;
+
+
+
+Log Management:
+
+1: To check the system logs: cat /var/log/syslog
+2: To Check the Kernel logs: cat /var/log/kern.log
+3: To Check the Auth Logs : cat /var/log/auth.log
+4: To Check the application Logs:
+    cat /var/log/nginx/error.log
+    # Example for Nginx web server
+5: Log Rotation: Logs can increase over time
+hence log rotation/delete the old logs can save time and disk.
+1: Log Rotating: logrotate -f /etc/logrotate.conf
+
+Searching and Filtering Logs: Grep, AWk, CUT
+Monitoring Logs: Tail, journalctl
+Clearing Logs: Truncate,Remove
+Log Analysis: AWk,SED,grep,log-watch
+
+Crontab -e :
+crontab -e :
+
+*/h */s * * * /bin/bash/file to run
+
+* --> minute
+* --> hour of the day
+* --> day of month
+* --> month
+* --> day of week
+
+Every minute: * * * * *
+Every Night at 12 am : 0 0 * * *
+Every month 15 th at 12 am: 0 0 15 * *
+Every day-of-month 1 in every 6 months: 0 0 1 */6 *
+
+0 0 * * * bin/find /var/www/example.com/wp-content/targetdir -name "*.txt" -type f -mtime +7 -exec rm -rf {} \;
+
+
+

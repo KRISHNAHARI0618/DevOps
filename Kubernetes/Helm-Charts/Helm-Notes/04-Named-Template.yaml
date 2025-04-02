@@ -1,0 +1,69 @@
+What is a Named template:
+A Template defined inside a file (_helpers.tpl) and given a name
+
+How to declare a named template:
+we van declare using define action
+
+{{/* Common Labels */}}
+{{- define "helm basics.labels"}}
+  app: nginx
+  chartname: {{.Chart.Name }}
+{{- end}}
+
+What is the naming convention for named template:
+Templates names are global
+
+How to call a Named Template:
+we can call a named template using template
+{{- template "helm basics.labels"}}
+
+if we want to access any built-in objects in our named template what should we do:
+Root Object() as scope to template
+
+how to use helm pipelines in a template call:
+using include function we can use pipelines
+
+underscore (_) will not output any k8s Manifest files
+
+_helpers.tpl contains reusable named templates
+
+How to use Pipelines in a template call:
+Template does not allow pipelines
+Using Special Purpose function named template
+we use include keyword to call the named template
+
+Named Template Printf Function:
+printf function is used to formatting the function
+{{- printf "%s %s" .Values.chartname .Values.name}}
+
+
+
+14
+17
+20
+8
+5
+36
+30
+9
+10
+5
+10
+7
+13
+16
+11
+39
+22
+11
+25
+15
+7
+9
+6
+24
+27
+17
+13
+22
+

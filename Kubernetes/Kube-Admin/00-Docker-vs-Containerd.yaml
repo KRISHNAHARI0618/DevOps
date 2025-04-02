@@ -1,0 +1,17 @@
+Docker vs Containerd
+
+Docker: it is developed for building and running applications in the form of containers
+- first k8's is working for Docker but later it started supporting other container building and run time interfaces
+
+Container Runtime Interface: it supports a run time environment from every Tool which is OCI Complaint
+
+OCI Complaint: Open Container Image Specifications
+1: ImageSpec: Represents how the image should like and specifications
+2: Run time spec: specification related to where and on which port it should run
+
+before 1.24 version of k8s it supports docker shim to interact with docker even docker is not a OCI Complaint
+then after 1.24 version it removes docker shim and implement containerd as a run time env for docker
+
+CLI Tools: ctr cli, crictl cli, same as Docker cli
+
+

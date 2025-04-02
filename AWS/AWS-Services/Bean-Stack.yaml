@@ -1,0 +1,56 @@
+AWS Bean Stack :
+
+1: " What is AWS? "
+
+Cloud Provider,
+Public Cloud
+
+2: Why AWS Elastic Beanstalk?
+
+Makes it easy for developers to share their applications across different devices with less amount of time
+
+
+3: What is AWS Elastic Beanstalk?
+
+Service provided by AWS
+
+To deploy and scale the applications by developers
+
+It Supporst Different Programming languages
+
+4: Advantages of AWS Elastic Beanstalk
+
+High Scalabale
+Security 
+fast and Simple to begin
+Offers Quickly Deployment
+Multi-tenant Architecture
+Highly Flexible
+Simplifies Operations
+RollBack/Revision
+Cost-Efficient
+
+5: How AWS Elastic Beanstalk works?
+
+Create Application any Lang 
+Upload a Version in S3 Bucket
+Launch Environment
+Monitor Environment
+Update Version
+
+6: Components of AWS Elastic Beanstalk
+
+Application 
+Application Version
+Environment
+Environement Tier
+
+7: Architecture of AWS Elastic Beanstalk
+
+Web-Server Environment
+Client-Server Environment
+
+8: Companies using AWS Elastic Beanstalk
+
+
+

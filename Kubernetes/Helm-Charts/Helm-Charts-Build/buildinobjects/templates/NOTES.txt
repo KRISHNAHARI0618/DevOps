@@ -1,0 +1,16 @@
+{{/* Root Object */}}
+Root Object: {{ .Values }}
+{{/* Release Object */}}
+Release Name: {{ .Release.Name }}
+Release Namespace: {{ .Release.Namespace }}
+
+{{/* Chart Object */}}
+Chart Version: {{ .Chart.Version }}
+
+{{/* Capabilities Object */}}
+Capabilities Version: {{ .Capabilities }}
+
+{{/* Files Object */}}
+File Get: {{ .Files.Get "Access.yaml"}}
+
+Files Data: {{ .Files }}

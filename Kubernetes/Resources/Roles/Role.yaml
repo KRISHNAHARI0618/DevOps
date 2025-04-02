@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: roboshop
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+    name: roboshop-admin
+    namespace: roboshop
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+---
+# Role is for Namespace Level
+# Role Binding is bind the person with role
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: roboshop-user
+  namespace: roboshop
+subjects:
+- kind: user
+  name: ramesh
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: roboshop-admin
+  apiGroup: rbac.authorization.k8s.io

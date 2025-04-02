@@ -1,0 +1,41 @@
+networks:
+  hari:
+    driver: bridge
+services:
+  mongodb:
+    image: mongodb
+    container_name: mongodb
+    networks:
+      - hari
+  catalogue:
+    image: catalogue
+    container_name: catalogue
+    networks:
+      - hari
+    depends_on:
+      - mongodb
+    ports:
+      - ":8080"
+  redis:
+    image: redis
+    container_name: redis
+    networks:
+      - hari
+  user:
+    image: user
+    container_name: user
+    networks:
+      - hari
+    depends_on:
+      - redis
+      - mongodb
+  web:
+    image: web
+    container_name: web
+    networks:
+      - hari
+    ports:
+      - "80:80"
+    depends_on:
+      - catalogue
+      - user

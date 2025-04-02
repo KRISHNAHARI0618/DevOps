@@ -1,0 +1,34 @@
+Monitoring Commands:
+top:
+  1: it gives all the process related metrics
+  2:  PID USER      PR  NI  VIRT  RES  SHR S  %CPU  %MEM  TIME+
+
+vmstat:
+  1: Gives Process related information along with memory available memory input output memory system rekated and cpu related statistics
+
+free:
+  shows memory used and available in memory
+
+iostat:
+  shows input output central processing units in network and system retaled inofrmation
+  network file systems
+
+netstat:
+  network connections
+  routing tables
+  interfaces
+
+iotop:
+  io usage using the linux command terminal
+  Process and Threads on the server
+
+htop:
+  process ,memory and cpu swapping ,tasks load average
+  Uptime
+  command used for linux
+
+atop:
+  to view load on the linux system we use this command
+  
+
+

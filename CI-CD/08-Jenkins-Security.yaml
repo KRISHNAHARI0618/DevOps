@@ -1,0 +1,42 @@
+Security:
+Out of the box Security
+Initial Admin Password
+User accounts for individuals with username and passwords
+Provides an intrface tomanage identities and their authorizaton to use a resource
+Security Realm
+Jenkins can delgate authorization to other realms
+LDAP
+Unix/Linux users and Groups
+All Authenticatee users are admins by default
+Best Practice is tolimits ad
+min permissions
+
+Matrix strategy  : Users and Roles
+Project Based Permissions: Who can access Users and Projects
+
+Secrets and Credentials:
+1: Manage sentive information
+2: Username and password
+Text-Strings
+SSH Keys
+Files
+Vault Integration
+Can be accessed Using credentials() function:
+environment {
+string = credentials('secret-value')
+}
+env.STRING
+credentials function can be sued along with username and password we pass 3 parameters
+env.LOGIN username:password
+env.LOGIN_USR username
+env.LOGIN_PSW password
+
+can be accessed Using withCredentials()
+steps {
+withCredentials([string(credentialsId:'apikey',variable:'APIKEY
+sh "./build_script.sh ${env.APIKEY}
+  }
+}
+
+
+

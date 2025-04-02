@@ -1,0 +1,409 @@
+Ansible: is best configuration management tool
+
+ansible -i <ip-address> -m ping -e ansible_user=centos -e ansible_password=password
+
+ping module: used to ping the servers it will give pong status
+
+shell-script: keeping all the commands in a file with variables,loops,variables,etc..
+
+ansible playbook: keeping all the adhoc commands as tasks
+
+Nodes: are servers which are managed by Ansible
+
+Inventory: List of Hosts ip address ansible is managing
+
+Grouping the servers:
+geography wise
+environment wise
+components wise
+server wise
+
+How to check the DNS is Updated or not:
+nslookup "website-name"
+
+ansible -i inventory mongodb --list-hosts
+
+yum install nginx -y --> Commands
+ansible we call this as --> module/collections
+
+yum,apt,file,
+
+Yum Module:
+ansible -i  inventory localhost -m yum -a "name=nginx state=present"
+
+Service Module:
+ansible -i inventory localhost -m service -a "name=nginx service=started"
+
+Installed Commands through manually
+1: Linux Commands
+2: Shell Scripting
+3: Ansible
+
+Shell-Scripts == Ansible-Playbooks
+
+Playbooks => Yaml/Json
+
+Data Transfer Objects: XML,Json,YAML
+
+Ansible Variables:
+1: play-level variables
+2: Task Level
+3: Prompts
+4: inventory
+5: file vars
+6: Command line vars
+
+Order or precedence:
+1: Command Line Vars (-e COURSE=DEVOPS -e year=2023)
+2: Task Level
+3: vars_files
+4: prompt
+5: play_level
+6: inventory
+7: roles
+
+shell-scripting:
+
+if [ expression ];
+then
+  these commands will execute
+else
+  these commands will execute
+fi
+
+Conditions: register
+when:
+  result: {{output}}
+
+Check the user exists or not
+
+Modules:
+
+cmd: when you want to run linux commands directly
+shell: extra functionality to run the shell commands
+
+Tagging In ansible:
+# Run tasks with the "update" tag
+ansible-playbook your_playbook.yml --tags update
+
+# Skip tasks with the "nginx_service" tag
+ansible-playbook your_playbook.yml --skip-tags nginx_service
+
+- name: your target
+  hosts: localhost
+  tasks:
+    apt:
+      update_cache: yes
+    tags:
+      - update
+
+% How to remove the file from server:
+use the state: absent
+---
+- hosts: your_target_hosts
+  tasks:
+    - name: Remove a file
+      file:
+        path: /path/to/your/file.txt
+        state: absent
+
+Directory Module: stat module
+tasks:
+  - name: Create Directory
+    path: /path/to/directory
+    state: directory
+    mode: "0755"
+    owner: user
+    group: your_group
+
+remove a directory:
+tasks:
+  - name: /path/to/directory
+    state: absent
+
+Loops In Ansible:
+loop:
+- hari
+- vardhan
+- reddy
+- john
+
+Arg Command is used to args:
+args:
+  creates: /path/to/database
+  chdir: somedir/
+
+Create a List of files with range:
+loop: "{{ range(1,4)| list }}"
+
+% To Check and Trouble Shoot the issues
+Mostly we will give verbose mode to check the errors
+{ ansible-playbook -vvv }
+
+% Retrying a task until a condition is met:
+
+- name: Retry a task until a certain condition is met
+  ansible.builtin.shell: /usr/bin/foo
+  register: result
+  until: result.stdout.find("all systems go") != -1
+  retries: 5
+  delay: 10
+
+Jinja2 Templated:
+my_list:
+- name
+- names
+- ideas
+- numbers
+{{ my_list | length }}
+
+# Modules:
+% copy module:
+copy:
+  src:
+  dest:
+% install nginx:
+apt:
+  name: httpd
+  state: present
+yum:
+  name: nginx
+  state: present
+
+% Based On The distribution:
+when: ansible_distribution == 'Ubuntu'
+when: ansible_distribution == 'CentOS'
+
+% How to Enable and Start the service
+service or systemd:
+  name: service
+  state: absent
+states: restarted,absent,present,latest
+
+% How to Replace Text in ansible or regex command
+replace:
+  path: /path/to/file/
+  regexp: '127.0.0'
+  replace: '0.0.0.0'
+
+% Checking the syntax of ansible playbooks:
+ansible-playbook --syntax-check playbook.yaml
+ansible-playbook --check playbook.yaml
+ansible-lint playbook.yaml
+
+% How to run the script in ansible
+module name: script
+script: curl -sL https://
+
+module name: command/shell
+shell/command: curl -sL https://
+
+% Download using url or download web artifact
+get_url:
+  url: url give
+  dest: where to save the downloaded file
+
+% Extracting Files and unzip the files
+unarchive:
+  src: /app
+  dest: /app
+  mode: "0755"
+  owner:
+  group:
+  user:
+
+% How to Execute the file in unarchive a file in already on the remote server
+The file is present in the remote machine when unarchive the file in remote machine
+remote_src: yes
+
+% How to run particular tasks to be executed or particular tasks to be run after restart
+
+handlers and notify :
+handlers:
+- name: Restart Apache
+  service:
+    name: nginx
+    stage: restarted
+Handlers are executed once after the end of the play after all tasks have run
+
+% To skip Particular Tasks:
+we use tags to skip the tasks
+
+% Ansible.cfg
+configuration is available in /etc/ansible/
+
+1: Environment variables
+2: Present working directory
+3: Home Directory
+4: default directory /etc/ansible/ansible.cfg
+
+% How to handle Multiple environments:
+
+different folders for different environments
+separate
+1: ansible.cfg
+2: inventory
+3: separate vault server
+
+% Tags In Ansible
+mention the tags to skip particular tasks and run particular tasks
+
+to reduce the execution time
+
+ansible-playbook -i inventory -t give tag name
+
+% Parallelism
+
+Ansible can connect with multiple servers at a time
+
+ansible server should have more RAM,CPU,Etc..
+
+% Ansible Forks
+DEFAULT_FORKS = 5
+how many hosts it will configure by default and execute the tasks
+ansible will connect 5 servers at a time in the inventory
+
+we can pass through command line also
+ansible-playbook -f 30 -t tags
+
+% Heterogenous and Gather Facts
+
+We have Multiple Linux Distributions
+commands vary
+
+Gather Facts : gathering the variables of the servers about os os_family distribution services, environment variables etc ..
+using gathering facts
+
+% Ansible Roles
+We will write multiple playbooks for multiple application to design the folder structure in a correct format
+
+Organize and Structure your playbooks by grouping related tasks variables and files into a directory hierarchy
+Roles Promote Code Re-use,modularization,maintainability
+
+ansible-galaxy init role:
+
+my_role/
+├── tasks/
+│   └── main.yml
+├── handlers/
+│   └── main.yml
+├── templates/
+├── files/
+├── vars/
+│   └── main.yml
+├── defaults/
+│   └── main.yml
+├── meta/
+│   └── main.yml
+└── README.md
+
+Package Manager: it will by default manages multiple operating systems
+
+Filters/Functions:
+name: hari
+variable: {{ name | upper: hari}}
+variable: {{ name | lower }}
+variable: {{ name | default(name: "hari vardhan")}}
+
+Spit function : {{ name,name1 | split(,) }}
+join function : {{ name,name1 | join(,) }}
+encode function
+decode function
+
+Ansible Tower : is the feature from red hat enterprise version where we will get UI for which tasks to run and configure
+
+Ansible Galaxy: it is a command used to create a roles
+
+tasks
+handlers
+vars
+templates
+metadata
+defaults
+
+How do you include a role in playbook:
+- name: use a role in a playbook
+  hosts: servers
+  roles:
+    - web-server
+
+
+Shell-Script:
+
+name=hari
+name2=hari2
+
+echo "$name"
+echo "$name2"
+
+array1 = ('robo','shell','hari')
+echo " ${array1[0]}"
+
+Conditions:
+if else:
+
+if [ $number -gt 10 ]
+then
+  echo "these statements are executed"
+else
+  echo "These statements are executed"
+fi
+
+#!bin/bash
+$? --> exit status
+
+userid = $(id -u)
+
+if [ $? -ne 0 ]
+then
+  echo "these statements executed"
+else
+  echo "these statements are executed"
+fi
+
+Functions:
+validate(){
+  if [ $? -ne 0 ]
+  then
+    echo "These statements are executed"
+  else
+    echo "These statements are executed"
+  fi
+}
+
+validate $? "installing mysql"
+$1 will take the argument1
+
+For loop:
+
+for i in {1..100}
+do
+  echo $i
+done
+
+&>> $log_file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

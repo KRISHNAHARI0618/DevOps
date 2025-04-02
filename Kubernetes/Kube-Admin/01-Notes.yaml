@@ -1,0 +1,316 @@
+Certified Kubernetes  Commands:
+- kubectl
+- json
+- tmux
+- curl and wget
+- man pages
+
+Pre-Rquisites:
+- YAML
+- Containers
+- Json Parsers
+
+Core Concepts:
+- Cluster Architecture
+  - Worker Nodes: Host Applications as Containers
+  - Master Nodes: Manages,Plan,Schedule,Monitor Nodes
+
+Docker Vs Containerd:
+- v1.24 is reoved support for docker
+- Container Runtime Interface
+- containerd is a run time environement for both docker and kubernetes
+
+Containerd cli:
+- ctr command line interface
+- ctr images
+- ctr run
+nerdctl CLI:
+- nerdctl ps
+- nerdctl ps -a
+
+- Open Conatiner Initiative(OCI) : How Conatiner should build how the contianer should run
+- ctr - CLI used to interact with conatinerd Environment
+
+OCI Standards:
+- image spec
+- Runtime spec
+
+
+- nerdctl : Another Command line Interface to interact with docker
+- crictl provides CLI for CRI Compatible Conatiner Runtimes
+
+
+ETCD:
+
+What is ETCD:
+- Key Value Store
+- Download Binaries
+- Extract
+- RunETCD RUn Time
+- Default port for etcd is --- 2379
+- port 2379
+
+./etcdctl set key1 value1 : to set teh key value pair in etcd
+etcdctl get key1 : to retrieve the content from etcd for key1
+etcdctl : to get more details about the etcdctl
+
+History of ETCD:
+- v0.1 -- aug 2013
+- v0.5 -- dec 2014
+- v2.0 -- feb 2015
+- v3.1 -- jan 2017 -- api verision changes
+
+etcdctl --version : to get the version details
+to set the in environement variable etcd api version as 3 : ETCDCTL_API=3 ./etcdctl version
+export to set the environment variable :
+expose ETCDCTL_API=3 ./etcdctl version
+
+ETCD Key Value Store: Stores About info
+- Nodes
+- PODS
+- COnfigs
+- Accounts
+- Secrets
+- Roles
+- Bindings
+- Others
+
+-- advertise-client-url={{ipaddress}}:2379
+
+initial-cluster controller-0
+
+
+Kube-API Server:
+
+- primary management controller in kubernetes
+- first authenticates and authorize
+- second sent request and send to etcd server and retrieve data
+- Authenticate
+- Validate the reuest
+- Retrieve data
+- update etcd
+- scheduler
+- kubelet will create pod instructs given by api-server
+
+kube controller manager:
+- Controls all nodes managinga nd monitring all
+- watch status
+- remediate situation
+- Monitoring the status and send data to Node-Controller then it will send to Scheduler
+- Node Monitor period = 5s
+- node-monitor-grace-periods = 40s
+kube-scheduling:
+- just schedules which pod should go where
+- based on the metrics this will decide
+- Different resource requirements
+- Scheduker looks in each pod and
+- filter nodes based on the metrics
+- Then rank the nodes
+- taints and tolerations
+- node affinity
+
+kubelet :
+- Captain on the ship
+- Register node and Create POds
+
+Kube-Proxy:
+- every pod can every other pod
+- internal network solution
+- able to communicate each other
+- need to assign service to expose the service outside the world
+- That runs on each nodes on cluster and creates a service to create a ip address for each pod
+- ip table rules
+- Daemon Set : Each Pod on each Nodes to high availability
+
+Docker Images: Docker repository
+kubernetes cluster : is setup done
+
+Namespaces:
+- Isolation Between The resources between Two Different Environment
+
+Imperative and Declarative Approach:
+- Imperative ==  OLD TAXI Model
+  - kubectl commands is used in Imperative approach
+  - scale, set,edit,create,expose,run,debug, replace, replace --force
+- Declarative == New TAXI MOdel(uber/OLA)
+  - yaml files should be stored in GitHUb
+  - implement change review and version Control
+  -
+
+kubectl apply command:
+- to manage objects in a declarative way
+- it will create the configuration if not present if present in the system it will gives and errors
+- Updates withlive data
+
+Scheduling Section:
+---------------------
+
+- Manually Scheduling
+- Labels & Selectors
+- Resource Limits
+- Daemon Sets
+- Multiple Schedulers
+- Schedule Events
+- Configure Kubernetes Scheduler
+
+Manually Scheduling:
+- How Scheduler Works:
+  - Scheduling Algorithim
+  - Binding Object
+  - To assign a Name to Already Created pod we need to create a Binding Specification and assign that to pod by changing yaml to json format
+
+Labels and Selectors:
+
+- Labels : Key Value pair to group together different resources
+  - Labels are used to attach the special kind of features to the resources
+- Selectors : It is used to filter those labels
+- Labels and Selectors are used to connect each other
+-----------------
+Annotations:
+- Record Other Details for just information about the pod or other resources
+
+Taints & Tolerations:
+---------------------
+What pod should run on what node using Taints and Tolerations
+
+Taints:
+-------
+- Are assigned to nodes that which pod should tolerate the condition set on particular node
+- Taints are three types:
+  - NoSchedule
+  - PreferNoSchedule
+  - NoExecute
+
+Tolerations:
+------------
+- The effect which sets on nodes should accept those conditions and accept those Pods based on the conditions set on pod specification
+- tolerations should be in double quotes
+
+tolerations:
+- key: "APP"
+  operator: "Equal"
+  value: "Blue"
+  effect: "NoSchedule"
+
+Node Selectors:
+---------------
+
+- Based on The metrics nodes will divide
+- Data Processing Workloads need heavy processing servers
+- labeling the nodes makes it usefull that which type of application or pod should run on which kind of Server/Node
+- Command:
+- kubectl label nodes <node-name> <label-key>=<label-value>
+In Pod Specification:
+- We need to mention that nodeSelector:
+- nodeSelector:
+    <label-Name>: <label-value>
+    label1: Large
+
+
+NodeAffinity:
+-------------
+- Pods to Nodes
+- In NodeSelectors we cannot mention any node conditions that these pods should run on these nodes like that  eg: one data processing pod should run on medium as well as Large Node hence these can be achieved by Node Affinity
+- nodeAffinity: two types
+    requiredDuringSchedulingIgnoredDuringExecution:
+    preferedDuringSchedulingIgnoredDuringExecution:
+
+spec:
+affinity:
+  nodeAffinity:
+    requiredDuringSchedulingIgnoreDuringExecution:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: size
+          operator: exists
+
+NodeAffinity vs Taints vs Tolerations
+ ------------
+
+Resources & Requirements:
+
+Resources:
+- Every pod in a node should require some cpu,memory and data to perform speciic actions and to store data
+
+spec:
+  containers:
+  - name:
+  resources:
+    requests:
+      memory: "4Gi"
+      cpu: "2 m"
+    limits:
+      memory: "2Gi"
+      cpu : "1m"
+
+DaemonSets:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

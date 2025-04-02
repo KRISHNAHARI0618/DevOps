@@ -1,0 +1,41 @@
+debugging_and_troubleshooting_skills:
+
+check_jenkins_logs:
+"Examine Jenkins server logs and job logs for error messages or warnings."
+
+view_console_output:
+"Inspect the console output of build jobs for detailed information, including error messages and stack traces."
+
+use_verbose_build_tools:
+"Run external build tools with verbose output to gather additional information about the build process."
+
+enable_debug_mode:
+      property: "jenkins.model.Jenkins.logStartupPerformance"
+      value: "FINE"
+      description: "Set the system property to FINE to enable additional startup performance information in logs."
+
+check_system_and_jenkins_configuration:
+"Verify that Jenkins server and system configurations are correct, including system settings, node configurations, and plugin configurations."
+
+update_plugins:
+"Ensure that all Jenkins plugins are up to date to avoid compatibility issues between Jenkins core and plugins."
+
+review_jenkins_environment_variables:
+"Check if environment variables are correctly set at different scopes (global, node, job), especially those used in build scripts or configurations."
+
+check_permissions_and_credentials:
+"Verify that Jenkins user and build job user have the necessary permissions. Confirm that credentials are correctly configured for accessing repositories or external systems."
+
+use_pipeline_debugger:
+"In Jenkins Pipelines, utilize the `echo` statement and the `script` step to print information during pipeline execution for better understanding and issue identification."
+
+monitor_system_resources:
+"Monitor system resources (CPU, memory, disk space) on the Jenkins server and build nodes, as resource limitations can lead to unexpected failures."
+
+test_locally:
+"If possible, replicate the issue locally to determine if the problem is specific to the Jenkins environment or exists in other contexts."
+
+engage_jenkins_community:
+"If unable to resolve an issue, reach out to the Jenkins community through forums, mailing lists, and issue trackers for assistance."
+
+

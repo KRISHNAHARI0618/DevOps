@@ -1,0 +1,16 @@
+grep -v '^$' filename > filenametoadd
+lsof -p --> Give the port numer
+lsof -i --> inodes
+lsof --> list of open files
+
+Soft link will point file or directory in a different location
+hard link is not point directory it will point toonly file 
+
+top command is used to memory and cpu time it will display on screen
+
+0 stdinn
+1 stdout
+2 stderr
+
+
+

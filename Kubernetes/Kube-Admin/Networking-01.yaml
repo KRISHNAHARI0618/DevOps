@@ -1,0 +1,56 @@
+Networking:
+
+Switching: Transfer of data packets or blocks of data through a network switch
+
+ip link
+
+ip addr add
+
+ping
+
+Routing: Is the process of selecting a path for traffic in a network or between or across multiple networks
+
+Gateway: A door for to access the network
+route command
+
+ip route add 192.168.2.0/24 via 192.168.1.1
+
+ip addr add 192.168.1.10/24 dev eth0
+
+ip route add 192.168.1.0/24 via 192.168.2.1
+
+route: to check the routing tables
+
+by default linux will not pass data from one network to another in the same machine
+we need to enable in
+
+cat /proc/sys/net/ipv4/ip_forward
+we need to set to 1:
+
+DNS: Domain Name system
+cat /etc/hosts --> add host name db
+cat /etc/resolv.conf
+cat /etc/nsswitch.conf
+
+
+Name Resolution:
+. --> Root
+.com: top level domain
+
+Record Types:
+A: ipv4
+AAAA: ipv6
+CNAME: Multiple Servers mapping one server or another
+
+nslookup: to Check the Server
+dig : to check the dns name resolution
+
+Network Namespace:
+Namespace Isolation:
+
+
+
+
+
+
+

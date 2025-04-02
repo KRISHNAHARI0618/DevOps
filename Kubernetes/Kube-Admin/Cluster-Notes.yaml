@@ -1,0 +1,44 @@
+Important Steps in Volumes:
+
+Need To Install Drivers : kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.25"
+
+Give Access to Worker Nodes: 
+	1: AWSEC2FullAccess
+	2: AWSEBSFull Access
+	3: AWSElasticFileSystemFullAccess
+	
+Allow Security Group To access All via Internet
+	1: Allow All TCP
+	2: 
+
+Delete the cluster:	
+	eksctl delete cluster --region=us-east-1 --name=eks-spot-cluster
+    eksctl delete cluster --config-file=eks.yaml
+    
+Create the cluster:	
+	eksctl create cluster --config-file=eks.yaml
+
+Issues While Creating EKSCTL- Cluster:
+	aws sts get-caller-identity
+	aws eks update-kubeconfig --region us-east-1 --name <Cluster-name>
+
+How to update kubeconfig in cluster:
+	aws eks update-kubeconfig --name <cluster-name> --region us-east-1
+	aws eks update-kubeconfig --name eks-spot-cluster --region us-east-1
+
+To create a fargate instances we need to create fargate profile:
+	eksctl create fargateprofile \
+	--cluster <cluster-name> \
+	--region us-east-1 \
+	-- name <name-of-fargate-profile> \
+	-- namespace <namespace-name>
+    
+CSI Drivers:
+efs-csi:
+    kubectl kustomize "github.com/kubernetes-sigs/aws-efs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.7" > driver.yaml
+ebs-csi-driver:
+    kubectl apply -k "github.com/kubernetes-sigs/aws-ebs-csi-driver/deploy/kubernetes/overlays/stable/?ref=release-1.25"
+
+Kubernetes RBAC:
+What is RBAC:
+	Role Based Access Control 

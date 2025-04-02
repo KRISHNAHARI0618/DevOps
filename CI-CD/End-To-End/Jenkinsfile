@@ -1,0 +1,60 @@
+pipeline{
+  // ngrok http http://localhost:8080
+  agent any
+  environment {
+    BUILD_NUMBER=22
+  }
+  stages{
+    stage('Customize Build Name') {
+        steps {
+            script {
+                currentBuild.displayName = "MyCustomBuild-${BUILD_NUMBER}"
+            }
+        }
+    }
+    stage("Check Out") {
+      steps{
+        echo "Hello This Is Check out"
+        sh """
+            ls -ltr
+            echo "Peddireddy Hari Vardhan Reddy"
+            cd AWS
+            ls -ltr
+        """
+      }
+    }
+  stage("Building The Nginx Image") {
+    steps{
+      script {
+        sh """
+
+        cd CI-CD/End-To-End/Dockerfiles/NodeJsImage
+        ls -ltr
+        docker build -t hari9397/web:2.0.0 .
+
+      """
+      }
+    }
+  }
+  stage('Pushing and Running the Image') {
+    steps{
+      script {
+        withCredentials([usernamePassword(credentialsId: 'docker_id', passwordVariable: 'Docker_password', usernameVariable: 'Docker_user')]) {
+          sh """
+              docker login -u ${Docker_user} -p ${Docker_password}
+              docker push hari9397/web:2.0.0
+          """
+          }
+        }
+      }
+    }
+  }
+  post {
+      success {
+          echo 'Docker image build successful!'
+      }
+      failure {
+          echo 'Docker image build failed!'
+      }
+  }
+}

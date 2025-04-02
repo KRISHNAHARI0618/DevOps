@@ -1,0 +1,16 @@
+SAML : Security Assertion Markup Language
+OAuth: Open Authorization
+OIDC: Open ID Connect
+
+
+SAML uses XML Language
+OpenID uses Json
+
+What is Single Sign On:
+1: An Authentication Process where a user can access Multiple applications with single sign in with user name and password
+2: It uses Encryption and decryption in Background
+Eg:.. Gmail Products
+3: Multi-factor Authentication
+
+How Single SignOn Works:
+-

@@ -1,0 +1,147 @@
+Kubernetes Architecture:
+    - Kubernets Cluster
+    - AutoScaling
+    - AutoHealing
+    - Enterprise Level Standard
+    - Single Host
+
+Kuberenets is a Cluster:
+    - Control Plane (Master)
+    - Data Plane (Worker)
+
+Docker
+    simplest thing : container
+    container run time : Dockershim
+Kubernetes
+    simplest thing: pod(multiple containers)
+    Pod run time: kubelet --> dockershim,Crio--d,containerd
+
+Data Plane:
+
+  Container/Pod Run Time : To run any container we need container run time environment that is dockershim
+
+  KubeProxy: gives IP Address for each pod
+        In docker is docker0/default networking is called the bridge networking where it is required to runn the container
+        KubeProxy is responsible for networing ,ipaddress, loadbalancing capabilities for worker node uses iptables .
+
+  Kublet:
+        in docker there is docker daemon to manage the containersbut in Kubernetes
+        Kublet is Responsible for running/managing/maintaining the pod
+        1: Manage Containers should run in pods
+        2: It takes the set of PodSpcs through various mechanisms
+
+Master Node (Control Plane):
+
+We just give the commands to run pod but its api server responsibility to manage the pod where it should run
+
+API Server:
+    is responsible for in which node the pod should deploy based on the scheduler
+    it is heart of Control Plane
+    responsible for managing the pods and sends the requests to scheduler
+
+Scheduler:
+    Scheduler is responsible for which node is empty and send the pod to that node
+    Scheduler schedules the pods to go to nodes
+
+etcd:
+    data store where it stores all clluster related information in key-value pair
+    The backup of all cluster related information which stores everything in the form of key-value pair
+
+Controller Manager:
+    Controls everything like autoscaling,autohealing etc..
+
+Cloud Controller Manager:
+    Controls Cloud Services realted to kubernetes
+    EKS and AKS
+KubeConfig File:
+    kubeconfig is the default way to authenticate to a Kubernetes cluster
+
+File Storage in  Kubernetes:
+    - Kubernetes Node Logging : /var/log/containers
+    - Kube Config : $HOME/.kube/config
+    - Etcd name origins:  /var/lib/etcd
+    - Controller-Manager: /var/log/kube-controller-manager.log
+    - Api-Server Log: /var/log/kube-apiserver.log
+
+AddOns :
+Cluster DNS
+WebUI : Allows user to Manage and trouble Shoot
+Container resources Monitoring: record Centrol Time-Series Metrics about Conatiners in a Central Database and Provides a ui For browsing the data
+Cluster Level Logging: Logging Conatiner Logs  to a central log store and with search and browsing interface
+Network Plugins : Container network Interface
+They are responsible for allocating the ip address to each pod and enabling communication with eachother within the cluster
+
+Nodes:
+  1: A Virtual or Physical Machine depending on the cluster
+  2: Kuberenets runs your workloads by placing container into Pods to run on Nodes
+Node Management:
+  1: kubelet on a node self-registers to the control plane
+  2: Manually
+Node Description :
+  apiVersion: v1
+  kind: Node
+  metadata:
+    name: "ip-Address"
+    labels:
+      name: my-first-k8s-node
+Self-registration of Nodes: kubelet flags
+  --register-node ==  true then it will try to connect with api-server
+
+--kubeconfig ==  Authenticator for api server
+--cloud-provider == How to talk wioth cloud
+--register-node == automatically register with the api server
+--register-with-taints ==  key-value pairs key=value:effect
+--node-ip == list of ip addres for the node
+--ndoe-lables == labele to add when registering with the api sever
+--node-status ==  where api checks the node status
+
+kubectl get nodes : will give all node names
+kubectl describe node <node-name> : will get the details about node
+---------------------------------------------------
+
+Control Plane to Node:
+1: Connection between api-server and kubelet
+2: connection with pod/any service via api-server proxy functionality
+
+API server to kubelet :
+  1: Fetching logs for pods
+  2: Attaching to running pods
+  3: providing the kubelets port-forwarding functionality
+--kubelet-certificate-authority
+
+---------------------------------------------------
+Containers:
+Container Images:
+  - #images :
+    - binary data that encapsulates the application and its dependencies
+    - very well defined assumptions about their run time
+
+Container Runtime
+Container Environment
+Conatiner LifeCycle Hooks
+  Container Hooks:
+  - PostStart
+  - PreStop
+  Hook Handler Implementation:
+  - Exec - pre-stop.sh
+  - sleep -PodLifeCycleSleepAction
+  Hook Handler Execution:
+  - httpGet,tcpsocket,sleep
+  - kubectl decribe pod <Podname>
+  - kubectl get pod events
+
+  Each Container you run is repeatable
+  Same Behaviour whereever you run it
+  Conatiners Decouple with the underlying host infra . This makes deployment easier in different cloud or os environments
+Each Node in a Kubernetes Cluster runs the containers that form the pods assigned to that node
+
+Container Environment:
+/var/lib/docker/overlay2
+  FileSystem
+
+
+
+
+
+
+

@@ -1,0 +1,87 @@
+Kubernetes Trouble Shoot Skills:
+1: OOM Killed
+2: Sudden Load Jumps
+3: RollBacks
+4: Logs
+5: SSH into Pod
+6: ImagePullBackOff
+7: CrashLoopBackOff
+
+Security In Kubernetes:
+
+1: Kubernetes Security Primitives
+Security is Prime Concern
+
+Securing Hosts:
+  1: Disable Password Based Authentication
+  2: Disable Root Access Based Authentication
+  3: Enable SSH key Based Authentication
+
+kube-api server : We need to take 2 Decisions
+1: Who can access the server
+2: What They can do
+What can access the server:
+1: File with username and Passwords
+2: Files with Username and Tokens
+3: Certificates
+4: External Authentication Providers - LDAP
+5: Service Accounts #(Watch in Kubernetes Dev Course)
+What They can Do once accessed:
+1: RBAC Authorization
+2: ABAC Authorization
+3: Node Authorization
+4: WebHook Mode
+
+Authentication :
+1: Admins
+2: Developers
+3: End Users
+4: Bots for integration (Service Accounts)
+
+All the requests from users will go to api-server to process thee requests
+
+Auth Mechanisms:
+1: Static Password File
+2: Static Token File
+3: Certificates
+4: Identity Services
+
+Auth mechanism basics: /etc/kubernetes/manifests/kube-apiserver.yaml
+
+in kube-apiserver.service file add below line
+  --basic-auth-file=user-details.csv
+
+give user details in csv:
+password123,user1,u0001
+password123,user2,u0002
+password123,user3,u0003
+password123,user4,u0004
+
+cat ~/.ssh/authorized_keys
+
+TLS Introduction: TLS Certificates
+
+Certificates
+Symmetric Encryption
+Asymmetric Encryption
+
+In kubernetes we used to generate
+openssl genrsa -out my-bank.key 1024
+openssl rsa -in my-bank.key -pubout > mybank.pem
+
+Self Signed Certificate.
+
+Certificate Authority
+
+Public Key Infrastructure
+
+There are Three Certificates available
+1: Root Certificates --> Stored In Certificate Authority Machines
+2: Client Certificates --> Stored in Client Machines
+3: Server Certificates --> Stored in Server Machines
+
+How to Generate the Certificates: OpenSSL
+
+
+
+

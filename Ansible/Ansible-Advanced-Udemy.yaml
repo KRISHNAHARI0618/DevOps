@@ -1,0 +1,17 @@
+PlayBook-Web Application: Deployment of Web Application
+Ansible Vault:
+- Ansible Vault is used to store secrets in a encrypted format
+- ansible-vault encrypt inventory.txt
+- ansible-vault view inventory.txt
+- ansible-vault create vault
+
+Dynamic Inventory:
+- Python Scripting is Needed to update the servers
+- ansible retrieves hosts programmatically
+
+- name: Deploy and web application
+  hosts: target1 and target2
+  become: yes
+  tasks:
+  - name: Just Ping The server
+    ping:

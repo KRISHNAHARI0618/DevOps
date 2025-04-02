@@ -1,0 +1,27 @@
+Code Deploy:
+    Deployimg application to AWS Ec2 Instances
+Code Deploy Works:
+    Deployment Groups
+    Deployment Configurations
+    Application Revisions
+    Deployment Process
+    Deployment Status
+Advantages:
+    Automated Deployments
+    Rollback Functionality
+    Intergration with other aws Services
+    Deployment Flexibility
+Usages:
+    Console
+    CLI
+    SDKs
+ 
+- name: Nginx
+  hosts: localhost
+  vars:
+    coourse: Devops
+    idea: simple
+  tasks:
+  - name: nginx-Deployment
+    debug:
+       msg: "hello {{devops}}

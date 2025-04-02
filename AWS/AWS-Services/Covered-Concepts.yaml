@@ -1,0 +1,63 @@
+Kubernetes:
+    Containers & Images
+    Continious Deployment: ArgoCD
+    Continious Package Manager: HELM Charts
+    Continous Monitoring: Prometheus & Grafana
+
+
+POD
+ConfigMap
+Secrets
+Services
+	ClusterIP
+	NodePort
+	LoadBalancer
+Sets
+	ReplicaSet
+	DeploymentSet
+	DaemonSet
+	StatefulSet
+	HeadLess Service
+Storage Provisioning
+	Static Provisioning
+	Dynamic Provisioning
+	
+Storage Class
+Persistent Volume
+Persistent Volume Claim
+Headless Service
+
+For Databases/Statefull Sets We need to use EBS 
+For Deployments We need to use EFS
+
+1: Install csi drivers (EFS & EBS)
+2: Give Access To EC2 Servers.
+	1: EC2 Full Access
+	2: EBS Csi Driver
+	3: EFS Full Access
+3: Creation of Storage Class ( Create separtae)
+4: Create PVC ( Access PVC Directly)
+5: Mount that Volume to Pods
+
+
+configMap:
+  envFrom:
+  - configMapRef:
+      name: name of config map
+
+
+
+Mongodb port: 27017
+Redis Port: 6379
+mysql Port: 3306
+rabbitmq Port: 5672
+
+
+
+
+
+
+
+
+
+	

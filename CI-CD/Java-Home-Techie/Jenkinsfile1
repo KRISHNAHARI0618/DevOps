@@ -1,0 +1,30 @@
+pipeline {
+  agent any
+  // tools{
+  //   maven 'maven_3_6_0'
+  // }
+  environment {
+    BUILD_NUMBER=22
+  }
+  stages {
+    stage('Customize Build Name') {
+      steps {
+        script {
+            currentBuild.displayName = "MyCustomBuild-${BUILD_NUMBER}"
+          }
+        }
+    }
+
+    stage('Checkout') {
+      steps {
+      sh '''
+            ls -ltr
+            cd CI-CD
+            ls -ltr
+            cd Java-Home-Techie
+            ls -ltr
+          '''
+      }
+    }
+    }
+  }

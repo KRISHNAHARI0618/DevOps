@@ -1,0 +1,82 @@
+Protocols:
+ARP : Address Resolution Protocol
+BGP : Border Gateway Protocol
+UDP : User datagram Protocol
+DHCP : Dynamic Host Configuration Protocol
+FTP : File Transfer Protocol
+SMTP : Simple Mail Transfer Protocol
+SSL : Secure Socker Layer
+TLS : Transport Layer Protocol
+DNS Protocol : Domain Name System 
+Route:53 
+IPv4 : Internet Protocol Version 4
+IPv6 : Internet Protocol Version 6
+SSH : Secure Shell 
+TelNet : Connection 
+HTTP : Hyper Text Transfer Protocol
+HTTPS : Hyper Text Transfer Protocol Secure
+NAT : Network Address Translater
+Gateway : Passer To enter to network
+TCP/IP Protocol : 
+SNMP
+
+🌐 TCP/IP : This is like the main language of the internet. TCP is about putting data into packets and making sure they get delivered properly. IP deals with giving these packets addresses and directions. Together, they help devices chat across different networks.
+
+🔎 DNS : Think of this as the internet's address book. It turns website names we know (like google.com) into numbers (IP addresses) that computers understand, so the right website loads when you type it in.
+
+How DNS Works:
+- NameServers
+- DNS Records
+
+1: Browser Cache
+2: Os Cache 
+3: Resolver Cache
+4: Root Servers
+5: Resolver Cache
+6: TOP Level Domain
+
+- DNS Resolves Names to Address
+- Resolves Names to IP Address
+- Resolver Server --> Internet Service provider --> Root Server --> 13 Sets of Root Servers --> Again will Send the Request to Resolver to search with Top Level Domain where all details about Domains Present 
+
+DNS Records:
+- A Record : Resolves a Domain Names to IP Address(IPv4)
+- AAAA Record : Domain Names to IP Address (IPv6)
+- CNAME : Alias For another Domain Name 
+- SubDomain.2nd level Domain.TopLevel Domain.Root Domain
+- FTP Domain : File Transfer Domain
+- Mail Exchange Record: 
+- SOA : 
+- NS Record: Name Server Record --> 
+- Provides the Authoritative Name Server within a Domain
+- SRV : Service Record --> Will Point to Server and Include point to Service and Port
+- PTR Record: They resolve ip address to Domain Name
+- TXT Record: 
+
+🌐 HTTP : This is all about how websites talk to your computer. It sets up connections and has rules for asking (GET, POST) and answering (404, 500) to load web pages, pictures, and more.
+
+🔒 HTTPS : Just like HTTP, but it keeps the conversation secret and checks who's on the other end. It uses special certificates to create a secure connection.
+
+✉️ SMTP : The postman of emails. It's the standard way to send emails across the internet, making sure they're properly formatted and reach the right inbox.
+
+🗂️ FTP : Like a delivery service for files. It helps you send (upload) and receive (download) files between your computer and a server.
+
+⚡️ UDP : This is for when you need things fast, like streaming videos, playing online games, or video chatting. It's quicker because it's less concerned about perfect delivery.
+
+📁 𝗙𝗧𝗣 (𝗙𝗶𝗹𝗲 𝗧𝗿𝗮𝗻𝘀𝗳𝗲𝗿 𝗣𝗿𝗼𝘁𝗼𝗰𝗼𝗹): FTP is the workhorse for moving files across the internet. It operates on two channels, making file sharing a breeze, but also reminds us of the evolution toward more secure methods of transfer like SFTP and FTPS in modern practices.
+
+📩 𝗣𝗢𝗣𝟯 (𝗣𝗼𝘀𝘁 𝗢𝗳𝗳𝗶𝗰𝗲 𝗣𝗿𝗼𝘁𝗼𝗰𝗼𝗹 𝟯): It's like having a virtual post office that handles your emails. POP3 might seem simple as it retrieves and deletes server messages, but it's a reminder of the importance of managing data flow and storage effectively.
+
+🔑 𝗧𝗲𝗹𝗻𝗲𝘁: This veteran protocol allows us to remotely log into another computer over the internet. However, it lacks encryption, making it a lesson in the critical need for secure communication channels in today's cybersecurity landscape.
+
+🔐 𝗦𝗦𝗟/𝗧𝗟𝗦 (𝗦𝗲𝗰𝘂𝗿𝗲 𝗦𝗼𝗰𝗸𝗲𝘁𝘀 𝗟𝗮𝘆𝗲𝗿/𝗧𝗿𝗮𝗻𝘀𝗽𝗼𝗿𝘁 𝗟𝗮𝘆𝗲𝗿 𝗦𝗲𝗰𝘂𝗿𝗶𝘁𝘆): These protocols are the guardians of data transmission, encrypting information as it travels across the internet, proving indispensable for secure communication.
+
+🔎 𝗔𝗥𝗣 (𝗔𝗱𝗱𝗿𝗲𝘀𝘀 𝗥𝗲𝘀𝗼𝗹𝘂𝘁𝗶𝗼𝗻 𝗣𝗿𝗼𝘁𝗼𝗰𝗼𝗹): ARP is the detective that maps IP addresses to MAC addresses, ensuring that the data packets find their way to the correct device : a foundational aspect of network communication.
+
+🏢 𝗡𝗔𝗧 (𝗡𝗲𝘁𝘄𝗼𝗿𝗸 𝗔𝗱𝗱𝗿𝗲𝘀𝘀 𝗧𝗿𝗮𝗻𝘀𝗹𝗮𝘁𝗶𝗼𝗻): Acting as a translator, NAT converts private IP addresses within a local network to public IPs for the internet. This not only saves valuable IP space but also adds a layer of security by keeping internal network structures private.
+
+🌐 𝗥𝗗𝗣 (𝗥𝗲𝗺𝗼𝘁𝗲 𝗗𝗲𝘀𝗸𝘁𝗼𝗽 𝗣𝗿𝗼𝘁𝗼𝗰𝗼𝗹): RDP is the magic behind our ability to access computers remotely, making telecommuting possible and highlighting the importance of secure and reliable remote access protocols in our increasingly mobile world.
+
+🎛️ 𝗗𝗛𝗖𝗣 (𝗗𝘆𝗻𝗮𝗺𝗶𝗰 𝗛𝗼𝘀𝘁 𝗖𝗼𝗻𝗳𝗶𝗴𝘂𝗿𝗮𝘁𝗶𝗼𝗻 𝗣𝗿𝗼𝘁𝗼𝗰𝗼𝗹): DHCP is like a dynamic city planner, assigning IP addresses to devices on a network, ensuring that each device can communicate efficiently without conflicts.
+
+📁 𝗙𝗧𝗣 (𝗙𝗶𝗹𝗲 𝗧𝗿𝗮𝗻𝘀𝗳𝗲𝗿 𝗣𝗿𝗼𝘁𝗼𝗰𝗼𝗹): FTP is the workhorse for moving files across the internet. It operates on two channels, making file sharing a breeze, but also reminds us of the evolution toward more secure methods of transfer like SFTP and FTPS in modern practices.

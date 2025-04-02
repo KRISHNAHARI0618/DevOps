@@ -1,0 +1,65 @@
+RBAC : Role Based Access Control 
+Rbac is directly divied into two parts:
+Users and Service Accounts
+
+User Role: Depending upon the role we will provide access
+ServiceAccounts: How pod can access services 
+
+Authorization and Authentication
+RBAC is directly related Security
+
+Role :
+Role Binding :
+Cluster Role :
+Cluster Role Binding :
+
+Pod  --> Bound to Namespace
+Service --> Bound to Namespace
+Deployment -->Bound To NameSpace
+Replicaset --> Bound To na
+PV --. Bound to Cluster
+PVC --> Bound to namespace
+ConfigMap --> Namepsace
+Nodes --> Bound to Cluster Resources
+
+kubectl api-resources
+
+In kubernetes resources are either cluster level or namespace level
+
+EKS --> EKS is a Platform as a Service
+
+How to Manage RBAC:
+  1) Create a Namespace : As EKS Admin create a namespace
+      AWS is cloud EKS is platform 
+      IAM --> Authentication
+      RBAC --> Authorization
+
+      Create a IAM User
+      Attach policy --> EKS --> Describe Cluster 
+
+  2) Create a Role :
+      Verbs in Rules: Actions on resources,Create,read,Update,Delete
+  3) Create The Role Binding:
+
+  4) Config Map aws-auth:
+      we need to inform aws about rbac roles 
+
+aws sts get -caller identity
+eks update-kubeconfig  --> to Update 
+
+  5) Cluster Role:
+
+  6) Cluster Role Binding:
+
+Horizantal Pod AutoScaler:
+  replicas --> 1 or 10 
+  Based on CPU Utilization or Memory Utilization the Horizantal pod auto scaling will work.
+  
+  To Check the Bench Mark : we need to install apache benchmark
+
+Metrics Server : Able to calculate the resources
+kubectl top pods : to check the cpu of kubernetes
+
+
+
+

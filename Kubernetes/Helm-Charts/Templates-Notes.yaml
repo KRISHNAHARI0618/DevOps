@@ -1,0 +1,167 @@
+Templates Folder:
+Helm Uses Go Templating Language
+
+Gives The Full Details about the all manifest files
+
+Set command is used to set the values for helm charts
+
+Actions elements represents two Flower brackets {{ }}
+
+Command to check the Template is correct
+
+"helm template chart-name"
+
+Template Deep Dive:
+
+  - Template Actions
+      -  - (Hyphen)
+      -  . (dot)
+      -  | (pipe)
+
+  - Conditions
+      - {{- if condition}} {{- end }}
+      - with
+      - if else end
+      - if else if else end
+  - Loops
+      - range function
+
+  - Variables
+      {{ $variale-name := .Values.my.flag }}
+
+Actions:
+Start with two flower brackets and ends with two flower brackets
+
+1: {{- "Helm Templating is "}} , {{- "cool"}}
+- (hyphen) : hyphen removes the trailing space wither front or back
+
+2: . (dot) : represents all the information from other file
+
+3: pipe(Symbol) | : Allows to Chain the multiple functions and expressions lines
+
+There are Functions : with upper functions also
+{{ .Values.my.custom.data | default "testdefault" | upper | quote}}
+
+Functions:
+
+  - default
+  - quote
+  - upper
+  - lower
+  - nindent 4 : new Line indent
+    Argument is 4 it gives four spaces before the each line
+
+Conditional Logic:
+
+  {{- if .Values.my.flag }}
+  {{ "Print The If statement values" }}
+  {{- else }}
+  {{ " Print The else Statement Values "}}
+  {{- end }}
+
+  {{- if .Values.my.flag }}
+  {{ "Print The If statement values" }}
+  {{- else if .Values.my.flag }}
+  {{ " Print The else if Statement Values "}}
+  {{- else }}
+  {{ "Print The Else Statement Values"}}
+  {{- end }}
+
+With Conditional Block:
+  When block will give output when the values will have only the list
+  With will give each item
+  Single Values at a time
+  .(dot) in With will represents current value
+
+  with will be used toYaml
+
+  {{- if .Values.my.values }}
+  {{ "My out is pull "}}
+  {{- else }}
+  {{ "My Values it to the list "}}
+  {{- with .Values.my.values }}
+  {{- toYaml . | nindent 2 }}
+  {{- end }}
+
+Variables :
+Like Go Variable
+
+    {{ $variableNAME := .Values.my.values}}
+    {{- if $variableNAME == true}}
+
+Loops: In Helm represents Range
+Iterate over the list.
+. in range represents current value
+
+  . (dot) in loops represents single value at a time
+  {{- range .Values.my.values}}
+    - {{. | upper | quote}}
+  {{- end}}
+
+Dictionaries:
+  key value pairs
+  {{- range $key $value .Values.var.name}}
+    - {{$key}} : {{$value}}
+  {{- end}}
+
+Debugging The templates:
+  dry-run commands
+
+Helpers.tpl file:
+  Hosts different templates
+
+helpers.tmpl:
+defining the custom name
+
+  {{- define "firstchart.mytemplate" -}}
+  {{- .Values.myValue}}
+  {{- end}}
+
+  including the customname:
+  name: {{- include "firstchart.labels" . | nindent 4}}
+
+Schema Validation:
+
+Range Parameters in Chart:
+  = >= =< and | ^ ~
+
+Helm Debug template: --dry-run command is used
+
+dry run command is used to debug the Helm templates
+command: helm install <chart-name> --dry-run
+It will validate the schema also
+
+Helm Get Manifest:
+it will give the details about charts fully
+
+---------------------------------------------------
+Helm Hooks:
+  pre-install
+  post-install
+  pre-delete
+  post-delete
+  pre-upgrade
+  post-upgrade
+  pre-rollback
+  post-rollback
+
+Helm Security :
+
+Helm Starters:
+
+helps to application specified charts
+helm create --starter spring
+
+helm env HELM_DATA_HOME: How to know where we need to create the helm starter folder
+
+terraform
+aws cli
+aws configure
+git
+mobaxterm
+
+
+
+
+
+

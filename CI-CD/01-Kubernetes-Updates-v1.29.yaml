@@ -1,0 +1,24 @@
+Kubernetes New Version: v1.29
+
+1: Mandala Universe
+2: 48 Enhancements
+3: 19 Alpha Release
+4: 19 Beta Release
+5: 11 Are Stable
+
+https://www.youtube.com/watch?v=yCkQgKVwSVU
+
+00:00 : Introduction
+00:19 : Kubernetes 1.29 - Mandala
+01:55 : Sidecar Containers
+02:06 : In-Place Update of Pod Resources for Window Containers
+06:33 : Kube-proxy improved ingress connectivity reliability
+08:21 : Priority and Fairness for API Server Requests
+09:39 : Reduce Secret-Based Service Account Tokens
+11:04 : Support paged LIST queries from the Kubernetes API
+11:48 : ReadWriteOncePod PersistentVolume Access Mode
+13:08 : Structured Authorized Configuration
+15:20 : Transition from SPDY to WebSockets
+17:37 : Support User Namespaces in pods
+19:01 : Conclusion
+

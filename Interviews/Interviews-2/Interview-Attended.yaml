@@ -1,0 +1,25 @@
+---
+CrewScale Interview Questions:
+  1: How to identify and mitigate the DDoS Attacks
+  2: What is Difference Between Virtualization and Containerization
+  3: What is Docker and K8s
+  4: What is Anycast
+  5: What is CI/CD and What will makes it helpful for DevOps
+  6: Which Tools For CI-CD and Best Use
+  7: What is CNI and How to enable communication between cluster and CNI
+  8: SIP Protocol and VoIP Technologies
+  9: How K8s will Implement DevOps Practices
+
+---
+Volswagen Interview Questions:
+  1: How Micro-Services communicate with each other
+  2: What is Ingress and what is useful for
+  3: Types of Services in K8s
+  4: What is Headless Service
+  5: What is API, Rest API and How does it communicate with other
+  6: Difference between NoSQL and SQL
+  7: When should you use Lambda Services and EC2 Machines
+  8: gRPC,REST-API, etcc...
+
+
+

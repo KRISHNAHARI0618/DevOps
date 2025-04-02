@@ -1,0 +1,65 @@
+
+name: Firs
+run-name: "Click Deploy From Branch ${{ github.ref_name }}"
+# run-name: ${{ github.actor }} is learning GitHub Actions
+on: 
+  workflow_dispatch: 
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      print_tags:
+        description: 'True to print to STDOUT'
+        required: true
+        type: boolean
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: choice
+        required: true
+        default: 'false'
+        options:
+          - true
+          - false
+jobs:
+  python-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout the repository
+        uses: actions/checkout@v4
+
+      - name: setup python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.12
+
+      - name: run python file
+        run: |
+          ls -ltr
+          cd .github/workflows
+          python python1.py
+
+
+
+# name: This is My first git Hub
+
+# pipeline{
+#   agents{}
+#   actions{}
+#   parameters{}
+
+#   stages{
+#   stage
+#   steps
+#   scripts
+#   conditions}
+#   post{}

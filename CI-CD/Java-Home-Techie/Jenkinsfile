@@ -1,0 +1,31 @@
+pipeline{
+  agent any
+  tools{
+    maven 'maven3'
+  }
+  // options{
+  //   timeout(time: 30, unit:'MINUTES')
+  // }
+  stages{
+    stage('Build'){
+      steps{
+      checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/HariBalaji4674/DevOps2023.git']])
+      sh '''
+         ls -ltr
+         cd CI-CD
+         ls -ltr
+         cd Java-Home-Techie
+         ls -ltr
+         mvn clean install
+         find . -name "*.jar"
+      '''
+    }
+   }
+  }
+  // post {
+  //    always {
+  //         echo 'Cleaning workspace...'
+  //         cleanWs()
+  //     }
+  // }
+}

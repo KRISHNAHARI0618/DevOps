@@ -1,0 +1,57 @@
+ConfigMap:
+- Managing Configuration and environment data in the form of Key Value pairs
+- Create a Configmap and Inject it with Pod/Object
+
+kubectl create configmap <config-name> --from-literal=key=value
+
+kubectl create configmap \ app-config --form-literal=app_color=blue
+
+ConfigMap Definition File:
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  app_color: blue
+  app_mode: prod
+
+Using In Pod Definition: # env.valueFrom.configMapKeyRef
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: pod1-container
+    image: nginx
+    ports:
+    - containerPort: 80
+    env:
+    - name: special_level_key
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: app_color
+      - name: special_level_key
+      valueFrom:
+        configMapKeyRef:
+          name: app-config
+          key: app_mode
+
+Using in pod Definition : # envFrom.configMapRef.configmap-name
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-2
+spec:
+  containers:
+  - name: pod
+    image: nginx
+    ports:
+    - containerPorts: 80
+    envFrom:
+    - configMapRef:
+        name: app-config

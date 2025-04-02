@@ -1,0 +1,203 @@
+course_title: Prometheus Fundamentals
+
+introduction:
+  title: Course Introduction
+  duration: 02:26
+
+observability_fundamentals:
+  title: Observability Fundamentals
+  topics:
+    - title: Intro to Observability
+      duration: 07:12
+    - title: SLO/SLA/SLI
+      duration: 03:34
+
+prometheus_fundamentals:
+  title: Prometheus Fundamentals
+  topics:
+    - title: Prometheus Use Case
+      duration: 02:19
+    - title: Prometheus Basics
+      duration: 02:21
+    - title: Prometheus Architecture
+      duration: 08:30
+    - title: Prometheus Installation
+      duration: 05:29
+    - title: Prometheus Installation systemd
+      duration: 05:50
+    - title: Prometheus Installation Demo
+      duration: 06:47
+    - title: Node Exporter
+      duration: 03:08
+    - title: Node Exporter systemd
+      duration: 04:34
+    - title: Prometheus Configuration
+      duration: 08:51
+    - title: Authentication/Encryption
+      duration: 08:17
+    - title: Metrics
+      duration: 14:37
+    - title: Metrics Quiz
+      duration: null
+    - title: Exploring Expression Browser
+      duration: 03:35
+    - title: Prometheus in Docker Container
+      duration: 01:44
+    - title: Intro to PromTools
+      duration: 02:10
+    - title: Monitoring Containers
+      duration: 03:10
+
+promql:
+  title: PromQL
+  topics:
+    - title: Introduction
+      duration: 04:55
+    - title: Selectors & Matchers
+      duration: 05:30
+    - title: Modifiers
+      duration: 03:17
+    - title: PromQL Demo
+      duration: 04:56
+    - title: Operators
+      duration: 07:32
+    - title: Vector Matching
+      duration: 14:35
+    - title: Aggregation
+      duration: 05:31
+    - title: Functions
+      duration: 09:33
+    - title: Subquery
+      duration: 04:49
+    - title: Histogram/Summary
+      duration: 13:23
+    - title: Recording Rules
+      duration: 09:40
+    - title: HTTP API
+      duration: 05:24
+
+dashboarding_visualization:
+  title: Dashboarding & Visualization
+  topics:
+    - title: Introduction
+      duration: 01:24
+    - title: Expression Browser
+      duration: 03:46
+    - title: Console Templates
+      duration: 10:19
+    - title: Feedback – Prometheus Certified Associate
+      duration: null
+
+application_instrumentation:
+  title: Application Instrumentation
+  topics:
+    - title: Introduction
+      duration: 01:36
+    - title: Instrumentation-basics
+      duration: 05:31
+    - title: Labels
+      duration: 03:54
+    - title: Histogram/Summary
+      duration: 03:20
+    - title: Gauge
+      duration: 01:15
+    - title: Best Practice
+      duration: 04:30
+    - title: Lab – Application Instrumentation
+      duration: null
+
+service_discovery:
+  title: Service Discovery
+  topics:
+    - title: Introduction
+      duration: 02:00
+    - title: File
+      duration: 02:11
+    - title: AWS
+      duration: 05:43
+    - title: Re-Labeling
+      duration: 13:58
+    - title: Re-Labeling Demo
+      duration: 17:46
+    - title: Lab – Re-Labeling
+      duration: null
+
+push_gateway:
+  title: Push Gateway
+  topics:
+    - title: Introduction
+      duration: 00:52
+    - title: Installation
+      duration: 03:10
+    - title: Pushing Metrics
+      duration: 07:04
+    - title: Client Library
+      duration: 01:22
+
+alerting:
+  title: Alerting
+  topics:
+    - title: Introduction
+      duration: 05:33
+    - title: Labels & Annotations
+      duration: 02:14
+    - title: Alertmanager Architecture
+      duration: 02:11
+    - title: Alertmanager Installation
+      duration: 02:04
+    - title: Alertmanager Installation Systemd
+      duration: 04:55
+    - title: Lab – Alertmanager Installation
+      duration: null
+    - title: Configuration
+      duration: 07:56
+    - title: Receivers & Notifiers
+      duration: 08:12
+    - title: Alertmanager Demo
+      duration: 16:29
+    - title: Silences
+      duration: 01:21
+    - title: Lab – Alertmanager
+      duration: null
+
+monitoring_kubernetes:
+  title: Monitoring Kubernetes
+  topics:
+    - title: Introduction
+      duration: 09:55
+    - title: Installing Helm Chart
+      duration: 06:07
+    - title: Prometheus Chart Overview
+      duration: 10:14
+    - title: Connecting To Prometheus
+      duration: 02:40
+    - title: Prometheus Configuration
+      duration: 06:09
+    - title: Deploy Demo Application
+      duration: 05:40
+    - title: Additional Scrape Configs
+      duration: 03:12
+    - title: Service Monitors
+      duration: 10:27
+    - title: Adding Rules
+      duration: 02:56
+    - title: Alertmanager Rules
+      duration: 07:51
+    - title: Lab – Kubernetes & Prometheus
+      duration: null
+    - title: Feedback – Prometheus Certified Associate
+      duration: null
+
+conclusion:
+  title: Conclusion
+  topics:
+    - title: Conclusion
+      duration: 00:51
+    - title: Lab – PCA Mock Exam 1
+      duration: null
+    - title: Lab – PCA Mock Exam 2
+      duration: null
+    - title: Registering for Exam
+      duration: 01:12
+    - title: Article: PCA Exam Details
+      duration: null

@@ -1,0 +1,48 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: storage-class
+provisioner: ebs-cli.aws.com
+volumeBindingMode: Immediate
+parameters:
+  csi.storage.k8s.io/fstype: xfs
+  type: io1
+  iopsPerGB: "50"
+  encrypted: "true"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-pvs
+spec:
+  storageClassName: storage-class
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 4Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ebs-dynamic
+  labels:
+    app: mongodb-web
+    project: roboshop
+    compoenents: db
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mongodb-web
+      project: roboshop
+      compoenents: db
+  template:
+    metadata: 
+      name: developement
+      labels:
+        app: mongodb-web
+        project: roboshop
+        compoenents: db
+    spec:
+      volumes:

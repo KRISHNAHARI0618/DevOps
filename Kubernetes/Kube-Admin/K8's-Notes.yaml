@@ -1,0 +1,109 @@
+Kubernetes notes:
+What is Kubernetes:
+    Open-source
+    Portable
+    Extensible
+    Managing Containerized Workloads & Services
+    Declarative Configuration and Automation
+What K8s Mean: --> Counting the letters from K to s gives 8 Characters
+
+Why you need Kubernetes and what it can do:
+
+About Containers --> Bundle the application code and Its dependencies and run the application in any environment
+
+For Managing the containers to reduce the production issues or downtime we need one system that is Kubernetes
+
+   1: Service discovery and load balancing
+   2: Storage orchestration
+   3: Automated roll outs and rollbacks
+   4: Automatic bin packing
+   5: Self-healing
+   6: Secret and configuration management
+   7: Batch execution
+   8: Horizontal scaling
+   9: IPv4/IPv6 dual-stack
+   10: Designed for extensibility
+
+What Kubernetes Not:
+    1: Kubernetes is not Monolithic
+    2: There is no limit in type of applications supported
+    3: It will not deploy source code and not build your application
+    4: Does not provide application level Services
+    5: Does not dictate logging, monitoring, alerting solutions
+
+Web-Application: Logging monitoring components/adapters is one examples
+
+How to See etcd,kube-api server, control manager,scheduler location
+
+What is init-container,init-container configuration
+
+CrashLoopBackOff: Due to init-container misconfiguration, Lack of Permissions, Persistent Volume Connection
+
+
+What is Liveness Probe,Readiness Probe:
+
+Liveness Probe : is the restart policy in the kubernetes
+when it reached to non-desired state
+
+livenessProbe:
+    exec:
+        command:
+        - cat:
+        - /appStatus
+    initialDelaySeconds: 10
+    periodSeconds: 5
+
+Readiness Probe: Status of pod when ready to start running, accepting traffic.
+
+readinessProbe:
+    tcpSocket:
+        port: 20717
+    initialDelaySeconds: 15
+    periodsSeconds: 20
+
+Pre-requisites:
+    1: Isntall CSI-Drivers
+    2: Give Access To Nodes to Create Volume and Access That Volume
+    3: Create Storage Class for Dynamic Provisioning
+    4: Create Persistent Volume Claim
+    5:
+
+What is Kuberenetes Taints:
+    kubectl taint node node1 app=web:noschedule
+    using Resource Quotas we will design the usage of Resoureces
+
+What is Deployment Stratagies In kubernetes: (Popular)
+
+1: Rolling Update :
+    A: Updates Each old pod with new pod
+    b: Typically Used in On-Premises
+2: ReCreate
+3: Canary :
+    1: Version A is Serving traffic
+    2: Deploy Version Blue-Green
+    3: Create a New "Canary Ingress" with Traffic splitting enabled
+    4: Wait for enough time to confirm that version B is stable and not throwing any errors
+    5: Delete the Canary Ingress
+    6: Point to Version B to Main Application
+    7: ShoutDown Version A
+4: Blue-Green :
+Users--> LoadBalancer --> App Version1
+
+    a: Basic Deployment Model
+    b: Creates two different clusters in two diffeent regions
+    c: Deploy the version a in North and Version B to South
+    D: Roll Back is Very Fast
+5: A/B
+
+Ingress Controllers:
+    1: Nginx
+    2: HA Proxy
+    3: Traefik
+    4: Istio
+    5: Linkerd
+    6: GKE
+    7: etc..
+
+What is Kustomization:
+    Kustomize Lets you create an entire kuberents application outof individual pieces without touching the yaml Configuration files to individual components
+

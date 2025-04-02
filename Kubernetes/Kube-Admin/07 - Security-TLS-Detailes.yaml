@@ -1,0 +1,53 @@
+TLS Introduction: Terminal Security Layer
+Generate the Certificates in Kubernetes
+
+1: Generate a Private Key:
+
+openssl genrsa -out private_key.pem 2048
+
+2. Generate a Certificate Signing Request (CSR):
+
+openssl req -new -key private_key.pem -out csr.pem
+
+3. Generate a Self-Signed Certificate:
+
+openssl x509 -req -days 365 -in csr.pem -signkey private_key.pem -out certificate.pem
+
+Certificates API:
+
+Certificate Authority:
+
+Kubernetes Control: Manager manages all the certificate related tasks in Kubernetes
+1: CSR Approving
+2: CSR Signing
+
+Kube-Configs:
+kubectl config view
+kubectl get contexts
+kubectl config use-context <new context>
+
+To get More help: kubectl config -h
+
+kubeconfig.yaml:
+
+apiVersion: v1
+current-context: my-context
+kind: Config
+preferences: {}
+clusters:
+- cluster:
+    certificate-authority-data:
+    BASE64ENCODEDCERTIFICATE
+    server: https://CLUSTER_ENDPOINT
+  name: my-cluster
+contexts:
+- context:
+    cluster: my-cluster
+    user: my-user
+  name: my-context
+users:
+- name: my-user
+  user:
+    client-certificate-data: BASE64ENCODEDCLIENTCERT
+    client-key-data: BASE64ENCODEDCLIENTKEY
+

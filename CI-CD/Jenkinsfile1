@@ -1,0 +1,43 @@
+#!groovy
+@Library('First-Shared-Library') _
+
+def configMap = [
+  name: "peddireddy",
+  course: "DevOps"
+]
+// 01-Hello-World.naam('Peddireddy')
+// 01-Hello-World.mapping(ConfigMap)
+// helloworld.naam('Peddireddy')
+// helloworld.mapping(configMap)
+
+pipeline {
+  agent any
+  stages {
+    stage('Checking The Shared Libraries') {
+      steps{
+        script{
+          helloworld.naam('Peddireddy')
+          helloworld.mapping(configMap)
+          helloworld.mapping(configMap)
+          helloworld.add(20,30)
+
+        }
+      }
+    }
+  }
+}
+
+// @Library('First-Shared-Library') _
+
+// pipeline{
+//     agent any
+//     stages{
+//         stage('Checking The Shared Libraries'){
+//             steps {
+//                 script{
+//                     helloworld.naam('peddireddy')
+//                 }
+//             }
+//         }
+//     }
+// }

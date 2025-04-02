@@ -1,0 +1,38 @@
+Prowler: Cloud Platforms
+it is a Cloud Security Analysis Tool
+
+1: Security Best Practices
+2: Audits
+3: Incident Responses
+4: Continuous Monitoring
+5: Hardening
+6: Forensics Readiness
+
+Dockle Image Security Tool:
+
+1: It is used to Build Best Practice Images
+LEVEL	DESCRIPTION
+FATAL	Be practical and prudent
+WARN	Be practical and prudent, but limited uses (even if official images)
+INFO	May negatively inhibit the utility or performance
+SKIP	Not found target files
+PASS	Not found any problems
+
+Trivy Docker Image Scanner:
+
+Trivy is open source security tool which can find different issues and generates reports
+Security Vulnerabilities
+Missed Configurations
+
+1: File Systems
+2: Git Repos
+3: Docker Images
+4: Pod Specs
+
+Trivy Scan:
+1: Dependencies  it will scan
+2: Security Scan Inside our files
+
+Trivy has access to Different data bases:
+1: NVD--> Nexus Vulnerabilities Data Bases
+2: It has access to Red-Hat Databases.

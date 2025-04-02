@@ -1,0 +1,344 @@
+Prometheus Alerting and Monitoring:
+
+Horizontal Pod AutoScaler:
+  based on the cpu utilization ,memory utilization , network utilization
+Ingress Controller:
+  Classic Load Balancer and Application Load Balancer
+  Application Load Balancer is Layer 7 Type
+
+ArgoCd: First Expose it to load Balancer
+Then get the password:
+  fAMxXfZxFOJZJpRM
+kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
+
+Monitoring Application Metrics is More Important
+Application Metrics and Cluster Metrics
+
+1: JVM Metrics
+2: Application Metrics (Logs,Variables)
+3: Cluster Metrics
+4: Log Metrics
+5: CPU Usage
+6: Memory Usage
+7: Requests per minute and bytes per request
+8: Latency and uptime
+9: Security exposure
+10: User satisfaction/Ap-dex scores
+11: Average response time
+12: Error rates
+13: Garbage collection
+14: Request rates
+
+https://devopscube.com/setup-prometheus-monitoring-on-kubernetes/
+
+Synchronizing state of grafana-server.service with SysV service script w/lib/systemd/systemd-sysv-install.
+
+Executing: /usr/lib/systemd/systemd-sysv-install enable grafana-server
+
+Created symlink /etc/systemd/system/multi-user.target.wants/grafana-servce →
+
+/usr/lib/systemd/system/grafana-server.service.
+
+Prometheus:
+
+Open-Source systems monitoring and alerting toolkit with an active ecosystem
+
+1: Analyze How your applications and Infrastructure are performing from the Metrics Scraped from the Targets
+
+2: Prometheus Components are written in Go Language
+
+3: Uses Multi Dimensional data model with time series data identified by metric name and key value pairs
+Eg: https_request_total{ method = "get" }
+
+4: Out Of Box features : PromQL (Read-Only) & Flexible Query Language
+
+5: Libraries are available for Different Languages
+
+6: Default libraries and servers are available
+
+7: To Monitor Custom Metrics services you can add instrumentation to your code via Prometheus Client Libraries
+
+8: Full Fledged Monitoring with own alert manager
+
+Installation of Prometheus:
+1: minikube start
+2: helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+3: helm install prometheus prometheus-community/prometheus
+4: kubectl expose service prometheus-server --type=NodePort --target-port=9090 --name=prometheus-server-np
+5: kubectl get svc
+6: minikube service prometheus-server-np --url
+
+Installation of Graphana:
+  1: helm repo add grafana https://grafana.github.io/helm-charts
+
+  2: helm install grafana grafana/grafana
+  3: kubectl expose service grafana --type=NodePort --target-port=3000 --name=grafana-np
+  4: kubectl get services
+  5: kubectl get secret --namespace default grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+  6: minikube service grafana-np --url
+iWq85TabHyxklbPV1YbFdHRrd07gpL0tRcZyKJN2
+
+
+Prometheus Course:
+- Open-Source monitoring solution & time series database
+- Was built by SoundCloud
+- Very Active Developer and user community
+- Now its as standalone open source project
+- Ideal for monitoring on premise as well as cloud workloads
+
+Prometheus-Notes:
+- Collect Listen for events,typically with timestamp
+- Effectively Store Those events in storage
+- Should support querying feature
+- Provide a Graphical Monitoring
+
+How Does Prometheus Work:
+- Prometheus collects metrics from monitored targets by scraping metrics HTTP endpoints
+
+Prometheus Concepts:
+
+- All data is stored as time-series
+- every time series is identified by the metric name and a set of key-value pairs called labels
+
+- metric: go_memstat_alloc_bytes
+- instance=localhost:9090
+- job=prometheus
+- Data Model
+- Stores Metrics in key-value pairs
+- Storage
+
+Basics Terminologies of Prometheus:
+
+Monitoring:
+
+Monitoring is a systematic process of collecting and recording the activities taking place in a target project, programmer service and then using that record values to check if the targets are reaching their objectives or not
+
+Alerting:
+An alert is the outcome of an alerting rule in prometheus that is actively firing
+Alerts are sent from prometheus to teh alert manager
+
+Alert Manager:
+Prometheus-Server --> Alert-Manager --> Email,PagerDuty,Slack
+
+Alert Manager: manages the alerts from Prometheus-Server aggregate them into groups,de-duplicates,applies silences,throttles,and sends out the notifications to email,pagerDuty,Slack
+
+Target:
+Object to scrape
+Its is a machine
+whose metrics are to be monitored
+
+Instance:
+a server or an end point you can scrape
+
+Job :
+job is a collection of targets/instances with same purpose
+
+Sample:
+in a particular time a particular value is called Sample
+
+Samples:
+- The Time series data also consists of the actual data called #"samples"
+- it can be a float64 value
+- million second-precision timestamp
+Notation:
+<metric-name> { <label name> = <label value> }
+
+Architecture Of Prometheus: See Pic in Google
+---------------------------------------------
+Prometheus-Server
+Alert-Manager
+Prometheus-WebUI
+PushGateway
+Grafana
+Pull Metrics
+Short-Lived Jobs
+Service Discovery
+
+http://127.0.0.1:56946   --> Prometheus
+http://127.0.0.1:59441   --> Grafana
+
+Prometheus Configuration file: Prometheus.yaml
+
+global:
+  scare_interval: 15s # Get the Scrapes From Targets
+  evaluation_interval: 15s # Evaluates the Rules
+
+alerting:
+  alertManagers:
+  - static_configs:
+    - targets:
+
+rule_files:
+  # first_rule.yaml
+  # Second_rule.yaml
+
+scrape_configs:
+- job_name: 'prometheus'
+  static_configs:
+  - targets: ["localhost:9090"]
+
+What are Exporters:
+
+1: To Monitor any application from prometheus we have to add Instrumentation to the prometheus
+
+2: Client Libraries will help to make the application to monitor the applications
+
+3: Exporter is a Software or no of libraries and server
+
+4: Exporter helps in exporting existing metrics from 3rd party systems like Linux or Windows
+
+5: It will transform into a same format used for Prometheus Metrics
+
+6: It will be useful when the system is not able to connect directly with prometheus to get the metrics
+
+Node-Exporters:
+1: Prometheus Exporter for hardware and OS metrics exposed by UNIX
+
+2: Exposes Kernel-level and Machine Level metrics on Unix Systems
+
+3: Metrics Such as CPU, Memory, Disk-Space Disk-I/O and Network Band-width
+
+Prometheus Query Language:
+
+- Data-Type
+- Instant Vector:
+  - A Set of time series containing a single sample for each time series all sharing the same timestamp
+- Range Vector:
+  - A Set of time series conatining a range of data points over time for each time series
+- Scalar:
+  - A simple numberic folating point of value
+- String:
+  - A Simple String value
+
+Selectors & Matchers:
+- Expression {job="name of job"}
+Matchers:
+- Equality Matcher (=)
+- Not Equality Matcher (!=)
+- Regular Expression Matcher (=~)
+- Not Regular Expression Matcher (!~)
+
+Operators:
+- Binary Operators : two Operands to do some task
+- Arithmatic Operators
+- Comparision Operators
+- LOgical Operators
+- Ignoring and On Operators
+- Aggregation Operators:
+- Special Mathematical Functions that are used to combine information
+- Sum
+- max
+- min
+- avg
+- stdenv
+
+Functions:
+- Built-in Functions
+- Rate Function -- rate()
+- irate Function
+- Change function
+- deriv function : derivative how far that node is restarting with time intervals
+- predict_linear
+- avg_over_time
+- count_over_time
+
+Gauge Metrics:
+- a Metric that represents a single value that can arbitrary go up and down
+
+Create A Gmail App Password:
+-
+Client Libraries:
+
+- Adding Instumentation to Application Code
+Type of Client Libraries:
+- Metric Types
+- Counter
+- Counter is
+
+Logging & Monitoring:
+
+logging: /var/log/syslog/ --system logs
+- Data about the state or an event of an application or service
+- Often Long Form providing detail about the state change
+- top command
+- ds
+- df
+- du
+- hf
+- Usage of Memory,CPU,Networking is logging
+Metering:
+- Data about the rate of change
+- Time-series Based
+
+**Role Based Access Control is need to access the Server and its components
+
+Capturing Kubernetes Infrastruture with data
+
+Counter_Type_Metrics:
+- counter()
+
+Prometheus :
+
+Alerting Overview
+
+- Alerting is separted into two parts
+- Prometheus-Servers to AlertManager
+- AlertManager to Peoples/Servers via sms/emails/on-call notifications.
+
+Genric PlaceHolders :
+- boolean
+- filename
+- secret
+- string
+
+Operating System Services:
+
+- Prometheus
+- Pushgateway
+- Alert Manager
+- Exporters
+- Client-Libraries
+- Authentication,Authorization and Encryption
+- API Security
+- Secrets
+- Denial of Service
+- Libraries
+- Build Process
+
+Prometheus Data-Model:
+
+- Stores all data in time-series
+- Streams of timestamped values belonging to the same metric name and the same set of labeled dimensions to the same metric and the smae set of labeled dimensions
+
+Metric Types:
+- Counter: Monotnically Increasing
+- Gauge: Up and Down
+- Histogram : Samples Obeservations and Counts them in Configurable Buckets
+
+Jons and Instances:
+
+- Instances : End Points where we scrape the metrics
+
+- Jobs: Collection of Instances
+
+Prometheus-Architecture:
+
+- Prometheus Server: Collects all inofrmations
+- TSDB : Where it connects with origin host os HardDisk/SSD To store the metrics in Time-Series DataBase
+- Retrieval : Pull Metrics from Jobs/Instnaces/Exporters
+- Alert Manager: Where it can push the notifications to many services to slack/pagerduty/teams/mails etc ..
+- PromQL Queries: A Queries where we run and get the UP
+- HTTP Server: Where we can Acces the web ui for Prometheus from browser
+- PushGateway : For supporting short lived Jobs
+- Service Discovery : Where it will be cresting the Nodes from where the Prometheus Can fetch the metrics based on utilizations
+
+Servers/Services in Prometheus:
+- Prometheus Server
+- HTTP Server
+- Alert Manager
+- Node-Exporter
+- PushGateway
+- State Metrics Server
+- Grafana Server
+
+How do we manage and monitor spring boot application in production using prometheus:

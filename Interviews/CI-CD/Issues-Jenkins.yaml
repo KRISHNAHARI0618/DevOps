@@ -1,0 +1,10 @@
+1: OutOfMemoryError: Your Jenkins may encounter out of memory issue due to installing heavy plugins etc..
+2: One time we got issue with out of memory when we created the machine with less memory then the jobs got not executed due to java
+
+cmd ["java", "-Xmx2048m", "-Xms512m", "-jar", "jenkins.war"]
+
+Xmx == Maximum heap size 2048m
+Xms == Initial Heap size 512m
+
+Java Can take more memory when we are not building the application based on variable and objects class will not take memory
+

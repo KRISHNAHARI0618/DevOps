@@ -1,0 +1,25 @@
+Introduction:
+- The history of Software Integration
+Continuous Integration with GitHub-Actions:
+- Source Code Management
+- We Can Have one more repositories
+- Which Can be merged based on the requirements building
+- Development Cycles can be set Based on the requirements and building time
+
+Integration is Called :
+- Combining all the Features into one main branch to make the one good product is called Integrations
+- After That Testers will do smoke Tests
+- Features are meeting the specification requirements
+- It can be done with in Hours
+
+Continuous Integration:
+
+- SCM - GitHub - Main Branch - Feature Branches
+- Automating the Build
+- Introduce Automate Tests (TDD) Unit Tests,Integration Tests, Ui Tests,
+- Linting (Unified Code Style)
+- Security / Scanning
+- Pull Requests
+
+CI in cPython Project:
+- 

@@ -1,0 +1,13 @@
+name: Learning-GitHub-Actions
+on: workflow_dispatch
+jobs:
+  first-Job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Greeting
+        run: echo "Hello World"
+      - name: Print goodBye
+        run: echo "Good bye Dear"
+      - name: Print Simplying
+        run: echo "ls -ltr"
+

@@ -1,0 +1,14 @@
+# Ignore specific files
+file_to_ignore.txt
+
+# Ignore directories
+directory_to_ignore/
+
+# Ignore all .log files
+*.log
+
+# Ignore all files with .tmp extension
+*.tmp
+
+# Ignore .git directory
+.git/

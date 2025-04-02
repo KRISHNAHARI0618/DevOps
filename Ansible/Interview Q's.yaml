@@ -1,0 +1,320 @@
+ansible_interview_questions:
+  - question: What is Configuration Management?
+    answer: |
+      Configuration management is a process for maintaining computer systems, servers,
+      applications, network devices, and other IT components in a desired state.
+      It's a way to help ensure that a system performs as expected, even after many
+      changes are made over time.
+
+  - question: How does Ansible work?
+    answer: |
+      Ansible works by connecting to nodes (clients, servers, or whatever you are
+      configuring) on a network, and then sending a small program called an Ansible
+      module to that node. Ansible executes these modules over SSH and removes them
+      when finished.
+
+  - question: What are the features of Ansible? or do you think ansible is better
+      than other configuration management tools ? if yes why ?
+    answer: |
+      Features of Ansible include:
+        - Agentless: No special software needs to be installed on the managed nodes.
+        - SSH Authentication: Uses standard SSH for communication.
+        - Simple Language (YAML): Playbooks are written in human-readable YAML.
+        - Powerful Modules: A vast library of modules for various tasks.
+        - Idempotent: Running the same playbook multiple times results in the same system state.
+
+      Whether Ansible is "better" is subjective and depends on specific needs. However,
+      its agentless nature and simplicity often make it easier to get started with
+      and manage, especially in environments where installing agents is difficult
+      or undesirable.
+
+  - question: Explain Infrastructure as Code?
+    answer: |
+      Infrastructure as Code (IaC) is the practice of managing and provisioning
+      computer infrastructure through machine-readable code, rather than through
+      manual configuration or interactive tools. This allows for version control,
+      automation, and consistency in infrastructure management.
+
+  - question: What is Ansible Galaxy?
+    answer: |
+      Ansible Galaxy is a website and command-line tool for discovering, downloading,
+      and sharing Ansible roles and collections. It's a community hub where users
+      can contribute and reuse pre-built Ansible content.
+
+  - question: Explain Ansible modules in detail?
+    answer: |
+      Ansible modules are the building blocks of Ansible playbooks. Each module
+      performs a specific task, such as installing packages, managing services,
+      copying files, or interacting with cloud providers. Ansible has a vast library
+      of modules covering a wide range of functionalities. Modules are idempotent,
+      meaning they only make changes if necessary to bring the system to the desired
+      state.
+
+  - question: What is a YAML file and how do we use it in Ansible?
+    answer: |
+      YAML (YAML Ain't Markup Language) is a human-readable data serialization language.
+      In Ansible, YAML files are used to write playbooks, which are lists of tasks
+      to be executed on managed nodes. YAML's simple syntax makes Ansible playbooks
+      easy to understand and write.
+
+  - question: What are Ansible tasks?
+    answer: |
+      Ansible tasks are the individual units of action within a playbook. Each task
+      calls a specific Ansible module to perform a particular operation on the
+      managed nodes. Tasks are executed sequentially within a playbook.
+
+  - question: How to use YAML files in high programming languages such as JAVA, Python, etc?
+    answer: |
+      High-level programming languages like Java and Python have libraries to parse
+      and work with YAML files.
+        - Python: Uses libraries like `PyYAML`.
+        - Java: Uses libraries like `SnakeYAML`.
+      These libraries allow you to read data from YAML files into data structures
+      (like dictionaries or objects) in your programming language, and also to
+      serialize data back into YAML format.
+
+  - question: How to setup a jump host to access servers having no direct access?
+    answer: |
+      You can set up a jump host (also known as a bastion host) in Ansible using the
+      `ansible_ssh_common_args` variable in your inventory or playbook. This allows
+      you to specify SSH options to connect through the jump host first.
+
+      Example in inventory:
+      ```ini
+      [target_servers]
+      server1 ansible_host=10.0.0.10
+
+      [jump_host]
+      jump ansible_host=your_jump_host_ip
+
+      [target_servers:vars]
+      ansible_ssh_common_args='-o ProxyCommand="ssh -J jump@%h:22 %r@%h:22"'
+      ```
+
+  - question: How to automate the password input in playbook using encrypted files?
+    answer: |
+      You can automate password input using Ansible Vault to encrypt files containing
+      sensitive information like passwords. You can then provide the Vault password
+      when running the playbook using the `--ask-vault-pass` option or by setting
+      `ansible_vault_password_file`.
+
+  - question: What are callback plugins in Ansible?
+    answer: |
+      Callback plugins in Ansible allow you to customize the output and behavior of
+      Ansible during playbook execution. They can be used to log events, send
+      notifications, or display custom information.
+
+  - question: What is Ansible Inventory and its types?
+    answer: |
+      Ansible Inventory is a file (or dynamic script) that lists the managed nodes
+      that Ansible will configure. It contains information about the hosts, their
+      IP addresses, and groups they belong to.
+
+      Types of Inventory:
+        - Static Inventory: A plain text file (usually INI or YAML format) listing
+          the hosts and groups.
+        - Dynamic Inventory: A script that dynamically retrieves the list of hosts
+          from a cloud provider, CMDB, or other source.
+
+  - question: What is Ansible Vault?
+    answer: |
+      Ansible Vault is a feature that allows you to encrypt sensitive data in your
+      Ansible playbooks, roles, and inventory files. This is useful for storing
+      passwords, API keys, and other confidential information securely.
+
+  - question: How can looping be done over a list of hosts in a group, inside of a template?
+    answer: |
+      You can iterate over a list of hosts in a group within a Jinja2 template
+      using the `groups` variable and a `for` loop.
+
+      Example:
+      ```jinja2
+      {% for host in groups['my_group'] %}
+        Hostname: {{ hostvars[host]['ansible_host'] }}
+      {% endfor %}
+      ```
+
+  - question: What is the ad-hoc command in Ansible?
+    answer: |
+      An ad-hoc command in Ansible is a simple, one-line command used to perform
+      quick tasks on managed nodes without writing a playbook. It's useful for
+      testing connectivity or performing basic operations.
+
+      Example:
+      ```bash
+      ansible all -m ping
+      ```
+
+  - question: Install Nginx using Ansible playbook?
+    answer: |
+      ```yaml
+      ---
+      - name: Install Nginx
+        hosts: web_servers
+        become: true
+        tasks:
+          - name: Update apt cache
+            apt:
+              update_cache: yes
+            when: ansible_os_family == "Debian"
+
+          - name: Install Nginx package
+            package:
+              name: nginx
+              state: present
+
+          - name: Start Nginx service
+            service:
+              name: nginx
+              state: started
+              enabled: yes
+      ```
+
+  - question: How do I access a variable name programmatically?
+    answer: |
+      You can access a variable name programmatically using Jinja2's attribute access
+      or by constructing the variable name as a string and then using the `vars`
+      lookup.
+
+      Example using attribute access (if the variable name is known at template time):
+      ```jinja2
+      {{ my_variable_name }}
+      ```
+
+      Example using the `vars` lookup (if the variable name is dynamic):
+      ```jinja2
+      {{ vars[dynamic_variable_name] }}
+      ```
+
+  - question: What is the difference between Ansible and Puppet?
+    answer: |
+      Key differences between Ansible and Puppet:
+        - Architecture: Ansible is agentless, while Puppet requires an agent on
+          managed nodes.
+        - Language: Ansible uses YAML for playbooks, while Puppet uses its own
+          declarative language.
+        - Complexity: Ansible is often considered simpler to learn and use initially.
+        - Push vs. Pull: Ansible uses a push-based approach, while Puppet uses a
+          pull-based approach (by default).
+
+  - question: What is Ansible Tower and what are its features?
+    answer: |
+      Ansible Tower (now Red Hat Ansible Automation Platform) is a web-based UI and
+      centralized management platform for Ansible.
+
+      Features include:
+        - Visual Dashboard: Provides a real-time view of automation status.
+        - Role-Based Access Control (RBAC): Manages user permissions.
+        - Job Scheduling: Allows scheduling of Ansible playbooks.
+        - Workflow Automation: Enables chaining multiple playbooks together.
+        - Centralized Inventory Management: Simplifies management of managed nodes.
+        - REST API: Allows integration with other systems.
+        - Secrets Management: Securely stores and manages sensitive credentials.
+
+  - question: Explain how you will copy files recursively onto a target host?
+    answer: |
+      You can copy files recursively using the `copy` module with the `recurse=yes`
+      option.
+
+      Example:
+      ```yaml
+      - name: Copy directory recursively
+        hosts: all
+        tasks:
+          - name: Copy local directory to remote
+            copy:
+              src: /path/to/local/directory/
+              dest: /path/to/remote/directory/
+              recurse: yes
+      ```
+
+  - question: What is the best way to make Content Reusable/ Re distributable?
+    answer: |
+      The best way to make Ansible content reusable and redistributable is by using
+      **Ansible Roles**. Roles are a structured way of organizing tasks, handlers,
+      variables, templates, and other Ansible components. They can be easily shared
+      via Ansible Galaxy or version control systems.
+
+  - question: What are handlers?
+    answer: |
+      Handlers are special tasks in Ansible that are only executed when explicitly
+      notified by another task. They are typically used for actions like restarting
+      services after a configuration change. Handlers are executed at the end of
+      the playbook run (or when explicitly flushed).
+
+  - question: How to generate encrypted passwords for a user module?
+    answer: |
+      You can generate encrypted passwords for the `user` module using the `ansible-vault`
+      command or by using Python's `crypt` module within a playbook (though the latter
+      is less secure for storing in playbooks directly).
+
+      Using `ansible-vault`:
+      ```bash
+      ansible-vault encrypt_string 'your_password' --name 'user_password'
+      ```
+      Then use the `user_password` variable in your playbook.
+
+  - question: How does dot notation and array notation of variables are different?
+    answer: |
+      In Ansible (and Jinja2), both dot notation and array notation can be used to
+      access variables, especially nested ones.
+
+      - Dot Notation: Used to access attributes of objects or keys of dictionaries.
+        Example: `{{ my_dict.key }}` or `{{ my_object.attribute }}`
+
+      - Array Notation: Used to access elements of lists or dictionary keys, especially
+        when the key contains special characters or is a variable itself.
+        Example: `{{ my_list[0] }}` or `{{ my_dict['special-key'] }}` or `{{ my_dict[dynamic_key] }}`
+
+      Array notation is more flexible and necessary when dealing with dynamic keys
+      or keys with special characters. Dot notation is generally cleaner for simple
+      cases.
+
+  - question: How does Ansible synchronize module works?
+    answer: |
+      The `synchronize` module in Ansible uses `rsync` under the hood to transfer
+      files between the Ansible control node and managed nodes. It allows for
+      one-way synchronization of files and directories, with options for recursion,
+      deletion, and other `rsync` functionalities. It's useful for deploying
+      applications or copying large amounts of data.
+
+  - question: How does the Ansible firewalld module work?
+    answer: |
+      The `firewalld` module in Ansible is used to manage the `firewalld` service
+      on Linux systems. It allows you to add, remove, enable, and disable firewall
+      rules (like ports, services, and zones). It interacts with the `firewall-cmd`
+      utility on the managed nodes.
+
+  - question: How is the Ansible set_fact module different from vars, vars_file, or include_var?
+    answer: |
+      - `vars`: Defines variables directly within a playbook or role. They are
+        typically static values defined at the beginning.
+      - `vars_file`: Loads variables from external YAML files. Useful for organizing
+        variables and separating them from the main playbook logic.
+      - `include_var`: Loads variables from an external YAML file, but the loading
+        happens during the execution of the playbook at the point where the `include_var`
+        task is encountered.
+      - `set_fact`: Creates or updates variables dynamically during playbook execution.
+        The values of these variables can depend on the output of previous tasks.
+        `set_fact` variables are available for subsequent tasks in the same play.
+
+      In essence, `vars` and `vars_file` are for defining static variables, `include_var`
+      loads variables at runtime, and `set_fact` creates dynamic variables based on
+      task execution.
+
+  - question: When is it unsafe to bulk-set task arguments from a variable?
+    answer: |
+      It can be unsafe to bulk-set task arguments from a variable when the variable
+      contains keys that are not valid arguments for the module being used. This
+      can lead to unexpected behavior or errors. It's also unsafe if the variable
+      contains sensitive information that you don't want to expose in task arguments
+      (though Ansible Vault can help mitigate this). Always ensure the variable's
+      structure and content match the expected arguments of the module.
+
+  - question: Explain Ansible register?
+    answer: |
+      The `register` keyword in Ansible is used to capture the output of a task and
+      store it in a variable. This variable can then be used in subsequent tasks
+      to make decisions or perform actions based on the outcome of the registered
+      task. The registered variable contains information like the task's status
+      (success, failure), any output generated by the module, and other details.

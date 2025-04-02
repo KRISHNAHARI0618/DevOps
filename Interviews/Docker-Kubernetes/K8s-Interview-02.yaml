@@ -1,0 +1,200 @@
+Why we need Containers and Container Orchestration:
+1: To Increase the efficiency, portability,scalability
+2: Reduce the usage of Operating system dependencies
+
+K8s Architecture: Nodes/Minions
+API-Server,ETCD,Controller Manager,DNS,Scheduler,Kubelet,Kube-Proxy,Container Runtime Interface(containerd)
+
+How To manage Clusters when down:
+There is concept like Quorum that means we need to mention on as leader
+When the Leader is not available any one by voluntarily can take up the responsibilities
+
+Principle:
+Quorum: (n/2) + 1
+
+How many Nodes are there: 1 Clusters & 6 Worker Nodes
+
+What Versions are you using: Dev 1.27 & Prod 1.27
+
+How to talk with any cluster and set as default:
+Kube-Config file
+kubectl config view
+Location: .kube/config
+Config File has Three Fields:
+1: Clusters: which cluster is using
+2: Contexts: cluster name
+3: Users: for which users have the access with
+
+Deploy Nginx:
+kubectl run nginx --image=nginx
+
+There are two sides in the kubernetes:
+1: Client Side:
+  1: Validation
+  2: Format checking
+  3: misconfiguration (Rest Api Calls)
+  4: Authentication data need to pass which is saved in config file
+
+2: Server Side: API Server Send the request to Config and validate
+  1: Authorization
+  2: Authentication
+
+How to List of resources/Objects:
+kubectl api-resources
+Name
+Shortnames
+APIVersion
+Namespaced
+KIND
+
+List Of Objects which you worked on:
+Pod
+ReplicasSet
+Deployment
+StatefulSet
+HeadLess Set
+Daemon Set
+Service
+NodePort
+ClusterIP
+LoadBalancer
+Ingress
+
+How to get the Documentation of Any Objects:
+kubectl explain pod
+
+How will you deploy an application:
+1: Front end
+2: DB
+High Availability
+
+Front End:
+1: Stateless and Replica Count as 3
+2: Create a Expose the deployment as Load Balancer/NodePort
+
+DB:
+1: A Stateful application
+2: No need to expose the application we need to create a service ClusterIP
+3: Create a Storage Class and Dynamic provisioning
+4: Storage Class will create PV and we just need to create a PV
+
+For Writing -> Data Bases
+For Reading -> ClusterIP
+
+Best Practices:
+1: Network Policies
+2: Pod Security Policy
+
+Based on The load increase how to increase:
+1: Based on the threshold we need to deploy
+2: Horizontal Pod Auto-scalar
+
+What is Image Pull Policy:
+1: IfNotPresent
+2: Always
+3: Never
+
+What is Container Pull Policy:
+Container Restart Policy:
+1: Always
+2: OnFailure
+3: Never
+
+Pod Phase/Status:
+1: Pending
+2: Running
+3: Succeeded
+4: Failed
+5: Unknown
+
+Container States/Status:
+1: Waiting
+2: Running
+3: Terminated
+
+Pod Checking Mechanisms:
+What is A Probe :
+a Diagnostic performed periodically by the kubelet on a container
+1: exec
+2: grpc
+3: httpGet
+4: tcpSocket
+
+Probe OutCome:
+Success
+Failure
+Unknown
+
+Types of Probes:
+livenessProbe
+readinessProbe
+StartupProbe
+
+What is an OOM Killed:
+1: Out Of Memory Issue
+2: We will implement Resources Requests and Limits memory
+3: 1vCPU = 1000m(Milli Cores) 1 GB = 1024Mb
+
+What is ImagePullBackOff:
+1: When the container run time not able to pull the image
+
+How to store the images in private and pull from Private repo:
+Create a Secret
+
+Can Pod Have Multiple Containers:
+max 2 containers
+
+We have S3 Bucket and Have a File we need to install those file to access the application what pattern you will follow:
+1: i will follow the init containers
+init containers
+volume as : emptyDir
+download the file in empty directory
+can we have multiple init container and if fails:
+1: Yes we can have
+2: It will restart
+
+How many init containers have: there is no limit
+
+Situation:
+To Ship Logs Side car Containers
+
+What are distroless images:
+there is no utilities in image these are called distroless images
+
+Deployments:
+1: Canary Deployments
+2: Blue-Green/Black-Red Deployments
+3: A/B Testing
+
+Types of Containers in K8s:
+application containers: Main Application Containers
+init containers: Starts to set up the config files ,downloading data etc..
+side car containers: Shipping The log data
+helper containers: Data Migrations, Backups, Maintenance activities.
+builder containers: are used to building and packaging the applications
+proxy containers: Intermediaries between containers and external services
+Ephemeral Containers:
+When there is no utilities like curl
+we need to interact with main application debugging
+we need a containers like Ephemeral Containers
+Adapter Containers: They take an Input and Change the output and Give to another format
+
+What is the replica set: It is a Controller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

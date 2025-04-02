@@ -1,0 +1,99 @@
+RBAC
+HorizontalPodAutoScalar
+Ingress Controller
+
+Helm Chart is Kubernetes Package Manager
+
+Role Based Access Controller (RBAC)
+Authentication and Authorization
+
+Role
+Role Binding
+Cluster Role
+Cluster Role Binding
+
+Resources or Objects in Kubernetes are Either Cluster level and Namespace level
+
+Roboshop:
+Project Started
+Team Leader Managers,DevOps Engineers
+
+
+As EKS Admin:
+IAM ---> Authentication
+EKS --> Authorization needed
+RBAC --> Will Provide EKS Authorization
+    1: Create Namespace
+    2: Create User and Assign some IAM Role
+    3: Role ,Give Policy/Permissions should have access to describe the EKS
+
+Role and Role Binding:
+Role --> Permissions
+
+Config Map in AWS-AUTH in kube-system
+here we need to map iam user and k8-RBAC
+
+kubectl get configmap aws-auth -n kube-system -o yaml
+
+aws eks iam Permissions
+
+map roles are already available
+create users
+mapUsers:
+
+AWS is Cloud , EKS Is Platform
+
+IAM --> Authentication
+RBAC --> Authorization
+
+IAM Role/User Creation:
+
+1: Go to IAM
+2: Create User by attaching Policy
+3: Mention in that policy that describe the cluster
+
+Role Has 3 Components:
+
+Role:
+
+metadata:
+  name: roboshop-admin
+rules:
+- apiResources: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+
+Role Binding:
+
+apiVersion:
+metadata:
+kind:
+subjects:
+- kind: User
+  name: ramesh
+  apoGroup: rbac.authorize.k8s.io
+roleRef:
+  kind: role
+  name: roboshop-admin
+  apiGroup:
+
+EKS Cluster:
+
+aws auth in kube-system namespace
+configmap aws-auth in kube-system here we need to map iam user and k8 rbac
+
+kubectl get configmap aws-auth -n kube-system -o yaml
+eksctl aws-auth
+Map roles will be already available we need add map users in the aws-auth config map in kube-system
+refer doc: aws eks iam
+
+Steps to Create Role and Role Binding:
+1: Create User in IAM
+2: Assign That Iam User in EKS Cluster Kube-system namespace aws-auth config map
+role arn should give to get access to user
+    namespace: kube-system
+    configMap name : aws-auth
+    cluster: eks-cluster
+    rolearn: aws-arn
+3: Create a Role for that user what kind of permissions will assign
+4: Create a Role binding To assign that role to particular resource/project

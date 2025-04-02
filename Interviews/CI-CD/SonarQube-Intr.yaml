@@ -1,0 +1,64 @@
+There are different Types of Scanning:
+1: Static Source Code Analysis
+- checks the source code analysis it and can give recommendations
+
+2: Dynamic Source Code Analysis
+- mocks the process of code at runtime,Mocks the process of hacking
+
+3: Static Application Security Testing
+- Checks for Passwords or environment variables
+
+What is Sonar-Cube:
+Open source Application code analysis platform where it will checks the code quality,identify bugs, security vulnerabilities, and code bad smells.
+Security Vulnerabilities in Code Database
+Code Smells
+Detect Bugs
+
+Key Features Of SonarQube:
+Code Quality analysis
+Detection of Code Smells
+Bugs
+Vulnerabilities
+Security Hotpots
+Code Duplication
+Quality Gates
+Threshold Value
+Integrating with various languages
+tools
+reporting
+
+Sonar Port Number: 9000
+
+Installation of Sonar Cube:
+Install Sonar Cube
+Install Sonar Scanner in Agents
+Configure Sonar Cube Ip Address in Sonar Scanner Properties.
+
+Quality Gates: DevOps Engineer Role
+
+Threshold Value
+Conditions
+Technical Debt Measure
+Code Coverage : 80% Above
+Number of Blocker
+Critical Issues
+Security rating/Review : A
+Unit Test Pass Rate
+Code Smells : 0
+Bugs: 0
+
+What is Technical Debt:
+How much time will take to clear all the issues
+
+What is Code Coverage:
+
+What is Static Analysis & Dynamic Analysis:
+
+What are Deployment Strategies:
+1: Canary Deployment
+2: Blue-Green Deployment
+3: A/B Testing Deployment
+4: Rolling Updates
+
+
+

@@ -1,0 +1,12 @@
+Problem Statements:
+
+A User has Created a EC2 instances and By Default it get attached with Volume and he thinks that Volume and Data is important hence User saved the EBS Volumes as Snapshots and After sometime he Deleted the instanes and Deleted the EBS Volumes But forgot to Delete Snapshots. It makes the cost very high
+
+Image ID: default = "ami-03265a0778a880afb"
+
+
+Steps To Perform Actions:
+
+1: AWS Configure
+2: Python Boto3 Module 
+3: 

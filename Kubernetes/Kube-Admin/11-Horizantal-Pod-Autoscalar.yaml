@@ -1,0 +1,51 @@
+Horizontal Pod AutoScalar:
+
+Install Apache Bench: sudo  yum install httpd-tools -y
+Sending Request: ab -n 10000 -c 1000
+
+1: Metrics Server
+
+replicas --> 1 to 10
+
+CPU Utilization or Memory Utilization
+
+HPA with custom metrics:
+
+Prometheus: Client Libraries
+
+EC2 Scaling:
+Traffic
+Application Load Balancer
+AutoScaling Policy: Cloud Watch Metrics CPU is > 50%
+AutoScaling Group
+Create a Machines With same configuration
+
+EKS Container Scaling:
+Horizontal Pod AutoScaler
+Amazon EKS Auto-Scaling Group
+
+Amazon EC2: m5.large--> vCPU=2 Memory(GiB) = 8
+in Pod CPU: 500m = 0.5vCPU
+1 vCPU = 1000m(Milli Core)
+
+One pod limits vCPU = 1000m(1vCPU)
+One Pod requesting vCPU = 500m(0.5vCPU)
+
+targetCPUUtilizationPercentage: 50
+
+resources:
+  requests:
+    cpu: 500m
+  limits:
+    cpu: 1000m
+
+if any pod uses cpu percentage 50 percentage in request limit in pod spec that is 250m cpu then hpa will spin up the pods
+
+Installation of Metrics Server
+Deployment, Service, HPA
+Increase Load
+Pod Scale
+
+
+
+

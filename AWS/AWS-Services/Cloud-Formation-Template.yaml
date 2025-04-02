@@ -1,0 +1,93 @@
+Cloud Formation Template:
+Used to define the Infrastructure
+IaC --> Infra as a Code
+AWS CLI & AWS CFT
+Feature and Components
+Tips and Tricks
+
+CFT: Cloud Formation Template
+Principles in IaC:
+Infrastructure as a code
+Versioning The code
+Write code To create Infrastructure
+Any Tool should act as a Middle Man for creating a infrastructure
+User --> MiddleMan --> Cloud (AWS,Azure,GCP)
+CFT Would be Versioned,
+Declarative in nature --> What you see is What you have
+
+Stack : A Stack is the one implements the template
+
+Pre-Requisite:
+1: Template is Ready
+2: Use a Sample Template
+3: Create template in Designer
+
+CFT : It will ask The user To give the
+Drift Detection : Detection of Drift
+- Some Unknown User has changed the resource Configuration
+Differences between the Configuration file and actual resources
+
+When Should you use CFT Over CLI:
+- When we need to get list of some resources we go with cli
+- when we need to create list of resources we use CFT
+
+Features of CFT:
+- It uses Yaml Formatting
+- Yaml is basically depends on Indentation
+- Yaml is easy to read and write
+- Json is Difficult to read and write Fully on Brackets
+
+Main Features of CFT:
+- Drift Detection : Modifications done to infra by other person and it will get detected is called Drift Detection
+- Creating Infra
+- Versioning
+- Store Templates in S3 Bucket
+- Create a Stack and Import all local Infra Yaml Files and Run it will create the Infra
+
+Main Components to Create the infra:
+- Version
+- Description
+- Metadata
+- Parameters
+- Rules
+- Mappings
+- Conditions
+- Resources**: This is mandatory field
+1: EC2
+2: S3
+3: Cloud Build
+
+When should you use CFT / CLI:
+1: When we need to run/create just one or 2 resources then aws cli is best
+2: When you need to create multiple resources multiple times then we go with CFT
+
+How many Lang Supports: JSON/YAML
+Json & Yaml Structured
+
+Yaml Format: Template Below
+AWSTemplateFormatVersion: "2010-09-09"
+Description: A sample template
+Resources:
+  MyEC2Instance: #An inline comment
+    Type: "AWS::EC2::Instance"
+    Properties:
+      ImageId: "ami-0ff8a91507f77f867" #Another comment -- This is a Linux AMI
+      InstanceType: t2.micro
+      KeyName: testkey
+      BlockDeviceMappings:
+        -
+          DeviceName: /dev/sdm
+          Ebs:
+            VolumeType: io1
+            Iops: 200
+            DeleteOnTermination: false
+            VolumeSize: 20
+
+!Ref: Is an Intrinsic Function used to obtain the value of the specified parameter or resource
+
+How do you Handle Sensitive Information in Cloud Formation templates:
+1: using AWS Systems Manager Parameter Store or Secrets Manager. You can reference parameters values in your Cloud Formation
+
+# Fn::If and Fn::Equals
+
+

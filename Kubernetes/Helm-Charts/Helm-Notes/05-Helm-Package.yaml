@@ -1,0 +1,61 @@
+Helm Packages:
+helm create : will create a empty packages and we can modify it based on our requirement
+
+helm install mychart1 .
+helm upgrade mychart1 --version=1.0.0
+
+helm package myfirstchart/ --destination packages/
+
+# Helm Package  --app-version
+helm package myfirstchart/ --app-version "3.0.0" --version "3.0.0" --destination packages/
+
+Helm show command:
+
+
+Helm Dependency:
+helm dependency charts
+based on sub-charts it will deploy based on the dependencies
+
+We will mention sub chart name in dependencies section in main chart file
+
+Chart Version: major:minor:patch
+
+we can use > < == !=
+
+For Comparision operators
+range Operators
+
+Helm Dependency Built command
+helm dependency build <chart-file>
+
+Helm Update will upgrade the app and chart version
+helm dependency build command will update if there are any changes in updates
+
+Add Alias Command in Dependencies in Dependencies section
+
+Helm Dependency Condition:
+Add condition whether chart should run or not
+mychart4:
+  enables: false
+
+dependencies:
+- name: mychart4
+  version: "0.0.1"
+  condition: myChart4.enabled
+
+Helm Dependency Condition + Alias:
+
+Helm Dependency Tags:
+
+adding dependencies section in Chart.yaml
+dependencies:
+- name: mychart
+  version: "0.1.0"
+  alias: child chart4
+  condition: child chart4.enabled
+  tags:
+  - backend
+
+
+
+

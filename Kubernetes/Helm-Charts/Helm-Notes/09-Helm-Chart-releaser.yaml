@@ -1,0 +1,2 @@
+Helm Chart Releaser :
+It is a GitHub Actions where it will generate helm charts based on teh actions we set up

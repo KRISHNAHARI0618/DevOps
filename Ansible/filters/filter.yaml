@@ -1,0 +1,15 @@
+- name: Starting the nginx
+  hosts: localhost
+  become: yes
+  vars:
+    name: peddireddy
+  tasks:
+  - name: printing filters
+    debug:
+      msg: "{{name | upper}}"
+  - name: printing filters2
+    debug:
+      msg: "{{name | lower}}"
+  - name: printing filters2
+    debug:
+      msg: "{{NAME | default('DevOps')}}"

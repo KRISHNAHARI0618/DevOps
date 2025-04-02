@@ -1,0 +1,8 @@
+{{- name := .Chart.name -}}
+{{- if $name eq "peddireddy"}}
+"peddireddy"
+
+Range Function: for & foreach
+
+
+

@@ -1,0 +1,4 @@
+https://github.com/rimelek/fix-docker-containers
+
+While Building the image give to see build errors
+docker build --tag --progress plain

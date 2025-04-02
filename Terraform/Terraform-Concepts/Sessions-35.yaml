@@ -1,0 +1,31 @@
+Launch Template:
+Instance Launching Configuartion is called Launch Template
+
+AutoScaling: Launch / Terminate the instance based on the trafic
+input for AutoScale --> Launch Template
+
+Target Group : Group of Instances
+
+Load Balancer: Like our team manager 
+he will redirect based on the work getting to him 
+based on the traffic or path the lb will send the traffic to partcular resource
+
+Application Load Balancer:
+  balances the load
+
+Listeners:
+On which port the alb listens 
+
+StartUp:
+Project: Team Lead
+UI,Backend,DB --> 1 person each
+
+1. Launch Template
+2. ASG --> AutoScaling Group
+3. Target Group
+4. Load Balancers
+5. 
+tail -f /var/log/cloud-init-output.log --> to check the log connectivity
+Select Atleast 2 Availability Zones For high availablity
+when some one hits the port no 80 forward to some  target group
+ 

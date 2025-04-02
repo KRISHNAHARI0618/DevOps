@@ -1,0 +1,12 @@
+Kube-Controller-Manager:
+Watch Status
+Remediate Situation
+kube controller manager:
+location: /usr/local/bin/kube-controller-manager
+Node monitor period: 5s
+Node monitor Grace period: 40s
+Node eviction period: 5m
+
+/etc/kubernetes
+
+ps -aux | grep kube-controller

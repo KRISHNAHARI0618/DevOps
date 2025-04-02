@@ -1,0 +1,97 @@
+Session:24: Infrastructure Discussion
+   0:00 : Recap
+   05:38 : Advantages of Terraform
+   20:22 : Terraform Environment Setup
+   29:40 : Command Line Interface
+   33:30 : IAM user Setup
+   38:54 : Hybrid IaaC
+   41:50 : Creation Of ec2
+   50:20 : Creation Of Resource
+   1:06:02 : doubts
+   1:16:02 : Variables
+   1:27:56 : Security Group
+   1:39:39 : doubts
+   1:46:43 : Ending
+Session : 25 : IaaC
+   0:00 : recap
+   4:48 : tags
+   12:10 : outputs
+   15:30 : conditions
+   23:30 : count in loops
+   36:00 : route53
+   47:16 : functions
+   59:38 : locals
+   1:13:50 : data sources
+   1:35:08 : doubts
+   1:49:20 : ending
+
+Session : 27:
+   00:00 : Topics discussed
+   02:35 : Loops : For each
+   29:12 : Dynamic Block
+   49:05 : State and Remote State
+   1:07:40 : Remote state Example
+   1:23:38 : S3 bucket
+   1:27:10 : DynamoDB
+   1:34:33 : Doubts
+   1:43:07 : End of session
+
+Session : 28 :
+Topics discussed:
+   CIDR
+   VPC
+   Subnets
+   Internet Gateway
+   Route tables
+   Security Groups
+   EC2 instance
+
+Assignments:
+Private vs Public subnet
+High Availability in AWS
+
+Session 29 : VPC Module Development:
+   Total Development of module
+
+Session 30:
+
+      00:00 : welcome and recap
+      02:45 : developing vpc and other modules
+      18:40 : internet gateway
+      26:36 : subnet creation
+      38:50 : route tables
+      42:00 : NAT gateway
+   01:01:02 : subnets association
+   01:03:20 : group database subnet
+   01:06:45 : vpc module into git
+   01:17:12 : open source module
+   01:21:05 : doubts
+
+Session :31 :
+   00:00  :: Security Group Module Development
+   19:00  :: Parameter Store
+
+Session : 32
+
+   00:00 : ELK:Monitoring Basics : Prometheus
+
+Session : 33
+   00:00    : ELK & LogsStash
+   01:00:00 : VPC Peering Manual Configuration
+
+Session : 34 : Related to Jenkins session : 44
+Terraform:vpc advanced + CI CD Development 44
+   00:00 : VPC Connections
+   10:00 : VPC Peering Terraform
+   56:00 : VPN Setup With Terraform : EC2 Instance
+01:13:00 : MongoDB SetUp
+
+Session: 36 : Topics discussed:
+Launch template
+Auto scaling
+Target Group
+ALB - Application Load Balancers
+Listeners
+Rules
+Security groups
+

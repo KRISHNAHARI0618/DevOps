@@ -1,0 +1,74 @@
+Cluster Maintenance:
+
+OS Upgrade
+1: kubectl drain node-1
+- No Pods will be scheduled
+- Pods available in it will be moved to another Node
+- Even it Came back It will not Scheduled Pods in it until it is uncordon it
+
+2: kubectl uncordon node-1
+- Node Which come back from after some avilability it this command will help to deploy the pods in it
+
+3: kubectl cordon node-1
+- unlike drain it will not move available pods to another node.
+
+####
+Kubernetes Releases:
+API Versions
+Three Parts : v1.11.3
+v1   . 11  . 3
+Major.Minor.Patch
+
+###
+Cluster Upgrades Process:
+cat /etc/*release* = To See The Releasse fo os version
+
+kubeadm upgrade plan
+kubeadm upgrade apply v1.25.10
+
+###
+Backup and Restore:
+
+Backup Resources:
+Resource Configuration
+ETCD Cluster
+Persistent Volumes
+
+Advanced kubectl Commands:
+- kubectl config get-context --output=json
+- kubectl get nodes --output=json
+- kubectl get nodes -o wide
+
+Step 1: Getting to Know how to retrieve Data
+kubectl get nodes
+kubectl get pods
+kubectl get api
+
+Step 2: Printing Json Format
+kubectl get nodes -o wide
+kubectl get nodes -o json
+
+Step 3: Json Path
+.items[0].spec.containers[0].image
+
+Step 4: Json Path Query with kubectl command
+kubectl get nodes -o jsonpath='{ .items[0].spec.containers[0].image }'
+
+Loops - Range:
+
+'{ range .items[*] } { .metadata.name } { "\t" } { .status.capacity.cpu } { "\n" } {end}'
+
+kubectl get nodes -o jsonpath='{range .items[*] } { .metadata.name } { "\t" } { .status.capacity.cpu } { "\n" } { end }'
+
+Custom Columns: -o=custom-columns=<column-name>:<jsonpath>
+
+kubectl get nodes -o=custom-column=node:.metadata.name, CPU:.status.capacity.cpu
+
+Sort By Command: --sort-by=<json-path> 
+- kubectl get nodes --sort-by=.metadata.name
+
+
+
+
+
+

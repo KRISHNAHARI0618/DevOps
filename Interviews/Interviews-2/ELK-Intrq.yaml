@@ -1,0 +1,177 @@
+What Is Elastic Search:
+1: Distributed Document Store
+2: Instead of storing data in rows and columns it is stored as distributively
+3: It uses NoSQL data Base
+4: Stores Complex Data Structures have been serialized as JSON
+
+There are Two type of Monitoring:
+1: White Box Monitoring
+2: Black Box Monitoring
+
+Elastic Search
+Logstash
+Kibana
+FileBeat
+
+Change the format in Nginx Configuration
+Give the file beat configuration to push the metrics
+
+File beat is sending logs to logstash
+if we want to change something
+
+First Stop File-beat
+Then stop Logstash
+
+Monitoring Important Terms:
+Latency
+Traffic
+Saturation
+Error
+
+Grok Patterns:
+Patterns which can query the data from logstash
+
+discovery type: single node
+
+When we want to access the data from kibana we need to create the index
+
+What is Query ,Range,Fields:
+
+Booleans:
+Must : The "must" clause functions like the logical AND operator. Documents must match all specified criteria.
+{
+  "query": {
+    "bool": {
+      "must": [
+        { "match": { "title": "Elasticsearch" } },
+        { "range": { "year": { "gte": 2020 } } }
+      ]
+    }
+  }
+}
+
+MustNot:  The "must_not" clause functions like the logical NOT operator. Documents must not match the specified condition.
+{
+  "query": {
+    "bool": {
+      "must_not": [
+        { "match": { "status": "archived" } }
+      ]
+    }
+  }
+}
+
+Should: The "should" clause functions like the logical OR operator. At least one of the conditions should match.
+{
+  "query": {
+    "bool": {
+      "should": [
+        { "match": { "genre": "Sci-Fi" } },
+        { "match": { "genre": "Fantasy" } }
+      ]
+    }
+  }
+}
+
+Range:
+Numeric Range Query: Searches for numeric values within a range
+{
+  "query": {
+    "range": {
+      "price": {
+        "gte": 100,
+        "lte": 500
+      }
+    }
+  }
+}
+
+Date Range Query:
+Searches for date values within a range.
+{
+  "query": {
+    "range": {
+      "timestamp": {
+        "gte": "2023-01-01",
+        "lte": "2023-12-31"
+      }
+    }
+  }
+}
+
+Fields:
+Match Query: Searches for a specific term in a field.
+{
+  "query": {
+    "match": {
+      "title": "Elasticsearch"
+    }
+  }
+}
+
+Term Query: Searches for exact terms in a field.
+{
+  "query": {
+    "term": {
+      "status.keyword": "published"
+    }
+  }
+}
+
+Explain what is Relevance Score:
+How well The particular document matches a given query
+1: Term Frequency
+2: Inverse Document Frequency
+3: Fixed Length Norm
+4: Term Proximity
+
+Grok: Grok is a powerful pattern-matching tool used in Logstash (part of the Elastic Stack) for parsing and extracting structured data from unstructured log files or text.
+
+filter {
+  grok {
+    match => { "message" => "%{IP:client_ip} \[%{TIMESTAMP_ISO8601:timestamp}\] %{GREEDYDATA:message}" }
+  }
+}
+
+Grok Patterns:
+1: IP Address Patterns
+2: Timestamp Patterns
+3: Numeric Patterns
+4: Log patterns
+5: path and File Patterns
+6: Custom Patterns
+7: Combined Patterns
+
+ELK Monitoring For Kubernetes:
+
+Beats --->  LogStash --> Elastic Search --> Kibana
+Syslog -->  LogStash --> Elastic Search --> Kibana
+ClientApp-> LogStash --> Elastic Search --> Kibana
+
+FileBeat:
+A Lightweight shipper for forwarding and centralizing log data
+Installed as a agent in servers
+FileBeat monitors the log files or locations that you specify collects the log events and forwards them to either elastic search or logstash for indexing
+
+Metric Beat:
+Metric Beat is a Light weight shipper that you install on your servers
+Collects metrics periodically from the operating systems from services running on the server
+Metric beats takes metrics and statistics that it collects and ships them to the output that you specify such as ElasticSearch or Logstash
+
+LogStash:
+Light weight open source data processing pipeline that allows you to collect data from a variety of sources transform it on the fly and send it to your desired destination
+It is most often used as a data pipeline for elastic search an open source analytics and search engine
+
+Elastic Search:
+Elastic Search is a distributed open source search and analytic engine for all types of data including textual numerical geo-spatial,structured and unstructured.Elastic Search is the central component of the elastic stack mainly a centralized
+
+Kibana:
+Visualization Tool open source data visualization tool
+
+Elastic-Search Port: 9200,9300
+
+
+
+
+
+

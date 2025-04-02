@@ -1,0 +1,161 @@
+course_title: DevOps and Cloud Engineering Skills
+
+core_skills:
+  - category: AWS Cloud Computing
+    topics:
+      - EC2
+      - S3
+      - IAM
+      - VPC
+      - Lambda
+      - RDS
+      - ECS/EKS
+      - CloudFormation/Terraform (covered separately)
+  - category: Linux
+    topics:
+      - Command Line Interface (CLI)
+      - File System Navigation
+      - User and Permissions Management
+      - Package Management (apt, yum)
+      - System Administration Basics
+  - category: Shell Scripting
+    topics:
+      - Bash scripting
+      - Automation of tasks
+      - Scripting for system administration
+  - category: Git
+    topics:
+      - Version control fundamentals
+      - Branching and merging
+      - Collaboration workflows
+  - category: GitHub Actions
+    topics:
+      - CI/CD pipelines with GitHub Actions
+      - Workflow automation
+  - category: GitLab CI/CD
+    topics:
+      - CI/CD pipelines with GitLab CI/CD
+      - Workflow automation
+  - category: Jenkins
+    topics:
+      - CI/CD pipelines with Jenkins
+      - Plugin ecosystem
+      - Pipeline as Code
+  - category: Networking
+    topics:
+      - TCP/IP fundamentals
+      - Subnetting
+      - Routing
+      - Firewalls
+      - DNS
+
+automation_and_infrastructure_as_code:
+  - category: Ansible
+    topics:
+      - Configuration management
+      - Infrastructure provisioning
+      - Playbooks and roles
+  - category: Terraform
+    topics:
+      - Infrastructure as Code (IaC)
+      - Provisioning AWS resources
+      - State management
+  - category: Boto3 - AWS SDK for Python
+    topics:
+      - Interacting with AWS services using Python
+      - Automation of AWS tasks
+
+containerization_and_orchestration:
+  - category: Docker
+    topics:
+      - Containerization concepts
+      - Dockerfile creation
+      - Image management
+      - Docker Compose
+  - category: Kubernetes - CKA Admin
+    topics:
+      - Kubernetes architecture
+      - Cluster administration
+      - Pods, Deployments, Services
+      - Networking in Kubernetes
+      - Storage in Kubernetes
+      - Security in Kubernetes
+  - category: ArgoCD
+    topics:
+      - GitOps principles
+      - Declarative deployment with ArgoCD
+      - Continuous Delivery with GitOps
+  - category: Helm Charts
+    topics:
+      - Packaging Kubernetes applications
+      - Helm chart creation and management
+  - category: Kustomize
+    topics:
+      - Customizing Kubernetes configurations
+      - Managing different environments
+  - category: OpenShift - Kubernetes
+    topics:
+      - Red Hat OpenShift platform
+      - Differences from upstream Kubernetes
+      - OpenShift specific features
+  - category: Service Mesh with Istio
+    topics:
+      - Service mesh concepts
+      - Traffic management with Istio
+      - Observability and security with Istio
+  - category: Lambda Functions
+    topics:
+      - Serverless computing with AWS Lambda
+      - Event-driven architectures
+
+monitoring_and_observability:
+  - category: Prometheus
+    topics:
+      - Metrics collection and querying
+      - Alerting with Alertmanager
+  - category: Grafana
+    topics:
+      - Data visualization and dashboards
+      - Integration with Prometheus and other sources
+  - category: ELK Stack (Elasticsearch, Logstash, Kibana)
+    topics:
+      - Log aggregation and analysis
+      - Searching and visualizing logs
+  - category: SonarQube
+    topics:
+      - Code quality analysis
+      - Static code analysis
+  - category: Nexus
+    topics:
+      - Artifact repository management
+      - Maven and Docker registry
+
+programming_and_scripting:
+  - category: Python
+    topics:
+      - General-purpose programming
+      - Automation scripts
+      - Data manipulation
+  - category: Go Language
+    topics:
+      - System programming
+      - Cloud-native development
+  - category: Java
+    topics:
+      - Enterprise application development
+      - Backend services
+  - category: DSA (Data Structures and Algorithms)
+    topics:
+      - Fundamental data structures
+      - Common algorithms
+      - Problem-solving skills
+  - category: SQL
+    topics:
+      - Database querying and manipulation
+      - Relational database concepts
+
+additional:
+  - category: Prompt Engineering
+    topics:
+      - Crafting effective prompts for large language models
+      - Understanding LLM capabilities and limitations

@@ -1,0 +1,29 @@
+Helm Chart Hooks: Helm hook are the commands
+Using helm hooks we can create k8s objects at certain point in release life cycle
+
+helm release lifecycle
+1: Helm install
+2: helm Upgrade
+3: helm Update
+4: helm delete
+
+taking backup before upgrade
+install configmap and secrets before installing main pod
+
+Helm Hooks are two types: pre and post
+helm install :  pre-install & Post install
+helm upgrade : pre-upgrade & post upgrade
+helm rollback : pre-rollback & post roll back
+helm delete : pre delete & post delete
+helm test hook
+
+using annotations we can configure the hooks
+
+add annotation in pod/deployment file that
+
+Helm Hooks Weight: order of hooks to be arranged
+hook weight assigned to hooks
+
+helm hook should be arranged in numerical order
+helm.sh/hook-weight: "-1"
+helm.sh/hook-weight: "0"

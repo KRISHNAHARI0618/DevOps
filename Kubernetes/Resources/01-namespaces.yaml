@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+    name: roboshop
+
+# We Have Two Commands to create any resources
+# 1: kubectl create will create and give error if already exists
+# 2: kubectl apply will create and update the resource if already exists
+
+# to get resources details kubectl api resources
+

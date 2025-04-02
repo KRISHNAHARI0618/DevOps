@@ -1,0 +1,37 @@
+#Regular Expressions
+* : Represents all (everything/multiple)
+? : Represents single Characters
+?? : Represents two Characters
+. : Represents single character
+
+List out all the files in present directory: ls *
+List out all the files with some extensions: ls *.*
+List out all files starting with a : ls a*
+
+Find all files starting with any character :
+
+[abc]*
+any file with 'a'
+any file with 'b'
+any file with 'c'
+
+List out all the file where file file name starts with lower case
+
+ls [a-z][0-1]
+
+List out all files between files are upper and lower case
+
+ls [[:upper:]]*
+ls [[:lower:]]*
+
+List out all files first letter should Capital second with number third with small
+
+ls [[:upper:]][0-9][[:lower:]]
+
+To get the details with alphanumeric [[:alnum:]]
+
+ls [![:alnum:]]
+
+for i in {1.5};
+do
+  touch "file_$i.txt"

@@ -1,0 +1,40 @@
+Scheduling Notes:
+
+Scheduling: Making sure that pods are matched with node spec so that kubelet can run them
+Preemption: Process of termination pods with lower priority so that high priority pods can run on them
+Eviction: Process of Terminating one or more pods on Nodes
+Pod Disruption: Process by which pods on Nodes are terminated either voluntarily or involuntarily
+1: Voluntarily Disruption: Are started intentionally by application owners or Cluster administrators
+2: Involuntarily Disruption : Are unintentionally and can be triggered by unavoidable issues like Nodes running out of resources
+
+Feasible Nodes: Nodes that meet the scheduling requirements for a pod are called Feasible Nodes
+
+Binding: The scheduler then notifies the API server about this decision in a process called binding.
+
+Node Selection in Kube-Scheduler:
+There are two operations to be performed to schedule the pods to nodes
+1: Filtering : Filter the Nodes based on the requirements of Pods
+2: Scoring: Scores the nodes based on The availability percentage of requirements
+
+There are Two Supported ways to configure the Filtering and Scoring the Nodes
+1: Scheduling Policies: Configuring the predicates for Filtering and priorities for Scoring
+2: Scheduling Profiles: allow you to configure the plugins that implement the different scheduling stages like QueueSort,Filter,Score,Bind,Reserve,Permit etc..
+
+Assigning Pods to Nodes:
+
+1: Node Selectors Matching to the node labels
+2: Affinity and Anti-Affinity
+3: nodeName
+4: Pod Topology
+
+Node Isolation /Restriction:
+Node Restriction
+
+Node Selector: Selecting the node for Pods To schedule
+Affinity:
+Node Affinity
+requiredDuringSchedulingIgnoredDuringExecution
+prefferedDuringSchedulingIgnoredDuringExecution
+
+Pod Affinity
+

@@ -1,0 +1,30 @@
+SourceCode --> WebHook --> Maven --> SonarCube --> Tests --> New Image Pushed to DockerHub --> Image Updater --> Updates with new image --> Manifest Repo --> ArgoCD --> Kubernetes.
+Flow Diagram:
+1: GitHub
+2: WebHooks
+3: Jenkins
+4: Maven
+5: SonarQube
+6: Docker
+7: ArgoCD
+8: Kubernetes
+
+2 GitHub Repositories
+1: Source Code Management
+2: Manifest Files Uploader
+
+1: How Jenkins will Notified that code changes happened
+ans: Triggers like Webhook,PollSCM,CrinTAB Etc..
+  1: PollSCM
+  2: Build GitHub PullRequests
+  3: Build Periodically
+  4: Experimental GitHub Branches
+
+Need To Build An Image For CI-CD Process Draw in Draw.io
+
+
+1: Create A Git Hub Save the Code
+2: Create Instance
+3: Install Java
+4: Install Jenkins
+5: Install Maven In it To package The code

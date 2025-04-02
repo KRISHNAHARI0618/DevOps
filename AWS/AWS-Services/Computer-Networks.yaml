@@ -1,0 +1,174 @@
+Computer Networks:
+Network: Collection of Several Devices to Communicate between each other is called Network
+Communication between Servers,Printers,Computers etc..
+
+Types Of Networks:
+
+  LAN: Local Area Networks 
+  Building,College,Library,Bank
+  Share the resources: Printers,Software Applications
+  High Secure and Fast ,More Efficient
+  Lack of Privacy
+
+  MAN: Metropolitan Area Network 
+  Connection of Multiple LAN's Is Called MAN
+  Fibere Optics and More Cables
+  Less Security
+
+  WAN: Wide Area Network
+  Connections of Several MAN's is called WAN
+  Using Router
+  Internetworks: Between Several Wide Area Network
+
+  PAN: Personal Area Network
+  Router Is called Personal Area Network
+
+Network Topologies:
+
+What is meant by topology?
+Arranging of connection between computers in a network. 
+Arrangement of Computers
+
+Types of Topologies:
+1. BUS TOPOLOGY:
+
+  Connecting systems/computer/servers like bus seats to the one network
+
+  Data Will be shared with every computer connected to the line 
+
+  Collisions will occur between computers
+
+  if we add more computers signal strength will be decreased/low
+
+  No Security
+  
+  Less Expensive
+  Reconfiguration will be easy
+  if cable cuts or fails automatically complete network will be collapsed connected to that cable 
+2. STAR TOPOLOGY:
+    One Star like computer/Device will be present at center
+    All the computers will connected to that star computer/device
+
+    The star computer or Device can be SWITCH/HUB
+
+    HUB: Transmission in hub is Broad Casting which means The data will be shared with every computer connected to that HUB
+
+    SWITCH: Transmits Data between only receiver and senders medium
+
+    Switch Makes the connection like UNICAST
+
+    Unicast is sending data between particular device.
+3. RING TOPOLOGY:
+  Systems are connected between adjacent devices/computers/servers
+  No Collisions
+  No Security
+  Expensive 
+  Difficult to reconfigure
+  if any system fails the adjacent computer also will fail
+  Fault Tolerance will be easy
+4. MESH TOPOLOGY:
+    Every System will be connected to all the other systems in the network 
+    Data can be unidirectional and bidirectional as it was connected to all computers
+    Total Systems = n
+    Total Links = n-1
+    Total UniDirectional Connections = n(n-1) 
+    Total Bi-Directional = n(n-1)/2
+    Expensive
+    Difficult To Reconfigure
+    Any System Fails Transmission will not fails
+5. HYBRID TOPOLOGY:
+    Using All the Abbove topologies is called Hybrid Topology
+
+Network Devices:
+  HUB: Used to Transmit the Data packets to all the connected Devices
+
+  SWITCH: Switch will transmits the data to the desired device and it will check the errors in the data and send good and non corrupted data packets will be send to the desired host.
+  Corrupted Data Packets will be ignored
+
+  ROUTER: Will Transmits Data based on the IP Address .
+
+  REPEATER: It will be regenerate the signal ,connection between computer from one building to another --> Physical layer
+
+  Signal will regenerate the siganl to maintain signal strength
+
+  BRIDGE: Interconnected Two lans working on same protocol --> Data Link Layer
+
+  GATEWAY: Passing data to the networks of different network models.
+  Protocol Converter
+
+OSI Model: Open Systems InterConnections
+  Application Layer
+  Presentation Layer
+  Sessions Layer
+  Transport Layer
+  Network Layer 
+  Data Link Layer
+  Physical Layer
+
+Application Layer --> Where user send and receives the original request
+
+Presentation Layer --> It presents the data and trnasform into data encryption
+
+Session Layer --> Inter Host Communication
+
+Transport Layer --> End to End transportation of data
+
+Network Layer --> Path Determinatiosn and IP address assigning
+Data Link Layer --> Mac Address and physical address
+Physical Layer --> media signal and bits conversion
+
+Protocols Used :
+    Application Layer --> HTTPS,HTTP,FTP,SMTP
+    Presentation Layer --> Data Encryption ,ASCII,jpeg,docx
+    Session Layer --> RPC ,TLS 
+    Transport Layer --> TCP,UDP
+    Network Layer --> IP,IPv4,IPv6
+    Data Link Layer --> MAC Address ,Ethernet,LLC
+    Physical Layer --> Cables ,Axial Cables
+
+Protocol Data Units Used in Layer :
+    Layer 5,6,7 --> Data Is used and Converted to forms
+
+    Layer 4 --> Convert that data into -Segments
+
+    Layer 3 --> Those -Segments will be attached with Data -Packets like eg .. -Segment[TCP/UDP]-Packets
+
+    Layer 2 --> Those Segments and Packets will be further Connected with Frames -Segment[TCP/UDP]-Packet[IP]-Frames[MAC-Address]
+
+    Layer 1 --> -Segment[TCP/UDP]-Packet[IP]-Frames[MAC-Address] Converted into bits and bytes and sends to another host Physical Layer
+
+Devices used in each Layer:
+
+    Layer 5,6,7 --> App Firewalls,VPN,SSL,Proxies
+    Layer 4 --> Load Balancers
+    Layer 3 --> Routers
+    Layer 2 --> NIC's and Switches
+    Layer 1 --> CO-Axial Cables
+
+Physical Layer:
+  Lower Layer or Hardware Layer
+
+  Physical Connection between two devices
+    connection establishment
+    Maintainence
+    DeActivation
+  Information will be in the form of bits
+  Transmission of signal converts to 0's and 1's
+Functionality of Physical Layer:
+    Bit wise Synchronization
+    Bit Rate Control 
+    Physical Topology
+    Transmission Move/Media/Mode
+      Simplex --> Only one can send message should not receive any message
+      Duplex --> Both can be send at a time Bidirectional 
+      Half-Duplex --> Bi-Directional Both directions can send the message but only one flow
+  
+  Devices: Ethernet Cables,Wires,Cables etc.. 
+
+Data Link Layer:
+  
+
+
+
+
+

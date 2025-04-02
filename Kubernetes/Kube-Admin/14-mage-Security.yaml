@@ -1,0 +1,55 @@
+Image Security
+- Private repository and Public Repository
+Private repository is used when we are using images from private repository
+
+we used to store all login details in secrets:
+
+kubectl create secret docker-registry regcred \
+--docker-server=private-registry.io\
+--docker-username=registry-user\
+--docker-password=registry-password\
+--docker-email=registry-user@org.com
+
+we need to mention the image pull secrets in pod specification
+
+Security In Docker:
+we can add permissions to docker container to access other linux capabilities
+capabilities can mention --cap-add/drop/privileges etc...
+
+docker run --cap-add admin-sec ubuntu sleep 36000
+to add admin-sec privileges
+
+to delete admin privileges
+docker run --cap-drop admin-sec ubuntu sleep 4000
+
+kubernetes Security:
+we can add the security at pod level and Conatiner level
+
+when we add security at container level we can security context at container level
+
+when we add security at pod level it will imply security at all pod level
+
+we need to add a section at pod level or container level
+
+# capabilities section should be in only in containers
+
+we can add security context at pod level and Container level
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: web-pod
+spec:
+  containers:
+    - name: ubuntu
+      image: ubuntu
+      command: [ "sleep", "3600"]
+      securityContext:
+        runAsUser: 1000
+      capabilities:
+        add: [ "MAC_ADMIN" ]
+
+
+
+
+

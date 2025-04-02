@@ -1,0 +1,74 @@
+ELK-EKS- Monitoring : Logging and Monitoring
+
+Logging shipping the logs from Jenkins/Any servers to the LogStash
+
+From LogStash it will get indexed
+
+Based on the filtering mechanisms we will push the logs and index that using grok filters
+
+we will create a dashboard using the metrics or logs files
+if anything goes wrong then the alert will trigger and notification will be generated
+We will create a incidents based on the alerts
+
+What is EFK Stack:
+The EFK stack is a collection of open-source tools that are commonly used for log management and analysis.
+
+Elasticsearch: This is a distributed search and analytics engine that is used to store and index data.
+
+Fluent-d: This is a data collector that is used to aggregate logs from various sources, such as applications, servers, and network devices.
+
+Kibana: This is a web-based user interface that is used to visualize and analyze data stored in Elasticsearch.
+
+Together, the EFK stack provides a powerful and flexible solution for collecting, storing, and analyzing log data from multiple sources.
+
+It is often used in modern cloud-based environments, such as Kubernetes, to provide centralized logging and monitoring capabilities for applications and services.
+
+Spring boot application logs monitoring using EFK stack in Kubernetes cluster
+
+ELK Setup:
+Types of Monitoring
+- White Box Monitoring  == In & Out Monitoring
+- Black Box Monitoring  == OutSide Monitoring
+
+Incident Management Team:
+Priority & Severity & Service Level Agreement
+
+Alerts are of four Types:
+Priority: p1,p2,p3,p4
+p1 --> High Priority
+p2 --> Medium
+p3 --> Normal
+p4 --> Low
+
+Severity: S1,S2,S3,S4
+S1: High Severity
+S2: Medium Severity
+S3: Normal
+S4: Low
+
+# Rules to Check the Monitoring
+Latency: Time Taking the service to respond
+Traffic: How many users can accessing our system with out any issues
+Errors:
+1: Server Side Errors -- 500
+2: Client Side Errors -- 400
+3: Redirection Errors -- 300
+4: Success Messages -- 200
+Saturation: Threshold value where we should get messages if that threshold value increases
+ThroughPut: How Many users can access the service/system without any issues within a stipulated time
+
+Elastic LogStash Kibana (ELK)
+1: Originally it was developed for Searching Mechanism
+
+*Elastic search is a Database where we store everything
+*Kibana is a UI It connects to Elastic Search To show the data
+*LogStash is used for Filter the data coming from agents
+*FileBeat will access the log file and Push those to Elastic Search database
+
+DaemonSet: Fluent-d
+
+
+
+
+
+

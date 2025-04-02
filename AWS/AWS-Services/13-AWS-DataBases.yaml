@@ -1,0 +1,81 @@
+What is a Databases:
+1: A Collection of Individual data items which is stored in a highly structured manner is called databases
+2: It Provides the ability to store large amount of information
+3: allows quick access to information
+it ensures security of data
+Data bases are classified into Relational and Non-Relational
+
+Data Bases : Collection of Tables
+Relational Database Management Services
+
+Relational Databases: RDS & Aurora
+1: There is a Relation between tables like primary keys and foreign keys
+2: ACID Complaint (Atomicity,Consistency,Isolation,Durability)
+3: Lift and Shift, ERP, CRM, Finance
+
+Key-Value: DynamoDB
+
+Throughput == No of Requests Processed per certain amount of time
+Latency == How fast that Requests are Processed
+1: High Throughput, low latency read and writes endless scale
+2: Real Time Bidding, Shopping cart, Social, Product,Catalog, Customer preferences
+
+Document: DocumentDB
+1: Used to Store documents and quickly access querying on any attribute
+2: Content Management, Personalization Mobile
+
+In-memory DataBase: ElasticCache
+1: Query by key with microsecond latency
+2: Leader Boards, Real-Time Analytics, Caching
+
+Graph: Neptune
+Time-Series: Time-Stream
+Ledger: QLDB
+Wide Column: Key Spaces Managed By Cassandra
+
+There are four services which are more important
+  Compute
+  Storage
+  Network
+  Databases
+AWS Data Bases:
+There are several types of databases:
+  RDS
+  Aurora
+  DynamoDB
+  Elastic Cache
+  Document DB
+  RDS
+
+What is RDS:
+1: Relational Database Services
+2: AWS Managed Data Base service
+3: AWS Manages/maintains underlying Infrastructure
+4: Supports MariaDB,MicrosoftSQL, MySQL,Oracle,PostgreSQL
+5: Integrate nicely with other aws services
+
+The Data Bases are divided based on the 3V's :
+Volume of Database (TB/PB/GB)
+Variety of DataBase
+Velocity (How much fast the data should be retrieved)
+
+Purpose Built:
+Read Intensive Workloads
+Insertion intensive Workloads
+Write intensive Work Loads
+Update Intensive Workloads
+
+Types of Data Base Services:
+
+Relational : RDS, Aurora-Server & Serverless ,Redshift
+key-Value : DynamoDB, DAX, KeySpaces
+Document: Document DB
+In-memory: Elastic Cache, Redis, Memcached
+Graph: Neptune
+Search: Open Search Service
+Time-Series: Time-stream
+Ledger: QLDB
+Migration & Automation : DMS, Cloud Formation
+
+RDS:
+Relational DataBase Service --> Provided by amazon fully managed the service

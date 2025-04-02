@@ -1,0 +1,25 @@
+What is Cloud Computing:
+- Delivery of Computing Services Over the internet
+- Can be accessible from anywhere in the world
+- Including Servers, Storage, Databases,Networking,Software etc..
+- Without need for owning physical hardware or managing infrastructure
+- Pay as You use
+
+There are Various Types of Cloud Services: [PaaS], [SaaS], [IaaS]
+1: PlatForm As A Service:
+- Cloud Providers provides the platform to develop, build ,run,manage the application without managing the underlying infrastructure
+
+Eg:.. Kubernetes, Google App Engine, AWS BeanStalk,AWS Amplify, AWS App Runner, AWS Fargate.
+
+2: IaaS:
+- Provides virtualized computing resources over the internet. Users can rent virtual machines, storage, and networking.
+
+Eg:.. AWS, GCP, MicroSoft Azure
+
+3: SaaS:
+- Delivers software applications over the internet on a subscription basis, eliminating the need for installation and maintenance.
+
+Eg:.. SalesForce, MIcrosoft 365,Google Workspace
+
+What is Public Cloud and Private Cloud:
+- AWS Azure GCP

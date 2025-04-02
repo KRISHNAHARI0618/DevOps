@@ -1,0 +1,34 @@
+Alerting:
+Giving notification when unusual thing has happen and sending notification via slack channel
+
+Prometheus allows you to define some conditions/logics in the form of promQL expressions that continuously get evaluated and when those conditions met they become alerts
+
+Example:
+1: Free node memory should not be less than 10%
+2: CPU load not more than 95%
+
+Alerts are written in Yaml Format
+
+1: Create Rules file
+2: Define that rules file in prometheus.yaml file under rules_files section
+3: Run the prometheus server
+4: then prometheus collects the metrics and when the event triggered it will send notification to alert manager then alert manager send notification via slack
+
+rules section:
+
+rules-file:
+
+groups:
+  - name: my-rules
+    rules:
+    - records: job:node_cpu_seconds:avg_idle
+      expr: avg without(cpu)(rate(node_cpu_seconds_total{node="idle"}[5m]))
+  - alert: NodeExporterDown
+    expr: up{job="node_exporter"} == 0
+
+For Clause:
+
+
+prometheus will get reloaded :
+kill -HUP <PID of prometheus>
+kill sigup <pid>

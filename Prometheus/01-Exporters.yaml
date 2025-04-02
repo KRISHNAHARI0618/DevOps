@@ -1,0 +1,20 @@
+To Monitor any Application we need to add instrumentation with the help of Client Libraries
+
+What are Exporters:
+An Exporter is a Software or number of libraries ands servers that help in exporting existing metrics from third-party systems like Linux or Windows in the same format as of prometheus metrics
+
+Useful for cases where it is feasible to instrument a given system with prometheus metrics directly
+
+Linux System (target): Generate some logs/data
+
+Exporter will gather data from target
+Transforms into correct format
+Then Move that data to prometheus Server
+Prometheus Server
+
+Node Exporter: is a Prometheus Exporter for hardware and OS Metrics exposed by Unix
+
+It exposes Kernel level metrics on unix systems such as linux
+
+When in action it provides metrics such as CPU, Memory, Disk Space,Disk I/O, Network Bandwidth
+

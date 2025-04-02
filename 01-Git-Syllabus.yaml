@@ -1,0 +1,129 @@
+course_title: GIT Course
+
+introduction:
+  title: GIT Course Introduction
+  duration: 01:45
+
+repositories:
+  - title: Local and Remote Repositories
+    duration: 01:57
+
+lab_introduction:
+  title: Lab Introduction
+  duration: 03:37
+
+lab_install_git:
+  title: Lab Install GIT
+  duration: null # No duration provided
+
+initialize_repository:
+  title: Intialize a GIT Repository
+  duration: 04:11
+  demo:
+    title: Demo: Initialize a GIT Repository
+    duration: 15:19
+  lab:
+    title: Lab: Initialize a GIT Repository
+    duration: null # No duration provided
+
+git_log:
+  title: GIT Log
+  duration: 00:47
+  lab:
+    title: Lab: GIT Log
+    duration: null # No duration provided
+
+git_branches:
+  title: Git Branches
+  duration: 04:11
+  lab:
+    title: Lab: Branches – checkout, push branch
+    duration: null # No duration provided
+
+git_merging_branches:
+  title: GIT Merging branches
+  duration: 02:13
+  lab:
+    title: Lab: Merging branches
+    duration: null # No duration provided
+
+remote_repositories_initialization:
+  title: Initialize Remote Repositories
+  duration: 01:59
+
+pushing_to_remote:
+  title: Pushing to remote repositories
+  duration: 01:02
+  lab:
+    title: Lab: Remote repositories
+    duration: null # No duration provided
+
+cloning_remote_repositories:
+  title: Cloning remote repositories
+  duration: 01:43
+  lab:
+    title: Lab: Cloning Remote repositories
+    duration: null # No duration provided
+
+pull_requests:
+  title: Pull Requests
+  duration: 02:21
+  lab:
+    title: Labs: Pull Requests
+    duration: null # No duration provided
+
+fetching_and_pulling:
+  title: Fetching and Pulling
+  duration: 01:17
+  lab:
+    title: Lab: Fetching and Pulling
+    duration: null # No duration provided
+
+git_merge_conflicts:
+  title: GIT – Merge Conflicts
+  duration: 01:53
+  lab:
+    title: Lab: Merge Conflicts
+    duration: null # No duration provided
+
+fork:
+  title: Fork
+  duration: 01:41
+  lab:
+    title: Lab: Fork
+    duration: null # No duration provided
+
+rebasing:
+  title: Rebasing
+  duration: 02:14
+  interactive_rebasing:
+    title: Interactive Rebasing
+    duration: 01:53
+  lab:
+    title: Lab: Rebasing
+    duration: null # No duration provided
+
+cherry_picking:
+  title: Cherry Picking
+  duration: 00:43
+  lab:
+    title: Lab: Cherry picking
+    duration: null # No duration provided
+
+resetting_and_reverting:
+  title: Resetting and Reverting
+  duration: 02:18
+  lab:
+    title: Lab: Resetting and Reverting
+    duration: null # No duration provided
+
+stashing:
+  title: Stashing
+  duration: 01:38
+  lab:
+    title: Lab: Stashing
+    duration: null # No duration provided
+
+reflog:
+  title: Reflog
+  duration: 01:42

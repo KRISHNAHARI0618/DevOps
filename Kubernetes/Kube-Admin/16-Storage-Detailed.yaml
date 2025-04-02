@@ -1,0 +1,159 @@
+Docker Storage:
+Storage Drivers and Volume Drivers
+
+File System in Docker:
+var/lib/docker
+  aufs
+  containers
+  images
+  volumes
+
+There are two types of Volumes:
+Volume Mounting and Bind Mounting
+
+Volume Mounting where we create volumes and attach it to the pod/container
+Bind mount is where we bind the volumes from any folder from the host machine
+
+Create a Volume:
+docker volume create data_volume
+
+mounting that volume to the container:
+docker run --mount data_volume:/lib/mysql mysql
+
+Bind Mount Folder from host  to the Container:
+docker run --mount /data/mysql:/lib/mysql mysql
+
+Docker Storage Drivers:
+AUFS
+ZFS
+BTRFS
+Device Mapper
+OverLay
+OverLay2
+
+Storage Driver Plugins:
+
+Grok Filter: %{NUMBER: duration} %{IP: client}
+
+
+Volumes in Kubernetes:
+
+We create a Pod with containers
+amd we create a volume and mount that volume to container
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: volume pod
+spec:
+  containers:
+    - name: first-pod
+      image: aliphine
+      command: ["/bin/sh","-c"]
+      args: ["shuf -i 0-100 -n 1 >> /opt/number.out;"]
+      volumeMounts:
+      - mountPath: /opt
+        name: data
+volumes:
+- name: data-volume
+  hostPath:
+    path: /data
+    type: Directory
+
+volume:
+- name: ebs-volume
+  elasticBlockStorage:
+    volumeID: <volume-id>
+    fsType: ext4
+
+Volume storage options:
+EFS
+NFS
+EBS
+etc...
+
+Persistent Volumes:
+
+accessModes: # How the storage should be access able
+  ReadWriteOnce
+  ReadWriteMany
+  ReadOnlyMany
+
+pv-Definition.yaml:
+
+apiVersion: v1
+kind: Persistent Volume
+metadata:
+  name: pv-vol1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1GI
+  awsElasticBlockStore:
+    volumeID: <volume-ID>
+    fsType: ext4
+
+Persistent Volume Claims:
+
+Claiming the storage we created by using persistent volumes
+
+Sufficient Capacity
+Access Modes
+Volume Modes
+Storage Class
+
+pv-Definition.yaml:
+
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-vol1
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 1GI
+  awsElasticBlockStore:
+    volumeID: <volume-ID>
+    fsType: ext4
+
+Pvc-definition.yaml:
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 500Mi
+
+Storage Class: # This is Storage Class
+- Storage Class will Create PV automaticallu we no need to manually create a PV
+- we just need to mention storage class
+
+Storage Class definition.yaml :
+
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: silver
+provisioner: kubernetes.io/gce-pd
+parameters:
+  type: pd-standard
+  replication-type: none
+
+Static Provisioning and Dynamic Provisioning
+
+1: Create a EBS in AWS
+2: Download CSI Drivers
+3:
+
+
+
+
+
+

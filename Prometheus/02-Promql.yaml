@@ -1,0 +1,37 @@
+PromQL: Basics
+Data Types:
+
+Instant Vector : One Sample with both element and value
+
+Range Vector: A Set of time series containing a range of data points over time for each time series
+One Elements = More Values
+
+Scalar: A simple Numeric Floating Value
+
+String: A single String Value
+
+
+Selector and Matchers:
+Labels and Label-values
+
+Equality Matcher(=)
+Negative Equality Matcher(!=)
+Regular Expression Matcher(=~)
+
+Operators:
+Binary Operators:
+Operators that take two operands and performs the specified calculations on them
+
+1: Arithmetic Binary Operator
+2: Comparison Binary Operator
+3: Logical/Set Binary Operator
+
+Ignoring and On Keywords:
+Ignoring Keyword : Will ignore some Metrics
+On : Matching should perform basis of keyword
+
+Aggregation Operators:
+
+
+
+

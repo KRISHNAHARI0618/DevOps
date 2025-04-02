@@ -1,0 +1,91 @@
+Pod :
+When Scheduler schedules the pod to run and create a container it will go to pending state
+
+Pod has to formats
+1: Status
+2: Conditions
+
+Pod Status stages:
+1: Scheduled
+2: Pending
+3: Initializing
+4: Container Creating
+5: Container Ready
+6: Ready
+
+Pod Conditions:
+Initializing set to be true
+Container Creating set to be true
+Container Ready set to be true
+Ready status will come
+
+Pod Ready:
+By default k8s will spin pod with in milliseconds but it will not able to receive the traffic until the pod is ready to take the traffic hence we need to make sure that pod should be ready to take the traffic
+
+ReadiNess Probe:
+A readiness probe is helpful to send the traffic based on the readiness of pod
+Readiness probe is helpful to configure that all containers inside the pod are ready to receive the traffic
+
+readinessProbe:
+  httpGet:
+    httpGet:
+      path: /healthz
+      port: 8080
+    initialDelaySeconds: 5
+    periodSeconds: 10
+    successThreshold: 2
+    failureThreshold: 4
+
+readinessProbe: is the section where you define the readiness probe for the container.
+httpGet: specifies that Kubernetes should make an HTTP GET request to a specific path (/healthz in this case) on the container.
+port: specifies the port on which to perform the readiness probe.
+initialDelaySeconds: is the number of seconds Kubernetes should wait before starting the first probe.
+periodSeconds: is the time between probe executions.
+
+Liveness Probe: Checks whether the container is still running and receiving the traffic performing as expected or not
+It is helpful for running the container continuously without any issues when it occurs any issues
+Liveness is helpful to configure that all containers inside the pod the taking the requests and checks whether it is healthy of not
+By conducting periodic checks
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  containers:
+  - name: my-container
+    image: my-image:latest
+    livenessProbe:
+      httpGet:
+        path: /healthz
+        port: 8080
+      initialDelaySeconds: 10
+      periodSeconds: 5
+      successThreshold: 2
+      failureThreshold: 4
+
+livenessProbe: is the section where you define the liveness probe for the container.
+httpGet: specifies that Kubernetes should make an HTTP GET request to the /healthz endpoint on the container.
+port: specifies the port on which to perform the liveness probe.
+initialDelaySeconds: is the number of seconds Kubernetes should wait before starting the first probe.
+periodSeconds: is the time between probe executions.
+
+Container Logging:
+
+For docker logging we use command: Docker logs container name
+in K8s: kubectl logs pod name -c container name
+
+give -f to streams the logs live
+kubectl logs -f pod name
+
+Labels & Selectors :
+
+Labels and selector are used to filter the pods or container based in their kind,object etc..
+also used to group together based on their catagories
+
+Annotations : Annotations are used to record the information for any future use
+it can have any extra characters,email ids ,phone numbers etc..
+Annotations can also be used for integration purpose
+
+
+

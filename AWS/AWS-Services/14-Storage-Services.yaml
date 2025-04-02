@@ -1,0 +1,76 @@
+AWS Storage:
+- EBS
+- EFS
+- S3
+
+What is EBS:
+- Elastic Block Storage
+- Data is Stored into A Unique Blocks
+- Host File System Places data on Disk Using Protocols like iscsi
+- Must Be attached to EC2
+- Availability and Durability : 99.98 is used
+- between 0.1% - 0.2%,
+
+What is S3:
+- A Bucket where we can store anything
+- We can store Objects
+- Object Storage - Flat Structure
+- API Access to Data HTTP/HTTPs
+- Metadata Driven (Attributes and Policies)
+- 99.999999999% durability and 99.99% availability of objects
+
+What is EFS:
+- Elastic File System
+- Where data can be stored as file structure
+- Shared File System Hierarchical Structure
+- Comes with serving file system
+- Should be Mounted on EC2 or oN premises also
+- as same as S3 The Durability and Availability
+
+Use cases:
+
+EBS Use cases:
+- Low Latency to access data
+- Boot Data Volumes for EC2
+- Relations ans NoSql DataBase Storage
+- Data WareHouses ETL
+- SAP,ERP,OracleERP etc...
+
+S3 UseCases:
+- Unlimited Space
+- Media and Entertainment
+- Log Files
+- BackUps & Archives
+- Content Management
+- Version Control
+
+EFS UseCases:
+- Shared Access to Files
+- Web Serving
+- BigData and Analytics
+- Users Home Directory
+- Content Management
+- Container Storage
+
+Availability and Durability
+
+Performance: IOPs, Throughput, Latency
+IOPs: Input and Output Operations per second eg. 3000IOPs
+What is ThroughPut : How Fast Storage can read/write data eg:. 10Mb/s
+What is Latency: Time taken between the request and response.
+
+Decision Tree:
+- Who need to assess data:
+- Data Access Pattern
+  - Write Heavy & Read Heavy : EBS Volumes
+  - Data Persistence : EBS Volumes
+  - No Data Persistence: Instance Store
+
+  - Write Once/read Heavy : File Storage
+  - Application Support S3 Integration --> S3 Bucket
+  - Operating system
+    - Linux : EFS Used
+    - Windows: FSX used
+- Anywhere we can use S3 Bucket
+
+

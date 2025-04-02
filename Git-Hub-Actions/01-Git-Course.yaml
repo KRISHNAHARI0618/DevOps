@@ -1,0 +1,66 @@
+Git - Version Control Management Tool
+
+Structure of Git:
+- Allows us to modify the file structure using commands
+
+ls : List of File in Current Directory
+mkdir : Create a Directory
+cd : Change Directory
+where all these commands stored :
+- .git repository
+-  history is stored
+ls -a : Show me all Hidden Files
+history : all commands used till now will show
+git status : will show the changes made in files
+git add <file-name> : files will add
+
+Three Files:
+- Untracked Files
+- Tracked Files
+- Committed Files
+
+Three Areas:
+- Local Area(Workspace)
+- Staging Area
+- Local Repository
+- Remote Repository
+
+git commit -m "m represents provide a message"
+
+Removing the Staged File from Staged Area :
+git restore --staged <file-name>
+
+Committing Files:
+- Remove Commit from History ==> git reset <commit id>
+- The Commits will be deleted above the id used in reset command
+
+# Stashing Changed:
+
+git stash : Store this for future use not ready to commit now
+git stash pop : To use Saved files now
+
+Interview Questions:
+git restore : Used to Restore the staged file
+git reset : Used To Reset The Committed Code with Commit id , Id used in reset above that all commits will get moved to staged environment
+git revert : Directly Go to Working Environment
+
+Connecting GitHub and Git Local:
+git remote add origin <url to add>
+git push origin main
+
+Branches: Making one Project in On branches
+- Creating a Separate Repositories
+- Uses are When we are working for separate feature we are not allowed to change those in Main Branch hence we need to create Feature Branch and Pull The code to main
+
+git branch <branch name> : Create a Branch
+git checkout <branch name> : Change Branch
+git merge <branch to add> <branch to be added> : Merging the Branch
+
+Pull Request: When we need to add the Feature Code to Main Branch
+
+
+
+
+
+
+

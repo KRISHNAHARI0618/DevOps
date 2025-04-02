@@ -1,0 +1,56 @@
+Concepts:
+    1: Linux
+    2: ShellScripting
+    3: Ansible
+    4: Terraform
+    5: AWS
+    6: Docker
+    7: Kubernetes
+    8: Boto3
+    9: Jenkins
+    10: ArgoCD
+    11: Helm-Charts
+    12: Python
+    13: Go Language
+
+How to Exclude Some stages in jenkins Files:
+we can use conditions: to skips particular tasks
+
+# if-else conditions :
+stage('test3') {
+    if (env.BRANCH_NAME == 'master') {
+        echo 'I only execute on the master branch'
+    } else {
+        echo 'I execute elsewhere'
+    }
+}
+# when condition:
+    stage('My Conditional Stage') {
+    when (BRANCH_NAME != 'master') {
+        echo 'Only on master branch.'
+    }
+}
+
+apply-skip: Enables the skip setting on a job.
+apply-folder-skip: Enables the skip setting on a folder.
+skip-group-on: Enables the skip setting on a skip group.
+remove-skip: Removes the currently active skip setting from a job.
+
+Docker :
+Docker Home Path :
+Ubuntu: /var/lib/docker/
+Fedora: /var/lib/docker/
+Debian: /var/lib/docker/
+Windows: C:\ProgramData\DockerDesktop.
+
+Jenkins :
+docker is installed docker file execution in that server but suddenly it is showing memory issues
+
+Resources and limits
+
+Dockerfile Entrypoint vs CMD
+
+Architecture of Kubernetes
+
+
+

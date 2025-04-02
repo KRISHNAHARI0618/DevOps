@@ -1,0 +1,98 @@
+0. What is Virtual Machine : 
+ans.
+    A Virtual Machine (VM) is a compute resource that uses software instead of a physical computer to run programs and deploy apps.
+    
+    A virtual machine (VM) is a virtual environment that functions as a virtual computer system with its own CPU, memory, network interface, and storage, created on a physical hardware system (located off- or on-premises). Software called a hypervisor separates the machine’s resources from the hardware and provisions them appropriately so they can be used by the VM.     
+1. What is hypervisor  : 
+ans. Is a Vitual Machine Monitor
+A software that creates and runs virtual machines on one physical system is called the hypervisor.
+one host computer to support multiple guest VMs
+Sharing resources such as memory and processing .
+2. What is Containers  : 
+ans. Container is package of application ,application libraries and System Dependencies.
+3. What is Docker  : 
+ans. A docker is a container platform where it provides the containers based on minimal usage of host operating system 
+4. What is Bare Metal : 
+    ans. Bare Metal is reference to a computer hard disk -the medium on which the operating system is installed.
+
+    A bare-metal environment is a specific kind of virtualization environment built with bare-metal hypervisors that do not rely on a host OS in order to function.
+5. What is bare metal hypervisor  : 
+
+    The virtualization software will be directly installed on the platform where the real operating system is installed .
+
+    Bare Metal Hypervisor are extremely secure since they are isolated from attack-prone operating system.
+6. What is Virtualization  : 
+    ans. https://www.geeksforgeeks.org/virtualization-cloud-computing-types/
+
+    Virtualization is a sepration of services from underlying physical services .
+    Types of Virtualization: 
+        Application Virtualization
+        Network Virtualization
+        Desktop Virtualization
+        Storage Virtualization
+        Server Virtualization
+        Data virtualization
+7. Containers vs Virtual Machines
+    1. Resource Utilization: Containers share the host operating system kernel, making them lighter and faster than VMs. VMs have a full-fledged OS and hypervisor, making them more resource-intensive.
+
+    2. Portability: Containers are designed to be portable and can run on any system with a compatible host operating system. VMs are less portable as they need a compatible hypervisor to run.
+
+    3. Security: VMs provide a higher level of security as each VM has its own operating system and can be isolated from the host and other VMs. Containers provide less isolation, as they share the host operating system.
+    
+    4. Management: Managing containers is typically easier than managing VMs, as containers are designed to be lightweight and fast-moving.
+
+8. What are the files and folders available in containers base images  : 
+    /bin: contains binary executable files, such as the ls, cp, and ps commands.
+
+    /sbin: contains system binary executable files, such as the init and shutdown commands.
+
+    /etc: contains configuration files for various system services.
+
+    /lib: contains library files that are used by the binary executables.
+
+    /usr: contains user-related files and utilities, such as applications, libraries, and documentation.
+
+    /var: contains variable data, such as log files, spool files, and temporary files.
+
+    /root: is the home directory of the root user.
+
+
+9. Containers use host os Files and folders  : 
+
+    The hosts file system: Docker containers can access the host file system using bind mounts, which allow the container to read and write files in the host file system.
+
+    Networking stack: The hosts networking stack is used to provide network connectivity to the container. Docker containers can be connected to the hosts network directly or through a virtual network.
+
+    System calls: The hosts kernel handles system calls from the container, which is how the container accesses the hosts resources, such as CPU, memory, and I/O.
+
+    Namespaces: Docker containers use Linux namespaces to create isolated environments for the containers processes. Namespaces provide isolation for resources such as the file system, process ID, and network.
+
+    Control groups (cgroups.: Docker containers use cgroups to limit and control the amount of resources, such as CPU, memory, and I/O, that a container can access.
+
+10. All About Docker GitHub reporitory : 
+    https://github.com/iam-veeramalla/Docker-Zero-to-Hero
+11. What is difference betwen EntryPoint and CMD  : 
+12. What is docker file : 
+    A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image.
+
+13. Multi Stage Docker Builds
+14. Reduce Docker Image Size
+15. Distro Less Images
+16. Containers Security
+16. Interview Questions with Answers
+17. Scenario Based Production Q & A
+
+Docker Interview Questions:
+What is docker
+How Containers are different from virtual machine  : 
+Docker lifeCycle
+Docker Components
+What is the difference between docker copy and docker ADD : 
+What is the difference Between ENTRYPOINT and CMD  : 
+Docker Networking types
+Docker MultiStage Build
+Docker lables vs ENV Instructions : 
+Docker ADD vs COPY Instructions : 
+
+
+

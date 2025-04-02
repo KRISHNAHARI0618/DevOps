@@ -1,0 +1,75 @@
+name: First-GitHub WorkFlow
+on:
+  push:
+    branches:
+      - main
+  pull-requests:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  Build: # This is Job Name
+    runs-on: ubuntu-latest # On which Machine it runs
+    steps: # StepsTo follow
+      - uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
+        # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+
+# Work-Flow Yaml File: Multi-Jobs
+
+name: my-First-GitHub Actions
+on:
+  push:
+    branches:
+      - main
+  pull-requests:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  Build1:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1 # GitHub Repository
+      - name: Single Script
+        run: echo "Peddireddy Hari Vardhan Reddy"
+      - name: multi-level scripts
+        run: |
+          echo "Peddi"
+          echo "reddy"
+  Build2:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1 # GitHub Repository
+      - name: Single Script
+        run: echo "Peddireddy Hari Vardhan Reddy"
+      - name: multi-level scripts
+        run: |
+          echo "Peddi"
+          echo "reddy"
+
+# GitHub Work Flow issues Jobs File Yaml Files:
+
+name: Finding Issues
+on:
+  issues:
+    types: [opened]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: directory to use
+      - name: first run commands
+        run: echo "this is error file"
+  stage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/v1
+      - name: getting json format pf event
+        run : echo "{{ toJSON(github.event) }}" | jq
+

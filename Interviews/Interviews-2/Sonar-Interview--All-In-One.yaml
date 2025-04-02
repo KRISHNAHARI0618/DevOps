@@ -1,0 +1,98 @@
+There are different Types of Scanning:
+1: Static Source Code Analysis
+- checks the source code analysis it and can give recommendations
+2: Dynamic Source Code Analysis
+- mocks the process of code at runtime,Mocks the process of hacking
+3: Static Application Security Testing
+- Checks for Passwords or environment variables
+
+What is Sonar-Cube:
+Open source Application code analysis platform where it will checks the code quality,identify bugs, security vulnerabilities, and code bad smells.
+Security Vulnerabilities in Code Database
+Code Smells
+Detect Bugs
+
+Key Features Of SonarQube:
+Code Quality analysis
+Detection of Code Smells
+Bugs
+Vulnerabilities
+Security Hotpots
+Code Duplication
+Quality Gates
+Threshold Value
+Integrating with various languages
+tools
+reporting
+
+Sonar Port Number: 9000
+
+Installation of Sonar Cube:
+Install Sonar Cube
+Install Sonar Scanner in Agents
+Configure Sonar Cube Ip Address in Sonar Scanner Properties.
+
+Quality Gates: DevOps Engineer Role
+
+Threshold Value: A Value set by the team do not increase that
+
+Conditions:
+
+Technical Debt Measure:
+Code Coverage : 80% Above
+Number of Blocker:
+Critical Issues:
+Security rating/Review : A
+Unit Test Pass Rate: Above 85%
+Code Smells : Indication of Deeper problem where hackers can get the access
+Bugs: Difference between actual and Expected results
+
+What is Technical Debt:
+How much time will take to clear all the issues
+
+What is Code Coverage:
+Percentage of code executed by tests
+
+What is Static Analysis & Dynamic Analysis:
+
+Key metrics:
+1: Code Coverage
+2: Cyclomatic Complexity
+3: Code Duplication
+
+Wait for Quality Gate :
+def qg = waitForQualityGate()
+if(qg.status != 'OK')
+
+What are code quality Checks:
+1: Bugs
+2: Vulnerabilities
+3: Code Smells
+
+docker image for docker:
+$ docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube:latest
+
+SonarLint:
+provides immediate feedback in your IDE as you write code so you can find and fix issues before a commit.
+
+SonarQube’s PR analysis:
+fits into your CI/CD workflows with SonarQube’s PR analysis and use of quality gates.
+
+Quality gates:
+
+keep code with issues from being released to production, a key tool in helping you incorporate the Clean as You Code methodology.
+
+The Clean as You Code approach helps you focus on submitting new, clean code for production, knowing that your existing code will be improved over time.
+
+Code Coverage in SonarQube:
+1: Need to add 3 Sections in POM.xml file
+  1: Jacoco CodeCoverage plugin
+  2: Jacoco Maven plugin
+  3: Jacoco maven initializer
+2: Jacoco Code Coverage report will be generated with this Plugin
+
+
+
+
+
+

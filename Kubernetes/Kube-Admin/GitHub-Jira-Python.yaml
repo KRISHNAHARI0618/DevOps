@@ -1,0 +1,78 @@
+GitHub -WebHook 
+Send me all Description about the issue
+Json Format
+Bridge Between GitHub and Jira
+Api Call
+
+Part 1:
+GitHub Configuration with Python
+Flask Application
+
+To Learn API Connection with jira we need to talk with API Connection
+
+list Projects.py
+----------------
+Need To Study The Concepts:
+
+1: Json Handling with Python
+2: API Calling
+3: Yaml Manifestation
+4: Loads = Loads will Change to Python Dictionary
+5: dumps = changes to strings
+
+Modules:
+-------
+1: Request Modules is used when we call api calls
+2: requests.auth import HTTPBasicAuth
+3: Use JSON Objects
+4: 
+
+1: GitHub Actions --> 
+2: YAML Intro
+3: Python Json Formatting
+4: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

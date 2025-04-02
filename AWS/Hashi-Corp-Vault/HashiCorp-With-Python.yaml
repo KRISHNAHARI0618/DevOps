@@ -1,0 +1,39 @@
+HashiCorp-With-Python:
+
+To interact with HashiCorp Vault and retrieve secrets using a Python script, you can use the hvac library, which is a Python client for HashiCorp Vault. Here is a simple example to get you started. Before you begin, make sure you have hvac installed:
+
+pip install hvac 
+
+Now you can create a Python script to interact with HashiCorp Vault. The following script assumes that you have a token to authenticate with the Vault:
+
+import hvac
+
+def get_vault_secrets(vault_url, vault_token, secret_path):
+    # Create a client
+    client = hvac.Client(url=vault_url, token=vault_token)
+
+    # Check if the client is authenticated
+    if not client.is_authenticated():
+        print("Vault authentication failed.")
+        return
+
+    # Retrieve secrets from the specified path
+    response = client.read(secret_path)
+
+    # Check if the request was successful
+    if response and 'data' in response:
+        secrets = response['data']
+        print(f"Secrets at '{secret_path}': {secrets}")
+    else:
+        print(f"Failed to retrieve secrets from '{secret_path}'.")
+
+if __name__ == "__main__":
+    # Update these values with your Vault server details and authentication token
+    vault_url = "http://your-vault-server:8200"
+    vault_token = "your-vault-token"
+    secret_path = "secret/my-app"  # Update with your secret path
+
+    get_vault_secrets(vault_url, vault_token, secret_path)
+
+Make sure to replace http://your-vault-server:8200, your-vault-token, and "secret/my-app" with your Vault server URL, authentication token, and the path where your secrets are stored, respectively.
+

@@ -1,0 +1,16 @@
+When to Use Prometheus:
+1: Prometheus works well for recording numeric time series
+2: Prometheus values Reliability if you want a robust system them undoubtedly deploy prometheus
+3: each prometheus server is standalone not depending on network storage pr other remote services you can rely on it when other parts of your infrastructure are broken
+4: Machine Centric monitoring as well as highly dynamic service-oriented architectures
+5: Prometheus is a good suit in world of microservices as it supports multi-dimensional data collection
+
+When Not to use:
+
+Prometheus is a Metrics based system so it is not suitable for storing event logs or individual events
+
+jobname
+targets
+scrape_configs
+scrape_intervals
+

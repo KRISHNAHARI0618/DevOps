@@ -1,0 +1,15 @@
+0:00 : Intro
+0:48 : Why Container Orchestration?
+3:00 : Container Orchestration Tools
+3:28 : What is ECS - Elastic Container Service?
+4:04 : How does ECS work?
+5:59 : ECS with EC2 instances
+7:34 : ECS with AWS Fargate
+11:48 : Integration with other AWS Services
+12:26 : What is EKS : Elastic Kubernetes Service?
+13:20 : EKS vs ECS
+16:36 : How does EKS work?
+19:28 : Worker Nodes options: EC2 vs Nodegroup vs Fargate.
+22:33 : What is ECR - Elastic Container Registry?
+24:25 : Summary
+24:49 : CI/CD Pipeline we will build (DevOps Bootcamp)

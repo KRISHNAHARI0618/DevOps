@@ -1,0 +1,45 @@
+Alert Notifiers: With Slack
+Messaging platform based for Channels
+1: Incoming Web-Hooks
+2: We can generate unique URL
+
+- name: windows-team-manager
+  slack_configs:
+  - channel: '#prometheus'
+    app_url: 'unique url generated at incoming web hook'
+    title: 'WMI Exporter is down'
+    text: 'WMI Exporter'
+
+Alert Manager will Send Alert to Slack Channel
+
+
+Service Discovery : Adding New Added Machines/Services to get the Metrics
+Where there are Dynamic Configurations more service discovery will help
+Where the targets are adding and removed frequently and the environment is dynamic in nature then we can go with service discovery
+
+1: Service discovery is the mechanism that allows to automatically discover and monitor targets and services
+2: Enables you to provide the centralized information about the services and machines from whatever database it is stored in
+3: Service discovery allows the discovering of machines and/or services running somewhere even in multiple organizations
+4: Prometheus contains built in integrations for many service discovery systems-consul,cluster managers-k8s cloud providers azure amazon ec2
+5: File Based service discovery mechanism allows you to list down the targets in service information JSON file
+
+There are two catagories of Service discovery:
+
+Top-Down: Knows what instances are there in environment
+
+Bottom-Up: Register with the service discovery mechanism
+
+File Based SD:
+
+Data Source: Where the Targets Information is stored
+Service Discovery Mechanism: Where it discovers what and all machine are available in the system to send the metrics and Write the Targets information about targets
+Yaml/Json file: These file will store machine information
+file_sd: From the yaml or json file the file sd will collect the information and push that to the Targets file
+Targets: once the Targets Files will get updated then it is ready to push the metrics and prometheus can collect the metrics
+
+
+
+
+
+
+

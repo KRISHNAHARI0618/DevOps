@@ -1,0 +1,6 @@
+[all]
+localhost
+
+[mongodb:vars]
+mongo_username=admin
+mongo_password=catagories

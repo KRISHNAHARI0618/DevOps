@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-demo
+  labels:
+    purpose: demonstrate-envars
+spec:
+  containers:
+  - name: envar-demo-container
+    image: gcr.io/google-samples/node-hello:1.0
+    env:
+    - name: DEMO_GREETING
+      value: "Hello from the environment"
+    - name: DEMO_FAREWELL
+      value: "Such a sweet sorrow"
+# apiVersion: apps/v1
+# kind: Pod
+# metadata:
+#   name: envvar
+#   labels:
+#     age: "23"
+#     year: "2023"
+#     Name: "Hari"
+#     Course: "DevOps"
+#   annotations:
+#     dev.com: development-env
+#     prod.com: production-env
+# spec:
+#   containers:
+#   - name: nginx
+#     image: nginx
+#     env:
+#     - name: Production
+#       value: "This is production environment"
+#     - name: Developement
+#       value: "This is Developement Environment"
+#     resources:
+#       requests:
+#         memory: "100mi"
+#         cpu: "250m"
+#       limits:
+#         memory: "200mi"
+#         cpu: "300m"
+    

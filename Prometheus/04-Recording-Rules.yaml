@@ -1,0 +1,26 @@
+Recording Rules:
+Recording Rules allow you to pre-compute frequently needed or compute expensive expressions and save their result as a new set of time series in prometheus Storage
+
+Two Types of Rules:
+1: Recording Rules and Alerting Rules
+
+1: Create a Rules.yaml
+2: Add that in prometheus.yaml config file
+
+How to Reload Configurations without killing Prometheus:
+
+1: SIGHUP Signal
+  1: First get the PID
+  2: send :  " kill -HUP pid "
+
+2: Post Request to The Request Handler
+
+Naming Recording Rules: Level:metric:operations
+level: represnts the aggregation level of the metric and labels of the
+
+Checking the Prometheus Rules config:
+promtool will check the expression
+
+Recording Rules Best Practices:
+- Avoid using rules for long vector ranges as such queries tend to be expensive and running them regularly
+

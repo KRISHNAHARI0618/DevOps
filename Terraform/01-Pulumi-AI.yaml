@@ -1,0 +1,22 @@
+Infrastructure as a Code With Pulumi AI Tool:
+
+Pulumi Architecture :
+1: Language Host --> New Resources
+2: CLI & Engine --> Create Update Delete
+3: Providers --> AWS, Azure, Kubernetes
+4: State Backend --> Deployed Backend State
+5: Pulumi Service -->
+6: Cloud Storage --> S3 Bucket
+
+Pulumi-Project:
+  PProgram
+    Resources
+  Stacks
+    Stack(QA)
+    Stack(Dev)
+    Stack(Prod)
+
+
+
+
+

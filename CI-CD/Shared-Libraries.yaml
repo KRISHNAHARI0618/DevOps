@@ -1,0 +1,77 @@
+Shared Libraries: is also called Functions
+
+Create Library and use whenever it is needed
+
+  Each Microservice has Individual Pipeline
+
+What is a Shared Libraries:
+  Making The repetitive Code as a Library in Git Repository
+
+  mavenBuild()
+  @Library('Shared-Library')
+
+  Amount of Code which has to be write will decrease drastically
+  Reusable Code
+  Changing in one place can change in all the places
+
+Advantages of Shared Libraries:
+  It uses the principle of Dont Repeat yourself
+  Standardization of Pipelines
+  Reducing The Duplication of Code
+  Easy onboarding of new applications,projects or teams
+  One Place to fix issues with the shared or common code
+  code maintainence
+  Reduce the risk of errors
+
+Shared Library is divided into 3 Types:
+
+  vars --> hello.groovy
+  src --> utility.groovy
+  resources --> config.json
+
+Vars:
+  def call(){
+    sh '''
+        echo "hello world Manully deploy"
+        ehco " this is a shared libraries"
+    '''
+  }
+
+  create one file with extension .groovy
+  save it is the github repositoy
+  Go to configure in jenkins
+  inside steps call the shared library
+  manage jenkins --> Configure system --> Global Pipeline Libraraies
+  give url in git section
+  use :
+  @Library("my-shared-library") _
+  give the name of the file() -->
+
+Create Groovy File
+save it in the repository
+Inside Jenkins Configure --> Manage Jenkins -->Configure System --> Global Pipeline libraries
+Give url in git repo and save it
+Access it using @Library('Shared library name')
+when calling the library : filename().
+
+GitHub Actions:
+Self Hosted Runners
+What is Self Hosted Runners:
+  Runners are the place where jobs get run
+
+Code is not open --> Private Repository
+
+Configuring Security Rules:
+  both Http & Https Allow Only
+
+How to use Self Hosted Runners:
+  1: Create One Instances
+  2: Use Port http(80) & https (443) & SSh (22)
+  3: Use Outbound Rules http(80) & https (443)
+Why using Self Hosted Runners:
+  By Configuring the Host on the Git hub going to the
+
+Comparing With Jenkins and Github Actions:
+Jenkins is best for private projects
+
+

@@ -1,0 +1,101 @@
+Intro
+Linux Commands/Shell Scripting Questions
+Command to find empty files in a given directory?
+Commands you will use it for configuring ssh connectivity between 2 machines and what files will be present in .ssh folder?
+How to schedule a shell script in unix machines?
+Command to get load average ?
+Need to identify IP addresses in log file and count of ip addresses in log file? ( detailed video • Extracting IP address from logfile   )
+What is command for checking the running process? how to get PID of process?
+Command to get whether certain port is listing or not?
+How to identify the number of params that has been sent to shell script?
+Command to delete empty line in a file?
+What is exit status?
+Given machine, how will you identify which machine it is?
+
+Git/Github Questions:
+What is git reset ? Types of reset ?
+How to delete local branch and remote branch in git ?
+Difference between git diff and git status ?
+What are hooks in git?
+What is the importance .git directory?
+What are the branches, diff between remote and local branches?
+What Branching strategy that you are familiar with?
+What PR (Pull request) is? what's the importance of PR?
+Which version of git you have used?
+What is git squash?
+Command to list all commits?
+
+1:11:38 - Maven Questions
+1:11:40 What are things you need to set, if you want download dependency from private repository ?
+1:16:34 Command to skip the test cases in maven
+1:19:34 What is multi module project?
+1:23:57 What is the importance of dependency management?
+1:27:36 What is the default value of packaging tag? What other values for other artifact types?
+1:29:06 What are GAV’s?
+1:29:38 Is there way by which we can set local repository as some other custom directory, other than .m2?
+
+
+
+2:05:08 - Ansible Questions
+2:05:09 Why ansible ? What makes ansible powerful than other tools like chef and puppet?
+2:11:17 5 modules that you have worked on? Can we create custom module ? ( doc - https://docs.ansible.com/ansible/2.3/... )
+2:13:20 What is dynamic inventory in ansible?
+2:15:33 Lets say I have both Ubuntu and centos machines as nodes I want install application tree using same playbook, how would you approach this scenario?
+2:22:22 How to handle prompts with ansible playbook?
+2:29:19 What is ansible galaxy?
+2:30:40 What are adhoc commands?
+
+Jenkins Questions
+How to set Jenkins build to fail based specific word in console output ?
+What are active and reactive parameters (Dynamic parameterization) in Jenkins ?
+How to customize the build number display to something else in Jenkins job page?
+What are multi branch pipeline?
+What is shared library in Jenkins ?
+What type of Jenkinsfile you have worked on?
+In master slave setup if I want run job on specific node is is possible?
+what is the importance of Jenkins secrets?
+How do you take Jenkins backup?
+Importance of post block?
+Can we have job for pr and once merge is done the source branch should be deleted?
+
+1. Explain your current roles in your project.
+2. How you deploy an application to kubernetes?
+3. How you make sure your code is secure in the production?
+4. What tools you used for security side for both code and infra? What standards/benchmarks you follow?
+5. How and what things do you monitor your application? Which tools you use?
+6. Suppose, you are using different monitoring tools like Prometheus, Azure log analytics, DataDog. You are asked to use the cost effective monitoring tool. How you analyze and how you decide which one can we go with?
+7. How you write your own custom ansible plugins which are not available in internet?
+8. Write a program how do you get the api response from "api.github.com" in display the data/fields?
+9. If you are deploying a group of microservices (multiple microservices) with Helm charts, what are the challenges that we can face?
+10. What is monolithic application? How do you migrate to microservices?
+11. What is your current role in your team and where do you expect YOU in the couple of years?
+
+1: First Introduce Yourself
+
+2: About CI-CD Pipeline
+3: About Fargate and ECS and EC2 Instance
+4: About Cost Optimization in EKS and ECS
+5: About VPC,Public Subnets,Private Subnets,VPC Peering
+6: How to Connect With Private Subnet ?
+7: Bastion Host Vs Other Server to Connect Private Instances
+8: How To get Logs From server?
+9: When to use a Lambda function, and when not?
+https://jeromevdl.medium.com/when-to-use-a-lambda-function-and-when-not-9a225e6dd2dd
+10: How will you watch the logs from crashed Machines
+11: What is High Availability ?
+12: About Security Best Practices atleast 5
+13: About Security Products
+14: What sort of information will get from sonar qube ?
+
+Scaling Options :
+- Horizontal AutoScaling
+- Vertical Autoscaling
+Blob - Unstructured information such as CI/CD log files, CI/CD artifacts, Terraform Statefile e.t.c.,.
+File - Kubernetes volume that is accessed by multiple Kubernetes pods.
+Queues - Store the messages to send out notifications to report failures, success of pipelines or serverless functions.
+Tables - Any kind of key-value pair data that has to be stored.
+
+Connect EC2 Instances:
+ssh -i ~/.ssh/id_rsa ec2-user@44.204.73.249
+
+

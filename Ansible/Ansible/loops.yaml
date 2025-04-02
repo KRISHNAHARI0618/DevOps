@@ -1,0 +1,51 @@
+---
+- name: File Level Variables
+  hosts: localhost
+  vars:
+    city: chennai
+    company: TCS
+    area: whitefield
+    location: bangalore
+  tasks:
+    - name: Printing the loops
+      debug:
+        msg: "Hello {{ item }}"
+      loop:
+        - hari
+        - akhila
+        - bharathi
+        - harsha
+        - ramana
+    - name: Printing numbers
+      debug:
+        msg: "{{ item }}"
+      loop: "{{ range(1,4) | list }}"
+    - name: Printing list if hashes
+      debug:
+        msg: "{{ item.name}} {{item.village}}"
+      loop:
+      - { name: "hari", village: "chiyyapadu"}
+      - { name: "akhila", village: "mydhukur"}
+    - name: printing list of values
+      vars:
+      - names:
+        - hari
+        - vardhan
+        - reddy
+        - akhila
+        - bharathi
+        - ramana
+      debug:
+        msg: "{{ names | length }}"
+    - name: Display gathered facts
+      debug:
+        var: ansible_facts
+    - name: Display specific fact
+      debug:
+        var: ansible_facts['os_family']
+    - name: printing ansible variables
+      debug:
+        msg: "{{ name | default('hari vardhan')}}"
+
+
+

@@ -1,0 +1,21 @@
+Design Cluster:
+1: Education : Minikube
+2: Development : Multi-node Cluster with Single Master and Multiple Workers
+3: Hosting Production Applications: Multi-Master-Nodes
+
+Cloud or OnPrem:
+1: Use KubeAdm on OnPremises
+2: Kops on aws
+2: GKE on GCP
+3: AKE on Azure Cloud
+
+Configure High Availability:
+
+Load Balancers
+
+1: Nginx Load Balancer
+2: HaProxy
+
+Stacked Topology:
+
+JsonPath='{ $.items[0].spec.containers[0].image }'

@@ -1,0 +1,25 @@
+VPN Networking :
+
+Virtual Private Network
+
+VPC
+Internet Gateway and associate with VPC
+Public, Private , and Db Subnets HA in AZ
+Public, Private and DB Route Tables
+We are adding Routes
+NAT Gateway --> as a route to private and db subnets
+Associations of RT and Subnets
+
+VPC Peering:
+Two VPC should be in same region
+Two VPC CIDR should not overlap
+Requestor --> Default VPC
+Acceptor --> Another VPC
+
+Default Route Table
+
+SSM Parameters Store :
+Where all the VPC Ids and Public Subnets Ids will be stored
+Private Subnet ids will be stored
+
+# 22:00 -- Completed

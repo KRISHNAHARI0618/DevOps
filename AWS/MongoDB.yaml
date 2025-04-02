@@ -1,0 +1,7 @@
+MongoDB:
+Data Types: String,Boolean, Integer, Double, Arrays,ObjectID,Data
+
+To show data bases: show dbs
+To Create or Switch DB: use dbName
+To View Current DB: db
+To Delete DataBase: db.dropDataBase

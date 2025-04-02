@@ -1,0 +1,28 @@
+Elastic Bean Stack:
+End-to-end web application management.
+Amazon Elastic Beanstalk is an easy-to-use service for deploying and scaling web applications and services developed with Java, .NET, PHP, Node.js, Python, Ruby, Go, and Docker on familiar servers such as Apache, Nginx, Passenger, and IIS.
+It is a Platform As A Service
+It helps the developers to solely focus on the application code
+Rather Than On the infrastructure
+Key Feature:
+  Ease Of Use
+  Supports For Various Environments
+  Simple Configuration
+  Monitoring and Scaling
+  Integration with aws Services
+Advantages of BeanStalk:
+  Reduced Complexity
+  Rapid Deployment
+  Scalability
+  Cost-Effectiveness
+BeanStalk Componenets:
+  Application
+  Application Version
+  Environment
+  Environment Tier
+    Web Server Environement
+      BeanStalk Environment
+      Elastic Load Balancer
+      Auto Scaling Group
+      Host Manager
+      Security Groups

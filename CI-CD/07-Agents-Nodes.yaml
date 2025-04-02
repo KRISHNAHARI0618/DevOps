@@ -1,0 +1,27 @@
+Go to Global Tool Configuration
+Maven Installations
+Docker Nodes
+Nodes - SSH connection
+Manage Jenkins
+Go to Nodes
+Click on New Node
+Name and add Labels to use
+Lauch With SSH Connection
+To send the once pipeline job logs to another user we use status badge to send the status to user
+agent { labels "linux-server" }
+agent {
+   docker { image "public.ecr.aws/docker/library/maven:latest" }
+}
+MD5 Check In
+Finegrprinting
+Copy Artifact Plugin
+Multi-Stage Build
+Post Build and Pre-Build Actions
+Up-Stream and Down Stream
+options {
+copyArtifactPermission 'read-artifact'
+  }
+}
+
+
+

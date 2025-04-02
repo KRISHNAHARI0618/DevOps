@@ -1,0 +1,20 @@
+Functions in Terraform :
+chomp Function: 
+chomp removes newline characters at the end of a string. This can be useful if, for example, the string was read from a file that has a newline character at the end.
+
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
+}
+${chomp(data.http.myip.body)} --> gets the ip address
+
+MongoDB:Variables,provider,data,main .tf fiels
+  1) Security Group 
+  2) Add Inbound Rules
+  3) Crucial Rule: 
+Either add CIDR or Add Security Group Attach to EC2 Instance to the CIDR Block For the VPN To any Another Private Subnet EC2 Instance
+  4) Create EC2 Instance in DB Subnet
+
+StringList: split(",",data.aws_ssm_parameters.etc[0])
+
+
+

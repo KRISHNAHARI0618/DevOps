@@ -1,0 +1,86 @@
+Akhilaannapur1803
+Kubernetes Session : 56
+    00:00   : Docker Architecture
+    08:00   : Docker Image Layers
+    14:00   : Docker Cache
+    19:00   : Docker Optimization : Multistage Build
+    28:00   : Docker Disadvantages
+    32:00   : Kubernetes Intro - Orchestration
+    41:00   : Terraform Minikube Installtion
+    53:00   : Kubernetes Practice Explanation
+    01:01:00: MiniKube Starting
+    01:03:00: WorkStation Creation
+    01:19:00: Namespace Introduction
+
+Kubernetes Session : 57
+    00:00   : Kubernetes Recap
+    10:00   : NameSpace
+    15:00   : Pod Creation
+    20:00   : Multi-Pod Specification
+    25:00   : Labels
+    30:00   : Annotation
+    36:00   : Resources Explanation Limits and Requests
+    46:00   : Image pull policy
+    51:00   : Kubernetes Environments
+    54:00   : Config-Map
+    01:00:00: Config Direct Mapping
+    01:13:00: Services In Kubernetes
+
+Kubernetes Session : 58
+    03:00   : eksctl Installation
+    23:00   : How NodePort Works
+    35:00   : Load Balancer Notes
+    40:00   : SETS
+    42:00   : ReplicaSet
+    49:00   : Deployments
+    01:02:00: Roboshop K8 Building.
+    01:20:00: WEb Component Building with Conf Added
+
+Kubernetes Session : 59,60 :> Total Roboshop Building
+
+Kubernetes Session: 59
+    00:00  : Recap
+    07:00  : Redis Component
+    11:00  : User Component
+    15:00  : cart Component
+    20:00  : mysql
+    32:00  : Shipping
+
+Selenium With Java(Revision) : 15 Hrs
+Core Java:  12 Hrs
+Selenium With Java : 42 Hrs
+
+Kubernetes Session : 61: Volumes & Storage Classes.
+    00:00  :  K8 volumes and storage
+    09:00  :  emptyDir
+    27:00  :  HostPath & DaemonSet & Fluent d
+    48:00  :  Static provisioning
+    52:00  :  PV(Persistent Volume)
+ 01:10:00  :  PVC
+ 01:15:00  :  EBS static provisioning
+
+Kubernetes Session : 62
+00:00 : Issue While Creating Control and Worker Nodes
+18:00 : Recap
+21:00 : EBS dynamic provisioning
+22:00 : Storage Class
+23:00 : Storage Class For EBS Volumes
+33:00 : Static VS Dynamic Provisioning
+35:00 : EFS static provisioning
+50:00 : EFS dynamic provisioning
+58:00 : Stateful-Set
+59:00 : DeploymentSet VS StateFullSet Applications
+01:20:00 : HeadLess Set Headless service
+01:36:42 : QA Session
+
+Kubernetes Session : 63
+    00:00 : StateFullSet MongoDB,redis rabbitmQ Mysql roboshop
+    29:00 : Helm Charts
+
+Kubernetes Session : 64
+    00:00 : Role and Role Binding
+    20:00 : AWS-AUTH Change ConfigMap
+
+
+
+

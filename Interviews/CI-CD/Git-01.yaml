@@ -1,0 +1,60 @@
+30 Common Interview Questions:
+https://semaphoreci.com/blog/common-cicd-interview-questions
+
+What is Git:
+1: Git is a Distributed version control system used to push,merge
+
+Name some benefits of CI/CD:
+
+Less risk: automated tests reduce the chance of introducing bugs, creating a safety net that increases the developer’s confidence in their code.
+
+More frequent releases: the automation provided by continuous delivery and continuous deployment allows developers to release and deploy software safely many times per day.
+
+Improved productivity: freed from the manual labor of building and testing the code, developers can focus on the creative aspects of coding.
+
+Elevated quality: CI acts as a quality gate, preventing code that is not up to standards from getting released.
+
+Better design: the iterative nature of continuous integration lets developers work in small increments, allowing a higher degree of experimentation, which leads to more innovative ideas.
+
+Characteristics in a CI-CD Platform:
+1: Reliability
+2: Speed
+3: Reproductivity
+4: Ease of Use
+
+Is security important in CI/CD? What mechanisms are there to secure it:
+Yes. CI/CD platforms have access to all kinds of sensitive data such as API keys, private repositories, databases, and server passwords. An improperly secured CI/CD system is a prime target for attacks and can be exploited to release compromised software or to get unauthorized access. A CI/CD platform must support mechanisms to securely manage secrets, and control access to logs and private repositories.
+
+Git Hooks: fire off custom scripts when certain important actions occur
+When you want script to run when committing
+
+There are two groups in Git Hooks:
+1: Server-Side Hooks
+2: Client-Side Hooks
+
+Location: .git/hooks
+when you run git init --> git initializes hooks also with .simple extension
+Client-Side Hooks:
+1: Committing-Workflow Hooks
+  1: Pre-Commit
+  2: prepare-commit-msg
+  3: commit-msg
+
+2: Email Workflow Hooks
+3: Other Client Hooks
+
+Git Rebase and Merge:
+git init: initializes the .git repository
+git hooks:
+Git Fork
+Git Clone
+6 Most git Confusing Commands:
+merge
+rebase
+reset: depends on the usage, can modify the index or change the commit which the branch head is currently pointing at.
+
+revert: creates a new commit which undoes the changes from last commit.
+
+fetch
+
+pull

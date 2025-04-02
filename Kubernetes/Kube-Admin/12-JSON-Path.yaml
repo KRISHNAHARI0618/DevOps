@@ -1,0 +1,114 @@
+Json Path: Query Language for parsing the data
+
+Getting the dictionary details:
+
+Root Element: # Will be denoted with $
+
+- " $.vehicles.car.color "
+
+# Getting details of List: Root Element
+
+get first element : [0]
+get first element in inner list : $[0].[0]
+
+- $.car.wheels[1].model
+
+# Conditions in Json Path:
+- List number of element greater than 14
+- Condition is represented with ==> " ? "
+- All Elements represent with ==? @
+- $[? (@ >  14)]
+- $[? (@ == 25)]
+- $[? (@ != 30)]
+- $[? (@ >= 40)]
+- $[? (@ <= 50)]
+- [? ( @ >= 20)]
+
+Json Wild Cards: * Represents "ANY"
+- * Represents == Any Dictionary eg:... $.*.dict
+- [*] Represents == Any Value inside the List
+- $.*.[*] Represents == Any Values Inside both list and dictionary
+
+Json Path Lists:
+- Get the list of Elements in list from start and end point
+- $[0,3] ==> Give List until 2nd element
+- $[0:8] ==> Will Give List until 7th item in list
+- $[-1:0]  ==> Gives the last item in the list
+
+Json Path:
+
+{
+  "squadName": "Super hero squad",
+  "homeTown": "Metro City",
+  "formed": 2016,
+  "secretBase": "Super tower",
+  "active": true,
+  "members": [
+    {
+      "name": "Molecule Man",
+      "age": 29,
+      "secretIdentity": "Dan Jukes",
+      "powers": ["Radiation resistance", "Turning tiny", "Radiation blast"]
+    },
+    {
+      "name": "Madame Uppercut",
+      "age": 39,
+      "secretIdentity": "Jane Wilson",
+      "powers": [
+        "Million tonne punch",
+        "Damage resistance",
+        "Superhuman reflexes"
+      ]
+    },
+    {
+      "name": "Eternal Flame",
+      "age": 1000000,
+      "secretIdentity": "Unknown",
+      "powers": [
+        "Immortality",
+        "Heat Immunity",
+        "Inferno",
+        "Teleportation",
+        "Interdimensional travel"
+      ]
+    }
+  ]
+}
+
+
+Json-Path Tutorial:
+
+kubectl get nodes -o yaml
+kubectl get nodes -o jsonpath
+
+Why JsonPath:
+1: Large Data Sets
+2: 1000's of Pods
+
+kube-api server is using json format
+
+kubectl get nodes -o wide
+
+kubectl get pods -o jsonpath='{.spec.}'
+
+1: Identify the kubectl command kubectl get command
+2: Familiarize with json output
+3: form the json path query
+4: use query with json path and kubectl
+
+kubectl get nodes -o=jsonpath='{.items[*].metadata.name}'
+
+kubectl get nodes -o=jsonpath='{.items[*].status.nodeInfo.architecture}'
+
+Range Condition in json path:
+
+'{range .items[*]}
+    {.metadata.name}{"\t"}{.status.capacity.cpu}{"\n"}
+{end}'
+
+Custom-Columns:
+
+kubectl get nodes -o=custom-columns=NODE:.metadata.name ,CPU:.status.capacity.cpu
+
+kubectl get nodes --sort-by= .metadata.name
+

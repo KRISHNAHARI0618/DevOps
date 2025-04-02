@@ -1,0 +1,4 @@
+FROM almalinux:8
+ENV NAME=SIVAKUMAR \
+    AGE=30 \
+    ADDRESS=BANGALORE

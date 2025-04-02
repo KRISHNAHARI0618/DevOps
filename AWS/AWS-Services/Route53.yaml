@@ -1,0 +1,33 @@
+#Route53 Concepts:
+
+Route53 is DNS as a Service 
+DNS --> Domain Name System:
+    Domain Name System (DNS), translates human readable domain names (for) (example, www.amazon.com) to machine readable IP addresses (for example, 192.0.2.44).
+Domain Registration
+Hosted Zones
+Records
+Domain Name Servers
+Health Checks on Web Servers 
+
+How DNS Works ?:
+    Top Level Domain
+    ISP resolver
+    Browser cache --> OS Cache --> ISP (Resolver) --> Root Servers --> Scaning and Approch to TLD --> Name Servers.
+    Name Servers --> it will register all these servers to Top Level Domain
+    IP Adddress.
+
+Forward Proxy and Reverse Proxy?
+Forward Proxy : 
+    Client Centric 
+    Does not expose Client IP Address Internet
+    A forward proxy is the most common form of a proxy server and is generally used to pass requests from an isolated, private network to the Internet through a firewall. 
+    Using a forward proxy, requests from an isolated network, or intranet, can be rejected or allowed to pass through a firewall
+    Content Filtering
+    Notification center
+Reverse Proxy:
+    A reverse proxy server is a type of proxy server that typically sits behind the firewall in a private network and directs client requests to the appropriate backend server. A reverse proxy provides an additional level of abstraction and control to ensure the smooth flow of network traffic between clients and servers.
+
+VPC :
+    Using Availability Zones we can configure Highly Available
+    Using AutoScaling Group we can configure Highly Scalable Application
+

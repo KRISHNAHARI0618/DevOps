@@ -1,0 +1,290 @@
+Helm Documents:
+https://helm.sh/docs/
+https://github.com/stacksimplify/helm-masterclass
+https://github.com/stacksimplify/helm-masterclass/tree/main/course-presentation
+https://github.com/stacksimplify/helm-charts
+https://github.com/stacksimplify/helm-charts-repo
+
+Port-Forwarding:
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+Helm Charts Folder Structure :
+Base-Chart:
+ - .helmignore
+ - Chart.yaml
+ - chart folder (Child Charts)
+ - templates folder
+   - Notes.txt
+   - readme.md
+   - Deployment.yaml
+   - hpa.yaml
+   - ingress.yaml
+   - service.yaml
+   - serviceaccount.yaml
+   - tests
+     - test-connection.yaml
+ - values.yaml
+
+Before Helm:
+    1: Static About Labels
+    2: Port numbers
+    3: Yaml Files need to create (Service,Deployment,Pods etc..)
+    4: Most of the elements are same for deployment and application
+    5: Consistency is not maintained
+    6: Revision History
+    7: Continuous Deployment using ArgoCD
+
+After Helm:
+    1: Package Manager to install the applications using charts
+    2: Helm Works with Charts
+    3: Charts == Packages
+    4: Packages == Service,Deployment,ConfigMap yaml files
+
+    Helm can install
+    helm can Upgrade
+    helm can roll back
+    helm can uninstall
+
+Why Helm Charts uses:
+    Package Manager where we can use charts to download, deploy application
+    Revision History
+    Dynamic Configuration (Can give Values at run time)
+    Helm Uses Values.yaml file where we can define values for configurations
+    Consistency
+    Intelligent Deployment
+    Life Cycle Hooks
+    Security (Charts are downloaded from repos is secured)
+
+Helm Uses Mainly:
+    Repository where charts are stored
+    Charts & Repos
+
+Three Big Concepts in Helm:
+    Charts --> Templates (Service.yaml,Deployment.yaml,Namespace.yaml),Values.yaml,manifest.yaml
+    Repository
+    Release (Version)
+Helm Install resources in the Order:
+    Namespace
+    ResourceQuota
+    LimitRange
+    PodSecurityPolicy
+    Secret
+    ConfigMap
+    StorageClass
+    PersistentVolume
+    PersistentVolumeClaim
+    ServiceAccount
+    CustomResourceDefinition
+    ClusterRole
+    ClusterRoleBinding
+    Role
+    RoleBinding
+    Service
+    DaemonSet
+    Pod
+    ReplicaSet
+    Deployment
+    StatefulSet
+    Job
+    CronJob
+    Ingress
+    APIService
+
+Helm Templating Language:
+
+pod Specification
+------------------
+apiVersion: v1
+kind: Pod
+metadata:
+    name: {{ .Values.name}}
+spec:
+    containers:
+    - name: {{ .Values.container.name }}
+        image: {{ .Values.container.image }}
+        ports:
+        - containerPort: {{ .Values.container.port }}
+
+values.yaml file
+----------------
+name: nginx-app
+container:
+    name: nginx-container
+    image: nginx
+    port: 8080
+
+----------------------------------------------------
+Helm Chart Directory Structure:
+    Charts/ --> charts.yaml,values.yaml,templates/,charts/
+
+Helm Is Supporting helm OCI Repositories:
+    helm Commands
+
+How to set a Password for the manually for any service in Helm Charts :
+
+# either using cli or through file
+
+With CLI: helm install <give-service-name> <reponame/service-name> --set auth.rootPassword=somepassoword
+
+With File (Yaml Format):
+    auth:
+        rootPassword: "test1234"
+
+helm install <service-name> <reponame/servicename> --values <Path-of-Service-file>
+
+How to Upgrade the helm repository:
+    helm repo update
+To List Down the all applications:
+    helm list
+Helm Concepts: Helm Commands
+Helm Install Command:
+    helm repo list
+    helm repo add REPO-NAME REPO-URL
+    helm search repo <commands>
+    helm search repo nginx
+    helm install release-name chart-name
+    helm list
+    helm unistall <release-name>
+
+Practical Installation:
+    helm install mybitnami https://charts.bitnami.com
+    helm upgrade nginx
+
+In all Kubernetes and Docker we are doing only two things Building Images and Running that Images
+
+Entire Manifest Files Are Static Except Images
+
+Building image
+Manifest --> How to Run Images --> Input Latest Version
+
+We Will Keep The important files aside and edit required Files
+
+Variables: Dry Without Interupting actual code or no hardcoding each and every place we use Variables
+
+Helm Charts:
+    What ever changing constantly we need to create variables
+Purpose of helm is 2 Things:
+    Parameterizing the Kubernetes Manifest Files
+    Packages the kubernetes Manifest Files
+
+Installing Helm : 3 Commands:
+    Installed Helm 3
+Structure of Helm:
+    *1: Charts : Where all Chart related content stored.
+    *2: template: Whee all manifest files stored
+    3: Charts/ : If charts is depends on another charts it will be pulled here
+    4: values: default values for templates (override/default --set option)
+    5: readme.md : Gives describe about chart
+
+Chart.yaml: Mandatory file
+
+Charts: 3 Mandatory Fields
+    apiVersion: To determine the rest of the fields (Structure)
+    name: Name of Charts
+    version: chart version
+    description: "This is helm chart of nginx"
+    appVersion: application version
+
+
+# Chart.yaml:
+    apiVersion:
+    name:
+    description:
+    icon:
+    keywords:
+    sources:
+    maintainers:
+
+# Templates Folder:
+    - Complete manifest files located
+    - service.yaml
+    - -helpers.tpl -- Define methods and re use those methods in all manifest files using include method
+
+# Values.yaml File:
+    - replicaCount:
+    - image:
+        - repository:
+        - pullPolicy:
+        - tag: ""
+    - imagePullSecrets:
+    - nameOverride: " "
+    - serviceAccount:
+        create: true
+        annotations: {}
+        name: " "
+    podAnnotations: {}
+    podSecurityContext: {}
+    securityContext: {}
+    service:
+        type:
+        port:
+    ingress:
+        enabled
+    resources: {}
+    autoScaling:
+      enabled:
+    nodeSelector: {}
+    toleations: []
+    affinity: {}
+
+# Helm lint:
+    - scans through the templates folders and gives the 3 levels of details
+    - info
+    - warnings
+    - errors
+
+Parameterizing the image values:
+Create the values.yaml file :
+  add all the repeatedly chainging values like below
+  Variables: {{.values.deployment.imageVersion}}
+
+Helm Public Charts: Artifactory Hub
+
+Kubectl Commands:
+
+1: kubectl get secrets: stores all release information and get all secrets stored while Installing
+2: kubectl get events : gives all info about the containers
+3: kubectl config get-contexts : get config details for clusters
+4: kubectl config use-context docker-desktop : use default context cluster as docker desktop
+
+Helm Commands:
+
+1: helm list : List Down The Files
+2: helm uninstall <serice-name> : it will delete all the sevices
+3: helm --dry-run : for debuggging the helm Charts
+4: helm install <app-name> <repo-name> : install the application
+5: helm upgrade : upgrading the charts
+6: helm template : always works as a installation give all details
+7: helm get : To get more details about charts/repo
+8: helm get values <install-name> : gives user Values
+9: helm get values <install-name> --all : gives all values from values.yaml file
+10: helm get manifest <install-name> : gives the manifest details
+11: helm history : show history of the installations
+12: helm install my:
+13: helm rollback <servicename> :
+14: 24+12 = 36
+15: helm install <chart-name> : To run the chart
+16: helm list :
+17: helm upgrade <chart-name> . :
+18: helm rollback <chart-name> :
+19: helm histroy <chart-name> :
+20: helm package <repository name> : how to packages the helm folder
+21: helm dependency update <chart-name> : update the dependency charts
+22: helm template --debug
+23: helm install --dry-run --debug
+24: helm install --set .spec.nodePort=31240
+25: helm install --values <filename>
+
+
+
+Helm Upgarde with Set Option:
+- helm upgrade
+- helm history
+- helm rollback
+- helm lint --> checking the issues in values.yaml file
+
+
+Helm Upgrade Command:
+
+helm upgrade <release-name> <repo-name>/mychart1 --set "image.tag=1.0.0"
+

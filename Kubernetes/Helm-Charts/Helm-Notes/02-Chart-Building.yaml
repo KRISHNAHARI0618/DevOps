@@ -1,0 +1,14 @@
+Template Action:
+Anything in between flower brackets is called Action
+
+Template Functions:
+Quote Function:
+  Quote:
+  SQuote:
+
+Hyphen(-): Removes the Spaces Leading and Trailing
+indent: Gives Spaces leading to the value
+nindent: gives next line and Spaces leading to spaces
+
+Type Conversions Functions:
+toYaml Function

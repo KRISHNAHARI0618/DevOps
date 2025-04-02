@@ -1,0 +1,109 @@
+Ansible:
+Explain:
+Task:
+Inventory:
+Module:
+Play:
+Playbook:
+Role:
+
+Explain scenario when to use either ansible playbook or AD-HOC Commands:
+1: When we are doing immediate tasks of one or two tasks we will go with adhoc cli commands
+ping commands,quick & easy, rebooting server,Managing files, Managing packages etc..
+
+2: When we want to do multiple tasks at a time with multiple machines
+a: simple configuration
+b: repetitive
+c: Reusable
+UseCases:
+Repetitive,Simple,Multi configuration with playbooks
+
+What are the various ways to verify playbook prior to execution:
+1: Ansible playbook command offers several options for verification
+Flags:
+a: ansible-playbook --check
+b: ansible-playbook --diff
+c: ansible-playbook --list-tasks
+d: ansible-playbook --syntax-check
+e: ansible-playbook --list-hosts
+Tools to Check the Configuration:
+1: Ansible Lint
+2: Ansible Molecule
+3: yamllint
+
+simple-playbook:
+---
+- name: installing nginx server
+  hosts: all
+  become: yes/true
+  tasks:
+  - name: Update OS
+    command: apt update
+  - name: Install Nginx service
+    apt:
+      name: nginx
+      state: present
+  - name: start service
+    system:
+      name: nginx
+      state: started
+
+How to continue Ansible tasks even it fails:
+mention which tasks should ignore:
+ignore_errors: true
+
+Explain ways to run the same ansible playbooks on distinctive nodes with different ports and usernames:
+By Adding Inventory parameters:
+ansible_port
+ansible_username in inventory file
+in inventory : add
+ip-address/DNS ansible_user=username ansible_ssh_pass=password ansible_port=22
+
+Explain Roles and Importance of roles:
+Roles enables us to reuse and share our ansible code efficiently
+Role primary mechanism for breaking a playbook into multiple files
+simplifies writing complex and it makes them easier to reuse
+ansible.cfg
+hosts
+tasks
+roles:
+hariplay
+    ├── README.md
+    ├── defaults
+    │   └── main.yml
+    ├── files
+    ├── handlers
+    │   └── main.yml
+    ├── meta
+    │   └── main.yml
+    ├── tasks
+    │   └── main.yml
+    ├── templates
+    ├── tests
+    │   ├── inventory
+    │   └── test.yml
+    └── vars
+        └── main.yml
+Ansible-Galaxy command is used to create Roles
+
+How do you install some task should trigger whenever there is configuration changes:
+1: Ansible Role Handlers
+  a: give some command like below in main playbook file
+  notify : filename to notify
+2: When condition also can be used
+
+How do you handle ansible sensitive information:
+1: Ansible Vault we can save the sensitive information like api keys etc..
+a: ansible-vault create credent.yaml
+b: it will ask password give it password will encrypt aes256 format
+c: ansible-vault view filename
+d: ansible-vault decrypt filename
+e: --ask-vault--pass to pass the password
+
+Explain pull and push based configuration:
+1: Push the configuration to the servers
+
+Ansible Collections:
+Collections are a distribution format for Ansible content that can include playbooks, roles, modules, and plugins.
+
+

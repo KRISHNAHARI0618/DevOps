@@ -1,0 +1,383 @@
+Terraform Zero To Hero:
+Day-01 :
+Day-05 : Provisioners
+
+InfraStructure as a Code:
+- Infrastructure as code is the process of managing and provisioning computer data centers through machine-readable definition files, rather than physical hardware configuration or interactive configuration tools.
+DevOps Engineer:
+- Create S3 Bucket
+- Terraform uses API As a Code
+- Terrafrom Uses HCL Language
+- Terraform Saves the State fo what we created for further reference
+
+Infrastructure as a code --> IaaC:
+    Creating infra manually takes more time and more cost effective
+1: What is Infrastructure:
+    Creating the servers to deploy the services/applications manually or Automatically.
+2: What is Inframanagement :
+    Managing The infra and Creating the Services through manually or automation is called management
+3: What is InfraStructure as a Code:
+    Creating the Infrastructure using the code or scripting is called the IaaC
+4: What is Best IaaC Tool:
+    Terraform is the popular IaaC Tool.
+5: What is Terraform :
+    Terraform is an infrastructure as code tool that lets you build, change, and version cloud and on-prem resources safely and efficiently.
+6: What are Advantages of using Terraform:
+- Since Terraform is a code we will save that code as Version Control
+- Consistent Infrastructure --> For every environment the same set up will happen
+- Create Read Update Delete the Configuration
+- Inventory Management --> we can easily get the list of resources created.
+- Cost Optimization  --> When ever we need we can run and create the infra and if not required we can delete the infra
+- Dependency Management
+- we can automatically create each service dynamically
+- Terraform Modules --> ReUse the code
+- Where we can build the resouces based on modules
+- Terraform is declarative: Simple, Easily Handled
+
+7: Does Terraform Support Hybrid Cloud environments :
+    Yes Terraform Supports Multicloud Support it will Support
+8: HashiCorp Language Syntax :
+    Contains:
+     Variables
+     Data Types
+     Conditions
+     Loops
+     Functions
+9: Resource Creation Syntax:
+    resource "what resource" "name of resources" {
+        arguments/options/parameters
+    }
+    what-resource --> You need to get
+
+Types of Input Variables in Terraform:
+    list
+    set
+    Map
+    Int
+    bool
+    tuple
+ How Many ways we can pass the input  variables:
+- through -var in CLI
+- Through File using tf vars -var-file/dev-tfvars
+- Through Environment Varibales TF_VAR_<VAR_NAME>
+
+Reference a Variable: var.<VAR_NAME>
+Ignore the value : export TF_VAR_<VAR_NAME>=<VALUE>
+
+ variable "appi_id"{
+     type = string
+     default = "some_value"
+ }
+
+ variable "car_model"{
+         description = "Car Model Object"
+         type = object ({
+            model = string
+            color = string
+            year = number
+ }
+
+ after defining the variables in variable file
+ var.variable_name we can use.
+
+ variable "memory" {
+        type  = string
+        default = "some_value"
+     }
+
+ resource "aws_instance" {
+    name = "Instance Name"
+    memory = var.memory
+  }
+
+# Topics discussed:
+    Maps in Variables
+    Loops: Count and Count index
+    Conditions: When
+    Functions: Filters
+    Variables: Inputs & Outputs
+    Locals
+    Data sources
+Additional Concepts:
+    Map:
+#Tags:
+    Key-Value Pairs:
+    Name = "Some-Name"
+    Environment = DEV/QA/PROD
+    Terraform = true
+    Component = MongoDB
+    Project = Roboshop
+Outputs:   Output is the form or getting printed aws resources names or in the console
+syntax:
+    outputs "outputname"{
+        value = "aws.resourcename.id/name"
+    }
+Conditions:
+    expression ? "this will run if true" : "ths will run if false"
+#Loops:
+    Count/Count-Index: Can only be used in module,resource,data blocks not used in outputs,variables,anyother tf files
+    Count :
+    Count-index:
+    For-Each:
+
+#Functions
+   The Terraform language does not support user-defined functions, and so only the functions built in to the language are available for use.
+   Functions are the expressions where it can be called when it is required
+
+#Locals:
+    Locals is also a type of variables where it contains both Functions and Expressions used
+
+    Named values which can be assigned and used in code
+    it mainly servers the purpose of removing duplication within the terraform code
+
+    When you use locals it removes the duplication within the terraform code and hence it improves the readability of the code
+
+#Data-Sources:
+    Querying the resources data dynamically from the source
+
+    Already Available resources are used to create new resource
+
+# For-Each Block
+    It will create keyword called each then it will iterate through the each.key and each.value
+#Dynamic Block:
+    It will be used to Create the Particular configurations inside the resource block which are repetative
+    Keyword Used: Dynamic Block
+               dynamic "setting" {
+                    for_each  = var.ingressrules
+                    content {
+                        description = setting.value.description
+                    }
+                }
+
+# State Files and Remote State Files:
+    Session -25 See Video and Abhishek Video Also YouTube
+    S3 Bucket and DynamoDB Table.
+
+# tfvars:
+    tfvars will be replace the default variable values and metion tf-var variables
+    it will be useful when we are developing multi environment
+    for different environments we need to give different s3 bucket and differnt variable names different Dynamodb Table
+    ** If we do not mention different backend for differnet environments terraform will always replace the values **
+# Commands :
+
+    terraform grep --help
+    terraform plan | grep
+    terraform init config
+
+    terraform init -reconfigure -backend-config=PROD/backend.tf --> to make the configuration for prod environment
+    terraform init -reconfigure -backend-config=DEV/backend.tf --> to make the configuration for DEV Environment
+
+
+# How to Maintain the different environments in different repositories
+
+# Modules In terraform : Dont Repeat Yourself
+     create one module code to create instances
+     when ever we need to create instances just call the module using module "ec2-create" {source = "path of the module" }
+
+State and Remote State:
+    State is nothing but what resources it is created
+
+Tf Vars:
+    consistency accross multi environment Dev and Prod
+    we use same code but different variables
+
+    variables mentions in variables.tf file are default values where we can over ride those values using variable.tfvars
+
+    In tfvars everything is key-value pair in tfvars
+
+    terraform plan -var-file=DEV/dev.tfvars
+
+    if we keep the variables in terrafrom.tfvars file it will be automatically tiggered when we run the command terraform plan and apply
+
+    then we no need to pass anyvalue or commands like -var-file in teraform plan and apply
+
+    in variables if we want to just declare we use like below
+    variable "name"{
+        type = list/maps
+    }
+   To Over Ride the default values in terraform we use terraform.tfvars file
+
+Multi Environment SetUp:
+
+1. Maintain diffrent repos
+    code is different completely so that we dnt mess with dev and prod
+
+2. same code with different variables (tfvars,varaibles,terraform.tfvars: and config
+
+3. terraform workspaces
+
+# Modules:
+the power of terraform is lies in terraform modules
+Dont Repeat Yourself
+Create Code ,reuse it instead of writing same again and again
+
+# Number System :
+    decimal --> 0 - 9
+    binary --> 0,1
+    octal --> 0 - 8
+    hexadecimal --> 0 - 9 A - F
+
+# Binary System : 0,1
+
+IP Address: 32 bits --> 2^32 == 4.3 billion
+IPv4 is Going to be Exhausted
+
+The communication between private ip address need to connect to the network is called NAT Gateway
+
+32 bits --> 4 octets --> 8 bits each
+10.0.0.0/8 --> 24 bits are hosts and 8 bits are for networks
+
+Subnets:
+    10.0.1.0/24 --> web related components
+        10.0.1.1 --> Server 1
+        10.0.1.2 --> Server 2
+        10.0.1.3 --> Server 3
+        10.0.1.4 --> Server 4
+        10.0.1.255 --> Server 5
+
+    10.0.2.0/24 --> data bases components
+
+Amazon CIDR --> 10.0.0.0/16 - 10.0.0.0/28
+
+VPC :
+    Create VPC :
+    Create Subnets :
+    Create Internet Gateway :
+    Create Route Tables --> Public Route Table & Private Route Table
+    Attach public subnet to the Internet gateway
+    Route Table Associations
+    Add public
+
+
+What is Terraform Template:
+  A file where we can use to create a multiple resources using a file is called template
+extension: init.tpl or tftpl
+address: ${consule_address}
+placeholder: ${jsonencode}
+
+What is Terragrunt:
+  Terragrunt is a thin wrapper that provides extra tools for keeping your configurations DRY, working with multiple Terraform modules, and managing remote state.
+
+What is Validation Block:
+  Validation block is the code which make the users to provide values with certain constraints.
+  It forces users to enter the values which they have mentioned th condition
+Validation Block:
+  varaible "som_var"{
+    type = number
+    validation {
+      condition = var.som_var>1
+      error_message = "Mention Valid Number greater than 1 "
+    }
+  }
+Managing Multiple AWS Accoounts:
+  By giving the assume role ,role_arn
+
+Defining Multiple Regions:
+
+  providers "aws" {
+    region = "us-east-1"
+    alias = "east_region"
+  }
+  provider "aws" {
+    region = "us-west-1"
+    alias = "west_region"
+  }
+
+Assigining Multiple Regions:
+  data "aws_region" "west_region" {
+    provider = aws.west_region
+  }
+  data "aws_region" "east_region"{
+    provider = "east_region"
+  }
+
+Using Multiple Regions:
+  resource "aws_instance" "west_region_instance" {
+    provider = aws.west_region
+    instance_type = "t2.micro"
+  }
+
+user_data_replace_on_change = true
+
+resource "aws_instance" "example" {
+  ami  = ""
+  instance_type = " "
+  user_data = << -EOF
+    #!/bin/bash
+    echo "Hello World" > hello.txt
+    EOF
+}
+render a file from Module:
+script = templatesfile("${path.module}/user-data.sh", { ... }:
+
+-----------------------------------------------------
+#   *Terraform Provisioners:
+- Dev team Has application they need to change some
+- Create VPC
+- Public Subnet
+- Route Table (IGW)
+- Ec2 Instance
+- App.py file and Expose the application
+- User Data : when you want to run a simple script we use Userdata
+- When you want to run a complex task
+- We use the provisioners
+
+What is Provisioners:
+- We Used provisioners to implement ,Create, Execute the Actions
+- Still it lacks in Basic Things to deploy minimal application
+Types Of Provisioners:
+- Remote Exec Provisioners
+- Local Exec Provisioners
+- File Provisioners
+
+- Using Remote Exec we can connect with ec2 instance and deploy any application with out any issues remotely
+- Local Exec used to copy the terminal output to local file
+- File Provisioners: used to copy the source file to destination from local to remote server
+
+-----------------------------------------------------
+# Terraform WorkSpaces:
+
+What Is terraform Workspaces:
+- Modules and readme.md are created
+- Modules are re-usable & terraform.tfvars are used to provide variables
+Workspaces:
+- Maintain
+- Create statefiles per environment (dev,stage,pre-prod,prod,qa)
+
+Another way to Create Multiple environments is creating multiple backend configuration
+- S3 bucket and dynamodb table
+
+EKS-SetUp Steps Involved:
+- Create VPC
+- Create Extra-Subnet For Kubernetes
+- Create EC2 Instances
+- Create Security Group
+- Create IAM Roles
+- Create IAM Policies
+- Attach Policies
+- Create EKS Cluster
+- Create Node Group
+
+
+Manually Creating EKS Cluster:
+
+Configure Cluster:
+- Name
+- Version
+- Create Service IAM Role for Cluster
+
+Specifying Networking:
+- Create VPC
+- Create Subnets
+- Create Security Groups
+- Cluster End Point Access
+
+Configure Observability:
+- Metrics
+- Control Plane Logging
+
+Amazon EKS Add-ons:
+- CoreDNS
+- VPC CNI
+- Kube-proxy
+- Amazon EKS Pod Identity Agent

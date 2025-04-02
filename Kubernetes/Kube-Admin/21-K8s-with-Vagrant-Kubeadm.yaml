@@ -1,0 +1,8 @@
+High Availability with Multi-Node Cluster with Multi master nodes
+Install through Kubeadm or GCP or Kops in AWS etc
+5000 Nodes can be added
+1,50,000 Pods
+3,00,000 Containers
+100 pods per one node
+
+Kops will be used to manage kubernetes Multi-Clusters

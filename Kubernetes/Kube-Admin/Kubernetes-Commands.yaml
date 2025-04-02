@@ -1,0 +1,76 @@
+kubectl commands:
+
+To view The Clusters: kubectl config view
+
+To Unset The clusters: kubectl config unset clusters
+
+kubectl config unset takes a dot-delimited path:
+kubectl config unset users.gke_project_zone_name
+kubectl config unset contexts.aws_cluster1-kubernetes
+kubectl config unset clusters.foobar-baz
+
+To Delete Clusters with name:
+kubectl config delete-cluster my-cluster
+kubectl config delete-context my-cluster-context
+To Delete The Context with name : 
+kubectl config delete-context Cluster_Name_1
+
+Change context:
+kubectx dev-cluster-01
+
+Change namespace:
+kubens dev-ns-01
+
+Delete context:
+kubectx -d dev-cluster-01
+
+
+
+
+
+
+
+
+
+
+
+kubectl create -f <Resource file name>  --> Give error if already exits
+kubectl apply -f <Resource file name> --> Update if already exists
+
+kubectl get pods -n <namespace file> --> Gives the name space
+kubectl get pods --> List the running pods
+kubectl get pods -A --> List down all the pods even closed
+
+To Go Inside the Pod :
+  kubectl exec -it <pod-name> -- bash
+  kubectl exec -it <pod-name> -n <namespace name> -- bash
+  curl localhost --> to check the file 
+
+To delete the resouces :
+  kubectl delete <podname> -n <namespace name>
+
+TO decribe the pods :
+  kubectl decribe pod <pod-name>
+
+To describe the config map: 
+  kubectl describe  <pod-name> configmap <config-map-name> 
+
+To Get the service:
+  kubectl get service
+  kubectl get svc
+
+After Deploying the MultiContainer pod To access the multi-containers the command used 
+
+kubectl exec -it <pod-name> -c <second-container-name> -- bash
+
+To watch Kubectl pods command is: --> watch kubectl pods
+
+To get IP Address for pod --> kubectl get pods -o wide
+
+kubectl get sc : get details about storage class
+kubectl get pv,pvc : Persisitent volume ,Persisitent Volume Claim
+
+Load Balancers : --> Types of load Balancers
+  Application Load Balancers
+  Proxy Network Load Balancers
+  Passthrough network load balancers

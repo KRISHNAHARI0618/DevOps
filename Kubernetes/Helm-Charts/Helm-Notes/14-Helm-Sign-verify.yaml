@@ -1,0 +1,45 @@
+Helm Sign and Verify:
+
+Why do we need to sign Helm Charts:
+
+Integrity
+It prevents attackers from injecting malicious code
+
+Authentication:
+When a helm chart is signed it comes with a digital signature generated using a private key held by the chart maintainer
+
+Users can verify the authenticity of the chart using the corresponding public key
+
+This provides a way to verify that the chart was indeed created by the expected source or maintainer
+
+When we sign a helm charts what happens:
+
+it creates a provenance record  in a provenance file
+
+We can verify the integrity of our helm chart by comparing a chart to a provenance record
+
+Sign and Verify Helm Charts:
+
+generate private/public keys with gpg
+helm doesnt support latest gnupg v2 (kbx format)
+
+for signing the Helm Chart: helm package --sign
+for verifying the :
+
+we need to export the public key to gpg format
+command: helm verify --keyring public-key
+
+helm install --verify --keyring public-key/
+
+gpg --export-secret-keys >~.gnupg/helmsigndemo1-secring-privatekey.gpg
+
+
+Supported algorithms: gpg --keys
+
+Pubkey: RSA, ELG, DSA, ECDH, ECDSA, EDDSA
+
+Cipher: IDEA, 3DES, CAST5, BLOWFISH, AES, AES192, AES256, TWOFISH, CAMELLIA128, CAMELLIA192,CAMELLIA256
+
+Hash: SHA1, RIPEMD160, SHA256, SHA384, SHA512, SHA224
+
+Compression: Uncompressed, ZIP, ZLIB, BZIP2

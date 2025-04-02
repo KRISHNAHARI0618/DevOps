@@ -1,0 +1,71 @@
+DaemonSets:
+- Are Like Replica Sets
+- Daemon Sets helps to deploy atleast one pod in each node
+- When a new node is added the pod will
+- Monitoring Solution
+- Logs Viewer
+
+KubeProxy:
+- One DaemonSet example is Kube-Proxy where it will be deployed in each and every node to distribute the ip address for pods
+- Networking is another example for daemon sets
+DaemonSet definition:
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: monitoring-daemon
+  labels:
+    name: deamon
+    id: 2234
+spec:
+  selector:
+    matchLabels:
+      app: monitor-agent1
+  template:
+    metadata:
+      labels:
+        app: monitor-agent
+    spec:
+      containers:
+      - name: monitor-pod
+        image: monitor-nginx
+        ports:
+        - containerPort: 80
+How DaemonSet works:
+- using the node affinity princile and Default Behavior of the cluster will do the same
+
+Static Pods:
+
+- From directory - /etc/kubernetes/manifests
+- we place the pods in above directory will deploy the pod
+- --pod-manifest-path
+- kubelet service is located in : /etc/systemd/system/kubelet.service
+- without any api-servers or another nodes we need to deploy a pod in node we need to add manifest files in etc/kubernetes/manifests hence it will load that pod
+- we need to check kubelet.service or kubeconfig.file to check the path for that --pod-manifest-path(static pod path)
+
+Multiple Schedulers:
+- kubectl get pods --namespace=kube-system
+
+Logging and Monitoring :
+- Monitor Cluster Components
+Resource Consumption:
+- CPU
+- Memory
+- Networking
+- FileSystem
+
+Metrics Server:
+- Stores Metrics about cpu memory networks etc...
+- Kubelet is responsible for sending information to kube-api server which node is healthy
+- kubelet will get those data from cAdvisor where it will fetch all the data from all the nodes
+- cAdvisor -- Responsible for receiving metrics
+
+- kubectl top nodes: will fetch all the node details about cpu memory etc..
+- kubectl top pod: where it will check usage of pods.
+
+Managing Application Logs:
+- docker logs -f ecf
+- to see the docker logs
+- kubectl logs -f <pod-name>
+
+

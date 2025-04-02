@@ -1,0 +1,47 @@
+Helm Charts : 6 Hrs
+ArgoCD : 6 Hrs
+Prometheus & Grafana : 9 Hrs
+
+
+How do you manage dependencies in helm charts:
+- using requirements.yaml file
+- these files will be used in sub charts also
+- Regularly update charts and its dependencies
+- Regularly test your charts for accommodate the updates
+- use helm dependency command
+
+Helm Hooks:
+- helm pre-install & post install
+- helm pre-delete & post delete
+- helm pre-upgrade & post upgrade
+- helm hooks will be mostly used in data migrations
+
+What are sub-charts in helm charts:
+- Charts inside the charts are  sub-charts
+- Parent Charts can access values from sub charts
+- Used for encapsulating reusable components
+- Dependencies are managed via requirements.yaml file
+- Some of the Common Functionalities are Monitoring and logging components.
+
+Managing Secrets and Sensitive Data:
+- Use Secrets and ConfigMap
+- Helm Charts supports injecting through templates or external files without exposing them to vcs
+- Implement Encryption
+
+Handling Stateful Applications:
+- Using helm hooks to manage data migration
+- helm install pre-release
+
+Troubleshoot Helm Charts:
+- Using {{ "Helm template command" }} to trouble shoot the Kubernetes manifest files
+- Using Kubectl describe
+- Using helm chart --debug command
+
+Helm Security :
+- Use HTTPS
+- implement authentication and Authorization
+- Update Versions Regularly
+- Avoid using helm charts from untrusted entities
+
+
+

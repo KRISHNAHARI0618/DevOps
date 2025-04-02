@@ -1,0 +1,32 @@
+1: Install Plugins- JDK, Sonar-Scanner, Configure Jenkins
+2: Start Sonar Server By using the Docker image:
+docker run -d -p 9000:9000 sonarqube:lts-community
+3: Install o-wasp Dependency Check
+4: Install Docker Plugins
+
+
+
+
+
+
+Errors While Running The pipelines:
+
+1: UnsupportedClassVersionError
+
+Dsonar.projectName=shopping-cart -Dsonar.java.binaries=. -Dsonar.projectKey=shopping-cart
+Error: LinkageError occurred while loading main class org.sonarsource.scanner.cli.Main java.lang UnsupportedClassVersionError: org/sonarsource/scanner/cli/Main has been compiled by a more recent version of the Java Runtime (class file version 61.0), this version of the Java Runtime only recognizes class file versions up to 55.0
+
+
+2: Second issue is Adding jenkins user to docker group
+
+if you forget to add jenkins user to docker it will continuous give as error
+
+sudo usermod -aG <group> <user>
+sudo usedmod -aG docker jenkins
+Sonar Notes For Interviews:
+
+1: Bugs
+2: Vulnerabilities
+3: Security Hotspots
+4: Debt
+5: Code Smells

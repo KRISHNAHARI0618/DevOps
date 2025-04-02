@@ -1,0 +1,53 @@
+There are 5 Types of parameters:
+
+1: String
+2: Text
+3: Boolean
+4: Choice [ as a list]
+5: Password [fro password or secrets]
+
+
+call the parameters as ${params.Father}
+
+${params.Skills}
+
+
+Pipeline syntax:
+
+pipeline {
+
+agent any 
+
+parameters {
+
+string (name: "Father"
+        defaultValue: 'Vader'
+        description: "Enter Your Father's Name"
+        )
+
+text ( name: "PHRASE"
+       defaultValue: "it was the best of times, it was the worst of times, \n 
+       description: " This is Text Value"
+     )
+
+choice ( name: "AWS_REGION"
+         defaultValue: 
+         description: 
+        )
+
+password ( name: 
+          defaultValue :
+          description:
+         )
+boolean ( name: 
+          defaultValue:
+          description:
+        ) 
+
+stages {
+
+stage {
+
+
+}
+}

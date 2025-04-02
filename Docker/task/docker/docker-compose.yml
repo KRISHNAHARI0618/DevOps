@@ -1,0 +1,12 @@
+version: '3'
+services:
+  elasticsearch:
+    image: elastic
+    container_name: elastic
+    build: .
+    ports:
+      - "9200:9200"
+    volumes:
+      - ./data:/data
+volumes:
+  data:

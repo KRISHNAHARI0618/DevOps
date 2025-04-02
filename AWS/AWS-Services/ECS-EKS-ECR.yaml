@@ -1,0 +1,51 @@
+AWS Elastic Container Service:
+- Docker Issues: Auto Scaling and Auto Healing
+Open Shift Kubernetes: Support service system for kubernetes
+Kubernetes has the concept of  custom resource Definitions
+
+ECR : Elastic Container Registry
+
+Like Docker HUB
+Service Provided By AWS Like Docker Hub To store the images
+
+ECR Vs Docker hub
+
+ECR : Elastic Container Registry ...
+Docker Hub: Open Source image store Hub
+
+Share the images to world over the aws account
+
+Elastic Means:
+  Highly Scalable
+  Highly Available
+  Highly Maintainable
+  Hightly Securable
+Diff Between Dockerhub and ECR:
+Docker hub is :
+  Free
+  Public Repository
+  Create Account
+  Only authorized people can use images in private account
+ECR: Ecr supports private repository concept
+  Can store any number of images
+  ECR is highly secure
+  ECR is more reliable
+  ECR is more Maintainable
+  ECR is very good integration with EKS,S3...
+
+ECR is more important:
+
+ECS : Elastic Container Services
+  1: Auto-Scaling
+  2: Auto Healing
+  3: Ip Address will Change
+  4: Production Support
+  5: Security
+  6: Upgrades etc..
+  7: Tasks
+  8: Services
+  9: Clusters
+
+
+
+

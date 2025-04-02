@@ -1,0 +1,26 @@
+AWS Code Commit: GitHub
+AWS CodeCommit --> AWs CodePipeline --> AWS CodeBuild --> AWS CodeDeploy
+
+Advantages:
+Managed Git Solution
+Scalability
+Reliability
+
+Disadvantages:
+1: SSH Cannot work as Appropriate using root access in CodeCommit
+2: CodeCommit Power User
+3: It Has Features
+4: AWS Restricted
+5: Less Integrations with service outside AWS
+
+Organization will use Private Repositories
+
+Image Push
+GitHub: Hosting Code
+Jenkins: Orchestrator
+Security: SonarQube,Trivy
+Build Image: Docker
+Deployments: Kubernetes
+
+
+

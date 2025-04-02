@@ -1,0 +1,30 @@
+/*
+Hashi-Corp Terraform ON GCP
+
+Terraform = IaC
+Managing Infra,Consistency,Version Control,Human Readable
+Declarative
+Safe,Consistent,Repeatable
+Create Destroy,Update
+Can Create own Providers
+
+Terraform state files make the infra stable
+
+Terraform Providers: GCP,AWS,Azure,On-Premises
+Terraform Plugins:
+
+Provision Modify & destroy infra with terraform
+Manage Local & Remote State files
+Use Existing Modules and Build your own
+
+Project SetUp On GCP:
+
+Create a Project in GCP (Unique Name Across GCP)
+Create Service account in IAM
+Create Keys fro service account
+Put that in terraform folder
+
+Terraform Mark as Terraform taint
+Terraform Destroy
+
+*/

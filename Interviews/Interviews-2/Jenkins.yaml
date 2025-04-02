@@ -1,0 +1,325 @@
+jenkins_interview_questions:
+
+what_is_jenkins: |
+    Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks related to building, testing, and delivering or deploying software.
+    It is written in Java.
+    It has more built-in plugins which are extensible for continuous integration.
+
+define_the_process_of_jenkins:
+- Commit The Changes
+- Detect source code changes
+- The build either passes or fails
+- Generate Feedback
+
+benefits_of_jenkins:
+- Cache Build Failures
+- Automatic build report notification
+- Achieves Continuous Integration
+- Automation of Maven Project
+- Easy Tracking of bugs
+- Version Control
+- Reusability
+- Parallel Execution
+- Visualization
+- Shared Libraries
+- Secrets Management
+- Multiple Agents
+- Open Source
+- Multi-Branch
+
+pre-requisites_and_main_components_integrated_with:
+- Java
+- Git
+
+what_is_maven_and_benefit_of_integrating_with_jenkins:
+what_is_maven: Build Management Tool
+benefit_of_integrating_with_jenkins: |
+    Automates the build process and integrates with Jenkins for continuous integration.
+
+how_to_define_post_section_in_jenkins:
+- Post is a section which contains several additional steps that might execute after the completion of the pipeline.
+- Cleaning the Workspace
+- Mailing the user based on results
+- Always fail
+- Always success
+- Changed
+- Aborted
+- Scripted
+
+how_to_do_parameters_in_jenkins:
+description: |
+    Parameters are used to support various use cases while running the Jenkins pipelines.
+parameters:
+    - name: hari
+    default_value: hari_vardhan
+    description: Hello to everyone
+    type: string
+
+how_does_jenkins_authenticate_users:
+- IAM Role
+- Matrix Based Access Control
+- Username and password
+- Role Based Access Control
+- Project Based Security
+
+name_the_environment_variable_used_in_shell_script:
+default_variables:
+    - JOB_NAME
+    - NODE_NAME
+    - WORKSPACE
+    - BUILD_URL
+    - JENKINS_URL
+    - BUILD_ID
+    - git_commit
+
+what_is_dsl_jenkins:
+description: |
+    DSL (Domain Specific Language) Jenkins is a plugin for Jenkins that allows you to define job configurations using code.
+
+what_are_active_and_reactive_parameters_or_dynamic_parameters_in_jenkins:
+description: |
+    Active and Reactive parameters allow dynamic behavior in Jenkins build parameters.
+steps:
+    - Manage Jenkins
+    - Active Choices plugin
+    - Configure
+    - Add Parameters
+    - Select Active Choice Parameters
+    - Groovy Script - return['Production','QA','Development']
+    - Add Reactive Choice Parameters
+    - Referenced parameter: env
+
+what_is_groovy:
+description: |
+    Groovy is a scripting language used for writing Jenkins pipelines.
+
+how_to_clone_a_repository:
+steps:
+    - Enter email and username
+    - Run: git config --global user.name "hari"
+    - Run: git config --global user.email "mail-id"
+
+how_to_create_a_backup_and_copy_files_in_jenkins:
+methods:
+    - Thin Backup Plugin (Manually Triggered)
+    - Cron Tab / Shell Script (Cron Job particular time)
+    - Create Snapshots in Cloud Providers
+
+monitoring_and_logging_with_prometheus_and_grafana:
+description: |
+    Jenkins Prometheus Plugin exposes an endpoint (default /prometheus/) with metrics where a Prometheus Server can scrape.
+
+how_to_secure_jenkins_server:
+methods:
+    - Authentication
+    - Authorization
+    - Security Realms
+    - Role Based Access Controls
+    - Run Periodically Security Runs
+
+how_can_you_deploy_a_custom_build_of_a_core_plugin:
+steps:
+    - Stop Jenkins
+    - Copy the custom HPI to Jenkins Home/plugins
+    - Delete the previously Expanded plugin directory
+    - Make an Empty file called plugin.hpi.pinned
+    - Restart Jenkins
+
+how_to_store_secrets_in_jenkins:
+methods:
+    - Using Hashi-Corp Vault
+    - Using global variables
+    - Using credentials sections
+    - Secret file
+    - Secret text
+    - GitHub app
+    - Username with password
+    - SSH with private key
+
+how_many_ways_we_scheduled_a_build_in_jenkins:
+methods:
+    - Build after other projects are built
+    - Build periodically
+    - Generic Webhook Trigger
+    - GitHub Branches
+    - GitHub Pull Requests
+    - GitHub hook trigger for GITScm polling
+    - Monitor Docker Hub/Registry for image changes
+    - Poll SCM
+    - Quiet period
+    - Trigger builds remotely (e.g., from scripts)
+
+what_is_a_trigger:
+description: Triggers are used to define when and how pipelines should be executed.
+
+how_to_set_jenkins_build_to_fail_based_specific_word_in_console_output:
+description: |
+    Use a shell script in the Jenkins pipeline to fail the build based on specific words in the console output.
+
+can_you_provide_an_example_of_a_time_when_you_troubleshooted_and_optimized_a_ci_cd_pipeline:
+description: |
+    Describe a scenario where you optimized a CI/CD pipeline by troubleshooting performance issues or bottlenecks.
+
+what_are_all_files_required_for_nodejs_image_build:
+required_files:
+    - Index.js
+    - Package.json
+    - Web files
+
+how_to_customize_the_build_number_display_to_something_else_in_jenkins_job_page:
+description: |
+    Use environment variables in Jenkins to customize the build number display.
+
+what_are_multi_branch_pipeline:
+description: |
+    Multi-branch pipelines enable you to implement different Jenkins files for different branches of the same project.
+
+most_common_plugins_used_in_jenkins:
+plugins:
+    - Maven
+    - Sonar Scanner
+    - Nexus
+    - Kubernetes
+    - Dockers
+    - Hashi-Corp Vault
+    - GitHub
+    - Git-Hooks
+    - SSH Credentials
+    - OWASP Dependency Plugin
+    - envinject
+    - ssh-agent
+    - cloudbees
+    - pulish-over-ssh
+    - ssh-server
+    - rebuilder
+    - github webhook
+    - Active Choices Plugin
+
+how_to_distribute_jenkins_pipeline_using_jenkins:
+steps:
+    - Use Agents Sections to specify where the job can run.
+
+what_is_agent:
+description: |
+    Agent is a machine where our jobs can run. We can use the same Jenkins server as an agent.
+
+what_is_artifactory:
+description: Artifactory is a repository manager used for storing artifacts.
+
+how_to_configure_parallel_stages_in_jenkins_pipeline:
+description: |
+    Use the parallel sections/block in Jenkins pipeline to run tests on multiple OS systems simultaneously.
+
+how_to_restart_from_stage:
+description: |
+    Jenkins pipeline allows restarting from a specific stage in case of failure.
+
+how_to_fail_build_based_on_specific_word_in_console_output:
+description: |
+    Use a shell script in the Jenkins pipeline to fail the build based on specific words in the console output.
+
+how_to_troubleshoot_issues_in_jenkins_servers:
+common_issues:
+    - OutOfMemory issues
+    - Docker agent not configured
+    - Job failures
+    - Performance issues
+    - Node connectivity issues
+    - Plugin compatibility issues
+    - Authentication and authorization problems
+    - Build environment issues
+    - Jenkins upgrade issues
+    - Disk space issues
+    - Logging and debugging challenges
+    - Security vulnerabilities
+
+files_needed_for_master_slave_setup:
+- Agent configuration
+
+importance_of_secrets:
+description: |
+    Secrets are crucial for protecting sensitive information such as credentials and keys used in the CI/CD pipeline.
+
+can_we_have_job_for_pull_request_and_delete_source_branch_after_merge:
+description: |
+    Configure a Jenkins job for pull requests and delete the source branch after merge.
+
+difference_between_freestyle_and_pipeline:
+description: |
+    Compare the features and capabilities of Freestyle and Pipeline jobs in Jenkins.
+
+how_to_deploy_jenkins_pipeline:
+description: |
+    Distribute Jenkins pipeline using the agent's sections to specify where the job can run.
+
+what_are_shared_libraries:
+description: |
+    Shared libraries allow you to centralize and reuse code across multiple Jenkins pipelines.
+
+what_type_of_jenkins_file_you_worked_on:
+description: |
+    Describe the types of Jenkins files you have experience with, such as Freestyle or Pipeline.
+
+Jenkinsfile:
+pipeline {
+    agent none
+    agent any
+    agent { label 'my-defined-label' }
+    agent { node { label 'my-defined-label'} }
+    agent {
+        docker {
+            image 'maven:3.9.3-eclipse'
+            label 'my-defined-label'
+            args '-v /tmp:/tmp'
+        }
+    }
+    agent {
+        docker {
+            image 'myregistry.com/node'
+            label 'my-defined-label'
+            registryUrl 'https://myregistry.com/'
+            registryCredentialsId 'myPredefinedCredentialsInJenkins'
+        }
+    }
+    options {
+        timeout( time: 1, unit: 'HOURS')
+        retry(3)
+        timestamps()
+    }
+    tools{
+        jdk 'jdk'
+        nodejs 'nodejs'
+    }
+    stages {
+        stage('Run Tests') {
+            parallel {
+                stage('Test On Windows') {
+                    agent {
+                        label "windows"
+                    }
+                    steps {
+                        bat "run-tests.bat"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+                stage('Test On Linux') {
+                    agent {
+                        label "linux"
+                    }
+                    steps {
+                        sh "run-tests.sh"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

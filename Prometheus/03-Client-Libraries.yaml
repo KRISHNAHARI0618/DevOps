@@ -1,0 +1,132 @@
+Client Libraries:
+Instrumentation: Adding Some lines of Code to Expose Metrics
+
+Adding Instrumentation to the Code/Application we use 2-3 line of code to expose metrics to prometheus
+Prometheus Support variety of Client Libraries
+like: Go,Java,Scala,Python,Ruby etc..
+Unofficial: Bash,C,C++,PHO and More
+
+Client Libraries will push metrics to prometheus
+
+Client Libraries Push Metrics Based on Metric Types:
+
+Metric Types: Counters ,Gauge, Summary, Histogram
+
+Counter:
+Counter is a cumulative metric that represents a single monotonically increasing counter whose value can only increase or it can be reset to zero on restart
+
+Counter are mainly used to track how often a particular code path is executed
+
+For Ex: Use Counters to represent the number of requests served tasks completed or errors
+
+method: inc() increase counter value by one
+
+Gauge:
+
+A is a metric that represents a single numeric value that can arbitrarily go up and down
+
+Gauges represent a snapshot of some current state
+
+Ex: temperature, Current memory usage, anything go up and down
+
+methods: inc(),dec(),set()
+inc(): Increment
+dec(): Decrement
+set(): set the value
+
+Summary: Response_Count_time=Summary('','')
+
+A summary samples observations like requests durations - How long your application took to respond to a request, latency and request sizes
+method: observe()
+Summary Exposes Multiple Time series during scrape
+Summary metrics may also include quantiles over a sliding time window
+
+Histogram:
+
+A histogram samples the observations
+request response times response sizes
+and counts them in configurable buckets
+
+Calculating quantiles
+
+Python app Boilerplate Code:
+
+1: Need To install prometheus client
+2: pip install prometheus_client
+3: Import http_server
+
+Adding Labels to Metrics:
+Adding List to Request_count
+
+Prometheus.yaml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'example-app'
+    static_configs:
+      - targets: ['localhost:9090']
+
+
+Quantification Of Instrumentation:
+
+what should we need Instrument:
+1: Instrument Everything
+- Every Library, Subsystem and Service you are working on should have atleast a few metrics that should give a rough idea of how it is performing
+
+Instrument Types : Two Types
+Service Instrumentation
+Libraries Instrumentation
+
+1: Service Instrumentation:
+
+Three Types: Online, Offline Serving Systems, Batch process Jobs
+
+Online Servicing Systems : Data Bases, Web-Servers, HTTP Requests
+
+key metrics:
+1: Request Rate
+2: Latency
+3: Error Rate
+4: In-Progress Requests
+
+Online Serving systems should be monitored on both sides Client Side and Server side
+
+Offline Servicing Systems:
+No One Actively waiting
+Batching is common
+Multiple Stages if Processing
+
+A log Processing
+Key Metrics:
+Track the items coming in
+How many are in progress
+Last time you processed something
+How many items were sent out
+Errors that occur
+
+If Batching Then track the metrics both for batches and individual items
+
+Batch Jobs: Jobs run on regular schedule time
+Push Gateway used to scrape batch jobs
+
+key metrics :
+How long it took to run
+Over all run time
+Time at which job last completed
+
+Libraries: Should Provide Instrumentation with no additional Configuration required by users
+
+How much to Instrument: Everything
+5 Million time series
+2000 app instances
+Metric Count --> 1*2000 = 2000
+
+
+
+
+
+
+
+
+

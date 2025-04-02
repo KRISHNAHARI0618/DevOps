@@ -1,0 +1,32 @@
+Helm Plugins : These are addon tools for helm cli
+1: Helm plugins are not part of helm code base
+2: helm is built on go programming language
+3: Helm Plugins Provide a way to extent the core features set of helm by providing flexibility to develop plugins in any programming languages
+4: we can  access helm plugins using helm cli
+
+Commands : helm plugin <list,install,uninstall,update>
+helm plugin list
+helm plugin install <url>
+helm plugin install helm dashboard
+
+Helm Plugin using :
+1: Helm Git
+2: helm adopt
+3: helm schema gen
+4: helm external var
+5: Code fresh : Native CI/CD and management platform with ui dashboards for managing helm charts and releases
+6: Monokle :
+7: Helm Dashboard plugin (Komodors)
+8:
+
+helm values.yaml > values.json.schema
+
+Helm Plugin Build:
+$HELM_PLUGINS/
+   |- last/
+      |
+      |- plugin.yaml
+      |- last.sh
+
+
+$ helm schema-gen values.yaml > values.schema.json

@@ -1,0 +1,23 @@
+Jenkins-Udemy Notes:
+    One of the most popular devops Tools
+    Key Devops CI/CD Tools
+    Automate Build and Deployments
+    Open Source with 1400 plugins
+Declarative Pipelines
+Solid Understanding Jenkins
+What is CI/CD:
+
+CI --> Continious Integration
+apps--> 
+Code -> Build Code (Maven) -> Test(Unit& Integration)
+
+CD --> Continious Delivery 
+Build Docker Image
+Push To repository
+Take Image Version in Kubernetes
+Deploy in Kubernetes Environment
+
+SetUp Reason For Jenkins:
+    Extended Platform
+    
+ 4c01f26d4d864c4696e10a773cd1d670

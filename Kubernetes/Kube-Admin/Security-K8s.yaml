@@ -1,0 +1,85 @@
+Security is the prime concern in the kubernetes
+Security :
+Authentication and Authorization
+
+Authentication: Who Can Access what ?
+can be done using the Different methods
+1: Username and Passwords
+2: Username and Token File
+3: Setting up External Access providers LDAP
+4: Certificates
+5: MFA and IAM Roles (In Cloud AWS EKS)
+
+Authorization: After Getting access what can they do with that access
+1: RBAC(Role Based Access Control)
+2: ABAC
+3: Password
+
+Pod Security:
+By Default every pod in every node with in cluster can have access each other
+we can secure them using the Network Policies
+
+KubeConfig Security:
+KubeConfig has three main fields
+1: Clusters: All details about clusters from different sources will be available here along with certificates
+2: Contexts: for which user has which access and for that user what resource he has access
+3: Users: User details for which user needs access to which role etc..
+apiVersion: v1
+kind: Config
+metadata:
+  name: config map
+clusters:
+contexts:
+users:
+
+To set default cluster: kubectl config set-context gce --user=cluster-admin
+to view Config : kubectl config view
+
+Api-Resources: there are two type of api-resources
+1: api --> Core Api resources
+2: apis --> Named Api Resources
+
+api is the version 1 of the resources
+list of resources :
+pods,endpoints,pv,pvc,rc,secrets,configmaps etc.
+
+Named Resources: divided based on different types
+metrics/ storage/ logs/ networking.k8s.io/
+
+named apis --> api Groups --> Resources(objects) --> actions or verbs
+
+How to Secure K8s Clusters :
+
+
+Creating the Role Based Access Control:
+
+Role
+apiVersion: v1
+kind: Role
+metadata:
+  name: developer
+rules:
+- apiGroups: ["*"]
+  resources: ["*"]
+  verbs: ["*"]
+
+Role Binding
+apiVersion: v1
+kind: RoleBinding
+metadata:
+  name: role-binding
+subjects:
+- kind: User
+  name: dev-user
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: Role
+  name: developer
+  apiGroup: rbac.authorization.k8s.io
+
+
+
+
+
+
+

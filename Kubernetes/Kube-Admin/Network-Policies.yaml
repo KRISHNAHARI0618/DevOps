@@ -1,0 +1,57 @@
+Network Security:
+All Pods in Clusters can communicate with each other without network restricts
+all pods communicate with all other pod
+
+Network Policies:
+This is a service provided by the K8s to restrict the Communication between the same namespace or same cluster
+
+By implementing the ingress and egress rules at pod level
+
+The data base pod should only communicate with only api-pod no other pod should connect with db pod
+
+Network Policy Rules:
+Allow : Ingress
+Traffic:
+  From:
+  on:
+Port:
+
+Network-Policy.yaml:
+apiVersion: networking.k8s.io/v1
+kind: v1
+metadata:
+  name: network-policy
+  namespace: roboshop
+spec:
+  podSelector:
+    matchLabels:
+      pod-name: db-pod
+  policyTypes:
+  - Ingress
+  - Egress
+  ingress:
+  - from:
+    - ipBlock:
+        cidr: 172.17.0.0/16
+        except:
+        - 172.17.1.0/24
+    - nameSpaceSelector:
+        matchLabels:
+          project: myproject
+    - podSelector:
+        matchLabels:
+          role: api-pod
+    ports:
+    - protocol: TCP
+      port: 6379
+
+Network Solutions Support Network Policies:
+
+1: All Network Solutions should not support network policies
+2: There are Limited Solutions Support Network Policies
+Some List Of Solutions Support:
+1: Kube-Router
+2: Calico
+3: Romana
+4: Weave-Net
+

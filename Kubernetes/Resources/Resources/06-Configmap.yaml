@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: configmap
+data:
+  Name: Peddireddy
+  Dob: 06-03-2023
+  Course: DevOps
+  Village: Chiyyapadu
+  District: Kadapa
+  State: AndhraPradesh

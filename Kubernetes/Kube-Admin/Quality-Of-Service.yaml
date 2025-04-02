@@ -1,0 +1,9 @@
+1: K8s Interview Questions
+2: EKS Interview Questions
+3: Network Policies
+4: Pod Security Policies
+5: Taints & Tolerations
+
+
+1: Kube Config (kubectl get config current-context)
+2:

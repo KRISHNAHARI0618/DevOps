@@ -1,0 +1,106 @@
+Jenkins Interview Questions:
+
+Difference Between FreeStyle and Pipeline
+
+Most Common Plugins Used in Jenkins:
+Maven
+Sonar Scanner
+Nexus
+Kubernetes
+Dockers
+Hashi-Corp Vault
+Github
+Git-Hooks
+SSH Credentials
+OWASP Dependency Plugin
+envinject
+ssh-agent
+cloudbees
+pulish-over-ssh
+ssh-server
+rebuilder
+github webhook
+
+Default Variables:
+1: $JOB_NAME
+2: $NODE_NAME
+3: $WORKSPACE
+4: $BUILD_URL
+5: $JENKINS_URL
+6: $BUILD_ID
+
+
+What are the ways to secure sensitive information:
+1: Credentials Sections
+2: Environmental Variables
+3: Hashi-Corp Vault
+
+How to distribute jenkins pipeline using jenkins
+- Using Agents Sections in that Node Section
+
+What is Agent:
+Agent Is a Machine where our jobs can run
+we can use same jenkins server as a agent
+
+How to do parameters in jenkins:
+1: there is parameters sections
+2: There are different parameters
+  1: Password
+  2: String
+  3: Boolean
+  4: text
+  5: Choice
+
+What is artifactory :
+
+What is Shared Library:
+
+As Pipeline is adopted for more and more projects in an organization, common patterns are likely to emerge. Oftentimes it is useful to share parts of Pipelines between various projects to reduce redundancies and keep code "DRY" [1].
+
+When we want to re use the pipeline code to multiple projects with same language
+
+Parallel Stages in jenkins pipeline:
+For Testing on multiple OS systems we will use Parallel Sections/Block
+1: One will run in windows agent
+2: Another will run on Linux Systems
+
+Jenkinsfile:
+pipeline {
+    agent none
+    stages {
+        stage('Run Tests') {
+            parallel {
+                stage('Test On Windows') {
+                    agent {
+                        label "windows"
+                    }
+                    steps {
+                        bat "run-tests.bat"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+                stage('Test On Linux') {
+                    agent {
+                        label "linux"
+                    }
+                    steps {
+                        sh "run-tests.sh"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+

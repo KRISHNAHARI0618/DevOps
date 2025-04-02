@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: app
+  labels:
+    run: app
+  creationTimestamp: null
+spec:
+  containers:
+  - name: app
+    image: nginx
+    imagePullPolicy: IfNotPresent
+    readinessProbe:
+      httpGet:
+        path: /
+        port: 8080
+      initialDelaySeconds: 5
+      periodSeconds: 10
+    livenessProbe:
+      exec:
+        command:
+          - echo "peddireeddy" > text.1
+      initialDelaySeconds: 5
+      periodSeconds: 10

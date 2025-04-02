@@ -1,0 +1,8 @@
+Step1: Install Metric Server
+Step2: Deploy App
+Step3: Create Service
+Step4: DEploy HPA
+Step5: Increase Load
+Step6: Monitor HPA Events
+
+Install Metrics Server:

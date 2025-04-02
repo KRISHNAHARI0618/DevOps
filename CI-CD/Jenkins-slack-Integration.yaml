@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                // Your build steps go here
+                echo 'Building...'
+                // Example: sh 'mvn clean install'
+            }
+        }
+    }
+
+    post {
+        success {
+            script {
+                // Notify Slack on success
+                slackSend color: '#00FF00', message: "Build successful! :tada:", channel: '#general'
+            }
+        }
+        failure {
+            script {
+                // Notify Slack on failure
+                slackSend color: '#FF0000', message: "Build failed. :cry:", channel: '#general'
+            }
+        }
+    }
+}

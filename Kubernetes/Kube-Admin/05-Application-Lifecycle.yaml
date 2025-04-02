@@ -1,0 +1,52 @@
+Rollout and Versioning :--> Rolling Updates:
+- Deployment --> Rollout and Updates
+- Revision 1
+- kubectl rollout status deployment/myappdeployment
+Deployments Strategies:
+- ReCreate Methods & Rolling Updates
+- ReCreate Method is Making all the deployments will bring down and update the new ones
+- Rolling Updates is Bringing One Pod Down and newer up and so on so that there is no downtime for users
+
+Deployment Updates & Rolling Updates Manifest Files:
+
+kubectl rollout undo deployment
+kubectl rollout apply deployment
+kubectl get deployments
+kubectl create -f deployments
+kubectl rollout status deployments
+kubectl rollout history deployment
+
+Configure Applications:
+Configuring Command and Arguments on applications
+- Commands:
+  - docker run ubuntu
+  - docker run ubuntu -d
+  - Entrypoint and CMD In docker to run the containers
+  - EntryPoint cannot override and CMD can Override
+Commands and Arguments in Kubernetes:
+- po Definition For Commands and arguments
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ubuntu-latest
+spec:
+  containers:
+    - name: ubuntu-sleeper
+      image: ubuntu-latest
+      command: ["sleep2.0"]
+      args: [ "10" ]
+
+Configuring Environment Variables:
+
+- env is an array
+- plain key Value pair elements
+- There are two way to set environment variables
+- Config map and Secret Keys
+- ConfigMap --> valueFrom: configMapKeyRef:
+
+
+
+Configuring Secrets:
+
+- secret --> valueFrom: secretKeyRef :

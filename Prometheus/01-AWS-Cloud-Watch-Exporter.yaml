@@ -1,0 +1,10 @@
+Cloud Watcher Exporter from Maven
+
+MySQL or MySQL Server Exporter:
+got to github mysql-prometheus Exporter
+
+
+For My-Sql we need to download mysql exporter and and my sql server should be there
+for mysql server create a user and run the commands
+
+Creating Custom Exporter:

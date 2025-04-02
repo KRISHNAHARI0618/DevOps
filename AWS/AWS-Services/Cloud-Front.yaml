@@ -1,0 +1,29 @@
+Cloud Front: (Content Delivery Network Services)
+  How to configure the Cloud Front
+  Integrate CF + S3 Buckets
+
+Managed AWS Offering Service Providing CDN 
+CDN : Content Delivery Network
+  E.G : Youtube,InstaGram,Hotstar
+
+Latency
+Efficiency
+Loading Time 
+CDN : It will solve the problem like continious content .DS_Store
+.idea/*
+.gradle/*
+out/
+build/delivery 
+
+The content will be stored in multiple locations in Central and Edge Locations also.
+
+CDN :  Will create local Copies to make the fast access to content for the users
+
+Edge Locations will be cached the original data that will be used for another person who is access in the same region
+
+TakeAway : Cached
+Costly : To achieve Data Fastly 
+Security : The Security is important
+
+
+

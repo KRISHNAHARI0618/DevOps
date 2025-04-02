@@ -1,0 +1,96 @@
+Kubernetes TroubleShoot and debugging Problems:
+https://www.cloudiqtech.com/how-to-debug-and-troubleshoot-common-problems-in-kubernetes-deployments/
+
+Imagepullback off :
+	invalid image name, Syntax name
+
+ErrImagePull:
+	Network Error
+RegistryUnavailable:
+	Registry is unavailable
+InvalidImageName:
+	Wrong Image name
+CrashLoopBackOff:
+	status indicates your pod could not be scheduled on a node for various reasons like resource constraints (insufficient CPU or memory resources), volume mounting issues.  To confirm this, run the kubectl describe command along with the pod identifier to display the details.
+
+	Insufficeinet Resources
+	Volume Mounting
+	Using Hostport
+
+KillContainerError:
+
+
+For everything commands:
+	kubectl describe pods <pod-name>
+	kubectl decribe pod <pod-identifier> -n <namespace>
+	kubectl logs <pod-identifier> -n <namespace>
+
+If the error is in the multicontainer pod:
+
+	kubectl logs <pod_identifier> -c <container_name> -n <namespace>
+
+	kubectl logs –previous <pod_identifier> -c <container_name> -n <namespace>
+--------------------------------------------------
+
+# Kubernetes Challenges & Problems:
+
+What is Multi-Tenancy:
+	- Logical Grouping the namespaces is called the multitenancy
+	-
+How to Security in Kubernetes:
+	- RBAC Is One security tool (Role Based Acces Control)
+	- Kubernetes Advanced Security Modules
+	- Pod Security Policy
+	- Network Policy
+
+Load Balancing:
+	- production grade load balancers are F5 Big-IP
+	- Ingress Conrollers with service mesh
+	- Cloud Balanced Load Balancers
+
+Observability:
+	- Logs, Metrics, Traces
+	- Prometheus, Grafana, Splunk, InfluxDb, GrayLog
+
+Data-Stores:
+	- Volumes
+	- EBS
+	- EFS
+	- nfs
+
+Deployment Stratagies:
+	- Blue-Green Deployment
+	- Canary Deployment
+	- ArgoCD RollOuts
+
+OOM Killed:
+-----------
+What Is OOM Killed:
+	- Out Of Memory
+	- Memory on the specific node is filled/completly occupied
+	- PID (Process ID )
+	- Thread DUMP (One of the threads leaking more memory)
+	- kill that process of Thread Dump (kills -3)
+	- Use Resource Quota (Requests & Limits)
+	- kubectl get events (command to check oom in kubernetes)
+Types of OOM:
+How to FIX:
+Challenges:
+Tools:
+	 - Container IQ
+
+Cloud Cost Optimization Stratagies :
+- Cost Monitoring:
+	- Resource Allocation Monitoring
+	- Cast AI Tools
+	- Enhance Security
+	-	Ease Of Installation
+	- Efficient AutoScaling
+	- Spot Instance
+	- AI ML Support
+- How to Do Cloud Cost Optimization
+- Tools Used
+
+
+Introduction Of Containers:
+- 

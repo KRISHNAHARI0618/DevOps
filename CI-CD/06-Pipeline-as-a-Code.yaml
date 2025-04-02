@@ -1,0 +1,32 @@
+pipeline { 
+tools{
+Options {
+
+triggers {
+
+stages {
+
+post {
+
+
+
+}}}}
+
+sh commands on Linux
+
+bat commands on windows
+
+Using Nodes and Agents:
+
+agents {
+
+labels 'linux'
+
+}
+
+agent {
+
+docker { labels: 'node01' }
+
+}
+ 

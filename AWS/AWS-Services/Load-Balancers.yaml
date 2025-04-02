@@ -1,0 +1,59 @@
+Load Balancers: https://newsletter.systemdesigncodex.com/p/load-balancers?publication_id=2148111&utm_campaign=email-post-title&r=2fxa26
+
+
+AWS Load Balancers: 3 Types
+  1. Application Load Balancers (Layer 7)
+  2. Network Load Balancer (Layer 4)
+  3. Gateway Load Balancer (Layer 4)
+
+What is a Load Balancer:
+- To solve the downtime and slowness of the application we use to distribute the load based on the incomming traffic
+- Basic Mechanism working is Round-Robbin Algorithim
+
+2 Concepts are Important:
+How packet flows ina network
+OSI model 7 Layers
+
+Layer 7 : Application Layer ( Application Load Balancers, HTTP/HTTPS)
+Layer 6 : Session Layer (SSL/TLS)
+Layer 5 : Presentation Layer
+Layer 4 : Transport Layer (TCP/UDP/IP)
+Layer 3 : Network Layer (IP Address)
+Layer 2 : Data Link Layer (Packets,Routers)
+Layer 1 : Physical Layer (Wires/Cables)
+
+Layer 7 Load Balancing: Application Load Balancing
+- Deal with HTTPS/HTTP/WebSocket/FTP/SMTP
+
+Layer 4 Load Balancing: Network Load Balancer
+- Deal With IP Address and TCP/UDP - For Games and Video Streaming Platform
+
+SSL OffLoading
+Re-Encryption
+Encryption
+Decryption Capabilities
+It is costly and Slow as well
+SSL : Secure Shell Layer
+TLS : Transport Layer Security About Certificates
+
+Types of Load Balancing Algorithims:
+- Static Load Balancing Algorithims
+- Dynamic Load Balancing Algorithims
+
+Static Load Balancing Algorithims:
+- Round Robin
+- Sticky Roubd Robin
+- Weighted Round Robin
+- Hash Based Algorithim
+
+Dynamic Load Balancing:
+- Least Connections
+- Least response Time
+-
+Techniques Used:
+- Ratio Based Technique
+- Capacity Based Technique
+- Metric Based Technique
+
+
+

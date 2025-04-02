@@ -1,0 +1,93 @@
+Container Life-Cycle-Demo: Reasons
+Scheduled
+Pulled
+Pulling
+Created
+Started
+FailedPostStartHook
+Killing
+Pulled
+Backoff
+
+What is Rolling Updates in Kubernetes:
+1: Rolling Update is a strategy of updating a running application without incurring downtime for end users
+
+2: This Deployment strategy allows for seamless transition from an older version of the application to a new by gradually replacing instances of the old version with instances of new version
+
+Key Characteristics:
+1: Gradual Replacement
+2: Availability
+3: Replica-set
+4: Pod Termination and Creation
+5: Health Checks
+
+How to use HPA:
+1: Install Metrics Server(Prometheus Custom metrics)
+2: Create Deployment
+3: Create a HPA.yaml specifying the Kind which one need to auto scale
+4: it will create a HPA
+
+How would you implement custom metric with HPA:
+
+Tell me more about PV and PVC:
+
+About Storage class:
+
+About multi-container pods:
+
+What is Secrets in kubernetes:
+
+Data base Secrets where are using: Hashi-Corp Vault
+
+What is use of Service mesh:
+
+Pod Security policy: 03-pod-security.yaml
+
+Custom Resource Definitions use cases:
+1: Can be used for resource quotas
+
+Network Policies for Securing Pods & Containers:
+
+Have you implemented pod priority:
+
+Differentiated between CronJob and Kubernetes Job:
+
+Scenario Over Stateful-Set beyond deployment:
+
+How many ways we can use change replica set once after we declared as some
+1: Changing the value in yaml
+2: or using imperative way
+
+Even through mentioning as 2 it is not coming down
+
+How to change the labels for kubernetes deployment manifest:
+kubectl patch <resource_type> <resource_name> -p '{"metadata":{"labels":{"key":"new_value"}}'
+
+What are process involved while running the pod :
+1: Create a Pod Specification file
+2: Kubectl apply
+3: API Server Validation
+4: ETCD Storage
+5: Scheduler assigns Node
+6: Kubelet on Node
+7: Container image pull
+8: Container Creation
+9: Pod Status Update
+10: Networking and DNS
+11: Pod Running
+
+What is Health End Point:
+
+what is startup probe:
+
+what is liveness probe and readiness probe:
+
+
+
+
+
+
+
+
+
+

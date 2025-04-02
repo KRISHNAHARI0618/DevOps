@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: replicaset-pod
+  labels:
+    app: guestbook
+    tier: frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels: # should match these selector ewith pod labels
+      app: guestbook1
+      tier: frontend1
+  template:   # This is pod definition
+    metadata:
+      labels:
+        app: guestbook1
+        tier: frontend1
+    spec:
+      containers:
+      - name: container1
+        image: nginx
+        ports:
+        - containerPort: 80

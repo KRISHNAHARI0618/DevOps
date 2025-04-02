@@ -1,0 +1,9 @@
+Kube-API-Server:
+How to Create a pod steps explain:
+1: To create a Pod
+2: First we will send a request or post request to api server through kubelet then api server authorize the user and validates the user
+3: after validating the request kube api server send request to update the etcd service etcd updates and send notification to api-server
+4: Kube-Scheduler monitors the Kube-api-server continuously and attach which node is empty and node is healthy and sends that to api-server
+5: then api-server interacts with kubelet and create a pod
+6: After creating again api-server interacts with etcd to store the node information
+7: After updating its controller manager time to check the controllers

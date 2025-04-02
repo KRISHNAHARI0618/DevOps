@@ -1,0 +1,174 @@
+Containerization Of Image:
+
+1: Select The OS
+2: update the os
+3: Install all the dependencies
+4: install python dependencies using pip
+5: copy source code to one directory
+6: Run the we server using flask command
+
+Docker File: Conatins Instructions
+
+Docker Image will build with Layers
+Layered Architecture
+Based on the previous Instruction this will create
+Buildeeed image should contains more DB
+
+All The layers are Cached in docker
+Because this will be cached when will there is update in Source Code
+
+Containerize Everything!!!
+
+Commands and Arguments in Docker:
+- docker run
+Docker File Instructions:
+FROM
+RUN
+CMD
+ENTRYPOINT
+ARG
+ENV
+ONBUILD
+COPY/ADD
+VOLUME
+EXPOSE
+WORKDIR
+
+Docker File Instructions:
+Entrypoint cannot be over ridden
+CMD Commands can be over ridden
+
+in pod definition command can be same as entrypoint in docker file
+args will be same as the cmd in dockerfile
+
+# ** Command ins k8s == ENTRYPOINT in Dockerfile
+# ** args in k8s == CMD in Dockerfile
+
+- docker build -t <imagename> .
+
+we can edit only some fields in Pods and deployments
+- spec.conatiners[*].image
+- spec.initConatiners[*].image
+- spec.activeDeadlineSeconds
+- spec.tolerations
+
+Environment Variables in k8s : setting up the env variables
+- Plain Key Value Pairs
+- setting up environment varaibles from configmaps and serets
+env:
+- name: app_color
+  valueFrom:
+    configMapKeyRef:
+env:
+- name: app_color
+  valueFrom:
+    secretKeyRef:
+env:
+- name: app_color
+  value: pink
+
+ConfigMaps and Secrets:
+-----------------------
+
+1: Create a ConfigMap
+2: Inject that into a Pod
+
+Imperative Way and Declarative way:
+Imperative sending everything in a CLI
+
+Declarative way: Creating a file for every command in same file
+
+# ConfigMap Definition File:
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  app_color: blue
+  app_mode: production
+
+# Using Config Map in Pod Definition File
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-pod
+spec:
+  containers:
+  - name: nginx-xontainer
+    image: simple web-controller
+    ports:
+    - containerPort: 80
+    envFrom:
+    - configMapKeyRef:
+        name: app-config
+
+env:
+- name: app_mode
+  valueFrom:
+    configMapKeyRef:
+      name: app-config
+      key: app_color
+
+# Secrets in Kubernetes :
+- Storing Important Information into Secrets
+-  data base usersnames and passwords
+- config Map
+- injectinto pod
+
+Creating Secrets two types:
+- create first secret
+- then initilize that to pod configuration
+
+Two ways of passing values:
+- imperative way
+- declarative way
+
+Passing Passwords:
+--from-literal=db_host=mysql
+--from-literal=db_user=username
+--form-literal=db_password=password
+
+sending file:
+- --from-file=app_secret.properties
+
+# Secret Definition file:
+apiVersion: v1
+kind: Secret
+metadata:
+  name: app-secret
+data:
+  db_user: username
+  db_password: password
+  db_user: mysql
+
+we need to secrets in use encoded format
+echo -n  "name/passowword" | base64
+
+# Pod Specification Using Secrets:
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx-pod
+    image: nginx
+    ports:
+    - containerPods: 8080
+    envFrom:
+    - secretRef:
+        name: app-secret
+
+env:
+- name: DB_Password
+  valueFrom:
+    secretKeyRef:
+      name: app-secret
+      key: db_password
+
+
+
+
+
+
+

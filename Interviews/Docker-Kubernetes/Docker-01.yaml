@@ -1,0 +1,45 @@
+Docker-Interview Ques:
+
+What is Docker: Packages applications into containers
+
+How containers are different from Virtual Machines:
+1: Whole OS in VM Just Some namespaces in Containers
+
+What is Docker Life Cycle:
+Dockerfile-->DockerImage-->Docker Container
+
+What is Docker Architecture/Components:
+Docker Client-->Rest API--> Docker Daemon--> DockerHub
+Docker Client: Push,Pull,Run Commands
+Docker Daemon: Creates a Containers,Images,Pulling images
+Registry: Stores the images
+
+Docker Copy and ADD:
+Copy: Copy from Local/System to Container
+ADD: From anywhere/any type even zip and Unzip the Files
+
+What is CMD and EntryPoint:
+CMD: it is used to send a arguments to Container and a user can override the arguments
+EntryPoint: Send the arguments in the shell form will not over ride
+
+What are the Networking types in Docker:
+1: Bridge: creates a separate network namespace in that we can use the containers
+2: Host: there is no virtual network we can directly access from host network
+3: Overlay: container can access from another host
+4: Macvlan: assigns mac address to the container
+5: None: Containers are not attached to any network
+
+What are Multi-Stage Build in Docker:
+Distroless images
+Multi Stage build allows you to build your docker container in multiple stages allowing you to copy artifacts from one stage to other
+
+What are distroless images:
+Distroless Images contain only your application and its runtime dependencies with very minimum operating systems libraries.
+
+
+
+
+
+
+
+

@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: config-pod
+  labels:
+    Course: "Devops"
+    Year: "2023"
+  annotations:
+    course.com: "Devops"
+    year.com: "2023"
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    env:
+    - name: Name
+      valueFrom:
+        configMapKeyRef:
+          name: configmap
+          key: Name
+    - name: Dob
+      valueFrom:
+        configMapKeyRef:
+          name: configmap
+          key: Dob

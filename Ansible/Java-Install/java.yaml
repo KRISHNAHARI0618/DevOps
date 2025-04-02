@@ -1,0 +1,37 @@
+- name: Checking the play level Varaibels
+  hosts: localhost
+  become: yes
+  vars:
+    Name: "Peddireddy"
+    course: "DevOps"
+    year: "2023"
+  tasks:
+  - name: Checking the Playlevel vars
+    debug:
+      msg: "My Name is {{Name}},I am Learning 
+    {{course}},Started Year is {{year}}"
+  - name: Installing Java In Local host
+    dnf:
+      name: java-1.8.0-openjdk-devel
+      state: installed
+  - name: Adding Jenkins to repos Folder
+    get_url:
+      url: http://pkg.jenkins-ci.org/redhat-stable/jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+  - name: Copying jenkins.repo 
+    copy:
+      src: jenkins.repo
+      dest: /etc/yum.repos.d/jenkins.repo
+  - name: Import a key from a url
+    rpm_key:
+      state: present
+      key: https://pkg.jenkins.io/redhat/jenkins.io.key
+  - name: Install Jenkins 
+    y:
+      name: jenkins
+      state: installed
+  - name: Start the jenkins service
+    service:
+      name: jenkins
+      state: started
+      enabled: yes

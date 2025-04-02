@@ -1,0 +1,101 @@
+What is GitOps:
+  GitOps is a Single source of truth to deliver the applications and infrastructure
+When ever we have pushed our chnages it should applied to the Kuberentes also
+
+Deploying The application to the Kuberenetes Cluster
+
+GitOps Principles:
+  Declarative: System Managed by GitOps mush have its desired state expressed declaratively
+  Version and Immutable: Desired State is stored in a way that enforces immutability. Versioning and retains a complte version history
+  Pulled Automatically: Software agents automatically pull the desired state declarations from the source
+  Continuously Reconciled: Software Agents Continiously observer actual system state and attempt to apply the desired state
+
+Is GitOps is for kubernets Only :
+  NOOOOO
+  But the popular tool like argocd and flux cd will target the Kubernetes
+
+Advantages of GitOps:
+  Security
+  Versioning (Track of Changes)
+  Auto Upgrades
+  Auto Healing / Self Healing
+  Continuous Reconciliation
+
+What are some popular GitOps Tools: Architecture
+  ArgoCD
+  FluxCD
+  JenkinsX
+  Spinnaker
+
+ArgoCD Architecture: Which GitOps Tools Are we going to learn
+  History Of ArgoCD
+  Applatix Created open source project
+  Applatix is Acquired by intuit
+  Actively Contributed by Akuity,RedHat
+
+ArgoCD Will Maintain the sync between git and Kubernetes
+
+Architecture Components:
+
+Repo Server : Connect to git and get the state
+Application Controller: Connect to k8s and get the state
+ArgoCD- UI/CLI : To connect with Api Server & User Interaction
+API Server: To Connect with both Repo Server and Application Controller
+Dex Server:
+  OIDC Server / OAuth authentication
+  Light weight OIDC Server by default comes with ArgoCD
+  SSO For the API Server for users to login
+Redis : For Caching the information related to Server
+
+Installation of ArgoCD:
+  Yaml Manifestes
+  Helm
+  Kubernetes Operators
+
+ArgoCd : GitOps Tool
+
+01: Manifest Developers
+02: Upload it to the Repository(GitHub/Git)
+03: ArgoCD Which Connected will read the file with connecetd GithubRepo
+04: This ArgoCD Connected Will Deploy The Resources
+
+Demo Part Of ArgoCD:
+Pre-Requisite of GitOps-ArgoCD
+
+Minikube
+EKSCTL
+kubectl
+
+ArgoCD Is not Opiniated \
+
+GitOps ArgoCD Commands:
+Installation of Argo CD:
+
+kubectl create namespace argocd
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+
+Installation of ArgoCD CLI:
+  brew install argocd
+
+Port Forwarding the ArgoCD:
+kubectl port-forward svc/argocd-server -n argocd 8080:443
+
+After Installing The ArgoCD
+
+1: Get the Service in argocd namespace
+  minikube get svc -n argocd
+
+2: Edit the argocd-server service from clusterIP to nodePort
+  kubectl edit service argocd-server -n argocd
+
+3: To get the url to access via web
+  minikube service argocd-server -n argocd
+
+Changing the Cluster :
+  kubectl config use-context docker-desktop/minikube/kubernetes
+  kubectl config get-context
+
+List All objects in Cluster:
+  kubectl api-resources
+
+Helm 

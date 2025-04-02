@@ -1,0 +1,102 @@
+Blue Yonder Technical Round:
+Docker Questions:
+How to configure docker private registry?
+Types of network in docker? if you don't specify network to deploy on which network the container will be created?
+Explain a sample dockerfile that you have used in your project?
+Can we launch Linux containers windows and vice versa?
+What does ONBUILD instruction do in Dockerfile?
+What is the use of .dockerignore file?
+How to delete all stopped containers and unused images command for that?
+Is it good to use docker compose in production?
+How to parametrize base image tag?
+Building Dockerfile in directory which has large file is good practice?
+Jenkins Questions:
+How to set Jenkins build to fail based specific word in console output ?
+What are active and reactive parameters (Dynamic parameterization) in Jenkins ?
+How to customize the build number display to something else in Jenkins job page?
+What are multi branch pipeline?
+What is shared library in Jenkins ?
+What type of Jenkinsfile you have worked on?
+In master slave setup if I want run job on specific node is is possible?
+what is the importance of Jenkins secrets?
+How do you take Jenkins backup?
+Importance of post block?
+Can we have job for pr and once merge is done the source branch should be deleted?
+
+Kubernetes Basics Questions:
+Terraform Basic Questions:
+
+Blue-Yonder 2nd Round:
+1: Kubernetes Architecture
+2: Migrate monolithic to Microservices using Kubernetes
+3: Distribute Traffic is ditributed
+4: Load Balancer and Types and Which layer it is used
+5: Node Taints and Tolerations
+6: How to secure nodes in eks and microservices
+7: How to ditribute the traffic in aws eks
+8: How to secure kubernetes and its applications
+9: Pod Status and Logs
+10: how to deploy new product in kubernetes
+11: What will you do if the traffic is getting increased
+12: Why you need kubernetes not other orchestration tools
+13: What is Secrtes and Config Map
+14: Terraform Loops
+15: Terraform Functions
+16: Docker Secrets
+17: Jenkins Authentication with AWS
+
+Blue Yonder 3rd Round:
+1: About Pod Affinity & Node Affinity
+2: About Image Pull Policy
+3: Taints and Tolerations
+4: How to Divide the multiple Namespaces
+5: About Annotations
+6: About Secrets
+7: About Pod Lifecycle and Status
+8: How to ship Logs in Kubernetes
+9: About Resource limits and requests
+10: What could be the reasons for pod is in pending state -> May be the containers are not ready to serve
+11: What could be the reason that service in kubernetes is not working --> May be ip address conflicts,Limits and resource exceeded
+12: Terraform Basic Questions 5-10
+
+Blue Yonder 4rth Round Manegerical & Problem Solving:
+1: How to reduce merge conflicts
+2: How to do Cloud Cost Optimization
+3: Which Cloud is Better in what perspective
+4: Python Code For Extract Unique Elements from a String
+5: Python Code for Fibonacci Series
+6: Python Code for Prime Numbers from 1 to 1000
+7: Some Managerical Questions
+
+
+Cloud Defence AI:
+1: Introduction
+2: Architecture of Kubernetes
+3: Write a Docker file
+4: Write a Terraform Code to Create an EC2 Instance
+5: What is ArgoCD
+6: What is Prometheus and Argocd
+7: What is Helm Charts
+8: What is VPC
+9: What is the use of Sonar Qube
+
+Comcast Interview :
+1: How to integrate Grafana with Prometheus
+2: How to Change Directory In linux
+3: Networking Commands in Linux
+4: About Go Scripting
+5: On which environment you will be working DEV,QA,PROD etc..
+6: What are your Day to Day Activities in Current Role
+
+Extra:
+1: Synchronous and Asynchronous Services
+
+Synchronous:
+In Telugu, "synchronous" can be translated as "సమానకాలిక" (pronounced as samaanakaalika).
+"సమానకాలిక" refers to events or processes that occur at the same time or in coordination with each other.
+For example, in a synchronous communication process, actions are performed in a sequential and coordinated manner where each step waits for the previous one to complete before proceeding.
+
+Asynchronous:
+In Telugu, "asynchronous" can be translated as "అసమానకాలిక" (pronounced as asamaanakaalika).
+"అసమానకాలిక" refers to events or processes that do not occur at the same time or are not dependent on each other's timing.
+For example, in an asynchronous communication process, actions can occur independently of each other without waiting for previous actions to complete.

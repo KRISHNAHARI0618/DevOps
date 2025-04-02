@@ -1,0 +1,8 @@
+Kube-Proxy: Networking Policy
+it is responsible for looking into the service need to create and send the traffic from one pod to another by creating the networking
+
+kube-proxy looks for service and create a route and ip for each pod through the iptables
+
+so that each pod in the cluster can be reachable for any other pod in the cluster
+
+location: /etc/kubernetes/manifests/

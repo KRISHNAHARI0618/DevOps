@@ -1,0 +1,57 @@
+---
+- name: File Level Variables
+  hosts: localhost
+  vars:
+    city: chennai
+    company: TCS
+    area: whitefield
+    location: bangalore
+  vars_files:
+  - varfiles.yaml
+  vars_prompt:
+  - name: USERNAME
+    prompt: Please Enter your name
+    private: false
+  - name: password
+    prompt: Please enter your password
+    private: false
+  tasks:
+  - name: This is Example of file vars
+    debug:
+      msg: "{{name}} {{course}} {{age}} {{year}}"
+  - name: This is Normal Variables
+    debug:
+      msg: "{{city}} {{company}} {{area}} {{location}}"
+  - name: This is Variables from Prompt Level
+    debug:
+      msg: "{{USERNAME}} {{password}}"
+  - name: This is Variables from Tasks level
+    vars:
+    - money: "200000 RS"
+      houses: "3 houses"
+    debug:
+      msg: "{{money}} {{houses}}"
+  - name: taking the output of variables
+    command: id hari
+    register: output
+    ignore_errors: true
+  - name: printing the output
+    debug:
+      msg: "{{output}}"
+  - name: printing the output.rc
+    debug:
+      msg: "{{output.rc}}"
+  - name: create a user with user module
+    become: true
+    user:
+      name: hari
+    when: output.rc != 0
+    ignore_errors: true
+  - name: check once agin the user is available
+    command: id hari
+    register: healthy
+    ignore_errors: true
+  - name: printing healthy
+    debug:
+      msg: "{{healthy.rc}}"
+

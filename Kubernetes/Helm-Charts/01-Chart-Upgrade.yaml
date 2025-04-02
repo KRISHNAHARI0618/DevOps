@@ -1,0 +1,26 @@
+Helm History and Status Command:
+
+helm upgrade myapp1 stacksimplfy/mychart1 --set "replicaCount=4"
+
+
+Helm History : helm history <release-name>
+
+it will give a History for a Release 
+
+Helm Status : helm status <release-name>
+
+it will give information about release 
+
+only show description
+helm status --show-desc
+
+show only resources
+helm status --show-resources
+
+Helm Upgrade with Chart Version:
+
+
+
+
+
+
