@@ -127,3 +127,5 @@ stashing:
 reflog:
   title: Reflog
   duration: 01:42
+
+git reset commands:
