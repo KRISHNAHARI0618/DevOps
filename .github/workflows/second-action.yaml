@@ -11,9 +11,12 @@ jobs:
         with:
           node-version: '18'
       - name: Install Dependencies
-        run: pwd
+        run: |
+         pwd
+         cd ../
+         pwd
       - name: Run test
-        run: cd ..
+        run: cd ../
         
 
         
