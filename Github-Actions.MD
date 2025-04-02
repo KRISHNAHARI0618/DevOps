@@ -26,3 +26,15 @@
   - 
 - **Steps**
   - 
+### Events 
+- push
+- pull_request
+- create
+- fork
+- issues
+- issues_comment
+- watch
+- release etc...
+
+### Actions
+- command run to trigger to run the tasks
