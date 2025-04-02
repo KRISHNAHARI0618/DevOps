@@ -42,9 +42,9 @@ How Many types of modules will Terraform support:
     - source = "terraform-aws-modules/vpc/aws"
   - Git based modules:
     - Cloned from git repositories
-    - source="git::https://github.com"
+    - Source="git::https://github.com"
   - S3/Https modules:
-    - souce = "s3::https://my-bucket/module.zip"
+    - Souce = "s3::https://my-bucket/module.zip"
 
 Terraform State commands:
 - terraform list 
@@ -53,4 +53,4 @@ Terraform State commands:
 - terraform push
 - terffaorm show
 - terraform replace-provider
-
+- 
