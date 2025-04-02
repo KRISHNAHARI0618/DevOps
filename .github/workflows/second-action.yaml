@@ -15,6 +15,7 @@ jobs:
          pwd
          cd ../
          pwd
+         ls -ltr
       - name: Run test
         run: cd ../
         
