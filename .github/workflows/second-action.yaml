@@ -45,6 +45,13 @@ jobs:
          cd ../
          pwd
          ls -ltr
+  OutputInformation:
+    needs: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: first main
+        run: echo "${{ toJSON(github) }}"
+
       
         
 
