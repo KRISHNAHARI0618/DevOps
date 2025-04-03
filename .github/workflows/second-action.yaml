@@ -19,6 +19,8 @@ jobs:
   Build:
     runs-on: ubuntu-latest
     steps:
+      - name: Getting The code
+        uses: actions/checkout@v3
       - name: Checking the code
         run : ls -ltr
       - name: change the directory
