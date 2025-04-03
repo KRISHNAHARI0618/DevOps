@@ -38,3 +38,6 @@
 
 ### Actions
 - command run to trigger to run the tasks
+- run - uses to run the commands in machine
+- name : naming the task 
+- uses: pulls the dependencies from actions repo
