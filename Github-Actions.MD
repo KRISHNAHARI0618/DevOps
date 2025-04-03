@@ -26,7 +26,7 @@
   - 
 - **Steps**
   - 
-### Events 
+### Events Trigger
 - push
 - pull_request
 - create
