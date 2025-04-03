@@ -24,7 +24,7 @@ jobs:
       - name: Checking the code
         run : ls -ltr
       - name: change the directory
-        run : cd /../
+        run : cd ../
       - name: again check the code
         run:  ls -ltr
 
