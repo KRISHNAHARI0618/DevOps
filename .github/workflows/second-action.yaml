@@ -25,6 +25,12 @@ jobs:
         run : cd /../
       - name: again check the code
         run:  ls -ltr
+
+  Deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check the repo 
+        run: pwd
       
         
 
