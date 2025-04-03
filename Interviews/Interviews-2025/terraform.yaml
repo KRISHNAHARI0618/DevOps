@@ -36,7 +36,7 @@ commands:
 How Many types of modules will Terraform support:
 - Root Modules 
 - Child Modules:
-  - Local Modules : "source = ./modules/vpc"
+  - Local Modules : "Source = ./modules/vpc"
   - Registry Modules : 
     - "Pulled from terrform registries"
     - source = "terraform-aws-modules/vpc/aws"
@@ -44,7 +44,7 @@ How Many types of modules will Terraform support:
     - Cloned from git repositories
     - Source="git::https://github.com"
   - S3/Https modules:
-    - Souce = "s3::https://my-bucket/module.zip"
+    - Souce = "S3::https://my-bucket/module.zip"
 
 Terraform State commands:
 - terraform list 
@@ -53,4 +53,3 @@ Terraform State commands:
 - terraform push
 - terffaorm show
 - terraform replace-provider
-- 
