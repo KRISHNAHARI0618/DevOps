@@ -12,11 +12,12 @@ jobs:
           node-version: '18'
       - name: Install Dependencies
         run: |
-         pwd
+         ls -ltr
          cd ../
          pwd
          ls -ltr
   Build:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - name: Getting The code
@@ -24,15 +25,26 @@ jobs:
       - name: Checking the code
         run : ls -ltr
       - name: change the directory
-        run : cd ../
+        run: |
+         ls -ltr
+         cd ../
+         pwd
+         ls -ltr
       - name: again check the code
         run:  ls -ltr
 
   Deploy:
+    needs: Build
     runs-on: ubuntu-latest
     steps:
       - name: Check the repo 
         run: pwd
+      - name: used the build repo
+        run: |
+         ls -ltr
+         cd ../
+         pwd
+         ls -ltr
       
         
 

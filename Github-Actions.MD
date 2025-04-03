@@ -41,3 +41,5 @@
 - run - uses to run the commands in machine
 - name : naming the task 
 - uses: pulls the dependencies from actions repo
+- needs : used to check the previous depends on jobs should finish 
+- 
