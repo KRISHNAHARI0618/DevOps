@@ -13,10 +13,10 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Terraform Init
-        run: echo "hello"
+        run: terraform init
 
       - name: Terraform Plan
-        run: echo "hello"
+        run: terrafform plan
 
   wait_for_approval_and_apply:
     needs: plan
@@ -31,4 +31,4 @@ jobs:
         run: sleep 360
       
       - name: Terraform Apply
-        run: echo "hello Hari Vardhan Reddy"
+        run: terrafrom apply
