@@ -1,0 +1,157 @@
+{
+    "editor.inlineSuggest.enabled": true,
+    "editor.suggest.showWords": true,
+    "editor.suggest.localityBonus": true,
+    "editor.suggestSelection": "first",
+    "editor.quickSuggestions": {
+        "other": true,
+        "comments": false,
+        "strings": true
+    },
+    "editor.tabCompletion": "on",
+    "editor.parameterHints.enabled": true,
+    "editor.suggest.showStatusBar": true,
+    "editor.hover.enabled": true,
+    "intellicode.completionsEnabled": true,
+    "intellicode.modelDownloadPath": "",
+    "intellicode.typescript.completionsEnabled": true,
+    "intellicode.python.completionsEnabled": true,
+    "editor.autoClosingBrackets": "always",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1,
+    "editor.wordWrap": "on",
+    "editor.fontSize": 20,
+    "terminal.integrated.tabs.defaultColor": "terminal.ansiBlue",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.foreground": "#d8e28c",
+    "breadcrumbs.enabled": false,
+    "editor.codeActionsOnSave": {},
+    "git.enableSmartCommit": true,
+    "explorer.confirmDelete": false,
+    "python.analysis.diagnosticSeverityOverrides": {},
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.autoIndent": true,
+    "editor.tokenColorCustomizations": {
+        "[Atom One Dark]": {
+            "comments": "#d8e28c"
+        }
+    },
+    "editor.indentSize": "tabSize",
+    "gopls": {
+        "ui.semanticTokens": true
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "explorer.confirmDragAndDrop": false,
+    "go.toolsManagement.autoUpdate": true,
+    "workbench.editor.labelFormat": "short",
+    "workbench.editor.languageDetection": false,
+    "workbench.editor.tabSizingFixedMaxWidth": 100,
+    "workbench.editor.tabSizingFixedMinWidth": 60,
+    "editor.accessibilityPageSize": 15,
+    "editor.renderControlCharacters": false,
+    "editor.minimap.size": "fit",
+    "editor.minimap.enabled": false,
+    "editor.renderLineHighlightOnlyWhenFocus": true,
+    "editor.minimap.renderCharacters": false,
+    "terminal.integrated.cursorWidth": 0,
+    "git.ignoreRebaseWarning": true,
+    "gitlens.advanced.messages": {
+        "suppressIntegrationRequestTimedOutWarning": true
+    },
+    "[json]": {
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "git.replaceTagsWhenPull": true,
+    "workbench.editorAssociations": {
+        "*.gz": "default"
+    },
+    "notebook.markup.fontSize": 16,
+    "chat.editor.fontSize": 18,
+    "editor.lineHeight": 1.2,
+    "debug.console.lineHeight": 1.5,
+    "markdown.preview.lineHeight": 1,
+    "terminal.integrated.enableImages": true,
+    "debug.console.fontSize": 18,
+    "debug.autoExpandLazyVariables": true,
+    "security.workspace.trust.untrustedFiles": "open",
+    "json.schemas": [],
+    "git.confirmSync": false,
+    "window.confirmSaveUntitledWorkspace": false,
+    "workbench.layoutControl.enabled": false,
+    "jupyter.enableExtendedPythonKernelCompletions": true,
+    "remote.SSH.enableRemoteCommand": true,
+    "remote.SSH.remoteServerListenOnSocket": true,
+    "output.smartScroll.enabled": false,
+    "notebook.consolidatedOutputButton": false,
+    "go.testExplorer.showOutput": false,
+    "editor.fontLigatures": false,
+    "redhat.telemetry.enabled": true,
+    "tabnine.experimentalAutoImports": true,
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "GitHub Light Default",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "window.commandCenter": false,
+    "terminal.integrated.fontWeight": "normal",
+    "workbench.fontAliasing": "auto",
+    "scm.inputFontSize": 18,
+    "markdown.preview.fontSize": 16,
+    "settingsSync.ignoredSettings": [
+        "-python.venvPath"
+    ],
+    "workbench.sash.size": 10,
+    "workbench.sash.hoverDelay": 3,
+    "workbench.tree.indent": 20,
+    "workbench.settings.applyToAllProfiles": [
+        "workbench.tree.indent"
+    ],
+    "editor.codeLensFontSize": 18,
+    "editor.codeLensFontFamily": "18",
+    "editor.experimentalInlineEdit.fontFamily": "18",
+    "editor.minimap.sectionHeaderFontSize": 18,
+    "editor.inlayHints.fontSize": 18,
+    "database-client.autoSync": true,
+    "python.globalModuleInstallation": true,
+    "python.analysis.inlayHints.callArgumentNames": "all",
+    "editor.autoClosingQuotes": "always",
+    "code-runner.clearPreviousOutput": true,
+    "code-runner.runInTerminal": true,
+    "code-runner.saveAllFilesBeforeRun": true,
+    "code-runner.saveFileBeforeRun": true,
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.cacheLSPData": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.inlayHints.functionReturnTypes": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.analysis.inlayHints.variableTypes": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "python.analysis.packageIndexDepths": [
+        { "name": "sklearn", "depth": 2 },
+        { "name": "matplotlib", "depth": 2 },
+        { "name": "scipy", "depth": 2 },
+        { "name": "django", "depth": 2 },
+        { "name": "flask", "depth": 2 },
+        { "name": "fastapi", "depth": 2 }
+    ],
+    "vsintellicode.java.completionsEnabled": true
+}
+
+
+
+additional steps:
+
+You can learn more about virtual environments with Python here: https://docs.python.org/3/tutorial/venv.html
+
+Using virtual environments is optional.
+
+Using "Pylance"
+When using Visual Studio Code (recommended), you can use the "Pylance" extension to get better code checks and code completion.
+
+To enable it in your Python / Django project, you can add a special setting to your your project-specific configuration (i.e. your .vscode/settings.json file):
+
+{
+
+"python.languageServer": "Pylance",
+
+}

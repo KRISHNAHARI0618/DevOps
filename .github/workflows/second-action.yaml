@@ -1,58 +1,31 @@
-name: Testing Push Event
-on: [push,workflow_dispatch]
+name: Terraform Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
 jobs:
-  tests:
+  plan:
     runs-on: ubuntu-latest
     steps:
-      - name: Getting The code
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Download NodeJS
-        uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - name: Install Dependencies
-        run: |
-         ls -ltr
-         cd ../
-         pwd
-         ls -ltr
-  Build:
-    needs: tests
+
+      - name: Terraform Init
+        run: echo "hello"
+
+      - name: Terraform Plan
+        run: echo "hello"
+
+  wait_for_approval_and_apply:
+    needs: plan
     runs-on: ubuntu-latest
+    environment:
+      name: manual-approval  # 👈 This triggers the wait for approval
     steps:
-      - name: Getting The code
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Checking the code
-        run : ls -ltr
-      - name: change the directory
-        run: |
-         ls -ltr
-         cd ../
-         pwd
-         ls -ltr
-      - name: again check the code
-        run:  ls -ltr
 
-  Deploy:
-    needs: Build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check the repo 
-        run: pwd
-      - name: used the build repo
-        run: |
-         ls -ltr
-         cd ../
-         pwd
-         ls -ltr
-  OutputInformation:
-    needs: Deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: first main
-        run: echo "${{ toJSON(github) }}"
-
-      
-        
-
-        
+      - name: Terraform Apply
+        run: echo "hello"

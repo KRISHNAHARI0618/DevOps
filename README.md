@@ -28,3 +28,11 @@
 | ansible              | 9.6.1     |
 | mongodbversion       | 7.0       |
 |----------------------|-----------|
+
+### Install WSL:
+- 1: Start Powershell as Administration
+- 2: Run Command WSL --install
+- 3: Ubuntu will Start
+- 4: Give the username
+- 5: Give the Password
+- 6: Ubuntu is Installed

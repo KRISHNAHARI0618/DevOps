@@ -26,15 +26,18 @@
   - 
 - **Steps**
   - 
-### Events Trigger
+### Events Trigger : uses 'on' keyword 
 - push
+- workflow_dispatch
 - pull_request
 - create
 - fork
 - issues
 - issues_comment
 - watch
-- release etc...
+- release
+- repository branch
+- 
 
 ### Actions
 - command run to trigger to run the tasks
@@ -43,4 +46,4 @@
 - uses: pulls the dependencies from actions repo
 - needs : used to check the previous depends on jobs should finish 
 - Expressions and metadata
-  - 
+- Context in git hub
