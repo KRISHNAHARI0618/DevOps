@@ -35,4 +35,4 @@ terraform.rc
 keys-gcp.json
 .token
 .venv/
-Kubernetes-2025/minikube-linux-amd64
+
