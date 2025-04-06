@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Deloyment
+metadata:
+  name: nginx
+  namespace: haridevops
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template: 
+    metadata: 
+      labels: 
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-simple
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80

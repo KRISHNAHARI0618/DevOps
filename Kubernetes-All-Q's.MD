@@ -303,6 +303,32 @@ Init containers are containers that start before the actual containers are start
 - **Running:** Container is executing.
 - **Terminated:** Container has terminated, either in success or failure.
 
+### How Pod Handles problems with Containers:
+- **Initial crash** : Kubernetes attempts an immediate restart based on the Pod restartPolicy.
+- **Repeated crashes**: After the initial crash Kubernetes applies an exponential backoff delay for subsequent restarts, described in restartPolicy. This prevents rapid, repeated restart attempts from overloading the system.
+- **CrashLoopBackOff state**: This indicates that the backoff delay mechanism is currently in effect for a given container that is in a crash loop, failing and restarting repeatedly.
+- **Backoff reset**: If a container runs successfully for a certain duration (e.g., 10 minutes), Kubernetes resets the backoff delay, treating any new crash as the first one.
+
+### How Crash Loop Backoff will Occur:
+- Application Error
+- Configuration Error
+- Resource Constraints
+- Health Checks 
+- Container Liveness and Readiness Probes
+
+### To investigate the CrashLoopBackOff
+- Check Logs: `kubectl logs <pod-name>`
+- Inspect the events `kubectl describe pod <pod-name>`
+- Review Configuration
+- Check resource Limits
+- Debug Applications
+
+### Container Restart Policy:
+- Restart Policy
+  - always
+  - OnFailure
+  - Never
+
 ### Pod Conditions:
 
 - **PodScheduled:** Pod has been scheduled to a node.
@@ -314,8 +340,24 @@ Init containers are containers that start before the actual containers are start
 ### Probes in Kubernetes (HealthChecks):
 
 - **readiness probe:** Indicates whether the container is ready to serve requests.
+```
+readinessProbe:
+  httpGet:
+    path: /ready
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  ```
 
 - **liveness probe:** Checks if the container is working properly; if not, it will be restarted when required.
+```
+livenessProbe:
+  httpGet:
+    path: /healtz
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 120
+```
 
 ### 3 Types of HealthChecks:
 
@@ -899,3 +941,7 @@ Self Healing means it will automatically heal the pod and containers
 
 **Kubernetes namespace:**
 *These are isolated environment for giving process ids for each containers*
+
+*What are the key Components While Rolling Restart:*
+- **maxSurge:** Max extra Pods allowed during rollout
+- **maxUnavailable:**	Max Pods that can be unavailable during rollout

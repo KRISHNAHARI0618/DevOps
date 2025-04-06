@@ -8,11 +8,18 @@ metadata:
     app: frontend
 spec:
   containers:
-  - name: nginx-pod
-    image: nginx
-    ports:
-    - containerPort: 80
-      name: http-web-svc
+    - name: nginx-pod
+      image: nginx
+      ports:
+      - containerPort: 80
+        name: http-web-svc
+      resources:
+        - limits:
+            cpu: 3
+            memory: 200
+        - requests:
+            cpu: 2
+            memory: 150
 ---
 apiVersion: v1
 kind: Service

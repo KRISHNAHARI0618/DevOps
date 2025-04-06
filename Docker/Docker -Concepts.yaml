@@ -1,5 +1,177 @@
-topics_discussed:
-  - Docker Introduction: Session 51
+docker_concepts:
+
+  virtual_machine:
+    description: >
+      A Virtual Machine (VM) is a compute resource that uses software instead of a physical computer to run programs and deploy apps.
+    features:
+      - Virtual CPU, memory, network interface, and storage
+      - Uses hypervisor to separate resources from hardware
+
+  hypervisor:
+    description: >
+      A Virtual Machine Monitor (VMM) that creates and runs virtual machines.
+    features:
+      - Runs multiple guest VMs
+      - Shares host resources
+
+  container:
+    description: >
+      A container packages an application, its libraries, and dependencies to ensure consistency across environments.
+
+  docker:
+    description: >
+      Docker is a container platform to create, deploy, and manage containers efficiently.
+
+  bare_metal:
+    description: >
+      Physical hardware where OS is directly installed.
+    notes:
+      - Bare-metal hypervisors don’t require host OS
+      - Highly secure
+
+  bare_metal_hypervisor:
+    description: >
+      Virtualization software directly installed on hardware.
+    benefits:
+      - No base OS needed
+      - Efficient and secure
+
+  virtualization:
+    description: >
+      Separation of services from underlying hardware.
+    types:
+      - Application Virtualization
+      - Network Virtualization
+      - Desktop Virtualization
+      - Storage Virtualization
+      - Server Virtualization
+      - Data Virtualization
+    reference: "https://www.geeksforgeeks.org/virtualization-cloud-computing-types/"
+
+  containers_vs_vms:
+    comparison:
+      - aspect: Resource Utilization
+        containers: "Share host OS kernel; lightweight"
+        virtual_machines: "Full OS and hypervisor; resource-heavy"
+      - aspect: Portability
+        containers: "Highly portable"
+        virtual_machines: "Less portable"
+      - aspect: Security
+        containers: "Less isolation"
+        virtual_machines: "Stronger isolation"
+      - aspect: Management
+        containers: "Easier"
+        virtual_machines: "More complex"
+
+  base_image_folders:
+    - /bin: "Executable binaries"
+    - /sbin: "System binaries"
+    - /etc: "Configuration files"
+    - /lib: "Shared libraries"
+    - /usr: "User apps, libraries, docs"
+    - /var: "Log files, spools, temp files"
+    - /root: "Root user's home directory"
+
+  container_host_os_features:
+    - Filesystem via bind mounts
+    - Host networking stack
+    - System calls via host kernel
+    - Namespaces for isolation
+    - Control Groups (cgroups) for resource limits
+
+  docker_github_repo:
+    link: "https://github.com/iam-veeramalla/Docker-Zero-to-Hero"
+
+  entrypoint_vs_cmd:
+    comparison:
+      - feature: Purpose
+        entrypoint: "Sets default command that always runs"
+        cmd: "Sets default command that can be overridden"
+      - feature: Overridable
+        entrypoint: "No"
+        cmd: "Yes"
+      - feature: Common Usage
+        entrypoint: "Main app execution"
+        cmd: "Default arguments"
+
+  dockerfile:
+    description: >
+      A Dockerfile is a text file with instructions to build a Docker image.
+
+  multi_stage_builds:
+    description: >
+      Optimizes Docker images by separating build and runtime environments.
+    benefits:
+      - Smaller image size
+      - Better security
+      - Faster build times
+
+  reduce_image_size:
+    methods:
+      - Use .dockerignore
+      - Use alpine base images
+      - Remove unnecessary layers
+      - Use multi-stage builds
+      - Clean temp files in same layer
+
+  distroless_images:
+    description: >
+      Contain only application and its runtime dependencies.
+    benefits:
+      - Smaller size
+      - Better security
+      - No shell or package manager
+
+  container_security:
+    practices:
+      - Use trusted images
+      - Scan for vulnerabilities
+      - Limit privileges
+      - Use namespaces and cgroups
+      - Apply resource quotas
+
+  interview_questions:
+    - What is Docker?
+    - How are containers different from virtual machines?
+    - Docker Lifecycle
+      - docker build -t myapp .
+      - docker create myapp
+      - docker start <conatiner_id>
+      - docker ps
+      - docker stop <conatiner_id>
+      - docker restart <container id>
+      - docker kill <container id>
+      - docker pause <container id>
+      - docker unpause <container id>
+      - docker rm <container id>
+      - docker rmi <image name/id>
+    - Docker Components
+    - Difference between COPY and ADD
+      - Copy from local 
+      - Add from anywhere
+    - Difference between ENTRYPOINT and CMD
+      - Entrypoint fixed "Executable"
+      - CMD executable when running the container
+    - Labels like : key-value pairs
+    - Docker Networking types
+    - Docker Multi-Stage Build
+    - Docker LABEL vs ENV
+    - ADD vs COPY in Dockerfiles
+
+  production_scenarios:
+    docker_image:
+      description: >
+        A read-only template that contains:
+      includes:
+        - Application code
+        - Binaries and libraries
+        - System tools and dependencies
+        - Base operating system layer
+      properties:
+        - Blueprint or template
+        - Read-only
+        - Built once and reused
+
 
 what_is_container:
   - "A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing"
@@ -80,9 +252,25 @@ docker_commands_lifecycle:
 
 docker_run_combined: "pull + Create + Start"
 
-docker_port_forwarding: null
+docker_port_forwarding: 
+- docker run -p <host_port>:<container_port> <image_name>
+- docker run -d -p <host_port>:<container_port> <image_name>
+  - Detach Mode
+  
+description: Map host machine ports to container ports
+syntax: docker run -p <host_port>:<container_port> <image_name>
+examples:
+  - command: docker run -p 8080:80 nginx
+    description: Maps host port 8080 to container's port 80
+  - command: docker run -d -p 3000:3000 mynodeapp
+    description: Runs Node.js app in detached mode on port 3000
+notes:
+  - host_port is accessible from browser or API tools
+  - container_port is where the application is actually running inside container
+  - use `docker ps` to confirm port bindings
 
-docker_from: null
+
+docker_from: which os we want or where we need to install the application
 
 docker_run_instruction:
   - "Run instruction will run at the time of image creation"
@@ -178,6 +366,7 @@ docker_workdirectory_instruction:
   description: |
     Instead of cd command in normal linux we used workdir instruction to set the workdirectory where we should save the file
     By default after workdirectory instruction every thing will run on that workdir.
+    WORKDIR
 
 docker_arg_commands:
   description: |
@@ -214,8 +403,6 @@ docker_is_easy_portable:
     - "docker-compose up -d"
     - "docker-compose down -d"
 
-docker_session_55:
-
 volumes_introduction:
   - "Data will be removed once the container is removed hence we need to store data somewhere there docker volumes will come into existence"
   - "Docker is Ephemeral In nature"
@@ -225,7 +412,7 @@ docker_volumes_types:
   - "Docker Named Volumes"
   - "Docker UnNamed Volumes"
 
-volumes_cli_syntax: "-v <host-path>:<container-path>"
+volumes_cli_syntax: "docker run container-id -v <host-path>:<container-path>"
 
 temporary_volumes_location: "/var/lib/docker/overlay2 --> temporary volumes"
 
@@ -352,3 +539,8 @@ container_orchestration:
     image: "Physical File Static,Immutable, Builder File"
 
 kubernetes_vs_docker_swarm: "Kubernetes: For Better Networking,Storage Solutions and Security instead of Docker Swarm."
+
+commands:
+- "docker cmd/" : will run at the container creation time
+- "docker run " :  will run while building the image and download relevent info
+- 

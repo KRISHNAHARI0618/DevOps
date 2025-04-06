@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Service
+namespace: nodejs
+spec: 
+  - ports:
+      - targetPort: 8090
+        

@@ -1,0 +1,52 @@
+apps/v1
+kind: Deployment
+metadata:
+  name: go-microservice
+  labels:
+    app: go-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: go-microservice
+  template:
+    metadata:
+      labels:
+        app: go-microservice
+    spec:
+      containers:
+      - name: go-microservice
+        image: your-registry/go-microservice:latest
+        ports:
+        - containerPort: 8080
+        probes:
+          livenessProbe: 
+            - path: https/
+              value: 120
+          readinessProbe:
+            - path: http/
+              value:60
+        resources:
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+        env:
+        - name: DB_HOST
+          value: "postgres-service"
+        - name: DB_PORT
+          value: "5432"
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: username
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: postgres-credentials
+              key: password
+        - name: DB_NAME
+          value: "appdb"
