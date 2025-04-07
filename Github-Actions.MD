@@ -47,3 +47,26 @@
 - needs : used to check the previous depends on jobs should finish 
 - Expressions and metadata
 - Context in git hub
+
+### Sample Github Actions File:
+
+```
+name: First Pipeline
+on: push
+jobs:
+  build-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout-code
+        uses: actions/checkout@v3
+      - name: set up node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Build
+        run: npm build
+      - name: run tests
+        run: npm test
+```

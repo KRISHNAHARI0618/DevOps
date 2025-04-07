@@ -20,32 +20,37 @@ initialize_repository:
   title: Intialize a GIT Repository
   duration: 04:11
   demo:
-    title: Demo: Initialize a GIT Repository
-    duration: 15:19
+    title:
+      Demo: Initialize a GIT Repository
+      duration: 15:19
   lab:
-    title: Lab: Initialize a GIT Repository
-    duration: null # No duration provided
+    title: 
+      Lab: Initialize a GIT Repository
+      duration: null # No duration provided
 
 git_log:
   title: GIT Log
   duration: 00:47
   lab:
-    title: Lab: GIT Log
-    duration: null # No duration provided
+    title: 
+      Lab: GIT Log
+      duration: null # No duration provided
 
 git_branches:
   title: Git Branches
   duration: 04:11
   lab:
-    title: Lab: Branches – checkout, push branch
-    duration: null # No duration provided
+    title: 
+      Lab: Branches – checkout, push branch
+      duration: null # No duration provided
 
 git_merging_branches:
   title: GIT Merging branches
   duration: 02:13
   lab:
-    title: Lab: Merging branches
-    duration: null # No duration provided
+    title: 
+      Lab: Merging branches
+      duration: null # No duration provided
 
 remote_repositories_initialization:
   title: Initialize Remote Repositories

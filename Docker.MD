@@ -1,94 +1,116 @@
-What is Docker :
-Docker is a Containerization Platform which packages your application and all its dependencies together in the form of containers as to ensure that your application works seamlessly in any environment be it dev,qa,prod
+# 🐳 Docker Complete Notes
 
-Docker is an open-source platform that makes it easy to build, ship, and run distributed applications. With Docker, you can create lightweight, portable, and self-sufficient containers that can run on any system.
+---
 
-What is Docker File:
-a text file contains to build the docker images including os,environment variables,application code file locations network ports and any other components
+## 📌 What is Docker?
 
-What is Docker Image:
-Image is a Package which consists of an Application/Software binaries with all its dependencies and configuration files needed to run the code
-1: Docker image is a Read only & Immutable binary template(Like Snapshots) used to build containers
-2: Images also contains the metadata that describe the containers capabilities and needs
-3: Using docker build command along with docker file we can create a image
-4: docker images can't execute by themselves and cannot run or start it is just blueprint for creating containers
-5: run the docker images using docker run and image name/id
-6: when we pass that command to docker client that docker client pass that to the docker daemon then docker daemon will create container for that image
-7: push that image to repository using docker push command
+Docker is a **Containerization Platform** that packages your application and all its dependencies together in the form of containers to ensure that your app works seamlessly across environments — dev, QA, and prod.
 
-Image: Contains Application Code , Dependencies, Os where the application should Run
-It is a collection of read only layers.These layers are loosely coupled
-- Image is Static & Immutable
-- Contains series of layers
-- each layer represents a instruction
+- Docker is an open-source platform for building, shipping, and running distributed apps.
+- With Docker, you can create lightweight, portable, and self-sufficient containers.
 
-Docker Layers are Cached is stored in : /var/lib/docker
+---
 
-What is Docker Container:
-1: Container is a Runnable instance of the Image
-2: Image cannot run by themselves and build an container
-3: Container is a light weight and platform independent of way of running your applications
-4: Every container is isolated but access to resources on another host or container can be allowed with the help of docker networking
-5: A container is volatile/ it means whenever you remove or kills the container then all of it data will be lost form it if you want to persist the container data use docker volumes concept
-6: containers only have access to resources that are defined in the image unless additional access is defined when building the image into a container
-7: all docker images become docker containers when they run on the docker engine
-8: Container is light weight portable
-9: A container is a standard unit of software that packages up code and all its dependencies so the application runs quickly and reliably from one computing
-10: It is a Run Time Environment for the application irrespective of OS
-11: Portable and Self-Describing.
-12: Container is a executing environment with configurable isolation and resource limitations
-13: Containers are light weight in nature
+## 📄 What is a Dockerfile?
 
-Resources Limitations : Namespaces,Resources Limitations, Mounts etc ..
+A `Dockerfile` is a **text file** that contains instructions to build a Docker image, including:
+- OS base image
+- Environment variables
+- Application code locations
+- Network ports
+- Dependencies
 
-Why Containers are needed:
-First Thing Run at Any environment
-Encapsulate the Application code and its all dependencies
-Self-describing and portable
-It can run without any extra dependencies
+---
 
-Difference Between VMs and Containers :
-VM:
-VM is Hardware Virtualization
-VM should contain full operating system with individual machine
-VM is high secure
-VM is Multiple Machines each with its own guest OS
+## 📦 What is a Docker Image?
 
-Containers:
-Light weight in nature
-Minimal OS is required
-Portable
-Isolation of VMs
-Multiple Instances of Single Application
+- A **Docker image** is a **read-only**, **immutable** template (like a snapshot).
+- It contains:
+  - Application binaries
+  - Dependencies
+  - Configuration files
+  - Metadata for container runtime
 
-Describe a Process of Containerization of Application:
-Write a Dockerfile
-Build the image with that file
-Push the image to repository
-Run the image to create a container
+### Key Points:
+1. Cannot be run directly — it's just a blueprint.
+2. Built using `docker build` with a Dockerfile.
+3. Run with `docker run <image-name>`.
+4. Can be pushed to Docker Hub or custom repos.
+5. Stored in read-only layers, loosely coupled.
+6. Cache stored in `/var/lib/docker`.
 
-docker run exec -it <container-name> bash
+---
 
-How to Ensure that docker container start when the docker host restarts:
-1: Using Restart policies in docker compose
-version: '3'
-services:
-your_service_name:
-image: your_image_name
-restart: always
-2: Running the container using docker run -d --restart always -p 9090:8080 image-name/id
+## 📦 What is a Docker Container?
 
-What is Docker compose:
-1: When we are having multiple containers to our project we can use docker compose where we can have volume mounts /networks
-version:
-network:
-name:
-volumes:
-name:
-services:
-volumes:
-networks
+A **Container** is a **runnable instance** of a Docker image.
 
+### Features:
+1. Platform-independent, lightweight.
+2. Fully isolated — but can be networked.
+3. Volatile — data lost unless volumes are used.
+4. Configurable resource limits and isolation.
+5. Containers are portable and self-describing.
+6. Runtime environment for app, regardless of OS.
+
+---
+
+## 📚 Why Containers?
+
+- Run anywhere (dev, test, prod)
+- Encapsulate application and dependencies
+- Lightweight & portable
+- Self-contained
+
+---
+
+## 🆚 VM vs Container
+
+| Feature            | Virtual Machines        | Containers               |
+|--------------------|--------------------------|---------------------------|
+| Virtualization     | Hardware-based           | OS-based                  |
+| OS Requirement     | Full guest OS            | Minimal OS               |
+| Security           | High                     | Moderate (can be secured)|
+| Performance        | Heavy                    | Lightweight               |
+| Portability        | Less                     | Highly portable           |
+
+---
+
+## ⚙️ Containerization Process
+
+1. Write a `Dockerfile`
+2. Build an image: `docker build -t <name> .`
+3. Push image: `docker push`
+4. Run container: `docker run -d <image>`
+
+---
+
+## 🔧 Run Container and Exec
+
+```bash docker run exec -it <container-name> bash```
+
+### How to Ensure that docker container start when the docker host restarts:
+- 1: Using Restart policies in docker compose
+    version: '3'
+    services:
+    your_service_name:
+    image: your_image_name
+    restart: always
+- 2: Running the container using docker run -d --restart always -p 9090:8080 image-name/id
+
+## What is Docker compose:
+```
+- 1: When we are having multiple containers to our project we can use docker compose where we can have volume mounts /networks
+    version:
+    network:
+    name:
+    volumes:
+    name:
+    services:
+    volumes:
+    networks
+
+```
 docker-compose up -d
 
 Difference between Image and Container:
@@ -98,86 +120,85 @@ How to Configure Private Repository:
 1: Create a Repository in
 /etc/docker/daemon.json --> add the ip address/
 
-Types of Networks in Docker:
-1: Bridge Network Default &
-2: Host Network
-3: Overlay Network 2
-4: None Network
-5: Macvlan Network
+### Types of Networks in Docker:
+- 1: Bridge Network Default &
+- 2: Host Network
+- 3: Overlay Network 2
+- 4: None Network
+- 5: Macvlan Network
 
-
-
-Networking --> Communication between two hosts/devices over wired /wireless
-Docker:
+## **Networking** --> Communication between two hosts/devices over wired /wireless
+```Docker:
 - Docker is Platform where it implements the Containerization
 - Docker Networking is Communication between two docker containers
 Docker Network:
 There are two types of communication
 1) Container 1
-2) Container 2
+2) Container 2 
+```
 
-How Containers will communicate with Host Systems:
-- Docker will create one network called Virtual etho 0 that is docker0 ---> that will connect with the Host eth0 and makes the communication this is called bridge networking
+### How Containers will communicate with Host Systems:
+- Docker will create one network called Virtual etho 0 that is docker0
+- that will connect with the Host eth0 and makes the communication this is called bridge networking
 - Virtual ethernet == Docker0.
 
-There are three Types of Networking in Docker Containers:
+### There are three Types of Networking in Docker Containers:
 - Bridge Networking
 - Host Networking
 - OverLay Networking (Docker Swarm)
 
 Host(eth0) --> Docker0 --> veth0 --> Docker(eth0)
 
-Host Networking:
+**Host Networking:**
 - Connecting all containers with host ip/eth0 networking.
 - Securing Is more important in docker but host networking will not provide high security
 
-Custom Bridge networking:
+**Custom Bridge networking:**
 - Create Custom Virtual ETH0 To connect with host eth0 to implement complete isolation between two containers located in same docker engine and host
 
 - Virtual Bridge == Bridge Networking
 
-Network Commands:
-
-Can do CRUD Operations:
-docker network create secure-network
+**Network Commands:** : Can do CRUD Operations:
+```docker network create secure-network
 docker network ls
 docker network inspect
 docker network bridge
 docker run -d --name finance --network=secure-network nginx:latest
+```
 
-Why you need networking on Docker :
+**Why you need networking on Docker :**
 - Docker networking enables a user to link a Docker container to as many networks as he/she requires.
 - Docker Networks are used to provide complete isolation for Docker containers.
 
-Which Network Model is docker is following and give me some advantages :
+**Which Network Model is docker is following and give me some advantages :**
 - Container network  model it is following
 - The implementation of CNM specification by docker is called lib network
 
-How many types of blocks involved in docker lib network:
+**How many types of blocks involved in docker lib network:**
 - Networks : Software implementation of switch ,used for grouping and isolate the collection of endpoints
 - Endpoints : Virtual Network Interfaces , used for Making the connections
 - Sandboxes : Isolated Network Stack (Routing, Switching etc..)
 
-Disadvantages of Docker networking:
+**Disadvantages of Docker networking:**
 we cannot able to create name for ip address for our server in docker Networking
 Docker network commands:
 docker network create
 docker run -d --name mongodb --network=roboshop mongodb:v1
 docker run -d --name mongodb --network=<networkname> <image-id>
 
-What is Bridge Networking:
+**What is Bridge Networking:**
 1: Bridge networking is the default networking mode in Docker. When you create a Docker container without specifying a network, it is connected to the default bridge network.
 
-Use Case:
+**Use Case:**
 Suitable for standalone applications where containers need to communicate with each other on the same host.
 
-What is Host Networking:
+**What is Host Networking:**
 1: In host networking, a container shares the network namespace with the Docker host. The container bypasses Docker's network isolation and directly uses the host's network stack
 Use Case:
 Useful when performance is critical, and you want the container to have direct access to the host's network stack.
 Note: It may compromise container isolation and security.
 
-What is Overlay Networking:
+**What is Overlay Networking:**
 1: Overlay networking used when we need to interact between the containers between multiple hosts
 
 Use Case:
@@ -231,9 +252,8 @@ Container with jenkins and new joine restarts the container and we cant see any 
 17: Educate Development Teams:
 
 Performance, Scalability and Security
-# Can you describe canary deployment with docker containers:
 
-Explain a Sample Docker file on each language:
+*Explain a Sample Docker file on each language:*
 1: Js Application
 2: Java application
 3: Go Lang Application
@@ -243,10 +263,9 @@ Explain a Sample Docker file on each language:
 7: MySQL
 8: MongoDB
 
-Can we launch Linux Containers on Windows and Vice Versa:
-No We cannot launch
+*Can we launch Linux Containers on Windows and Vice Versa: No We cannot launch*
 
-What is OnBuild Instruction:
+*What is OnBuild Instruction:*
 The on build instruction adds to the image trigger instruction to be executed at a later time when the image is used as the base for another build
 
 Commands executed on top of parent image is called OnBuild Instructions
@@ -254,7 +273,7 @@ Commands executed on top of parent image is called OnBuild Instructions
 Parent (UpStream Build Image)
 Child (Down Stream Build Image)
 
-What is the use of Docker Ignore File:
+**What is the use of Docker Ignore File:**
 By Default we will set the directory as current .
 The request will send to Docker daemon it will take all the files to remove all unwanted files we use docker ignore files
 
@@ -262,40 +281,35 @@ The request will send to Docker daemon it will take all the files to remove all 
 2: To remove all .git files
 3: To remove .tf-vars etc..
 
-Docker Delete all the Stopped Containers:
+**Docker Delete all the Stopped Containers:**
 docker rm -f $(docker ps -a)
 docker container prune
 
-is it good to use docker compose in production:
-No it is not good
+is it good to use docker compose in production: No it is not good
 
-How to Parameterize base image tag:
+**How to Parameterize base image tag:**
 using the ARG Instruction we can pass the OS Version
 Parameterize the image version
 
-Building Docker file in Large files directory good practice:
-No It is not a good practice
+Building Docker file in Large files directory good practice: No It is not a good practice
 
-Topics Discussed:
-Docker Introduction: Session 51
-
-Where pulled Image are stored:
-- /var/lib/docker/
+**Where pulled Image are stored:**
+```- /var/lib/docker/
 Docker Image SHA:
 - Full SHA256 code where we can get the image using HashCode
 - it is also called Docker Dangling Image
 - docker history <image-name>.
+```
 
-Architecture of Docker Images:
-- docker manifest inspect <image-name>
+Architecture of Docker Images: `docker manifest inspect <image-name>`
 
-Tagging an image:
+**Tagging an image:**
 - docker tag
 How to check the instructions that were used to build image:
+
 - docker image history <image-name>
 
-Why Containers are Relatively Small:
-- Images don't contain kernel. They share and access the one used by the host on which they are running
+**Why Containers are Relatively Small:** `Images don't contain kernel. They share and access the one used by the host on which they are running`
 
 Virtualization --> Logical isolation of one physical systems into multiple systems
 
@@ -310,7 +324,8 @@ docker run = pull + Create + Start
 
 docker port forwarding
 
-Docker FROM
+Docker FROM: about tye os and version
+
 Docker RUN :
 Run instruction will run at the time of image creation
 It is used to install all packages required to build an image and run the container
@@ -324,7 +339,7 @@ Docker EntryPoint:
 This will fixed run time environment to the container
 cannot be overridden
 
-Labels Instruction: Session 52:
+
 LABEL : Giving key value pairs to the docker file
 labels are the key-value pairs that represents the tags for images not for the containers
 images can be filtered based on the labels like
