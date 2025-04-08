@@ -82,6 +82,3 @@
 
 ### How to Deploy when deployment file is in another directory
 - add a config called  ```directory: recursive: true ```
-
-### Multiple source for an application
-- 

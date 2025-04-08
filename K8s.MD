@@ -36,3 +36,5 @@
 - `Network Policy` Built in K8s API that allows you to control traffic between pods or between pods and the outside world.
 - `Gateway API` Allows you to make services accesible to clinets that are outside the cluster
 - Kubernetes provides a default implementation of service proxying, called `kube-proxy`
+
+## Memory Management or Storage Setup

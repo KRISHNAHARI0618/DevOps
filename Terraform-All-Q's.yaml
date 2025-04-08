@@ -122,6 +122,8 @@ Most Common CLI Commands:
 
 What is terraform backend:
 1: Where ever we are storing our terraform state file is called backend
+
+How to pass data to Vm using terraform: custom_data ,userdata metadata
 ---
 What is terraform remote backend:
 1: To remove conflicts between your team and you we will store this state file in Remote backend
@@ -894,6 +896,48 @@ Terraform State Commands:
 4: terraform state refresh
 5: terraform state replace-provider old-provider new-provider
 
+
+### Terraform Backend Configuration
+- terraform {
+  required_version: v12
+  required_providers: {
+    aws {
+          version: v13
+          soruce: "hashicorp/aws""
+    }  
+  }
+  backend: "S3" {
+  bucket = 
+  key: =
+  region = 
+  profile = 
+  }
+
+}
+provider "aws" {
+
+region= sws
+}
+
+terraform {
+backend "azurerm"{
+use_msi = true
+use_azureAuth_id = true
+tenant_id = "sdfhnsjhndf"
+client_id = "ssdjskdjs"
+storage_accountname = "zdjsdhsjd"
+container_name = tfstate
+key = "prod,tfstate.files"
+}
+}
+
+Output ip to ansible text file 
+
+terraform output -json vm_ips | jq -r '.[]' > hosts.txt
+
+outputs "vm_ips" {
+value = "aws_instance_id.id"
+}
 
 
 
