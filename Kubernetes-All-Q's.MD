@@ -568,7 +568,7 @@ There are 4 Types of Storage systems for containers:
 - Follows orderly creation of pods/containers.
 - Preserves network identity.
 - Headless Service for StatefulSet:
-  - In Headless set, explicitly mention `clusterIP` as none.
+  - In Headless set, explicitly mention ` 
 
 #### Storage Classes Definitions:
 - Storage class used for Dynamic Provisioning.
@@ -623,11 +623,10 @@ For DB, EBS is preferred due to low latency and direct attachment to the contain
 - Kuberno
 - kubeproxy
 
-
 ## CRD (Custom Resource Definitions):
 - Defining a new type of API for Kubernetes deployment
 - Extend the capabilities of Kubernetes by extending the API resources
-- Yaml File where we can define:
+- Yaml File Where We Can Define:
   - Gives all the possible options to support a user can Submit in the Virtual Service
   - Manifests/Helm/Operators/Kustomize.
 
@@ -656,7 +655,6 @@ For DB, EBS is preferred due to low latency and direct attachment to the contain
 - Number of Nodes: 1 Cluster & 6 Worker Nodes
 - Versions in Use: Dev 1.27 & Prod 1.27
 
-
 ## How to talk with any cluster and set as default:
 - **Kube-Config file**
   - Command: `kubectl config view`
@@ -668,7 +666,6 @@ For DB, EBS is preferred due to low latency and direct attachment to the contain
 
 ## Deploy Nginx:
 kubectl run nginx --image=nginx
-
 
 ## List of resources/Objects:
 kubectl api-resources

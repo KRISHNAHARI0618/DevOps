@@ -1,298 +1,422 @@
-What is IaC: Infrastructure as code
+## 🛠️ What is IaC (Infrastructure as Code)
 
-What is Terraform:
-0: Terraform is an infrastructure as a code tool that lets you to build,change and version cloud and on-prem safely and effectively
-1: Infra structure as a code automation tool
-2: Open Source designed by Hashi-Corp written in go language
-3: It allows user to create infra with code
-4: It has a Command Line Tool and Terraform Cloud to store the modules privately
+Infrastructure as Code (IaC) is managing and provisioning infrastructure through machine-readable configuration files.
 
 ---
-What are advantages of Terraform:
-0: As it is A Code we can write,deploy amd destroy
-1: Version Control
-2: Consistent InfraStructure (Dev,QA,Prod,UAT,pre-PROD)
-3: We can DO CRUD Operations
-4: Inventory Management
-5: Cost Optimization
-6: Dependency Management
-7: Modules (Don't Repeat Yourself)
-8: Terraform Is Declarative Scripting
----
-Variables and Outputs:
 
-1: | Variables
-- Servers as Parameters for a Terraform Modules/code.
-- So Users can customize behavior without editing the the source code
-2: | Outputs
-- Return Values for a terraform module
-3: | Local Values
-- Convience feature for assigning a short name to an expression
-- it is especially useful when you have complec expressions or repeated values
+## 🌍 What is Terraform
+
+- Terraform is an Infrastructure as Code tool that lets you build, change, and version infrastructure safely and effectively.
+- Infrastructure automation tool.
+- Open source by HashiCorp, written in Go.
+- Allows infrastructure creation with code.
+- Offers CLI tool and Terraform Cloud to store modules privately.
 
 ---
-Terragrunt :
-- Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple Terraform modules, remote state, and locking
+
+## ✅ Advantages of Terraform
+
+- Write, deploy, and destroy infrastructure as code.
+- Version Control.
+- Consistent environments (Dev, QA, Prod, UAT, Pre-Prod).
+- Supports CRUD operations.
+- Inventory Management.
+- Cost Optimization.
+- Dependency Management.
+- DRY Principle with Modules.
+- Declarative scripting approach.
 
 ---
-Expressions:
-1: Version Constraints:
-- we can use the operators to control the version like below
-- version = ">=1.2.0, <2.0.0"
-- there are other operators as well in terraform
-- =,!=,>,<,>=,<= etc..
-2: Dynamic Blocks:
-- When you want to create a nested blocks we use dynamic blocks
+
+## 📦 Variables and Outputs
+
+### 🔹 Variables
+- Serve as parameters for Terraform modules.
+- Allow customization without editing source code.
+
+### 🔹 Outputs
+- Return values from a module.
+
+### 🔹 Local Values
+- Used to assign short names to complex or repeated expressions.
 
 ---
-Functions:
-1: File Function: used to copy the file content from local to resources while creating the resource
-2: Split Function : Split funtion is used to split the string based on the delimiters
-3: Element Function : Used to retrieve a single element from the list or tuple
-- element(list or tuple,index)
-4: Slice Function: Slice is used to select the part of list
-5: Length Function: Length will get the size of the list
-6: LookUp Function: Value of a key in a map
-7: Url encode Function: applies URL encoding to a given string
-8: length (create based on availability zones)
-9: slice (create based on slice)
-10: merge (variables)
-11: min
-12: max
-13: base64encode
-14: base64decode
-15: concatenation: two or more list combines into a single task
-16: contains: Contains a string or number etc..
 
-Hashi-Corp Configuration Language:
-1: Variables:
-  - Types of Variables
-    - String
-    - bool
-    - number
-    - Map
-    - List
-2: Loops
-3: Locals
-4: Data Types
-5: Functions
-6: Modules
-7: Expressions
+## 📁 Terragrunt
+
+- A thin wrapper for Terraform.
+- Adds support for managing multiple modules, remote state, and locking.
 
 ---
-Why Terraform:
-1: Terraform works on the principle of api as code
-2: Interacts with Low Level Code
-3: Supports multiple Cloud Providers/Hybrid Cloud
-4: Written in Go language
-5: HCL language/Json
+
+## 🔤 Expressions
+
+### 🔸 Version Constraints
+- Example: `version = ">=1.2.0, <2.0.0"`
+- Operators: `=`, `!=`, `>`, `<`, `>=`, `<=`
+
+### 🔸 Dynamic Blocks
+- Used for nested block creation dynamically.
+
 ---
-What are essential aspects of terraform:
-1: A console to validate the functions
-2: Interpolation is supported through a configuration language
-3: A Module count maintains track of how many resources are installed on the infrastructures
+
+## 🧮 Functions
+
+- `file()` – Read content from a local file.
+- `split()` – Split strings based on delimiter.
+- `element(list, index)` – Get single element from list.
+- `slice(list, start, end)` – Select part of a list.
+- `length()` – Get size of a list.
+- `lookup(map, key)` – Fetch value for a key in a map.
+- `urlencode(string)` – Apply URL encoding.
+- `merge()` – Merge variables/maps.
+- `min()`, `max()` – Get min/max value.
+- `base64encode()`, `base64decode()`
+- `concat()` – Combine multiple lists.
+- `contains(list, value)` – Check for value existence.
+
 ---
-What are modules in terraform:
-1: Logical Grouping of terraform resources
-2: one module can run multiple environment/teams
-3: One Module for multiple Teams
-4: Commonly repeated things should be allocated in single file
+
+## 🧾 HashiCorp Configuration Language (HCL)
+
+- **Variable Types**: `string`, `bool`, `number`, `map`, `list`
+- Loops
+- Locals
+- Data Types
+- Functions
+- Modules
+- Expressions
+
 ---
-What is state file in terraform:
-1: Keeps Track of resources are managing
-2: Terraform makes copy of which resources we have created
+
+## ❓ Why Terraform
+
+- Works on the principle of API as code.
+- Interacts with low-level APIs.
+- Supports multiple cloud providers (hybrid cloud).
+- Written in Go.
+- Uses HCL or JSON format.
+
 ---
-What is Terraform D:
-  Terraform D is a windows plugin that works with almost all in-service systems. By Default Terraform init looks for plugins in the following directory
 
-What is the purpose of Null Resources:
-  A standard resource library is implemented by null resources but no further action is done
-  A Null resources will not create any kind of resources but it execute some scripts in localmexec and install the external libraries
+## ⚙️ Essential Aspects of Terraform
 
-Most Common CLI Commands:
+- Console to validate functions.
+- Interpolation support.
+- `module count` tracks the number of provisioned resources.
 
-1: Terraform init
-2: Terraform plan
-3: Terraform apply
-4: Terraform Destroy
-5: Terraform destroy --target="Resource-Name"
-6: Terraform refresh
-7: Terraform output
-8: Terraform Graph
-
-What is terraform backend:
-1: Where ever we are storing our terraform state file is called backend
-
-How to pass data to Vm using terraform: custom_data ,userdata metadata
 ---
-What is terraform remote backend:
-1: To remove conflicts between your team and you we will store this state file in Remote backend
-2: And we store that in some where in Cloud and enables locking it
-3: so that if one user is creating resources using that remote backend statefile he will get error like some has locked the file or creating the infra
+
+## 🧩 Terraform Modules
+
+- Logical grouping of Terraform resources.
+- Supports multi-env and multi-team use.
+- Commonly reused components defined once.
+
 ---
-How do you handle secrets in terraform:
-1: Using Environment variables
-2: Using Hashi-Corp Vault
-3: Store ssm parameters store
-4: Use sensitive keyword = true in terraform
-5: Store the state file in remote backend and enforce it with the strict iam policies
-6: Secure remote backend
 
-What is resource graph in terraform:
-  terraform graph is a dependency graph
-  it is actually a dependency plan
+## 📂 Terraform State File
 
-What is Terraform state Locking:
-when you don't want to run multiple people at a time
-Using DynamoDB Locking
+- Tracks managed resources.
+- Maintains a record of created resources.
 
-What is Taint Terraform Resource :
-1: A particular resources is degraded or damaged needs to restart then in next apply this will get execute
+---
 
-What is Terraform state rollback:
-Roll back into terraform state
+## 🪟 What is Terraform D
 
-How will you upgrade plugins in terraform:
-using # terraform init -upgrade
+- A Windows plugin used by Terraform.
+- `terraform init` looks for it in the plugin directory.
 
-How will you make an object of one module available for the other module at a high level:
-1: Module 1(Providing Outputs) which create a Resources and gives an output Parent
+---
 
-2: Module 2(Consuming Outputs) which takes that output to create a resources
+## 🔄 Null Resource
 
-What are the components that make up terraform architecture:
-1: Sub-Graphs
-2: Evaluation of Expressions
-3: Evaluation of vertex
-4: Walk The Graph
+- Executes local scripts (e.g., using `local-exec`).
+- Doesn’t create actual infrastructure but is useful for provisioning steps.
 
-Define Resources Graph:
-A resource graph is used to depict the resources.it allows you to simultaneously alter and produce various resources
+---
 
-Provide a Few examples of where we can use sentinel policies:
-1: Make a Unambiguous ownership of resources a must
-2: Limit the roles that cloud provider can play
-3: Examine the terraform cloud operations audit trail
-4: Only particular resources ,services or data sources are prohibited
+## 🧑‍💻 Most Common CLI Commands
 
-Degrees of Sentinel Policing:
-1: Advisory
-2: Soft Mandatory
-3: Hard Mandatory
+- `terraform init`
+- `terraform plan`
+- `terraform apply`
+- `terraform destroy`
+- `terraform destroy --target="resource_name"`
+- `terraform refresh`
+- `terraform output`
+- `terraform graph`
 
-What is terragrunt:
-Terragrunt is a thin wrapper for Terraform that provides extra tools for working with multiple
-Terraform modules, remote state, and locking.
+---
 
-1: Managing numerous aws accounts
-2: Managing infra on multiple modules
-3: Using terragrunt we use dry principle
+## 🗂️ Terraform Backend
 
-What is State File Locking:
+- Backend is where the state file is stored.
+- Commonly stored in cloud for team collaboration and locking.
 
-How do you deploy Infra using Terraform:
-1: Create
+---
 
-Problems with terraform:
-1: Terraform communicates to a lot of apis but terraform itself does not have an API
+## 🛰️ Terraform Remote Backend
 
-2: Terraform State
-a: Monolithic
-b: Needs Locking
-c: Cannot Modify the piece of infra
+- Stores state file in a shared cloud location.
+- Enables state file locking to avoid conflicts during deployments.
 
-How to pass environment variables in Terraform:
+---
 
-Using the Export TF_VAR_example_var="custom_value"
-export
+## 🔐 Handling Secrets in Terraform
 
-When you mention terraform variable as sensitive will it show in terraform apply command:
-it will hide the sensitive data even when you apply
+- Environment Variables.
+- HashiCorp Vault.
+- AWS SSM Parameter Store.
+- Use `sensitive = true`.
+- Secure remote backends + strict IAM policies.
 
-How to list the created resources in terraform:
+---
+
+## 🔗 Terraform Resource Graph
+
+- A dependency graph that shows resource relationships.
+
+---
+
+## 🔒 Terraform State Locking
+
+- Prevents concurrent modifications.
+- Commonly implemented with DynamoDB.
+
+---
+
+## ❗ Taint Terraform Resource
+
+- Marks a resource as needing replacement.
+- Will be recreated during next apply.
+
+## 🔁 Terraform State Rollback
+
+- Used to revert to a previous known state.
+- Helpful during failures or misconfigurations in deployments.
+
+---
+
+## ⬆️ How to Upgrade Plugins in Terraform
+
+```bash
+terraform init -upgrade
+```
+
+- Downloads and upgrades modules/plugins to the newest acceptable version.
+
+---
+
+## 🔗 Sharing Outputs Between Modules
+
+1. **Module 1 (Providing Outputs)**:  
+   - Creates resources and defines outputs using `output` blocks.
+2. **Module 2 (Consuming Outputs)**:  
+   - Uses `module.module1_name.output_name` to consume the output and create dependent resources.
+
+---
+
+## 🏗️ Terraform Architecture Components
+
+- **Sub-Graphs**
+- **Evaluation of Expressions**
+- **Evaluation of Vertex**
+- **Walk the Graph** (builds dependency graph and executes in order)
+
+---
+
+## 📉 What is a Resource Graph
+
+- Visual representation of Terraform-managed infrastructure.
+- Helps manage dependencies and parallelism in resource creation.
+
+---
+
+## 🔐 Sentinel Policies Use Cases
+
+- Enforce resource ownership.
+- Restrict provider roles.
+- Audit Terraform Cloud operations.
+- Control usage of certain services or data sources.
+
+### 🎚️ Degrees of Sentinel Policing
+
+1. Advisory  
+2. Soft Mandatory  
+3. Hard Mandatory
+
+---
+
+## 📁 What is Terragrunt (Recap)
+
+- Thin wrapper for Terraform.
+- Simplifies managing multiple modules and remote state.
+- Implements DRY principle.
+
+### Use Cases:
+
+1. Managing multiple AWS accounts.
+2. Managing infrastructure in different modules.
+3. DRY and reusable configurations.
+
+---
+
+## 🔒 State File Locking
+
+- Prevents simultaneous modifications to the same state file.
+- Usually implemented via remote backend with state locking (e.g., DynamoDB in AWS).
+
+---
+
+## 🚀 How to Deploy Infra with Terraform
+
+1. Write configuration (`.tf` files).
+2. Initialize: `terraform init`
+3. Validate: `terraform validate`
+4. Plan: `terraform plan`
+5. Apply: `terraform apply`
+
+---
+
+## ⚠️ Problems with Terraform
+
+- No native API—relies on provider APIs.
+- State File Challenges:
+  - Can become monolithic.
+  - Requires locking.
+  - Cannot update only a part of infra directly.
+
+---
+
+## 🌱 Passing Environment Variables in Terraform
+
+```bash
+export TF_VAR_example_var="custom_value"
+```
+
+---
+
+## 🔐 Sensitive Variable Output
+
+- Variables marked with `sensitive = true` will not show in CLI output (e.g., `terraform apply`).
+
+---
+
+## 📋 List Created Resources
+
+```bash
 terraform state list
+```
 
-Count the resources using length function:
-output "number of resources" {
+---
+
+## 🔢 Count Resources Example
+
+```hcl
+output "number_of_resources" {
   value = length(aws_instance.example)
 }
+```
 
-When two files attempt to define the same object terraform returns an error
+---
 
-Terraform Questions:
+## 🧱 Null Resources in Terraform
 
-What is Meant by Null Resources:
-1: A null resource is a special resource type allows you to define a resource block with no direct counter part in the underlying infrastructure
-2: it is often used when you need to perform some arbitrary action or execute a provisioner without creating any tangible infrastructure resource
+### What is a Null Resource?
 
-Use Cases:
-1: When you want to execute the local exec
-2: when you want to call external apis
-3: Running custom logic during the terraform lifecycle
+- A resource that performs an action but doesn't create infrastructure.
 
-What is Terraform Validate command:
-1: Validate command used to check the validations of resources
-2: Terraform validate commands is used to validate the configuration files in a project are syntactically valid and internally consistent
+### Use Cases:
 
-How to Create a Resources Using a Loop:
-1: Count
-count = 2
-2: For Each
-for each argument must be map or set of strings
-it will not take Tuple as a type of Argument
+1. Execute local scripts using `local-exec`.
+2. Call external APIs.
+3. Run custom logic during apply lifecycle.
 
-Method 1:
+---
+
+## ✅ Terraform Validate Command
+
+- Checks for syntax and internal consistency.
+
+```bash
+terraform validate
+```
+
+---
+
+## 🔄 Create Resources Using Loops
+
+### Method 1: Using `count`
+
+```hcl
 count = 2
 var.name[count.index]
-Method 2:
-variables file
+```
+
+### Method 2: Using `for_each`
+
+```hcl
 variable "sub" {
   type = set(string)
-  default = ["10.1.0.0/24","10.2.0.0/24"]
+  default = ["10.1.0.0/24", "10.2.0.0/24"]
 }
 
-for_each = var.sub
-sub = each.value
+resource "aws_subnet" "example" {
+  for_each = var.sub
+  cidr_block = each.value
+}
+```
 
-How to Create a Resources Conditionally:
-using the condition like ternary operator
-count = var.env == "dev/qa" ? 1 : 0
+---
 
-variable == "value" ? 1 : 0
+## ❓ Create Resources Conditionally
 
-What are Data Sources:
+```count = var.env == "dev" ? 1 : 0```
 
-Data sources allow you to fetch and reference data from external sources or existing infrastructure
+---
 
+## 📡 What are Data Sources?
+
+Allow Terraform to fetch and reference existing data/infrastructure.
+
+### Example: AWS AMI
+
+```
 data "aws_ami" "latest_amazon_linux" {
   most_recent = true
-
   owners = ["amazon"]
-
   filter {
     name   = "name"
     values = ["amzn2-ami-hvm-*-x86_64-gp2"]
   }
 }
+```
 
-data "vault_generic_secrets" "data_base_secrets" {
+### Example: Vault Secrets
+
+```hcl
+data "vault_generic_secrets" "database" {
   path = "secret/data/database"
 }
 
 resource "aws_db_instance" "example" {
-  username = data.vault.generic_secrets.data_base_secrets.credentials.data["username"]
-  password = data.vault_generic_secrets.data_base_secrets.credentials["password"]
+  username = data.vault_generic_secrets.database.data["username"]
+  password = data.vault_generic_secrets.database.data["password"]
 }
+```
 
+---
+
+## 🔐 Sensitive Variable Example
+
+```hcl
 variable "example_password" {
-  type = string
+  type        = string
   description = "A Sensitive Variable"
-  sensitive = true
+  sensitive   = true
 }
-
-locals "aws_instance" {
-  value =
-}
+```
 
 What are local Variable: These are type of Variable where we cannot
 
@@ -698,6 +822,7 @@ resource "aws_vpc" "vpcs" {
   }
 }
 dynamic block: # Dynamic Block Example
+
 variable "additional_tags" {
   type = map(string)
   default = {
@@ -719,6 +844,7 @@ variable "additional_tags" {
 #   }
 
 Condition :
+
 # Condition Example
 resource "aws_security_group" "example_sg" {
   name        = "example_sg"
@@ -733,6 +859,7 @@ resource "aws_security_group" "example_sg" {
 }
 
 Resource:
+
 # Data Sources
 data "aws_ami" "latest_amazon_linux" {
   most_recent = true
@@ -760,7 +887,8 @@ resource "aws_instance" "ec2_instances" {
   }
 }
 
-Depends on :
+Depends on:
+
 1: Reduced Parallelism
 2: Hard-Coding Dependencies
 3: Increased Complexity
