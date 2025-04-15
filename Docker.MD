@@ -894,9 +894,9 @@ Comprises the Docker server (daemon), client, and API. It also includes componen
 **To allow non-root users to run Docker commands:**
 
 1. Add the user to the `docker` group:
-   ```bash
+```
    sudo usermod -aG docker <username>
-
+```
 
 
 

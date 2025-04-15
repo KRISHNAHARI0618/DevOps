@@ -85,24 +85,30 @@ We look At An analogy of Ships and Containers
 ### Master Node(Control Plane):
 
 - 1: Kube Api Server:
+```
 The Server which is responsible for all the activities in the k8s Cluster is called Kube Api Server
 The Kubernetes API server validates and configures data for the api objects which include pods, services, replication controllers, and others.
 The API Server services REST operations and provides the frontend to the cluster's shared state through which all other components interact
-
+```
 - 2: Controller Managers:
+```
 Which Controls and Manages the Nodes Based on State of Nodes and Controllers
 The Kubernetes controller manager is a daemon that embeds the core control loops shipped with Kubernetes.
-In applications of robotics and automation, a control loop is a non-terminating loop that regulates the state of the system
+a control loop is a non-terminating loop that regulates the state of the system
 It represents the state of Applications
 a: Replication Controllers
 b: Pod Controller
 c: API Controller
 d: Daemon-Set Controller
-
-- 3: ETCD: Which stored all information about activities going on Nodes and Control Planes in a Key Value Pairs
-
-- 4: Kube-Scheduler: A component which is responsible for Scheduling the pods/Services based on the availability of node status , Taints and Tolerations node affinity etc..
-
+```
+- 3: ETCD:
+```
+Which stored all information about activities going on Nodes and Control Planes in a Key Value Pairs
+```
+- 4: Kube-Scheduler:
+```
+A component which is responsible for Scheduling the pods/Services based on the availability of node status , Taints and Tolerations node affinity etc..
+```
 ### Worker Nodes: (Data Plane)
 - 1: Kubelet: A component which is responsible of collecting and Sharing and managing all the information about nodes and containers in the cluster
 - 2: Kube-Proxy: a component which enables the communication between each container in the Cluster
@@ -159,6 +165,7 @@ Kubernetes objects are persistent entities in the Kubernetes system. They repres
 - Tools like:
   - Kops
   - Kubeadm
+  - Lens
 
 # Container Images:
 
