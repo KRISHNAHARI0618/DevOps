@@ -172,8 +172,17 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
 
 - Stores state file in shared cloud location.
 - Enables state file locking to avoid conflicts during deployments.
-- 
-
+```
+terraform {
+  backend "s3" {
+    bucket = "my-terraform-state-bucket"
+    key = "prod/terraform-state
+    region = "us-west-2"
+    dynamodb_table = "terraform-locks"
+    encrypt = true
+  } 
+}
+```
 ---
 
 ## 🔐 Handling Secrets in Terraform
@@ -183,21 +192,46 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
 - AWS SSM Parameter Store.
 - Use `sensitive = true`.
 - Secure remote backends + strict IAM policies.
-- data block is used to retrieve secrets and output block is used to use those in configs
-- 
+- Data block is used to retrieve secrets
+- output block is used to use those in configs
+
 ---
 
 ## 🔗 Terraform Resource Graph
 
 - A dependency graph that shows resource relationships.
+- `terraform graph`
+- `terraform graph > graph.dot`
 
+- ### 🧠 What It Shows
+  - Nodes: Resources, providers, variables, outputs, etc.
+  - Edges: Dependencies between them
+  - Helps you visualize:
+    - Implicit and explicit dependencies
+    - Ordering of operations (what gets created first)
+```
+  digraph {
+    "provider[\"registry.terraform.io/hashicorp/aws\"]"
+    "aws_instance.web"
+    "aws_security_group.web_sg"
+    "aws_instance.web" -> "aws_security_group.web_sg"
+  }
+```
 ---
 
 ## 🔒 Terraform State Locking
 
 - Prevents concurrent modifications.
 - Commonly implemented with DynamoDB.
-
+```
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm = "AES256"
+      }
+    }
+  }
+```
 ---
 
 ## ❗ Taint Terraform Resource
