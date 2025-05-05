@@ -202,6 +202,12 @@ terraform {
 - A dependency graph that shows resource relationships.
 - `terraform graph`
 - `terraform graph > graph.dot`
+  
+## 📉 What is a Resource Graph
+
+- Visual representation of Terraform-managed infrastructure.
+- Helps manage dependencies and parallelism in resource creation.
+
 
 - ### 🧠 What It Shows
   - Nodes: Resources, providers, variables, outputs, etc.
@@ -272,12 +278,6 @@ terraform {
 - **Walk the Graph** (builds dependency graph and executes in order)
 
 ---
-
-## 📉 What is a Resource Graph
-
-- Visual representation of Terraform-managed infrastructure.
-- Helps manage dependencies and parallelism in resource creation.
-
 ---
 
 ## 🔐 Sentinel Policies Use Cases
