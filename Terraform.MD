@@ -223,6 +223,7 @@ terraform {
 
 - Prevents concurrent modifications.
 - Commonly implemented with DynamoDB.
+  
 ```
   server_side_encryption_configuration {
     rule {
@@ -238,13 +239,13 @@ terraform {
 
 - Marks a resource as needing replacement.
 - Will be recreated during next apply.
-- when you want to recreate or destrou
+- when you want to recreate or destroy
 
 ## 🔁 Terraform State Rollback
 
 - Used to revert to a previous known state.
 - Helpful during failures or misconfigurations in deployments.
-
+- `terraform state push old.tfstate`
 ---
 
 ## ⬆️ How to Upgrade Plugins in Terraform
