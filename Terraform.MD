@@ -37,18 +37,51 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
 - User Data to upload any data 
 - Files function to Upload script
 - Provisioners: file provisioner etc..
+- 
+```
+variables "aws_instance_names" {
+  name = "name_id"
+  description = "this is instance id "
+  type = string
+}
+```
 
 ### 🔹 Outputs
 - Return values from a module.
 - terrafom output -o json
+```
+outputs "aws_instancs_id" {
+  value = "aws_instance_id"
+  type = "string"
+  description = "aws_instance_id"
+  sensitive = true
+}
+```
 
 ### 🔹 Local Values
 - Used to assign short names to complex or repeated expressions.
 - we can use functions inside the local block
+```
+locals {
+  value = "aws_instance_id"
+  type = string
+  description = "aws_id"
+}
 
+locals {
+  name       = "Akhila"
+  env        = "dev"
+  instance_type = "t3.micro"
+}
+
+```
 ## Functions:
 - we can use functions inside the modules,resources,outputs, locals.
-
+```
+join(",", ["a", "b", "c"])               # "a,b,c"
+replace("app-prod", "prod", "dev")      # "app-dev"
+format("Hello, %s!", "Akhila")          # "Hello, Akhila!"
+```
 ---
 
 ## 📁 Terragrunt
