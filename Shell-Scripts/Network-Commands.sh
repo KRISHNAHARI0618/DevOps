@@ -1,5 +1,7 @@
 % Networking Commands:
 
+
+
 ping: Check network connectivity with a remote host.
 
 traceroute: Display the route that packets take to reach a destination.
@@ -8,7 +10,9 @@ ip: A more powerful and flexible tool for configuring network interfaces.
 
 ifconfig: Display or configure network interfaces.
 
-netstat:
+Netstat: Network statistics, including open connections and routing tables.
+
+ss: A utility to investigate sockets and network connections.
 
 curl: Command-line tool for making HTTP requests.
 

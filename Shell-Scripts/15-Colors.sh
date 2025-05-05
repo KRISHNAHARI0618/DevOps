@@ -23,4 +23,4 @@ echo -e " $W hello World"
 
 echo -e "$R $0 , $M $# ,$C $@,$B $1,$Y $?,$G $@"
 
-#git add .;git commit -m "Adding New Files" ;git push origin main
+#git add .;git commit -m "$(date +%d-%m-%Y)" ;git push origin main
