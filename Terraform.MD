@@ -275,7 +275,7 @@ terraform {
 ---
 
 ## ❗ Taint Terraform Resource
-
+- `terraform taint <resource_type>.<resource_name>`
 - Marks a resource as needing replacement.
 - Will be recreated during next apply.
 - when you want to recreate or destroy
@@ -386,15 +386,6 @@ terraform {
 ``` terraform state list ```
 
 ---
-
-## 🔢 Count Resources Example
-
-```
-output "number_of_resources" {
-  value = length(aws_instance.example)
-}
-```
-
 ---
 
 ### What is a Null Resource?
@@ -502,6 +493,8 @@ variable "example_password" {
 
 ## How to provide variable at cli:
 When declaring variables at tf vars don't pass any default value then it will ask user to enter
+- `terraform apply -var="region=us-west-2" -var="instance_type=t2.micro"`
+- `terraform apply -var-file="dev.tfvars"`.
 
 ## Terraform Modules:
 Used for Bigger project for consistency
@@ -820,7 +813,6 @@ document some commonly accepted formatting guidelines for terraform code these c
 ```
 ### Terraform Cloud:
 ```
-
 1: Manages StateFiles in Terraform Cloud
 2: Store Variables
 Write some Code for Providers:
@@ -1009,7 +1001,7 @@ resource "aws_instance" "example" {
 ```
 
 #### File Provisioner
-```hcl
+```
 resource "aws_instance" "example" {
   ami = "ami"
   instance_type = "t2.micro"
@@ -1021,7 +1013,7 @@ resource "aws_instance" "example" {
 ```
 
 ### Assertion in Terraform
-```hcl
+```
 variable "bucket_prefix" {
   default = "test"
 }
@@ -1051,7 +1043,7 @@ run "valid_string_concat" {
 - `for_each` is easier to use
 
 ### Example using dynamic
-```hcl
+```
 provider "aws" {
   region = "us-east-1"
 }
@@ -1072,7 +1064,7 @@ resource "aws_instance" "first" {
 ```
 
 ### Locals Example
-```hcl
+```
 locals {
   coordinates    = [10, 20, 30]
   y_coordinates  = element(local.coordinates, 1)
@@ -1101,7 +1093,7 @@ locals {
 - `terraform-provider-cloud`
 
 ### Terraform State Commands
-```bash
+```
 terraform state list
 terraform state pull
 terraform state push
@@ -1148,7 +1140,7 @@ terraform {
 terraform output -json vm_ips | jq -r '.[]' > hosts.txt
 ```
 
-```hcl
+```
 output "vm_ips" {
   value = aws_instance.example.*.public_ip
 }
