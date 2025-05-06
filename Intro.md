@@ -7,8 +7,6 @@ Thank you for giving me the opportunity to introduce myself.
 Hi, I'm Hari Vardhan, working as a DevOps Engineer at Blue Yonder with nearly 4 years of hands-on experience in automating, deploying, and managing cloud-based infrastructure and CI/CD pipelines. I specialize in tools like Jenkins, Docker, Kubernetes, Git, and Terraform, with a strong focus on improving system reliability and deployment speed. I'm passionate about streamlining DevOps workflows and driving operational efficiency through automation and collaboration.
 ```
 
-
-
 ## 🙋‍♂️ Personal Details
 - **Name:** Peddireddy Hari Vardhan Reddy  
 - **From:** Kadapa, Andhra Pradesh  
