@@ -1,0 +1,9 @@
+name: first-action-file
+on: push
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling the image
+        uses: actions/checkout/@v3
+        with: python-version

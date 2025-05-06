@@ -1,0 +1,11 @@
+name: first-github-actions
+on: [ "push", "workflow_dispatch"]
+jobs:
+  job1:
+    runs-on: ["self-hosted" , "ubuntu-latest"]
+    jobs:
+      steps:
+        - name: pulling image
+          uses: actions/checkout@v4
+        
+        - name: 

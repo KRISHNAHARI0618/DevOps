@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    options {
+
+    }
+    parameters {
+
+    }
+
+    stages {
+        stage ("test") {
+            script {
+
+            }
+        }
+    }
+}
