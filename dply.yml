@@ -1,0 +1,43 @@
+apiVersion: apps/V1
+kind: Deployment
+metadata:
+  name: app1
+  labels:
+     env: dev
+spec:
+  replicas: 3
+  selector:
+     matchLabels:
+         env: dev
+  template:
+      metadata:
+        labels:
+          env: dev
+      containers:
+        - name: app1
+          image: nginx
+          ports:
+          - containerPort: 80
+          resources:
+             limits:
+               cpu: 100m
+               memory: 150Mi
+             requests:
+               cpu: 50m
+               memory: 100Mi
+          probes:
+            livenessProbe:
+              httpGet:
+                path: /health
+                port: 80
+              initialDelaySeconds: 120
+              period: 30
+            readinessProbe:
+              httpGet:
+                path: /health
+                port: 80
+              initialDelaySeconds: 120
+              periodSeconds: 60
+         
+
+        
