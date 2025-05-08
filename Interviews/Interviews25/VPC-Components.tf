@@ -56,7 +56,6 @@ resource "aws_instance" "myec2" {
 #     prevent_destroy = true
 #     ignore_changes = [ aws_subnet ]
 #     # replace_triggered_by = [ aws_subnet.publicSubnet ]
-    
 #   }
 
 }
