@@ -150,11 +150,10 @@ inventory = ./hosts
 remote_user = ec2-user
 forks = 5
 host_key_checking = False
-```
 
 - Configuration settings for Ansible.
 - Contains inventory, user, forks, variable settings, etc.
-
+```
 ---
 
 ### 11. Is `become: true` and `become: yes` the Same?
