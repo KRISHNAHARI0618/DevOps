@@ -1,5 +1,5 @@
 
-1: Create token
+1: Create token : 
 $ vault token create
 
 2: Vault login
