@@ -38,7 +38,17 @@ top command is used to memory and cpu time it will display on screen
 - ` grep -R "pattern" filename` Suppose we have 100 files in a directory (dirA) and we need to search a keyword in all the files using grep command in Linux
 - `grep -q "pattern" filename ` We can use egrep command for the multiple keywords search using grep command in Linux
 - `grep -q "pattern" filename ` If you just wanna search but don't want to print on terminal or If you want to suppress error message using grep command in Linux
-- 
+
+## AWK Command `aho weinberg kernighan`
+- Syntax `awk [POSIX or GNU style options] -f progfile [--] file ...`
+- `awk '{print}' filename` prints all data in file
+- `awk -F '{print $1}'` -F Means Field Seperator
+- `awk '{print $NF}' filename` Means Print All Last Fields
+
+## Sed `stream editor`
+- `sed -i 's/pattern/change-pattern/' filename` this will change inplace changed and will not show at output but will update values
+-  `echo "Hello World" | sed 's.\(\b[A-Z]\).\(\1\).g'` Prints first character in each word in brackets
+-  
 
 
 
