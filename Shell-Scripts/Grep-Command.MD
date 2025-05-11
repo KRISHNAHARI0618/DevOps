@@ -22,12 +22,12 @@ top command is used to memory and cpu time it will display on screen
 - `grep -l` print lines where word found
 - `grep -r` recrusively search for a word or file
 - `grep -l` print the lines 
-- `  ` To ignore the upper and lower case while searching using grep command in Linux
-- ` ` To search everything except given pattern/keyword using grep command in Linux
-- ` ` To print how many times (count) given keyword present in file using grep command in Linux
-- ` ` To search for exact match of given keyword in a file using grep command in Linux
-- ` ` To print the line no. of matches of given keyword in a file using grep command in Linux
-- ` ` To search a given keyword in multiple files using grep command in Linux
+- `grep -i "pattern" file  or path/to/file ` To ignore the upper and lower case while searching using grep command in Linux
+- ` grep "pattern" filename` To search everything except given pattern/keyword using grep command in Linux
+- ` grep -c "pattern" filename` To print how many times (count) given keyword present in file using grep command in Linux
+- ` grep -w "pattern" filename` To search for exact match of given keyword in a file using grep command in Linux
+- ` grep -n "pattern" filename ` To print the line no. of matches of given keyword in a file using grep command in Linux
+- ` grep -r "pattern" filename ` To search a given keyword in multiple files using grep command in Linux
 - ` ` To suppress file names while search a given keyword in multiple files using grep command in Linux
 - ` ` To search multiple keywords in a file using grep command in Linux
 - ` ` To search multiple keywords in multiple file using grep command in Linux
