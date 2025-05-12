@@ -4,8 +4,9 @@
 - People are moving towards Microservices
 
 * Docker Vs Kubernetes *
-[Kuberenetes 100 Questions](https://medium.com/@jaya.surya8068/top-100-kubernetes-interview-questions-and-answer-5adb4c427b17)
-
+- [Kuberenetes 100 Questions](https://medium.com/@jaya.surya8068/top-100-kubernetes-interview-questions-and-answer-5adb4c427b17)
+- [Kubernetes SetUp Using KubeADM](https://github.com/piyushsachdeva/CKA-2024)
+  
 # Docker:
 - Container Platform where it supports the building the containers
 - Does not support AutoScaling
