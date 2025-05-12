@@ -11,3 +11,4 @@
 - `find /path -type f -perm /111 -exec chmod -x {} \;` find and replace execute permissions. 
 - `find /tmp -name "*.tmp" -mtime +7 -exec rm -f {} \;` find the temporary fields and delete
 - `find /path -type f -name "*.log" -mtime +10 -exec gzip {} \; -exec mv -r {}.gz $dir` find and move to arrchieve directory
+- 
