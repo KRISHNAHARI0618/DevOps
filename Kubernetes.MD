@@ -113,15 +113,19 @@
     - d: Daemon-Set Controller
     - 
 **`3: ETCD:`**
+
   - Which stored all information about activities going on Nodes and Control Planes in a Key Value Pairs
   
 **`4: Kube-Scheduler:`**
+
   - A component which is responsible for Scheduling the pods/Services based on the availability of node status , Taints and Tolerations node affinity etc..
 
 ## Worker Nodes: (Data Plane)
 
 - 1: Kubelet: A component which is responsible of collecting and Sharing and managing all the information about nodes and containers in the cluster
+  
 - 2: Kube-Proxy: a component which enables the communication between each container in the Cluster
+  
 - 3: Container Run time: A component which is responsible for Running the Containers
 
 ## Kubernetes Objects
@@ -131,16 +135,19 @@
 ## Verification of User Access to Clusters:
 
 ### Client Side:
+
   - 1. Validation: Checks the syntax and structure of the configuration.
   - 2. Format checking: Ensures the configuration follows the correct format.
   - 3. Misconfiguration Detection: Identifies any misconfigurations in REST API calls.
   - 4. Authentication Data: Passes authentication data saved in the configuration file.
 
 ### Server Side:
+
   - 1. Authorization: Determines whether the user has permissions to perform the requested action.
   - 2. Authentication: Validates the user's identity.
 
 ### Server Side Field Verification:
+
   - 1. Strict: Enforces strict validation rules and rejects invalid requests.
   - 2. Warn: Issues warnings for invalid requests but allows them to proceed.
   - 3. Ignore: Ignores invalid requests without issuing warnings or rejecting them.
@@ -158,7 +165,7 @@
 
 ## Kubernetes Production Systems:
 
-## Kubernetes Distributions:
+### Kubernetes Distributions:
 
 - Provide support for Kubernetes clusters.
 - Popular systems include:
@@ -170,14 +177,14 @@
   - AKS
   - GKE.
 
-## How DevOps Engineers Manage 100s of Clusters?
+### How DevOps Engineers Manage 100s of Clusters?
 
 - Tools like:
   - Kops
   - Kubeadm
   - Lens
 
-## Container Images:
+### Container Images:
 
   - A container image encapsulates an application and all its dependencies.
   - Images are executable software bundles and can run standalone.
@@ -185,7 +192,7 @@
   - `kubelet` downloads and fetches images from the registry.
   - To ensure using the same version of an image, replace `<image:tag>` with `<image@digest>`.
 
-## % Types of Patterns/Multi-Containers Pods in K8s:
+### % Types of Patterns/Multi-Containers Pods in K8s:
 
 ### Sidecar Pattern/Container:
 
@@ -230,6 +237,7 @@
 ## Images Related Concepts:
 
 ### ImagePullPolicy:
+
 - Default imagePullPolicy is set as #ifNotPresent
 - `IfNotPresent`: Pull the image only if it is not already present locally.
   - Set the image field as `image@digest == #imgae:IfnotPresent`.
@@ -260,34 +268,34 @@
 - Names of resources need to be unique within a namespace, but not across namespaces.
 - Namespace-based scoping is applicable only for namespaced objects (e.g., Deployments, Services, Pods, etc.) and not for cluster-wide objects (e.g., StorageClass, Nodes, PersistentVolumes, etc.).
 
-### Kubernetes Pods
+## Kubernetes Pods
 
-#### What are Pods:
+### What are Pods:
 
-- A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
-- Pod is basically a wrapper like YAML file with all commands needed to run the container.
-- Pod is the smallest deployable unit which contains one or more container specifications.
-- Pod can share both network and storage with multiple containers.
+  - A Pod (as in a pod of whales or pea pod) is a group of one or more containers, with shared storage and network resources, and a specification for how to run the containers.
+  - Pod is basically a wrapper like YAML file with all commands needed to run the container.
+  - Pod is the smallest deployable unit which contains one or more container specifications.
+  - Pod can share both network and storage with multiple containers.
 
-#### Components of a Pod:
+### Components of a Pod:
 - Namespace
-- Image names and container specification
+- Image names and Container specification
 
 ### Pod Template
-```
-apiVersion: v1
-kind: Pod
-metadata:
-  name: example-pod
-  labels:
-    app: example
-spec:
-  containers:
-    - name: my-container
-      image: redis
-      ports:
-      - containerPorts: 80
-```
+  ```
+  apiVersion: v1
+  kind: Pod
+  metadata:
+    name: example-pod
+    labels:
+      app: example
+  spec:
+    containers:
+      - name: my-container
+        image: redis
+        ports:
+        - containerPorts: 80
+  ```
 ### Reasons for Pod Termination:
 
 1. The pod object has been deleted.
@@ -295,9 +303,9 @@ spec:
 
 ### Pod Configurations:
 
-Pods in Kubernetes can be configured in two main ways:
-- Pods with a single container.
-- Pods with multiple containers.
+- Pods in Kubernetes can be configured in two main ways:
+  - Pods with a single container.
+  - Pods with multiple containers.
 
 ### Init Containers:
 
@@ -308,6 +316,50 @@ Init containers are containers that start before the actual containers are start
 ### Pod LifeCycle:
 
 - **Pending:** Pod has been accepted by the Kubernetes system but has not yet been scheduled to a node.
+  - **Reasons For Pending**
+    - reason: "Insufficient Resources"
+      - description: "The node(s) don't have enough CPU or memory to schedule the pod."
+      solution: 
+        - "Check resource requests/limits in pod spec."
+        - "Use 'kubectl describe pod <name>' for detailed events."
+        - "Scale the cluster or reduce resource demands."
+
+    - reason: "No Matching Node Selector"
+      - description: "The pod's nodeSelector or node affinity rules do not match any available node."
+      solution:
+        - "Verify node labels with 'kubectl get nodes --show-labels'."
+        - "Check nodeAffinity and nodeSelector in the pod spec."
+
+    - reason: "Unsatisfiable Tolerations and Taints"
+      - description: "The pod doesn’t tolerate the taints applied to nodes."
+      solution:
+        - "Review tolerations in the pod spec and taints on nodes."
+        - "Use 'kubectl describe node <name>' to inspect taints."
+
+    - reason: "PersistentVolumeClaim (PVC) Pending"
+      - description: "The pod is waiting for a PersistentVolume to be bound to its PVC."
+      solution:
+        - "Check PVC status with 'kubectl get pvc'."
+        - "Ensure a matching PV is available and in the right StorageClass."
+
+    - reason: "Image Pull Backoff (rare in Pending)"
+      - description: "The image specified in the pod can’t be pulled (though often shows in 'ContainerCreating' or 'ImagePullBackOff')."
+      solution:
+        - "Check image name and credentials."
+        - "Use 'kubectl describe pod' and inspect events."
+
+    - reason: "Waiting for Scheduler"
+      - description: "Scheduler has not yet assigned the pod to a node (rare and transient)."
+      solution:
+        - "Usually resolves quickly."
+        - "If not, check scheduler logs or misconfigurations."
+
+    - reason: "API Server Admission Denied"
+      - description: "An admission controller or policy (like OPA/Gatekeeper) blocked the pod creation."
+      solution:
+        - "Check pod events for 'Forbidden' or 'Denied' messages."
+        - "Review cluster policies and constraints."
+
 - **Running:** Pod has been bound to a node, and all its containers have been created and started.
 - **Succeeded:** All containers in the pod have terminated successfully.
 - **Failed:** All containers in the pod have terminated, and at least one container has terminated in failure.
