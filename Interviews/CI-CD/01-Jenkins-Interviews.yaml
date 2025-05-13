@@ -1,6 +1,135 @@
 Jenkins Interview Questions:
 # Deekshith N GitHub
 
+What is Jenkins:
+1: Jenkins is a set of automated process that define the continuous delivery and continuous integration of your software
+2: Jenkins Pipeline is a suite of plugins that support implementing and integrating pipeline jobs into jenkins
+3: Pipeline can be defined using either declarative or scripted
+
+Jenkins Advantages:
+1: Version Control
+2: Reusability
+3: Parallel Execution
+4: Visualization
+5: Shared Libraries
+6: Secrets Management
+7: Multiple Agents
+8: Open Source
+9: Multi-Branch
+
+What is Jenkinsfile:
+it is also called as pipeline as a code
+a File where we write all our declarative pipelines
+
+What is Multi-Branch Pipeline:
+1: Create a Multi-Branch pipeline in jenkins ui
+
+Automatic Branch Detection
+Automatic Job Creation
+Isolation of Builds
+Dynamic and Scalable
+Configuration in Jenkinsfile
+
+Advantages:
+1: Automatic Branch Management
+2: Continuous Integration
+3: Isolation
+4: Visibility
+
+Troubleshoot Failed Build:
+1: Check The logs (Check The console Output)
+2: Check the issues from the bottom
+
+What are Default Variables:
+Default Variables:
+1: $JOB_NAME
+2: $NODE_NAME
+3: $WORKSPACE
+4: $BUILD_URL
+5: $JENKINS_URL
+6: $BUILD_ID
+
+How to Store Secrets in Jenkins:
+using Hashi-Corp Vault
+using global variables
+using credentials sections
+secret file
+secret text
+github app
+username with password
+ssh with private key etc...
+
+What are the ways to secure sensitive information:
+1: Credentials Sections
+2: Environmental Variables
+3: Hashi-Corp Vault
+
+
+What Is Shift left In DevOps:
+1: Checking the bugs and code and reporting once every day after completing the continuous integration Is completed
+
+Shared Library Types:
+Jenkins Shared Libraries:
+A simple Change you want to do in 100 projects
+Keeping Pipelines Centrally,Jenkins Shared Libraries
+Call Them from any no of Projects
+
+1: Vars: Directory is a special directory where you can define global variables or functions that are accessible in pipeline scripts without explicitly importing them
+
+your-shared-library/
+|-- vars/
+|   |-- yourFunction.groovy
+|   |-- anotherFunction.groovy
+
+# yourFunction.groovy
+def call() {
+    echo 'Hello from yourFunction!'
+}
+
+# Calling Library:
+@Library('your-shared-library') _
+yourFunction()
+
+2: Resources:
+"Resources" might refer to external files or data that your shared library uses. These can include configuration files, properties files, or any other non-code resources.
+
+3: Handlers:
+"Handlers" could refer to functions or classes within your shared library that handle specific tasks or actions. These could be action-specific functions that are reused across different parts of your shared library.
+
+Why will you use Docker images as Agents:
+1: Because for every agent we need to Install  environments to run specific applications or maven environment etc.. Hence we can use directly Node Image and Open Jdk  image if we use Docker as agent
+2: No need to terminate the instance once our work is done
+3: No need manual intervention
+
+What Tools You Have worked on:
+Maven,Node,Python
+Explain Your Project:
+Tech Stack of Project: Java,JavaScript,Python,Go-Lang
+Walk Me through the pipelines:
+Git Rebase VS Git Merge:
+
+Git Rebase:
+Produces a linear commit history, but may rewrite commit IDs and alter the order of commits.
+linear Commit History
+Original Commit ids may Change
+
+Git Merge:
+Retains a clear and linear commit history, showing all the commits from both branches.
+
+Both Work the same functionality like merging the branches
+But rebase will change the commit ids from where we have created the branch and Move the commit id and arrange it sequence
+git merge will merge everything even commit ids also
+
+Branching Strategies:
+1: Features
+2: Main
+3: Hot Fix
+3: Staging
+
+File Create Maven:
+Jar File
+JaCoCo: Java Code Coverage
+
 How to Set jenkins build to fail based specific word in console output:
 pipeline{
     agent{
@@ -214,6 +343,19 @@ pipeline {
         }
     }
 }
+
+
+#### Issues In Jenkins:
+
+1: OutOfMemoryError: Your Jenkins may encounter out of memory issue due to installing heavy plugins etc..
+2: One time we got issue with out of memory when we created the machine with less memory then the jobs got not executed due to java
+
+cmd ["java", "-Xmx2048m", "-Xms512m", "-jar", "jenkins.war"]
+
+Xmx == Maximum heap size 2048m
+Xms == Initial Heap size 512m
+
+Java Can take more memory when we are not building the application based on variable and objects class will not take memory
 
 
 

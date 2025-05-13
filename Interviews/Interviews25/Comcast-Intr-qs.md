@@ -34,9 +34,6 @@ You are expected to write Terraform code for:
 - Security Group
 - Key Pair
 - EC2 Instance
-
-> Let me know if you need a sample code block.
-
 ---
 
 ### 3. When You Want to Delete Particular Resource Without Using `terraform destroy`

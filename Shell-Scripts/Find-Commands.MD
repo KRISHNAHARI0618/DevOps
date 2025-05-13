@@ -10,5 +10,13 @@
 - `find /path -size -1k` files less than 1 kb
 - `find /path -type f -perm /111 -exec chmod -x {} \;` find and replace execute permissions. 
 - `find /tmp -name "*.tmp" -mtime +7 -exec rm -f {} \;` find the temporary fields and delete
-- `find /path -type f -name "*.log" -mtime +10 -exec gzip {} \; -exec mv -r {}.gz $dir` find and move to arrchieve directory
-- 
+- `find /path -type f -name "*.log" -mtime +10 -exec gzip {} \; -exec mv -r {}.gz $dir` find and move to archieve directory
+
+## Rsync Commnd
+
+- *`rsync [options] source destination`*
+- *`scp [options] source destination`* 
+- `rsync -av /src/ /dest/` remote synchronization files
+- `rsync -avz file.txt user@remote:/path/` Copy files to remote server
+- `rsync -avz user@remote:/path/file.txt /local/path/` Copy files from remote to local
+

@@ -58,3 +58,15 @@ revert: creates a new commit which undoes the changes from last commit.
 fetch
 
 pull
+
+# Branching Strategies
+
+Customer Need Releases Frequently
+
+Branch : It is a Separation
+
+Main/Master Branch: Active Development Going On For present feature
+
+Feature Branch: Active Features will be Developed
+
+Release Branch: Where Release Occurs
