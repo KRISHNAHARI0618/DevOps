@@ -7,51 +7,58 @@
 - [Kuberenetes 100 Questions](https://medium.com/@jaya.surya8068/top-100-kubernetes-interview-questions-and-answer-5adb4c427b17)
 - [Kubernetes SetUp Using KubeADM](https://github.com/piyushsachdeva/CKA-2024)
   
-# Docker:
+## Docker:
+
 - Container Platform where it supports the building the containers
 - Does not support AutoScaling
 - Does not support AutoUpgrades
 - Single Host
 - Enterprise Level Management
 
-# Conatiners
+## Containers
+
 - Containers are ephemeral in nature
-- Short lived > container can die and revive anytime
+- Short lived containers can die and revive anytime
 - Containers will die if it does not get enough resources
 - Container will die if it does not support the building the image
 - Docker will have only one host divided the resources into multiple
 - Containers are getting effected due to lack of resource allocation between containers
 
-### 1
-*Lets take some one has killed container then to application inside will not work so we need the feature called AutoHealing Capacity*
-### 2
+## 1
+
+*Lets take some one has killed container then to application inside will not work so we need the feature called Auto-Healing Capacity*
+## 2
+
 *Lets take we are using the application at festival times or occasion time everyone will use that for offers at that time fixed container will not support that much traffic so we need auto scaling which docker does not support*
-### 3
-*Lets take we are using production systems enterprise level building need more*
+## 3 - `*Lets take we are using production systems enterprise level building need more*`
+
 - ELB:  Load Balancers
 - Firewalls
 - All above features
 
-### Disadvantages of Docker:
+## Disadvantages of Docker:
+
 - AutoHealing Does not support
 - AutoScaling Does not support
 - it is single host
-- Enterprise Support does not support
-- Docker server is Crashed not able to access the application
+- Enterprise Support does not Provide
+- if the Docker server is Crashed not able to access the application
 - More Traffic Does not support
 - Balancing Load Does Not Support
 - What about Configs and secrets Management
 
-### Kubernetes :
+## Kubernetes :
+
 - Container Orchestration Platform
 - kubernetes Supports AutoScaling > Create more Containers *Using Replica Sets*
 - Kubernetes supports AutoHealing > Auto restart,reboot.etc.. *Using Controllers and Probes*
-- Single Host issue will Solve -- By Default Kubernetes is a Cluster
+- Single Host issue will Solve -- By Default Kubernetes is a Cluster `[- Master and Worker Architecture]`
 - Enterprise level Standards
-- Stores Secret as 64d encoded format
-- Master and Worker Architecture
+- Stores Secret as 64d encoded format | `echo "string" | base64`
 - If the container is affected by another container it will be moved to another node so that the application cannot get affected.
-- Enterprise Level Standard :
+  
+## Enterprise Level Standard :
+
 - Advanced Load Balancing support *Using Service and End Points*
 - Advanced Security Support *Using Network Policies , Ingress Controllers , RBAC..*
 - Service Discovery *Using Service ,Ingress,LoadBalancing,ClusterIP,NodePort etc..*
@@ -60,83 +67,85 @@
 - Batch Execution *Using K8s Jobs or Cron Jobs*
 - Automated RollOuts and Roll Backs *Using Rolling Updates and Deployment Stratagies*
 
-Kubernetes Secrets Management:
-It will store all the secrets in one place either s3 Bucket or ETCd
+## Kubernetes Secrets Management:
+  
+- Stored in Secrets 
+- It will store all the secrets in one place either s3 Bucket or ETCd
+- Secret are passed to pod as environment variable
 
 ### Kubernetes Architecture :
 
-Docker Simplest Thing is Container
-Kubernetes Simplest Thing is Pod
+- Docker Simplest Thing is Container
+- Kubernetes Simplest Thing is Pod
 
 - To run any Container we need run time environment
   - Docker CRI: Docker Shim/Runc
-  - K8s CRI: Containerd
+  - K8s CRI: Containerd - crictl  
   - Kubelet: Responsible for running the pod/application
   - Kubeproxy: responsible for networking
 
-*Kubernetes Architecture:*
-- Managing the Hosted Applications in the form of Containers in Worker Nodes
-We look At An analogy of Ships and Containers
+- *Kubernetes Architecture:*
+  - Managing the Hosted Applications in the form of Containers in Worker Nodes
+  - We look At An analogy of Ships and Containers
 
-*Components:*
-- Control Node, Worker Node
-- Control Nodes: Manage the Applications
-- Worker Nodes: Host The Applications as Containers
+- *Components:*
+  - Control Node, Worker Node
+  - Control Nodes: Manage the Applications
+  - Worker Nodes: Host The Applications as Containers
 
-### Master Node(Control Plane):
+## Master Node(Control Plane):
 
-- 1: Kube Api Server:
-```
-The Server which is responsible for all the activities in the k8s Cluster is called Kube Api Server
-The Kubernetes API server validates and configures data for the api objects which include pods, services, replication controllers, and others.
-The API Server services REST operations and provides the frontend to the cluster's shared state through which all other components interact
-```
-- 2: Controller Managers:
-```
-Which Controls and Manages the Nodes Based on State of Nodes and Controllers
-The Kubernetes controller manager is a daemon that embeds the core control loops shipped with Kubernetes.
-a control loop is a non-terminating loop that regulates the state of the system
-It represents the state of Applications
-a: Replication Controllers
-b: Pod Controller
-c: API Controller
-d: Daemon-Set Controller
-```
-- 3: ETCD:
-```
-Which stored all information about activities going on Nodes and Control Planes in a Key Value Pairs
-```
-- 4: Kube-Scheduler:
-```
-A component which is responsible for Scheduling the pods/Services based on the availability of node status , Taints and Tolerations node affinity etc..
-```
-### Worker Nodes: (Data Plane)
+**`1: Kube Api Server:`**
+  
+  - The Server which is responsible for all the activities in the k8s Cluster is called Kube Api Server
+  - The Kubernetes API server validates and configures data for the api objects which include pods, services, replication controllers, and others.
+  - The API Server services REST operations and provides the frontend to the cluster's shared state through which all other components interact
+
+**`2: Controller Managers:`**
+
+  - Which Controls and Manages the Nodes Based on State of Nodes and Controllers
+  - The Kubernetes controller manager is a daemon that embeds the core control loops shipped with Kubernetes.
+  - a control loop is a non-terminating loop that regulates the state of the system
+  - It represents the state of Applications
+    - a: Replication Controllers
+    - b: Pod Controller
+    - c: API Controller
+    - d: Daemon-Set Controller
+    - 
+**`3: ETCD:`**
+  - Which stored all information about activities going on Nodes and Control Planes in a Key Value Pairs
+  
+**`4: Kube-Scheduler:`**
+  - A component which is responsible for Scheduling the pods/Services based on the availability of node status , Taints and Tolerations node affinity etc..
+
+## Worker Nodes: (Data Plane)
+
 - 1: Kubelet: A component which is responsible of collecting and Sharing and managing all the information about nodes and containers in the cluster
 - 2: Kube-Proxy: a component which enables the communication between each container in the Cluster
 - 3: Container Run time: A component which is responsible for Running the Containers
 
-# Kubernetes Objects
+## Kubernetes Objects
 
-Kubernetes objects are persistent entities in the Kubernetes system. They represent the state of your cluster.
+```Kubernetes objects are persistent entities in the Kubernetes system. They represent the state of your cluster.```
 
 ## Verification of User Access to Clusters:
 
 ### Client Side:
-1. Validation: Checks the syntax and structure of the configuration.
-2. Format checking: Ensures the configuration follows the correct format.
-3. Misconfiguration Detection: Identifies any misconfigurations in REST API calls.
-4. Authentication Data: Passes authentication data saved in the configuration file.
+  - 1. Validation: Checks the syntax and structure of the configuration.
+  - 2. Format checking: Ensures the configuration follows the correct format.
+  - 3. Misconfiguration Detection: Identifies any misconfigurations in REST API calls.
+  - 4. Authentication Data: Passes authentication data saved in the configuration file.
 
 ### Server Side:
-1. Authorization: Determines whether the user has permissions to perform the requested action.
-2. Authentication: Validates the user's identity.
+  - 1. Authorization: Determines whether the user has permissions to perform the requested action.
+  - 2. Authentication: Validates the user's identity.
 
 ### Server Side Field Verification:
-1. Strict: Enforces strict validation rules and rejects invalid requests.
-2. Warn: Issues warnings for invalid requests but allows them to proceed.
-3. Ignore: Ignores invalid requests without issuing warnings or rejecting them.
+  - 1. Strict: Enforces strict validation rules and rejects invalid requests.
+  - 2. Warn: Issues warnings for invalid requests but allows them to proceed.
+  - 3. Ignore: Ignores invalid requests without issuing warnings or rejecting them.
 
-# Docker Swarm vs Kubernetes
+## Docker Swarm vs Kubernetes
 
 - Kubernetes:
   - Better networking support.
@@ -147,7 +156,7 @@ Kubernetes objects are persistent entities in the Kubernetes system. They repres
   - Minimal networking support.
   - Cluster manager for Docker containers.
 
-# Kubernetes Production Systems:
+## Kubernetes Production Systems:
 
 ## Kubernetes Distributions:
 
@@ -168,14 +177,13 @@ Kubernetes objects are persistent entities in the Kubernetes system. They repres
   - Kubeadm
   - Lens
 
-# Container Images:
+## Container Images:
 
-- A container image encapsulates an application and all its dependencies.
-- Images are executable software bundles and can run standalone.
-- They make well-defined assumptions about their runtime.
-
-- `kubelet` downloads and fetches images from the registry.
-- To ensure using the same version of an image, replace `<image:tag>` with `<image@digest>`.
+  - A container image encapsulates an application and all its dependencies.
+  - Images are executable software bundles and can run standalone.
+  - They make well-defined assumptions about their runtime.
+  - `kubelet` downloads and fetches images from the registry.
+  - To ensure using the same version of an image, replace `<image:tag>` with `<image@digest>`.
 
 ## % Types of Patterns/Multi-Containers Pods in K8s:
 
@@ -219,6 +227,8 @@ Kubernetes objects are persistent entities in the Kubernetes system. They repres
 
 - Take an input, change the output, and provide it in another format.
 
+## Images Related Concepts:
+
 ### ImagePullPolicy:
 - Default imagePullPolicy is set as #ifNotPresent
 - `IfNotPresent`: Pull the image only if it is not already present locally.
@@ -227,8 +237,6 @@ Kubernetes objects are persistent entities in the Kubernetes system. They repres
   - Set the image field as `image:latest == #image:always` or just `image:latest`.
 - `Never`: Never pull the image, even if it is not present locally.
   - Set the image field as `image:nothing == ifnotPresent`.
-
-## Images issues:
 
 ### ImagePullBackOff
 
