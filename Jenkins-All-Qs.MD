@@ -30,6 +30,7 @@
 - Java and Git
 
 ## What is Maven? Benefit of Integrating with Jenkins:
+
 - Maven is a build management tool.
 - Integration with Jenkins allows for automated building, testing, and deployment of Maven projects.
 
@@ -38,8 +39,18 @@
 ### Post Section:
 - The Post section contains additional steps that execute after the completion of the pipeline.
 - Examples include cleaning the workspace, mailing users based on results, and defining actions for different pipeline outcomes such as success, failure, or abortion.
+```
+pipeline {
+    stages{
 
+    }
+    post {
+
+    }
+}
+```
 ## How to Define Parameters in Jenkins:
+
 - Parameters are key-value pairs used to support various use cases in Jenkins pipelines.
 - Parameters can be defined in the parameters section of the Jenkins pipeline script.
 - Different parameter types include:
@@ -55,15 +66,15 @@ parameters {
     string(name: 'hari', defaultValue: 'hari_vardhan', description: 'Hello To everyone')
 }
 
-# Jenkins Interview Questions
-
 ## How Does Jenkins Authenticate Users?
-Jenkins can authenticate users using various methods:
-1. IAM Role
-2. Matrix-Based Access Control
-3. Username and Password
-4. Role-Based Access Control
-5. Project-Based Security
+
+- Jenkins can authenticate users using various methods:
+
+  1. IAM Role
+  2. Matrix-Based Access Control
+  3. Username and Password
+  4. Role-Based Access Control
+  5. Project-Based Security
 
 ## Name the Environment Variable Used in Shell Script:
 Some commonly used environment variables in Jenkins shell scripts include:
@@ -107,9 +118,11 @@ pipeline {
 ```
 
 ## What is DSL Jenkins?
-DSL (Domain Specific Language) in Jenkins refers to the Jenkins plugin that allows defining Jenkins jobs using a Groovy-based scripting language. It provides a programmatic way to create, configure, and manage Jenkins jobs.
+
+- DSL (Domain Specific Language) in Jenkins refers to the Jenkins plugin that allows defining Jenkins jobs using a Groovy-based scripting language. It provides a programmatic way to create, configure, and manage Jenkins jobs.
 
 ## What are Active and Reactive Parameters or Dynamic Parameters in Jenkins?
+
 Active and reactive parameters in Jenkins refer to dynamically changing parameters in the "Build with Parameters" section of a Jenkins pipeline job. These parameters update based on the selection made in other dropdowns.
 To implement active and reactive parameters:
 1. Install the Active Choices plugin.
@@ -149,13 +162,13 @@ git config --global user.email "mail-id"
 - 5: restart jenkins
 
 ### How to Store Secrets in Jenkins:
-- using Hashi-Corp Vault
-- using global variables
-- using credentials sections
-- secret file
-- secret text
-- github app
-- username with password
+- Using Hashi-Corp Vault
+- Using global variables
+- Using credentials sections
+- Secret file
+- Secret text
+- Github app
+- Username with password
 - ssh with private key etc...
 
 ### How many ways we Scheduled a Build in Jenkins:
@@ -171,7 +184,7 @@ git config --global user.email "mail-id"
 - 10: Trigger builds remotely (e.g., from scripts)
 
 ### What is a Trigger:
-*Triggers are used to define when and hoe pipelines should be executed*
+*Triggers are used to define when and how pipelines should be executed*
 
 **Restart From Stage:**
 
@@ -329,6 +342,7 @@ pipeline {
         }
     }
     options {
+        
 
     }
     tools{
