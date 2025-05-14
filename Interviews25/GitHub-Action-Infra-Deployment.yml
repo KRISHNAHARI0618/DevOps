@@ -1,0 +1,55 @@
+## Set up Client Credentials ARM_Service_principle_id, Client ID , Client Secret, TenantID, Subcription
+
+name: Infra and Deployapplication
+on:
+  push:
+    branches: [main,master,workflow_dispatch]
+jobs:
+  jobname:
+    runs-on: ubuntu-latest
+    env:
+      TF_VAR_INVOCATION: true
+    steps:
+      - name: CheckOut Code
+        uses: actions/checkout@v3
+      - name: Azure Login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.azurecredentials }}
+
+      - name: setup terraform
+        uses: hashicorp/setup-terraform/v3
+
+      - name: Terraform Init
+        working-directory: infra
+        run: terraform init
+
+      - name: Terraform Plan
+        working-directory: infra
+        run: terraform plan -out=tfplan
+
+      - name: Terraform Apply
+        working-directory: infra
+        run: terraform apply -auto-approve tfplan
+        
+      # Extract Kubeconfig from Terraform output
+      - name: Save Kubeconfig
+        working-directory: infra
+        run: |
+          echo "${{ secrets.TF_VAR_environment }}-aks"  # For reference
+          terraform output -raw kube_config > kubeconfig.yaml
+          mkdir -p $HOME/.kube
+          cp kubeconfig.yaml $HOME/.kube/config
+
+      # Install Helm
+      - name: Install Helm
+        uses: azure/setup-helm@v3
+
+      # Helm Deployment
+      - name: Deploy App using Helm
+        run: |
+          helm upgrade --install my-app ./charts \
+            --namespace default \
+            --create-namespace \
+            --set image.tag=latest
+        

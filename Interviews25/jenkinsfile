@@ -1,0 +1,30 @@
+def call(Map Configmap) {
+    def component = configmap.get("component")
+    echo "component is : $component"
+
+    pipeline {
+        agent { node {label: pair1}}
+        envirnonment {
+            packageVersion = " "
+        }
+        stages {
+            stage('build') {
+                steps {
+                    scripts{
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Library('roboshop-delivery')_
+
+def configMap = [
+    application = "javaEKS",
+    component = "rebalancer"
+]
+
+env 
+if (!env.branchname.equalsIgnorecase('master'))

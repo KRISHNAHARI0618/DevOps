@@ -99,10 +99,25 @@ format("Hello, %s!", "Akhila")          # "Hello, Akhila!"
 
 ### 🔸 Dynamic Blocks
 - Used for nested block creation dynamically.
+  
+```
+resource "aws_bean_stack" "resources1" {
+  name = var.name1
 
+  dynamic "setting" {
+
+    for_each = var.setting
+    content {
+      namespace = setting.value["namespace"]
+      name = setting.value["name"]
+
+    }
+
+  }
+}
 ---
-
-## 🧮 Functions
+```
+## Functions
 
 - `file()` – Read content from a local file.
 - `split()` – Split strings based on delimiter.
@@ -123,6 +138,7 @@ format("Hello, %s!", "Akhila")          # "Hello, Akhila!"
 ## 🧾 HashiCorp Configuration Language (HCL)
 
 - **Variable Types**: `string`, `bool`, `number`, `map`, `list`,`null`
+
 - Loops
 - Locals
 - Data Types
@@ -205,6 +221,7 @@ format("Hello, %s!", "Akhila")          # "Hello, Akhila!"
 
 - Stores state file in shared cloud location.
 - Enables state file locking to avoid conflicts during deployments.
+  
 ```
 terraform {
   backend "s3" {
@@ -1182,6 +1199,7 @@ output "vm_ips" {
     - version: "An alias for the 'version' subcommand."
 
 ## How Many types of modules will Terraform support:
+
 - Root Modules 
 - Child Modules:
   - Local Modules : "Source = ./modules/vpc"
@@ -1195,12 +1213,10 @@ output "vm_ips" {
     - Souce = "S3::https://my-bucket/module.zip"
 
 ## Terraform State commands:
+
 - terraform list 
 - terraform mv
 - terraform pull
 - terraform push
 - terffaorm show
 - terraform replace-provider
-
-
-

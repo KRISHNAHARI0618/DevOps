@@ -51,11 +51,11 @@ resource "aws_instance" "myec2" {
   ami           = "ami-084568db4383264d4"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.publicSubnet.id
-#   lifecycle {
-#     create_before_destroy = true
-#     prevent_destroy = true
-#     ignore_changes = [ aws_subnet ]
-#     # replace_triggered_by = [ aws_subnet.publicSubnet ]
-#   }
+  #   lifecycle {
+  #     create_before_destroy = true
+  #     prevent_destroy = true
+  #     ignore_changes = [ aws_subnet ]
+  #     # replace_triggered_by = [ aws_subnet.publicSubnet ]
+  #   }
 
 }

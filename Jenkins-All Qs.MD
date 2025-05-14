@@ -75,6 +75,37 @@ Some commonly used environment variables in Jenkins shell scripts include:
 - $BUILD_ID
 - $git_commit
 
+```
+There are 2 type of variables:
+
+1: Environment Variables
+2: Current Build Variables
+3: Global Variable Reference
+
+Variables are called by using Environement Block
+
+pipeline {
+  agent any 
+  environment {
+      max_size = 10
+      min_size = 1
+  }
+  stages {
+     stage ('build') {
+        steps {
+           echo "min_size = ${min_size}
+           echo "max_size = ${max_size}
+        }
+     }
+     stage('Test') {
+         steps {
+            echo "minsize = ${min_size}
+            echo "max_size = ${max_size}
+          }
+      }
+   }
+```
+
 ## What is DSL Jenkins?
 DSL (Domain Specific Language) in Jenkins refers to the Jenkins plugin that allows defining Jenkins jobs using a Groovy-based scripting language. It provides a programmatic way to create, configure, and manage Jenkins jobs.
 
@@ -275,6 +306,71 @@ For Testing on multiple OS systems we will use Parallel Sections/Block
 1: One will run in windows agent
 2: Another will run on Linux Systems
 
+```
+Jenkinsfile:
+pipeline {
+    agent none
+    agent any
+    agent { label 'my-defined-label' }
+    agent { node { label 'my-defined-label'} }
+    agent {
+        docker {
+            image 'maven:3.9.3-eclipse'
+            label 'my-defined-label'
+            args '-v /tmp:/tmp'
+        }
+    }
+    agent {
+        docker {
+            image 'myregistry.com/node'
+            label 'my-defined-label'
+            registryUrl 'https://myregistry.com/'
+            registryCredentialsId 'myPredefinedCredentialsInJenkins'
+        }
+    }
+    options {
+
+    }
+    tools{
+        jdk 'jdk'
+        nodejs 'nodejs'
+    }
+
+    stages {
+        stage('Run Tests') {
+            parallel {
+                stage('Test On Windows') {
+                    agent {
+                        label "windows"
+                    }
+                    steps {
+                        bat "run-tests.bat"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+                stage('Test On Linux') {
+                    agent {
+                        label "linux"
+                    }
+                    steps {
+                        sh "run-tests.sh"
+                    }
+                    post {
+                        always {
+                            junit "**/TEST-*.xml"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
 ### Explain Complete CI-CD Setup In your Project:
 *From*: GitHub
 *To*: Kubernetes
@@ -329,3 +425,228 @@ Java Can take more memory when we are not building the application based on vari
 - 9: Logging and Debugging: Unable to identify the root cause of a problem.
 - 10: Security Vulnerabilities: Security vulnerabilities are identified in Jenkins.
 
+
+# Shared Libraries
+
+Shared Libraries are also called Functions. They allow you to create a library and use it whenever needed. Each microservice has an individual pipeline.
+
+## What is a Shared Library?
+
+A shared library involves making repetitive code into a reusable library in a Git repository.
+
+Example:
+```groovy
+mavenBuild()
+@Library('Shared-Library')
+```
+
+The amount of code you need to write decreases drastically, and the code becomes reusable. Changing the code in one place can change it in all places.
+
+## Advantages of Shared Libraries:
+- **Uses the principle of "Don't Repeat Yourself" (DRY)**.
+- **Standardization of Pipelines**.
+- **Reduces Duplication of Code**.
+- **Easy onboarding of new applications, projects, or teams**.
+- **One place to fix issues with the shared or common code**.
+- **Simplified code maintenance**.
+- **Reduces the risk of errors**.
+
+## Types of Shared Libraries:
+Shared Libraries are divided into 3 types:
+
+1. **`vars`** - Example: `hello.groovy`
+2. **`src`** - Example: `utility.groovy`
+3. **`resources`** - Example: `config.json`
+
+### Example of `vars`:
+```groovy
+def call(){
+    sh '''
+        echo "hello world Manually deploy"
+        echo "This is a shared library"
+    '''
+}
+```
+
+### Steps to Use Shared Library:
+1. Create a Groovy file.
+2. Save it in your GitHub repository.
+3. Go to Jenkins **Configure**.
+4. In **Global Pipeline Libraries**, add the repository URL under the Git section.
+5. Use the following to call the shared library:
+```groovy
+@Library("my-shared-library") _
+filename()
+```
+
+## GitHub Actions:
+
+### What is a Self-hosted Runner?
+Runners are the places where jobs get executed. For private repositories, you can configure self-hosted runners.
+
+### Configuring Security Rules:
+- Allow both **HTTP** and **HTTPS**.
+
+### How to Use Self-hosted Runners:
+1. Create an instance.
+2. Use ports **HTTP (80)**, **HTTPS (443)**, and **SSH (22)**.
+3. Set outbound rules for **HTTP (80)** and **HTTPS (443)**.
+
+### Why Use Self-hosted Runners?
+By configuring the host on GitHub, you have more control and flexibility over your CI/CD environment.
+
+## Comparing Jenkins and GitHub Actions:
+- **Jenkins** is best for private projects due to its flexibility and customizability.
+- **GitHub Actions** is more streamlined for open-source projects and offers easy integrations with GitHub.
+
+
+```
+There are 5 Types of parameters:
+
+1: String
+2: Text
+3: Boolean
+4: Choice [ as a list]
+5: Password [from password or secrets]
+
+
+call the parameters as ${params.Father}-${params.Skills}
+
+
+Pipeline syntax:
+
+pipeline {
+
+agent any 
+
+parameters {
+
+string (name: "Father" defaultValue: 'Vader' description: "Enter Your Father's Name")
+
+text ( name: "PHRASE"
+       defaultValue: "it was the best of times, it was the worst of times, \n 
+       description: " This is Text Value"
+     )
+
+choice ( name: "AWS_REGION"
+         defaultValue: 
+         description: 
+        )
+
+password ( name: 
+          defaultValue :
+          description:
+         )
+boolean ( name: 
+          defaultValue:
+          description:
+        ) 
+
+stages {
+
+stage {
+
+
+}
+}
+}
+}
+
+```
+
+```
+there are 3 types of conditions
+
+when { }
+
+1: Branch
+2: environment
+3: expression
+
+when {
+  branch == 'Production'
+}
+
+Jenkins GitHub:
+
+https://github.com/LinkedInLearning/essential-jenkins-2468076
+
+when {
+
+environment name: 'DEPLOY_TO' , Value: 'Production'
+
+}
+
+when {
+
+expression {
+
+params.ENVIRONMENT == 'Productions'
+
+}
+
+}
+Also Input tag to send the input through manual message 
+
+input message : "Confirmation Declaration" ok: 'Deploy'
+
+```
+```
+How to retrieve the the forgotten password:
+
+0: stop the jenkins
+1: Go to /var/lib/jenkins
+2: see the list of files --ls
+3: first file config.xml
+4: Edit the config.xml file vim config.xml
+5: go to use Security section set the action to false
+6: then start the jenkins again
+
+Ansible Role Based Access:
+Manage jenkins and git to plugins
+Role Based Authorised Plugin
+install plugin and restart
+
+Again Go to Manage Jenkins:
+    Click Security --> Authentication
+    Security Realm --> jenkins Own users database
+    Autorization --> Role Based Strategy and save
+    we can limit the users roles using manage roles in jenkins
+
+Commonly Used Plugins:
+
+
+How to inject Environment Variables:
+pipeline {
+    agent{ label 'sbt' }
+    parameters {
+        string(defaultValue: " ",description:"mention the decription",name:"name of the parameter")
+        choice(name:"choicename",decription:"the detailed description",defaultValue:"the value for that name")
+        boolean(name:"bolean value",decription:"the value decription of value",defaultValue:"true/false")
+    }
+
+    stages{
+        stage('give environment variable') {
+            steps{
+                script{
+                    name = "peddireddy"
+                }
+            }
+        }
+        stage('test environment variable'){
+            steps{
+                script{
+                    echo "testing my script $(name)"
+                }
+            }
+        }
+
+    }
+   }
+
+ssh -i <locationofprivatekey> username@ipaddress
+
+How to Make Github Connect using SSH:
+public key and private key
+
+```

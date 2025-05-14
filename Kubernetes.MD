@@ -6,6 +6,8 @@
 * Docker Vs Kubernetes *
 - [Kuberenetes 100 Questions](https://medium.com/@jaya.surya8068/top-100-kubernetes-interview-questions-and-answer-5adb4c427b17)
 - [Kubernetes SetUp Using KubeADM](https://github.com/piyushsachdeva/CKA-2024)
+- [Deployment Apps Using Python Terraform K8s AWS](https://thelearningjourney.co/automating-the-cloud-the-evolution-of-a-python-app-with-docker-kubernetes-and-terraform/)
+- [Github Repo For Deployment](https://github.com/bobocuillere/DevOpsProject-FintechAPP-AWS-Terraform)
   
 ## Docker:
 
@@ -372,12 +374,14 @@ Init containers are containers that start before the actual containers are start
 - **Terminated:** Container has terminated, either in success or failure.
 
 ### How Pod Handles problems with Containers:
+
 - **Initial crash** : Kubernetes attempts an immediate restart based on the Pod restartPolicy.
 - **Repeated crashes**: After the initial crash Kubernetes applies an exponential backoff delay for subsequent restarts, described in restartPolicy. This prevents rapid, repeated restart attempts from overloading the system.
 - **CrashLoopBackOff state**: This indicates that the backoff delay mechanism is currently in effect for a given container that is in a crash loop, failing and restarting repeatedly.
 - **Backoff reset**: If a container runs successfully for a certain duration (e.g., 10 minutes), Kubernetes resets the backoff delay, treating any new crash as the first one.
 
 ### How Crash Loop Backoff will Occur:
+
 - Application Error
 - Configuration Error
 - Resource Constraints
@@ -385,6 +389,7 @@ Init containers are containers that start before the actual containers are start
 - Container Liveness and Readiness Probes
 
 ### To investigate the CrashLoopBackOff
+
 - Check Logs: `kubectl logs <pod-name>`
 - Inspect the events `kubectl describe pod <pod-name>`
 - Review Configuration
@@ -392,6 +397,7 @@ Init containers are containers that start before the actual containers are start
 - Debug Applications
 
 ### Container Restart Policy:
+
 - Restart Policy
   - always
   - OnFailure
@@ -429,12 +435,13 @@ livenessProbe:
 
 ### 3 Types of HealthChecks:
 
-1. **httpGet:** Should return a successful HTTP response.
-2. **tcpSocket:** Port connectivity should be successful.
-3. **exec:** Executes a specified command inside the container; should return an exit value of 0.
-4. **grpc:** Performs a remote procedure call using gRPC.
+  - 1. **httpGet:** Should return a successful HTTP response.
+  - 2. **tcpSocket:** Port connectivity should be successful.
+  - 3. **exec:** Executes a specified command inside the container; should return an exit value of 0.
+  - 4. **grpc:** Performs a remote procedure call using gRPC.
 
 ### Readinees probe and Liveness Probe yaml file
+
 ```
 apiVersion: v1
 kind: Pod
@@ -461,21 +468,24 @@ spec:
 ```
 
 ## Why Pod YAML Files are Needed:
+
 - To bring the Declarative Capabilities for the docker commands.
 - Yaml > Pod Deployment > Example
 - Pod is a single or group of containers.
 
 ## What is `kubectl`:
+
 - It is a command-line tool to run or operate containers to run or manage like the docker CLI.
 
 ## Kubernetes Deployments:
+
 ### Deployment vs ReplicaSet vs Pod vs Container
 
-- **Container:** Docker; lightweight in nature for running the application with all application-related packages and dependencies along with minimal OS usage.
+- **Containers:** Docker; lightweight in nature for running the application with all application-related packages and dependencies along with minimal OS usage.
 
-- **ReplicaSet:** Maintains the desired number of pods/run the containers inside the pod for high availability.
+- **ReplicaSets:** Maintains the desired number of pods/run the containers inside the pod for high availability.
 
-- **Deployment:** Developed to update anything in the pods, including configuration files, by developing a Deployment set manifest file.
+- **Deployments:** Developed to update anything in the pods, including configuration files, by developing a Deployment set manifest file.
 
 ## In Kubernetes Environment:
 
@@ -488,15 +498,18 @@ spec:
   - Install `kubectl` in Worker Node, create `.kube` directory (`mkdir .kube`), then add authentication to the `.kube` config file.
 
 ## Everything in Kubernetes is Resources:
+
 - Create a Resource within the Workstation.
 
 ## Commands for Namespaces:
+
 - `kubectl get pods`
 - `kubectl create -f <namespacefilename>`: When the resource does not exist, this will create the namespace.
 - `kubectl apply -f <namespacefilename>`: When resources do not exist, this will create the resource and if exists, it will update the resource.
 - `kubectl get namespaces`
 
 ## Labels:
+
 - Labels are key-value pairs that are attached to pods.
 - No special characters should be used as key values in labels.
 - Keys can have multiple values, but values should be unique.
@@ -509,6 +522,7 @@ spec:
 - Annotations are used in selecting external resources.
 
 ## Annotations:
+
 - Annotations are attached to the pods as arbitrary non-identifying objects.
 - Annotations are similar to labels, but they have some differences:
   - Labels have a fixed (minimal length) length, whereas annotations do not have a fixed length.
@@ -516,59 +530,69 @@ spec:
   - Annotations can contain links as values to download resources, which is not possible with labels.
 
 ## Resources:
+
 - **Requests:** Soft Set
 - **Limits:** Hard Set
 
 ## ConfigMap:
+
 - Stores configurations related to the application as passed as data stored as key-value pairs.
 
 ## Secrets:
+
 - Stores usernames and passwords securely in the environment variables.
 
 ## Image Pull Policy:
+
 - Affects when the kubelet attempts to pull (download) the specified image.
 
 ## Kubernetes Services:
+
 - Enable connectivity between pods and external users.
 - Expose the application to the external world.
 - Three Types of Services in Kubernetes:
-  1. ClusterIP
-  2. NodePort
-  3. LoadBalancer
+  - 1. ClusterIP
+  - 2. NodePort
+  - 3. LoadBalancer
 
 ### ClusterIP:
+
 - Exposed only to ClusterIP (Inside the Kubernetes by kubeproxy).
 
 ### NodePort:
-- Connects to all nodes equally.
+
+- Connects to all nodes equally.[30000-32767]
 
 ### LoadBalancer:
 - Distributes load based on incoming requests.
 
 ## Ingress in Kubernetes:
+
 - Proxy In On-Premise Service.
 - Load Balancers in Cloud:
-  1. Application Load Balancers.
-  2. Network Load Balancers.
+  - 1. Application Load Balancers.
+  - 2. Network Load Balancers.
 
 ## Service vs Ingress
 
 ### Sets:
-To deploy an application, we need to make a set of pods because there should be no manual intervention to create multiple containers when the user requests heavily to the application. There are 4 Types of SETS Available:
 
-1) ReplicaSet
-2) Deployment
-3) Daemon Set
-4) Stateful Set
+- To deploy an application, we need to make a set of pods because there should be no manual intervention to create multiple containers when the user requests heavily to the application. There are 4 Types of SETS Available:
 
-#### ReplicaSet:
-ReplicaSet is responsible for maintaining the desired number of pods/run the containers inside the pod for high availability. When we delete the pod, the ReplicaSet will automatically create a new pod for high availability. However, once a pod is created with ReplicaSet, if we change the image or configuration/volumes for the container and rebuild the pod, it will not update anything. This is a disadvantage for ReplicaSet. Hence, Deployment was developed.
+  - 1) ReplicaSet
+  - 2) Deployment
+  - 3) Daemon Set
+  - 4) Stateful Set
 
-#### Deployment Set:
-If we need to update anything in the pods, including configuration files, we need to develop a Deployment set manifest file.
+### ReplicaSet:
 
-### Objects in Kubernetes:
-There are 11 Types of Objects in Kubernetes:
+- ReplicaSet is responsible for maintaining the desired number of pods/run the containers inside the pod for high availability. When we delete the pod, the ReplicaSet will automatically create a new pod for high availability. However, once a pod is created with ReplicaSet, if we change the image or configuration/volumes for the container and rebuild the pod, it will not update anything. This is a disadvantage for ReplicaSet. Hence, Deployment was developed.
+
+### Deployment Set:
+
+- If we need to update anything in the pods, including configuration files, we need to develop a Deployment set manifest file.
+
+### Objects in Kubernetes: `There are 11 Types of Objects in Kubernetes:`
 
 1. Pods
 2. Deployment
@@ -606,7 +630,7 @@ There are 4 Types of Storage systems for containers:
 
 - **HostPath**: Ephimeral, inside Server. It has full root access and is not a recommended approach.
 
-#### FileBeat:
+### FileBeat:
 - Lightweight Shipper for forwarding and centralizing the log data.
 - Installed as an agent in servers.
 - Monitors log files or locations specified and forwards logs and events to Elasticsearch or Logstash for Indexing.
@@ -614,38 +638,38 @@ There are 4 Types of Storage systems for containers:
   - Elastic Search Address: Where to ship.
   - List of files to ship, provided through configuration (Configmap).
 
-#### DaemonSet:
+### DaemonSet:
 - Ensures that at least one pod should be delivered to each and every node.
 - Used for shipping server logs.
 - Hostpath access: has full root access, not a recommended approach.
 
-#### Fluentd:
+### Fluentd:
 - Shipper that ships all host-level server and container-level log files to ELK (Elasticsearch, Logstash, and Kibana).
 - HostPath: restricts access to a specific directory.
 
-#### Static Provisioning:
+### Static Provisioning:
 - Hard Disk: sits next to the computer, stores fields in hard disk.
 - EBS: Elastic Block Storage.
 - Create EBS Volumes, give access to EKS clusters, store data in EBS Volumes. Data remains even if pods or servers are deleted, can be mounted again to another pod.
 
-#### Dynamic Provisioning:
+### Dynamic Provisioning:
 - Creation of disks/volumes handled by Kubernetes.
 - StorageClass: dynamically provisions disks & PV, admin activity.
 
-#### StatefulSet:
+### StatefulSet:
 - Follows orderly creation of pods/containers.
 - Preserves network identity.
 - Headless Service for StatefulSet:
   - In Headless set, explicitly mention ` 
 
-#### Storage Classes Definitions:
+### Storage Classes Definitions:
 - Storage class used for Dynamic Provisioning.
 - PV: Representation of external storage.
 - PVC: A claim that can mount the volume.
 - EBS: Elastic Block Storage.
 - EFS: Elastic File System.
 
-#### StatefulSet and Deployment:
+### StatefulSet and Deployment:
 - StatefulSet for DB-related components, uses Headless service.
 - Deployment for Stateless applications.
 - StatefulSet follows order to create the pods, maintains pod identity, and uses Headless service.
@@ -874,7 +898,7 @@ Container Restart Policy:
 3. Terminated
 
 ### Pod Checking Mechanisms:
-#### What is A Probe:
+### What is A Probe:
 A diagnostic performed periodically by the kubelet on a container
 1. exec
 2. grpc
@@ -999,19 +1023,22 @@ Self Healing means it will automatically heal the pod and containers
 - 8: Rolling Updates
 
 **K8s Cluster Upgrades : 1.29 Mandala**
+
 - Self Hosted Cluster
 - Scaling Kubernetes
 - Horizontal Pod AutoScaler
 - Vertical Pod AutoScalar
 
 **Kubernetes namespace:**
-*These are isolated environment for giving process ids for each containers*
+
+- *These are isolated environment for giving process ids for each containers*
 
 *What are the key Components While Rolling Restart:*
 - **maxSurge:** Max extra Pods allowed during rollout
 - **maxUnavailable:**	Max Pods that can be unavailable during rollout
 
 ## Real Time Problems in K8s:
+
 - **Scenario - 1 : Resource Sharing**:
   - Divide the environments into Namespace
   - Each NameSpace we can maintain Resouce Quota (Limits and Requests)
@@ -1049,3 +1076,44 @@ Self Healing means it will automatically heal the pod and containers
 - `Network Policy` Built in K8s API that allows you to control traffic between pods or between pods and the outside world.
 - `Gateway API` Allows you to make services accesible to clinets that are outside the cluster
 - Kubernetes provides a default implementation of service proxying, called `kube-proxy`
+
+## Secure Pod Within Namespace with Security Contexts:
+
+```
+          # AT Container Level
+          securityContext:
+            readOnlyRootFilesystem: true
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop: ["ALL"]
+  # At Pod Level for Root Users 
+  securityContext:
+    runAsUser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+
+```
+
+## Network Policy
+
+```
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-frontend-to-backend
+  namespace: my-namespace
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: frontend
+  egress:
+    - from
+    - to
+```
