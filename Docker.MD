@@ -14,6 +14,7 @@ Docker is a **Containerization Platform** that packages your application and all
 ## 📄 What is a Dockerfile?
 
 A `Dockerfile` is a **text file** that contains instructions to build a Docker image, including:
+
 - OS base image
 - Environment variables
 - Application code locations
@@ -46,6 +47,7 @@ A `Dockerfile` is a **text file** that contains instructions to build a Docker i
 A **Container** is a **runnable instance** of a Docker image.
 
 ### Features:
+
 1. Platform-independent, lightweight.
 2. Fully isolated — but can be networked.
 3. Volatile — data lost unless volumes are used.
@@ -87,7 +89,7 @@ A **Container** is a **runnable instance** of a Docker image.
 
 ## 🔧 Run Container and Exec
 
-```bash docker run exec -it <container-name> bash```
+``` docker run exec -it <container-name> ```
 
 ### How to Ensure that docker container start when the docker host restarts:
 - 1: Using Restart policies in docker compose
@@ -130,13 +132,14 @@ How to Configure Private Repository:
 - 5: Macvlan Network
 
 ## **Networking** --> Communication between two hosts/devices over wired /wireless
-```Docker:
+```
+Docker:
 - Docker is Platform where it implements the Containerization
 - Docker Networking is Communication between two docker containers
 Docker Network:
 There are two types of communication
-1) Container 1
-2) Container 2 
+1. Container 1
+2. Container 2 
 ```
 
 ### How Containers will communicate with Host Systems:
@@ -523,6 +526,7 @@ type: volume
 *****
 
 Docker Best Practices:
+
 1: Use Official Images
 2: Pin Version (Specific Version Number)
 3: Use DistroLess Images

@@ -63,7 +63,6 @@
      2. for users which resources/clusters has access and what access he has
      3. clusters --> cluster details and its token etcc..
      4. contexts details 
-  4. 
 ```
   kubectl config --kubeconfig=config-demo set-cluster development --server=https://1.2.3.4 --certificate-authority=fake-ca-file
   kubectl config --kubeconfig=config-demo set-cluster test --server=https://5.6.7.8 --insecure-skip-tls-verify
