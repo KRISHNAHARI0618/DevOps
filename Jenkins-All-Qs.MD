@@ -342,7 +342,7 @@ pipeline {
         }
     }
     options {
-        
+
 
     }
     tools{
@@ -650,7 +650,7 @@ pipeline {
         stage('test environment variable'){
             steps{
                 script{
-                    echo "testing my script $(name)"
+                    echo "testing my script ${name}"
                 }
             }
         }

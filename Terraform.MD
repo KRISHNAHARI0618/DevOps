@@ -1,9 +1,6 @@
 ## 🛠️ What is IaC (Infrastructure as Code)
 
 Infrastructure as Code (IaC) is managing and provisioning infrastructure through machine-readable configuration files.
-
----
-
 ## 🌍 What is Terraform
 
 - Terraform is an Infrastructure as Code tool that lets you build, change, and version infrastructure safely and effectively.
@@ -13,7 +10,6 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
 - Offers CLI tool and Terraform Cloud to store modules privately.
 - Uses Hashicorp Configuration Tool
 
----
 
 ## ✅ Advantages of Terraform
 
@@ -27,11 +23,9 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
 - DRY Principle with Modules.
 - Declarative scripting approach.
 
----
+## Variables and Outputs
 
-## 📦 Variables and Outputs
-
-### 🔹 Variables
+### Variables
 - Serve as parameters for Terraform Configuration and Terraform modules.
 - Allow customization without editing source code.
 - User Data to upload any data 
@@ -46,7 +40,7 @@ variables "aws_instance_names" {
 }
 ```
 
-### 🔹 Outputs
+### Outputs
 - Return values from a module.
 - terrafom output -o json
 ```
@@ -58,7 +52,7 @@ outputs "aws_instancs_id" {
 }
 ```
 
-### 🔹 Local Values
+### Local Values
 - Used to assign short names to complex or repeated expressions.
 - we can use functions inside the local block
 ```
@@ -82,22 +76,22 @@ join(",", ["a", "b", "c"])               # "a,b,c"
 replace("app-prod", "prod", "dev")      # "app-dev"
 format("Hello, %s!", "Akhila")          # "Hello, Akhila!"
 ```
----
 
-## 📁 Terragrunt
+## Terragrunt
 
 - A thin wrapper for Terraform.
 - Adds support for managing multiple modules, remote state, and locking.
 
----
 
-## 🔤 Expressions
+## Expressions
 
 ### 🔸 Version Constraints
+
 - Example: `version = ">=1.2.0, <2.0.0"`
 - Operators: `=`, `!=`, `>`, `<`, `>=`, `<=`
 
 ### 🔸 Dynamic Blocks
+
 - Used for nested block creation dynamically.
   
 ```
@@ -115,7 +109,6 @@ resource "aws_bean_stack" "resources1" {
 
   }
 }
----
 ```
 ## Functions
 
@@ -132,10 +125,11 @@ resource "aws_bean_stack" "resources1" {
 - `concat()` – Combine multiple lists.
 - `contains(list, value)` – Check for value existence.
 - `base64decode()` 
+- `substring` - Take required characters from string
+- `regex()` -  This makes filter the string what we require using regex characters
 
----
 
-## 🧾 HashiCorp Configuration Language (HCL)
+## HashiCorp Configuration Language (HCL)
 
 - **Variable Types**: `string`, `bool`, `number`, `map`, `list`,`null`
 
@@ -146,8 +140,6 @@ resource "aws_bean_stack" "resources1" {
 - Modules
 - Expressions
 
----
-
 ## ❓ Why Terraform
 
 - Works on the principle of API as code.
@@ -156,15 +148,11 @@ resource "aws_bean_stack" "resources1" {
 - Written in Go.
 - Uses HCL or JSON format.
 
----
-
 ## ⚙️ Essential Aspects of Terraform
 
 - Console to validate functions.
 - Interpolation support.
 - `module count` tracks the number of provisioned resources.
-
----
 
 ## 🧩 Terraform Modules
 
@@ -172,28 +160,21 @@ resource "aws_bean_stack" "resources1" {
 - Supports multi-env and multi-team use.
 - Commonly reused components defined once.
 
----
-
 ## 📂 Terraform State File
 
 - Tracks managed resources.
 - Maintains a record of created resources.
-
----
 
 ## 🪟 What is Terraform D
 
 - A Windows plugin used by Terraform.
 - `terraform init` looks for it in the plugin directory.
 
----
 
 ## 🔄 Null Resource: 
 
-- Executes local scripts (e.g., using `local-exec`).
+- Executes local scripts (e.g., using `local-exec`) 
 - Doesnt create actual infrastructure but is useful for provisioning steps.
-
----
 
 ## 🧑‍💻 Most Common CLI Commands
 
@@ -208,14 +189,12 @@ resource "aws_bean_stack" "resources1" {
 - `terraform output`
 - `terraform graph`
 
----
 
 ## 🗂️ Terraform Backend
 
 - Backend is where the state file is stored.
 - Commonly stored in cloud for team collaboration and locking.
 
----
 
 ## 🛰️ Terraform Remote Backend
 
@@ -233,7 +212,6 @@ terraform {
   } 
 }
 ```
----
 
 ## 🔐 Handling Secrets in Terraform
 
@@ -245,7 +223,6 @@ terraform {
 - Data block is used to retrieve secrets
 - output block is used to use those in configs
 
----
 
 ## 🔗 Terraform Resource Graph
 
@@ -273,7 +250,6 @@ terraform {
     "aws_instance.web" -> "aws_security_group.web_sg"
   }
 ```
----
 
 ## 🔒 Terraform State Locking
 
@@ -289,36 +265,31 @@ terraform {
     }
   }
 ```
----
 
-## ❗ Taint Terraform Resource
+## Taint Terraform Resource
 - `terraform taint <resource_type>.<resource_name>`
 - Marks a resource as needing replacement.
 - Will be recreated during next apply.
 - when you want to recreate or destroy
 
-## 🔁 Terraform State Rollback
+## Terraform State Rollback
 
 - Used to revert to a previous known state.
 - Helpful during failures or misconfigurations in deployments.
 - `terraform state push old.tfstate`
----
 
-## ⬆️ How to Upgrade Plugins in Terraform
+## How to Upgrade Plugins in Terraform
 
 ``` terraform init -upgrade ```
 - Downloads and upgrades modules/plugins to the newest acceptable version.
 
----
 
-## 🔗 Sharing Outputs Between Modules
+## Sharing Outputs Between Modules
 
 1. **Module 1 (Providing Outputs)**:  
    - Creates resources and defines outputs using `output` blocks.
 2. **Module 2 (Consuming Outputs)**:  
    - Uses `module.module1_name.output_name` to consume the output and create dependent resources.
-
----
 
 ## Terraform Architecture Components
 
@@ -327,46 +298,38 @@ terraform {
 - **Evaluation of Vertex**
 - **Walk the Graph** (builds dependency graph and executes in order)
 
----
----
-
-## 🔐 Sentinel Policies Use Cases
+## Sentinel Policies Use Cases
 
 - Enforce resource ownership.
 - Restrict provider roles.
 - Audit Terraform Cloud operations.
 - Control usage of certain services or data sources.
 
-### 🎚️ Degrees of Sentinel Policing
+## Degrees of Sentinel Policing
 
 1: Advisory  
 2: Soft Mandatory  
 3: Hard Mandatory
 
----
-
-## 📁 What is Terragrunt (Recap)
+## What is Terragrunt (Recap)
 
 - Thin wrapper for Terraform.
 - Simplifies managing multiple modules and remote state.
 - Implements DRY principle.
 
-### Use Cases:
+## Use Cases:
 
 1: Managing multiple AWS accounts.
 2: Managing infrastructure in different modules.
 3: DRY and reusable configurations.
 
----
-
-## 🔒 State File Locking
+## State File Locking
 
 - Prevents simultaneous modifications to the same state file.
 - Usually implemented via remote backend with state locking (e.g., DynamoDB in AWS).
 
----
 
-## 🚀 How to Deploy Infra with Terraform
+## How to Deploy Infra with Terraform
 
 1. Write configuration (`.tf` files).
 2. Initialize: `terraform init`
@@ -374,9 +337,7 @@ terraform {
 4. Plan: `terraform plan`
 5. Apply: `terraform apply`
 
----
-
-## ⚠️ Problems with Terraform
+## Problems with Terraform
 
 - No native API—relies on provider APIs.
 - State File Challenges:
@@ -384,26 +345,17 @@ terraform {
   - Requires locking.
   - Cannot update only a part of infra directly.
 
----
-
-## 🌱 Passing Environment Variables in Terraform
+## Passing Environment Variables in Terraform
 
 ```export TF_VAR_example_var="custom_value" ```
 
----
-
-## 🔐 Sensitive Variable Output
+## Sensitive Variable Output
 
 - Variables marked with `sensitive = true` will not show in CLI output (e.g., `terraform apply`).
-
----
 
 ## 📋 List Created Resources
 
 ``` terraform state list ```
-
----
----
 
 ### What is a Null Resource?
 
@@ -415,17 +367,14 @@ terraform {
 2. Call external APIs.
 3. Run custom logic during apply lifecycle.
 
----
 
-## ✅ Terraform Validate Command
+## Terraform Validate Command
 
 - Checks for syntax and internal consistency.
 
 ``` terraform validate ```
 
----
-
-## 🔄 Create Resources Using Loops
+## Create Resources Using Loops
 
 ### Method 1: Using `count`
 
@@ -448,19 +397,17 @@ resource "aws_subnet" "example" {
 }
 ```
 
----
 
-## ❓ Create Resources Conditionally (ternary operator)
+## Create Resources Conditionally (ternary operator)
 
 ``` count = var.env == "dev" ? 1 : 0 ```
 
----
 
-### What are Data Sources?
+## What are Data Sources?
 
 - Allow Terraform to fetch and reference existing data/infrastructure.
 
-### Example: AWS AMI
+## Example: AWS AMI
 
 ```
 data "aws_ami" "latest_amazon_linux" {
@@ -486,9 +433,7 @@ resource "aws_db_instance" "example" {
 }
 ```
 
----
-
-## 🔐 Sensitive Variable Example
+## Sensitive Variable Example
 
 ```
 variable "example_password" {

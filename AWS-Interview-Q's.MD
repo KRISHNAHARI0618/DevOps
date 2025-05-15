@@ -16,6 +16,7 @@
 - 172.31.0.0/20 
 
 **Describe VPC:**
+
 1. VPC
 2. Subnets
 3. Route Tables
@@ -37,9 +38,10 @@
 17. customer gateways
 18. VPC Lattice 
 19. IAM <Roles>-<Policies>-<Users>-<User-Groups>
-20. RDS --> 
+20. RDS --> Relational Data Base Services.
 
 ### In Terraform Resources Creation
+
 1. VPC --> Cidr Block ,Name , Tags
 2. Subnets --> Cidr Block, VPC Id
 3. Internet Gateway --> VPC id
@@ -50,6 +52,8 @@
 8. EC2 Intance --> Instance Id , Instance Name, AMI_ID and Instance Type
 
 ### Entry Point and CMD 
+
 1. Entry point is an excutable which cannot be over ridden while running via cli
 2. CMD Is a Point of Passing parameters and can be over ridden while running via cli
+
 

@@ -8,3 +8,11 @@ data "aws_ami" "name" {
     }
   
 }
+
+
+locals {
+  name = "asadlk"
+  value = "sdsjdks"
+  description = " "
+  
+}

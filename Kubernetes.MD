@@ -213,7 +213,7 @@
   - `kubelet` downloads and fetches images from the registry.
   - To ensure using the same version of an image, replace `<image:tag>` with `<image@digest>`.
 
-### % Types of Patterns/Multi-Containers Pods in K8s:
+### Types of Patterns/Multi-Containers Pods in K8s:
 
 ### Sidecar Pattern/Container:
 
