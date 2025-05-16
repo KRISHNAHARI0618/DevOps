@@ -29,7 +29,7 @@
 9. filter all .yaml files in folder and find devops keyword
 10. vpc explanation or terraform resources creation
 11. using cli how to show all pods
-12. how to see kubernetes version
+12. how to see kubernetes version `kubectl verson`
 13. given list of number and find the duplicates 
 14. show me where the replicas present
 15. kubectl describe coredns 
@@ -39,3 +39,7 @@
 19. about replicas in deployment.
 20. about find command , grep command , awk commands.
 21. how to find version of linux machine using `uname -a`
+22. how will you upgrade your cluster and nodepools
+23. can we upgrade only cluster `--control-plane-only` and node pools separately `az aks nodepool upgrade`
+24. find all files in directory and filter devops word in all files
+25. 
