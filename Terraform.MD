@@ -10,6 +10,22 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
 - Offers CLI tool and Terraform Cloud to store modules privately.
 - Uses Hashicorp Configuration Tool
 
+### Important Questions:
+1. State file deleted
+  1. Looses Track of Resources
+  2. Orphaned Resources
+  3. Risk Of Duplicate Resources `Will create Downtime,Duplicate Records`
+2. Two engineers run `terraform apply` at the same time Cause Conflicts, Corrupt the state file
+   1. Race Condition `Both Engineers read the same statefile and try to make changes based on same initial state file one will overwrite the other changes`
+   2. By Default Terraform used state lock mechanism to prevent the concurrent operations
+   3. State Corruption Risk
+3. Apply fails halfway through
+   1. By Default Tf state file will get updated only succesfully created resources
+   2. Mostly Terraform Follows Parallel By Default
+   3. Provisioned,Modified,Destroyed
+4. AWS API rate limits hit during deployment
+   1. Throtlling Limits Exceeded
+5. Manual infrastructure changes cause drift
 
 ## ✅ Advantages of Terraform
 
