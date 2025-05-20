@@ -36,6 +36,7 @@ ECR: Ecr supports private repository concept
 ECR is more important:
 
 ECS : Elastic Container Services
+
   1: Auto-Scaling
   2: Auto Healing
   3: Ip Address will Change
@@ -47,10 +48,12 @@ ECS : Elastic Container Services
   9: Clusters
 
 ## EKS Set Up:
+
 1. Elastic Kubernetes Services 
   1. AWS Management Services
   2. Containarization Services 
   3. Running and scaling is highly difficult when you are handling multiple clsuters
+
 2. There are two ways of Set Up K8s Cluster 
   1. Manual Set Up of Kubernetes Api Server
   2. Auto Set Up cluster and nodes using terraform or eksctl or cloud formation
@@ -64,6 +67,7 @@ ECS : Elastic Container Services
     1. AWS Will set everything automaticaly we just need to pass amiid , instance types , min and max and which cluster to connect
   3. Fargates
     1. Serverless VM's which can configure everything on its own [ pay as you go feature ]
+
 4. Flow to create a EKS Cluster
   1. Download EKSCTL in local
   2. Configure AWS using aws configure commands
@@ -73,13 +77,16 @@ ECS : Elastic Container Services
   6. Set Up Secrets and Key management Services
   7. Create VPC and Subnets with relevant CIDR Ranges
   8. Define Security Groups and NACL's
+
 5. Creating Worker Nodes
   1. Select One [Self managed Nodes,Managed Nodes,Fargates]
   2. Select the instance Types
   3. Mention Min and Max Nodes
   4. EKS Cluster To connect 
+
 6. How to Connect Cluster to LOcal 
   1. Using Kubeconfig we can set context to New Cluster
+
 7. Commands Mostly Use
   1. eksctl create cluster
   2. kubectl config set-context
