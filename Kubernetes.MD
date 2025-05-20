@@ -8,7 +8,23 @@
 - [Kubernetes SetUp Using KubeADM](https://github.com/piyushsachdeva/CKA-2024)
 - [Deployment Apps Using Python Terraform K8s AWS](https://thelearningjourney.co/automating-the-cloud-the-evolution-of-a-python-app-with-docker-kubernetes-and-terraform/)
 - [Github Repo For Deployment](https://github.com/bobocuillere/DevOpsProject-FintechAPP-AWS-Terraform)
-  
+
+## How to add Additonal Worker nodes To Cluster
+1. Log in to Master 
+2. check for Tokens in Master Node `kubeadm token list`
+3. if not available please create one using `kubeadm create token --print-join-command`
+4. Copy and paste it in someplace
+5. Create a worker node
+   1. update and upgrade all packages 
+   2. check for swap availability `free -m`
+   3. if is available make it off `swapoff -a`
+   4. Disable permanently in fstab `vim /etc/fastab Comment swap `
+   5. Install All Tools like wget,https,curl,etc..
+   6. Install Signin Key Add that repository
+   7. Install All Plugins , cni,cri,kubelet,kuebeadm,kubectl,kubeproxy,etcc
+   8. add that token using here `kubeadm join masterip:6443 --token <token we need pass>
+6. check in the master whether it is configured it or not `kubectl get nodes`
+
 ## Docker:
 
 - Container Platform where it supports the building the containers

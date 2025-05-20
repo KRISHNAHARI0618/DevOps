@@ -1,16 +1,14 @@
----
-In AWS:
----
+## In AWS:
 
-Binary System:
+1. Binary System:
 
-Subnet_Masking:
-IP_Address: Network_Address + Host_Address
-Each_Network:
-    Different_Network_IDs: Each network has different Network IDs
-    Different_Hosts: Each network has different hosts
-IP_Address_Components:
-    Both_Network_and_Host_Address: Each IP address has both network and host address
+2. Subnet_Masking:
+  1. IP_Address: Network_Address + Host_Address
+  2. Each_Network:
+      Different_Network_IDs: Each network has different Network IDs
+      Different_Hosts: Each network has different hosts
+  3. IP_Address_Components:
+      Both_Network_and_Host_Address: Each IP address has both network and host address
 
 Class_A:
   Bits:
