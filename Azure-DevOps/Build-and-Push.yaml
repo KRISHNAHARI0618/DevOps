@@ -1,0 +1,19 @@
+triggers: 
+environments:
+  imageVersion: ""
+stages:
+  - stage:
+    displayName:
+    steps:
+      - task:
+        displayName: 
+        inputs:
+          command: build and push
+          repository: ${image-version}
+      - task:
+        displayName: 
+        inputs:
+          command: push docker image
+  - stage:
+pool:
+  name: 'agent'
