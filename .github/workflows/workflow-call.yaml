@@ -1,0 +1,9 @@
+on: push
+jobs:
+  call-workflow:
+    uses: ./.github/workflows/reusable.yml
+    strategy:
+      matrix:
+        environment: [dev, staging, production]
+    with:
+      env: ${{ matrix.environment }}
