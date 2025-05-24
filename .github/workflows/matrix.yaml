@@ -1,0 +1,10 @@
+name: matrix-workflow
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        env: [dev, staging, production]
+    steps:
+      - run: echo "Deploying to ${{ matrix.env }}"
