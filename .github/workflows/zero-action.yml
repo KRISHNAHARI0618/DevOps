@@ -30,9 +30,12 @@ on:
         options:
           - true
           - false
+
 jobs:
   python-version:
     runs-on: ubuntu-latest
+    needs: build
+    if: ${{ always() }}
     steps:
       - name: checkout the repository
         uses: actions/checkout@v4
@@ -56,10 +59,9 @@ jobs:
 #   agents{}
 #   actions{}
 #   parameters{}
-
 #   stages{
 #   stage
 #   steps
 #   scripts
-#   conditions}
+#   conditions{}
 #   post{}

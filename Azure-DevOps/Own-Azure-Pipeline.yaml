@@ -1,0 +1,12 @@
+trigger:
+pool:
+stages:
+  - stages:
+      jobs:
+      - job:
+          steps:
+            - step: 
+          inputs:
+          scripts:
+environment: 
+

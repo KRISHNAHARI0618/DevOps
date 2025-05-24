@@ -1,0 +1,33 @@
+name: Conditional Job Runner
+
+on:
+  workflow_dispatch:
+    inputs:
+      build-type:
+        description: 'Select which part to build'
+        required: true
+        default: 'full'
+        type: choice
+        options:
+          - frontend
+          - backend
+          - full
+
+jobs:
+  frontend:
+    if: ${{ github.event.inputs.build-type == 'frontend' || github.event.inputs.build-type == 'full' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build frontend
+        run: echo "Building frontend..."
+
+  backend:
+    if: ${{ github.event.inputs.build-type == 'backend' || github.event.inputs.build-type == 'full' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build backend
+        run: echo "Building backend..."

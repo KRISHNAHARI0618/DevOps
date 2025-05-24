@@ -1,19 +1,126 @@
-triggers: 
-environments:
-  imageVersion: ""
+trigger:
+  paths:
+    include:
+      - src/*
+    exclude:
+      - docs/*
+  branches:
+    include:
+      - main
+      - Master
+      - feature
+    exclude:
+      - hotfix/*
+pr:
+  branches:
+    include:
+      - main
+schedules:
+  - cron: "0 2 * * 1"
+    displayName: Weekly Build
+    branches:
+      include:
+        - main
+    always: true
+resources:
+  pipelines:
+    - pipeline: BuildPipeline
+      source: 'MyBuildPipeline'
+      trigger:
+        branches:
+          include:
+            - main
+
+variables:
+  buildConfiguration: 'Release'
+  projects:
+    - WebApp
+    - API
+    - Backend
+    - Deployment
+  isProduction: false
 stages:
-  - stage:
-    displayName:
-    steps:
-      - task:
-        displayName: 
-        inputs:
-          command: build and push
-          repository: ${image-version}
-      - task:
-        displayName: 
-        inputs:
-          command: push docker image
-  - stage:
-pool:
-  name: 'agent'
+  - stage: Build
+    displayName: Build Stage
+    jobs:
+      - job: BuildProjects
+        displayName: Build all projects
+        pool:
+          vmImage: 'ubuntu-latest'
+        steps:
+          - script: echo "##[group]Starting Build"
+          - ${{ each project in variables.projects }}:
+              - script: |
+                  echo "Building project: ${{ project }}"
+                  dotnet build ${{ project }} --configuration $(buildConfiguration)
+                displayName: Build ${{ project }}
+                # echo "Deploying to $[variables['isProd'] == 'true' ? 'Production' : 'Development']"
+          - task: PublishBuildArtifacts@1
+            inputs:
+              pathToPublish: '$(System.DefaultWorkingDirectory)'
+              artifactName: 'build-drop'
+          - script: echo "##[endgroup]Build complete"
+          - ${{ each item in vaiables.projects }}:
+            - script:
+              displayName: 
+  - stage: Test
+    displayName: Test Stage
+    dependsOn: Build
+    condition: succeeded('Build')
+    jobs:
+      - job: RunTests
+        displayName: Run Unit Tests
+        pool:
+          vmImage: 'windows-latest'
+        steps:
+          - script: |
+              echo "Running tests..."
+              dotnet test --configuration $(buildConfiguration)
+            displayName: Run Tests
+
+  - stage: Deploy_Dev
+    displayName: Deploy to Dev Environment
+    dependsOn: Test
+    condition: succeeded() # failed(),succeeded(),eq(),ne(),always(),not(),and(),or(),cancelled()
+    # eq(variables['isprod'] ,'false')
+    # "Deploying To $[variables['isProd'] == 'true' ? "Production" : "Non_Prod"] "
+    jobs:
+      - deployment: DeployToDev
+        environment: 'dev'
+        pool:
+          vmImage: 'ubuntu-latest'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: build-drop
+                - script: |
+                    echo "Deploying to Dev Environment..."
+                    echo "Files:"
+                    ls -la $(Pipeline.Workspace)/build-drop
+                  displayName: Dev Deployment Script
+
+  - stage: Deploy_Prod
+    displayName: Deploy to Production
+    dependsOn: Deploy_Dev
+    condition: and(succeeded(), eq(variables['isProduction'], 'true'))
+    jobs:
+      - deployment: DeployToProd
+        environment: 
+          name: 'prod'
+          resourceType: VirtualMachine
+          tags: 'critical'
+        pool:
+          vmImage: 'ubuntu-latest'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - download: current
+                  artifact: build-drop
+                - script: |
+                    echo "Deploying to Production..."
+                    echo "Files:"
+                    ls -la $(Pipeline.Workspace)/build-drop
+                  displayName: Prod Deployment Script

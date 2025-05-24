@@ -27,8 +27,10 @@ Infrastructure as Code (IaC) is managing and provisioning infrastructure through
    1. Throtlling Limits Exceeded
 5. Manual infrastructure changes cause drift
 
+
 ### How To Handle Secrets in Terraform
 1. https://blog.gitguardian.com/how-to-handle-secrets-in-terraform/
+2. Utilize the ephemeral keyword in variable section . so that it would be available only at run time 
 
 ## ✅ Advantages of Terraform
 
